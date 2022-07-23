@@ -1,0 +1,64 @@
+@font-face {
+    font-family: 'Goyang';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Goyang.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Dovemayo-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/Dovemayo-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@charset "UTF-8";
+/*  *{font-family: 'Goyang';}  */  /*  고양(이)체  */
+header, footer{font-family: 'Dovemayo-Medium'}   /* 둘기마요체 */
+body{position: relative; min-height: 100%; margin:0;}
+#container{position: relative; min-height: 100%;}
+#content{position: relative; min-height: 100%; }
+/*------------------------------------------------- header ------------------------------------------------ */
+a{text-decoration: none;}
+ul{list-style: none;}
+.header-cont{display:flex; flex-direction: column;}
+.header-member-menu-ul{display:flex; flex-direction: row; justify-content: space-evenly; }
+.main-logo{width:5rem; height:5rem;}
+.menu-logo{width:3.5rem; height:3.5rem;}
+.header-top{width: 100%;  background-color: #FF5B00;}
+.header-contents{width: 90%; margin: 0 auto; }
+.header-menu-ul{display:flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 0;}
+.sub-menu{display:none;}
+.header-menu-li a{display:flex; flex-direction: row; align-items: center; color:#FFF;}
+.header-menu-li h2{font-size: 2rem;}
+.header-title{font-size: 3.5rem; font-weight: bold;}
+.header-right-nav{width: 15%; margin-left: 85%;}
+.header-right-nav-wrapper{ background-color: #FF9900; }
+.header-right-nav a{color: #FFF; font-weight: bold;}
+.sign-out-btn {font-family: 'Dovemayo-Medium'; font-size: 1rem; font-weight: bold; border: none; color: #fff; background-color: #FF9900; cursor:pointer; }
+.header-member-menu-ul span:before, .header-member-menu-ul a:before { content: ""; display: inline-block;  margin: auto;  width: 0;  height: 100%; vertical-align: bottom;}
+/*------------------------------------------------- carousel ------------------------------------------------ */
+#main-visual{width: 1730px; height: 380px; padding: 0;}
+.bx-controls-wrapper{width: 1730px; margin-top: 0.5rem;}
+.bx-controls {display: flex; flex-direction: row; align-items: center;	width: 20rem; height: 3.5rem; padding: 0; margin: 0 auto;}
+.bx-wrapper {position: relative; max-width: 100%; margin: auto; padding: 0;}
+.bx-viewport {position: relative; overflow: hidden; height: 380px;padding: 0;}
+.slider-box {display: flex; transform: translate(0, 0);	width: 1730px;	height: 380px; padding: 0; margin: 0;}
+.visual {flex: 0 0 100%; list-style: none; height: 380px; padding: 0;}
+.visual-image {display: block; width: 1730px; height: 380px; object-fit: cover;}
+.bx-prev, .bx-next  {background-size: 100% 100%; background-color: #fff; border: none; width: 2rem;	height: 2rem;}
+.bx-prev:hover, .bx-next:hover  { transform: scale(1.2);}	
+.paginations {display:flex;	align-items: center; width: 15.5rem; height: 2rem; border: none;} 
+.pagination {display: inline-block;	width: 2rem; height: 2rem; background-size: 100% 100%; margin-left: 15px; border: none;}
+.pagination.active, .pagination:hover {transform: scale(1.3);}
+.pagination:not(:last-child) {margin-right: 0.3rem;}
+#visual-image1, #visual-image2, #visual-image3, #visual-image4, #visual-image5{background-size: 100% 100%;}
+
+/*------------------------------------------------- footer ------------------------------------------------ */
+footer{width: 100%; height: 10rem; bottom: 0; position: relative; background-color: #CA965C; color: #FFE3A9; }
+.footer-cont{width: 70%; display:flex; flex-direction: row; justify-content: space-around; margin: 0 auto;}
+.footer-right{width: 45%;}
+.footer-link{display:flex; flex-direction: row; justify-content: space-evenly;  padding: 0;}
+.footer-link a{color:#FFE3A9; font-weight: bold;}
+.footer-sns-wrapper{display:flex; justify-content: flex-end; width: 100%;}
+.footer-sns{width: 45%; display:flex; flex-direction: row; justify-content: space-evenly; padding: 0;}
+.sns-img{width: 2.3rem; height: 2.3rem;}

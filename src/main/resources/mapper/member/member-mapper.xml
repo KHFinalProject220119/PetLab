@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.petlab.member.model.dao.MemberDao">
+<!-- #8.2. @Mapper 인터페이스 지정 -->
+
+ 
+ 	<select id="selectOneMember" resultType="member">
+ 		select 
+ 			* 
+ 		from 
+ 			member 
+ 		where 
+ 			member_id = #{memberId}
+ 	</select>
+ 	
+ 	<select id="selectOneMemberByNickname" resultType="member">
+ 		select 
+ 			* 
+ 		from 
+ 			member 
+ 		where 
+ 			nickname = #{nickname}
+ 	</select>
+
+ 	<select id="selectOneMemberByEmail" resultType="member">
+ 		select 
+ 			* 
+ 		from 
+ 			member 
+ 		where 
+ 			email = #{email}
+ 	</select>
+ 	
+	<insert id="insertMember">
+		insert into 
+			member
+		values(
+ 
+			#{memberId}, 
+			#{gradeNo}, 
+			#{password}, 
+			#{memberName}, 
+			#{nickname}, 
+			#{phone}, 
+			#{email}, 
+			#{birthday}, 
+			#{gender}, 
+			#{memberSocial}, 
+			#{recommendedId}, 
+			default,
+			default,
+			default,
+			default
+		) 
+	</insert>
+	
+ 	<insert id="insertAuthority">
+ 		insert into
+ 			authority
+ 		values(#{auth}, #{memberId})
+ 	</insert>
+
+	<insert id="insertAddress">
+		insert into
+			address
+		values(
+			seq_address_no.nextval, #{memberId}, default, #{postcode}, #{address}, #{addressDetail}, #{addressExtra})
+	</insert>
+ 	
+ 	<update id="updateMember">
+ 		update
+ 			member
+ 		<set>
+ 			<if test="name != null">
+	 			name = #{name},
+ 			</if>
+ 			<if test="birthday != null">
+				birthday = #{birthday},
+			</if>
+ 			<if test="email != null">
+				email = #{email},
+			</if>
+ 			<if test="phone != null">
+				phone = #{phone},
+			</if>
+ 			<if test="address != null">
+				address = #{address},
+			</if>
+ 			<if test="gender != null">
+				gender = #{gender},
+			</if>
+ 		</set>
+ 		where
+ 			member_id = #{memberId}
+ 	</update>
+ 	
+ 	<select id="selectMemberList" resultMap="memberMap">
+		select
+    		*
+		from
+   			 member m 
+            	join authority a 
+                	on m.member_id = a.member_id
+        order by
+        	enroll_date desc
+	</select>
+	
+	<resultMap type="member" id="memberMap">
+		<id column="member_id" property="memberId" />
+		<result column="grade_no" property="gradeNo"  />
+		<result column="password" property="password"  />
+		<result column="member_name" property="memberName"  />
+		<result column="nickname" property="nickname"  />
+		<result column="phone" property="phone"  />
+		<result column="email" property="email"  />
+		<result column="birthday" property="birthday"  />
+		<result column="gender" property="gender"  />
+		<result column="member_social" property="memberSocial"  />
+		<result column="recommended_id" property="recommendedId"  />
+		<result column="membership_point" property="membershipPoint"  />
+		<result column="point" property="point"  />
+		<result column="enabled" property="enabled"  />
+		<result column="enroll_date" property="enrollDate"  />
+		<collection property="authorities" ofType="simpleGrantedAuthority" >
+			<constructor>
+				<arg column="auth" javaType="string" />
+			</constructor>
+		</collection>
+	</resultMap>
+	
+	
+	<delete id="deleteMemberRole">
+		delete from
+			authority
+		where
+			member_id = #{memberId}
+	</delete>
+	
+	
+</mapper>

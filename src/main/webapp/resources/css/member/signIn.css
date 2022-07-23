@@ -1,0 +1,26 @@
+@charset "UTF-8";
+#content{width: 60%; margin: 0 auto;}
+.form-area{margin: 0;}
+.signIn-title-wrapper h3{font-family: 'Goyang'; font-size: 3.5rem; font-weight: bold; text-align: center;}
+.input-wrapper{display:flex; flex-direction: column; align-items: center;}
+.input-container{margin: 0.1rem 0;}
+#memberId, #password{width: 25rem; height: 4rem; margin: 0 0.5rem; padding: 0.5rem; font-size: 1.5rem; border: 0.15rem solid #FF9900; margin: 0 auto;}
+#memberId:focus, #password:focus {border: 0.15rem solid #FF5B00; outline:none;}
+.login-btn-wrapper, .btn-wrapper{width: 25.5rem; margin: 0.2rem auto; margin-bottom: 0;}
+#btn-login{width: 25rem; height: 3rem; color: #fff;  font-size: 2rem; font-weight: bold;  border-radius: 0.3rem;
+			display: inline-flex;   align-items: center;   justify-content: center;   line-height: 1.5; 
+			text-align: center; background-image: linear-gradient(90deg, #FF5B00, #FF5B00, #FF9900,#FF9900); 
+			border: none; cursor:pointer; margin: 0 0.2rem;}
+#btn-login:hover, .openButton:hover{background-image: linear-gradient(90deg,#FF9900,#FF9900,#FF5B00,#FF5B00);}
+.find-btn-wrapper{display:flex; flex-direction: row; justify-content: flex-start; width: 15rem;  margin: 0.2rem 0;}
+.openButton{ color: #fff;  font-size: 1rem; font-weight: bold;  border-radius: 0.3rem;
+display: inline-flex;   align-items: center;   justify-content: center;   line-height: 1.5; 
+text-align: center; background-image: linear-gradient(90deg, #FF5B00, #FF5B00, #FF9900,#FF9900); 
+border: none; cursor:pointer; margin: 0 0.2rem;}
+.login-fn-collection{width: 99%; display:flex; flex-direction: row; justify-content: space-between; margin: 0 auto;}
+.social-login{width: 25rem; margin: 0 auto;}
+.auto-login-wrapper label:before{content: ""; display: inline-block; vertical-align:middle; text-align:center; height: 100%;}
+.social-login p, .auto-login-wrapper label{font-family: 'Goyang'; font-size: 1rem; font-weight: bold;}
+#naverIdLogin_loginButton img{width: 25rem;}
+#kakaoLogin, #naverIdLogin {margin: 0.2rem 0;}
+#buttonDiv, #gsi_59439_510185{width: 25rem; height: 3rem;}
