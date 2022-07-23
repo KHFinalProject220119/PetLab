@@ -1,0 +1,53 @@
+@charset "UTF-8";
+.signup-cont{width: 65%; margin: 0 auto;}
+.top-title{font-family: 'Goyang'; font-size: 3.5rem; font-weight: bold; text-align: center;}
+.signup-title{font-family: 'Goyang'; font-size: 2rem; font-weight: bold; text-align: center;}
+.signup-order-img{width: 37%; margin: 0 auto;}
+.signup-form-wrapper{width: 50%; margin: 2rem auto; padding-top: 1rem; border-top: 0.2rem solid #FF5B00; } 
+.neccesary-star{color: #FF0000;}
+.necessary-title, .optional-title{font-family: 'Goyang'; font-size: 1.8rem; font-weight: bold; margin: 1rem 0;}
+.info-wrapper{display:flex; flex-direction: row; padding: 1.4rem 0; border-bottom: 2px solid #E5E5E5; }
+.info-wrapper-with-msg{display:flex; flex-direction: column; padding-top: 1.4rem; border-bottom: 2px solid #E5E5E5; }
+.info-wrapper-post{display:flex; flex-direction: column; padding-top: 1rem; padding-bottom: 2rem; border-bottom: 0.2rem solid #FF5B00;}
+.post-inner-wrapper{display:flex; flex-direction: row; padding: 0.5rem 0;}
+.inner-wrapper{display:flex;}
+.info-wrapper label, .info-wrapper-post label, .inner-wrapper label{font-family: 'Goyang'; font-size: 1.5rem; font-weight: bold;}
+.input-cont{width: 15rem; margin: 0 0.5rem; padding: 0.5rem; font-size: 1rem; border: 0.15rem solid #FF9900; }
+.input-cont:focus, .input-cont-postcode:focus, #year:focus, #month:focus, #day:focus {border: 0.15rem solid #FF5B00; outline:none;}
+.input-cont-postcode{width: 10rem; margin: 0 0.5rem; padding: 0.5rem; font-size: 1rem; border: 0.15rem solid #FF9900; }
+.btn-wrapper{margin-top: 2rem;}
+.label-wrapper {width: 10rem;}
+.void-space {width: 11rem;}
+.msg-wrapper{display:flex; height: 1.4rem;}
+.duplicate-result, .password-result, .nickname-result, .recommendedId-result{width: 15rem;}
+.btn-wrapper{width: 55%; margin: 1rem auto;}
+.cert-btn, .find-address-btn{
+color: #fff;  font-size: 0.8rem; font-weight: bold;  border-radius: 0.3rem;
+display: inline-flex;   align-items: center;   justify-content: center;   line-height: 1.5; 
+text-align: center; background-image: linear-gradient(90deg, #FF5B00, #FF5B00, #FF9900,#FF9900); 
+border: none; cursor:pointer; margin: 0 0.2rem;
+}
+.back-btn, .submit-btn{width: 9rem; padding: 0.5rem; font-size: 1.2rem; color: #fff; font-weight: bold;  border-radius: 0.5rem;
+display: inline-flex;   align-items: center;   justify-content: center;   line-height: 1.5;text-align: center;
+background-image: linear-gradient(90deg, #FF5B00, #FF5B00, #FF9900,#FF9900); border: none; cursor:pointer; margin: 0 0.2rem;}
+.cert-btn:hover, .find-address-btn:hover, .back-btn:hover, .submit-btn:hover{background-image: linear-gradient(90deg,#FF9900,#FF9900,#FF5B00,#FF5B00);}
+.fail{display:none; font-family: 'Goyang'; font-size: 0.7rem; font-weight: bold; color: #FF0000;}
+.ok{display:none; font-family: 'Goyang';  font-size: 0.7rem; font-weight: bold; }
+#year{width: 5rem;} 
+#month, #day{width: 3.5rem;}
+#year, #month, #day{padding: 0.5rem;  font-size: 1rem; border: 0.15rem solid #FF9900;}
+.birth-container{margin: 0 0.5rem;}
+.pop-wrapper{display: none; width: 64%; margin: 1rem auto;}
+.email-wrapper{padding-bottom: 1.4rem;}
+.timer-text{font-family: 'Goyang'; font-size: 1rem; margin: 0.2rem 0;}
+.btn-inner{display: flex;}
+.btn-inner span, .timer{font-family: 'Goyang'; font-size: 1rem; width: 4rem;}
+.cert-btn{width: 6rem;}
+.timer-wrapper{display:flex; width: 7rem;}
+.refresh-btn{width: 9rem;}
+.cert-btn, .refresh-btn{padding: 0.2rem; font-size: 0.8rem; color: #fff; font-weight: bold;  border-radius: 0.5rem;
+display: inline-flex;   align-items: center;   justify-content: center;   line-height: 1.5;text-align: center;
+background-image: linear-gradient(90deg, #FF5B00, #FF5B00, #FF9900,#FF9900); border: none; cursor:pointer; margin: 0 0.2rem;}
+.cert-btn:hover, .refresh-btn:hover{background-image: linear-gradient(90deg,#FF9900,#FF9900,#FF5B00,#FF5B00);}
+#certificationCodeId{padding: 0.1rem; border: 0.15rem solid #FF9900;}
+#certificationCodeId:focus{border: 0.15rem solid #FF5B00; outline:none;}

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- #9.5. @AuthenticationPrincipal UserDetails 구현체를 전달받기 위한 설정  -->
+	<annotation-driven> 
+		<argument-resolvers>
+			<beans:bean class="org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver" />
+		</argument-resolvers>
+	</annotation-driven>
+
+	<!-- #15.1. jacksonMessageConverter 빈 -->
+	<beans:bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" ></beans:bean>
+	
+	<!-- #15.2. @ResponseBody 처리를 위한 MessageConverter 등록 -->
+	<!-- spring 5.x에 와서 생략 가능. annotation-driven에 의해 처리 -->
+	<beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<beans:property name="messageConverters" >
+			<beans:list>
+				<beans:ref bean="jacksonMessageConverter"/>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<!-- #14.1. jsonView빈 등록 -->
+	<beans:bean id="jsonView" class="net.sf.json.spring.web.servlet.view.JsonView">
+		<beans:property name="contentType" value="application/json; charset=utf-8" />
+	</beans:bean>
+	
+	<!-- #14.2. BeanNameViewResolver 등록  -->
+	<beans:bean id="beanNameViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="1" /> <!-- InternalResourceViewResolver보다 우선처리 -->
+	</beans:bean>
+	
+	<!-- @Component 클래스를 빈으로 등록 -->
+	<context:component-scan base-package="com.kh.petlab" />
+	
+	<!-- #10. interceptor 등록  -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/**" />
+			<beans:bean class="com.kh.petlab.common.interceptor.LoggerInterceptor"></beans:bean>
+		</interceptor>
+<!-- 		<interceptor>
+			<mapping path="/member/**"/>
+			<mapping path="/board/**"/>			
+			<exclude-mapping path="/board/boardList.do"/>
+			<exclude-mapping path="/board/boardDetail.do"/>
+			<exclude-mapping path="/member/memberLogin.do"/>
+			<exclude-mapping path="/member/memberLogout.do"/>
+			<exclude-mapping path="/member/memberEnroll.do"/>
+			<exclude-mapping path="/member/checkIdDuplicate.do"/>
+			<beans:bean class="com.kh.spring.common.interceptor.LoginInterceptor" />
+		</interceptor> -->
+	</interceptors>
+	
+	<!-- #11.2. AOP 관련 어노테이션 등록처리 -->
+	<!-- #13.3. root-context의 transaction aop 설정을 servlet-context에 적용  -->
+	<aop:aspectj-autoproxy />
+	
+	<!-- #12.1. 파일 업로드 처리할 multipartResolver -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="52428800"></beans:property> <!-- 요청당 업로드 최대 크기 50 * 1024 * 1024 -->
+		<beans:property name="maxUploadSizePerFile" value="10486760"></beans:property> <!-- 파일 하나당 최대 크기 10 * 1024 * 1024 -->
+		<beans:property name="maxInMemorySize" value="10240"></beans:property> <!-- 메모리 사용 최대 크기 10 * 1024 이 크기를 초과하면 임시파일 생성  -->
+	</beans:bean>
+</beans:beans>

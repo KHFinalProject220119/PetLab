@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- #9.2. bcryptPasswordEncoder빈 등록  -->
+	<beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	
+	<!-- #9.4. 인증/권한 설정 -->
+	<!-- static 자원은 security filter 처리하지 않음 -->
+	<http security="none" pattern="/resources/**"></http>
+	
+	<http auto-config="true">
+		<intercept-url pattern="/" access="permitAll"  />
+		<intercept-url pattern="/index.jsp" access="permitAll"  />
+		<intercept-url pattern="/admin/**" access="hasRole('ADMIN')"  />
+		<intercept-url pattern="/member/signUpSelection" access="isAnonymous()"  />
+		<intercept-url pattern="/member/agreement" access="isAnonymous()"  />
+		<intercept-url pattern="/member/memberEnroll" access="isAnonymous()"  />
+		<intercept-url pattern="/member/normalSignUp" access="isAnonymous()"  />
+		<intercept-url pattern="/member/hospitalSignUp" access="isAnonymous()"  />
+		<intercept-url pattern="/member/mallSignUp" access="isAnonymous()"  />
+		<intercept-url pattern="/member/duplicateId" access="isAnonymous()"  />
+		<intercept-url pattern="/member/duplicateNickname" access="isAnonymous()"  />
+		<intercept-url pattern="/member/recommendedId" access="isAnonymous()"  />
+		<intercept-url pattern="/member/findMemberByEmail" access="isAnonymous()"  />
+		<intercept-url pattern="/member/welcome" access="isAnonymous()"  />
+		<intercept-url pattern="/member/signIn" access="isAnonymous()"  />
+		<intercept-url pattern="/**" access="isAuthenticated()" /> 
+		
+		
+	<!-- 	 login-page GET 방식 로그인 폼페이지 요청(핸들러 작성 필요)
+		 login-processing-url POST 방식 로그인 처리 요청(핸들러 작성 불필요-자동작성) -->
+		
+		<form-login
+			login-page="/member/signIn"
+			login-processing-url="/member/signIn"
+			username-parameter="memberId"
+			password-parameter="password"
+				/>	
+		<!-- 
+			logout-url POST logout 요청 url (핸들러 작성 불필요)
+		  -->
+		<logout
+			logout-url="/member/signOut"
+			logout-success-url="/"
+		/>
+		
+	<!-- 	
+			disabled="true" csrf 공격 대비 기능 사용 안 함
+			csrf : cross site request forgery 공격(악성 코드를 통해 권한 있는 사용자의 form 제출을 유도)
+			모든 POST 방식의 폼제출에 csrf 공격 대비 토큰 검증 -->
+		
+		<csrf disabled="false" />
+		
+				<!-- 
+			token-validity-seconds 토큰유효시간(초) 60 * 60 * 24 * 14 (2주) 
+		 -->
+		<remember-me data-source-ref="dataSource"
+					 token-validity-seconds="1209600"	
+						 />
+	</http> 
+	
+	<authentication-manager>
+	<!-- 	<authentication-provider >
+			<password-encoder ref="bcryptPasswordEncoder"/>
+			<user-service>
+				<user 	
+					name="honggd" 
+					password="$2a$10$yGixdofbXZOAh1qCeB5Ruuo2yHUAx9xjwoao6tYT5PZ329T3FvQnO"
+					authorities="ROLE_USER"/>
+				<user 	
+					name="sinsa" 
+					password="$2a$10$vwxUUF422l35NbsnE2Xb1O3OBs1M2tc09YoLYymGa1yzh.7q7tvb2"
+					authorities="ROLE_USER, ROLE_ADMIN"/>
+						
+			</user-service>
+		</authentication-provider> -->
+		
+		<authentication-provider user-service-ref="securityService">
+			<password-encoder ref="bcryptPasswordEncoder" ></password-encoder>
+		</authentication-provider>
+	</authentication-manager>
+	<context:component-scan base-package="com.kh.security" />
+</beans:beans>
