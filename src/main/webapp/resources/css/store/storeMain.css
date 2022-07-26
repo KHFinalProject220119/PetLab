@@ -67,3 +67,4 @@ body{font-family: 'Dovemayo-Medium'}   /* 둘기마요체 */
 .menubars2 { display: none; }
 .menubars3 { display: none; }
 a{color:#1c1a1a; font-size: 1.12rem;}
+.menu:hover{cursor: pointer;}
