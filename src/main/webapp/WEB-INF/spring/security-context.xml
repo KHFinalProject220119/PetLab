@@ -17,6 +17,7 @@
 	<http auto-config="true">
 		<intercept-url pattern="/" access="permitAll"  />
 		<intercept-url pattern="/index.jsp" access="permitAll"  />
+		<intercept-url pattern="/store/**" access="permitAll"  />
 		<intercept-url pattern="/admin/**" access="hasRole('ADMIN')"  />
 		<intercept-url pattern="/member/signUpSelection" access="isAnonymous()"  />
 		<intercept-url pattern="/member/agreement" access="isAnonymous()"  />
