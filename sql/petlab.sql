@@ -2,7 +2,7 @@
 -- 관리자 계정
 --============================================
 -- petlab 계정 생성
-alter session set _oracle_script = true;
+alter session set "_oracle_script" = true;
 
 create user petlab
 IDENTIFIED by petlab
