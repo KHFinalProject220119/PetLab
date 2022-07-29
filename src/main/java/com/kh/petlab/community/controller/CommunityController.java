@@ -12,6 +12,19 @@ import lombok.extern.slf4j.Slf4j;
 public class CommunityController {
 	
 	@GetMapping("/communityMain")
-	public void storeMain() {}
+	public void communityMain() {}
+	
+	@GetMapping("/smallGroupMain")
+	public void smallGroupMain() {}
+	
+	@GetMapping("/freeBoardList")
+	public void freeBoardList() {}
+	
+	@GetMapping("/knowhowList")
+	public void knowhowList() {}
+	
+	@GetMapping("/photoList")
+	public void photoList() {}
 	
 }
+	

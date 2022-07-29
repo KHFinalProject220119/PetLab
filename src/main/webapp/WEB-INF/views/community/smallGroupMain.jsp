@@ -10,12 +10,12 @@
 </jsp:include>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title></title>
 </head>
 <body>
 <section id="community-container" class="container">
-<!-- 	<input type="button" value="글쓰기" id="btn-add" class="btn btn-outline-success" onclick="goToBoardForm();"/> -->
-	<table id="tbl-board" class="table table-striped table-hover text-center">
+
+	<table id="sg-board" class="table table-striped table-hover text-center">
 		<tr>
 			<span><img class="menu-logo" src="${pageContext.request.contextPath}/resources/images/common/header/CatWithAPencil.png" alt="" /></span>
 			커뮤니티
@@ -27,28 +27,19 @@
 			<th><a href="${pageContext.request.contextPath}/community/photoList">멍냥이 갤러리</a></th>
 		</tr>
 		<tr>
-			<th>지금 가장 핫!한 모임
+			<th>지금 가장 핫!한 모임</th>
+		</tr>
+		<tr>
+			<th>총 0개</th>
+			<th>최신순</th>
+		</tr>
+		<tr>
+			<th>
+				<input type="button" value="새 모임 만들기" id="btn-add" class="btn btn-outline-success" onclick="goToBoardForm();"/>
 			</th>
 		</tr>
-		<c:forEach items="${list}" var="board" varStatus="vs">
-			<tr data-no="${board.no}">
-				<td>${board.no}</td>
-				<td>${board.title}</td>
-				<td>${board.memberId}</td>
-				<td>
-					<fmt:parseDate value="${board.createdAt}" pattern="yyyy-MM-dd'T'HH:mm" var="createdAt"/>
-					<fmt:formatDate value="${createdAt}" pattern="MM-dd HH:mm"/>
-				</td>
-				<td>
-					<c:if test="${board.attachCount gt 0}">
-						<img src="${pageContext.request.contextPath}/resources/images/file.png" width="16px" />
-					</c:if>
-				</td>
-				<td>${board.readCount}</td>
-			</tr>
-		</c:forEach>
 	</table>
-	<nav>${pagebar}</nav>
+
 </section>
 
 </body>
