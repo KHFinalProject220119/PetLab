@@ -136,3 +136,5 @@ CREATE TABLE hosptial_image (
 	renamed_filename	varchar2(200)		NULL,
 	reg_date	date		NULL
 );
+
+commit;
