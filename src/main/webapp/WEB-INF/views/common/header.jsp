@@ -80,10 +80,10 @@ Kakao.init('22289034ae7ed5aa331cb59ea6ac1625');
 										<h2>커뮤니티</h2>
 									</a>
 									<ul class="sub-menu">
-										<li><a href="${pageContext.request.contextPath}/community/smallGroupList">소모임</a></li>
-										<li><a href="${pageContext.request.contextPath}/community/photoList">멍냥이 갤러리</a></li>
-										<li><a href="${pageContext.request.contextPath}/community/freeBoardList">자유게시판</a></li>
+										<li><a href="${pageContext.request.contextPath}/community/smallGroupMain">소모임</a></li>
 										<li><a href="${pageContext.request.contextPath}/community/knowhowList">노하우</a></li>
+										<li><a href="${pageContext.request.contextPath}/community/freeBoardList">자유게시판</a></li>
+										<li><a href="${pageContext.request.contextPath}/community/photoList">멍냥이 갤러리</a></li>
 									</ul>
 								</li>
 								<li class="header-menu-li">

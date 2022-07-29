@@ -8,9 +8,6 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="커뮤니티" name="title" />
 </jsp:include>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/community/communityMain.css" />
-
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -28,6 +25,10 @@
 			<th><a href="${pageContext.request.contextPath}/community/knowhowList">노하우</a></th>
 			<th><a href="${pageContext.request.contextPath}/community/freeBoardList">자유게시판</a></th>
 			<th><a href="${pageContext.request.contextPath}/community/photoList">멍냥이 갤러리</a></th>
+		</tr>
+		<tr>
+			<th>지금 가장 핫!한 모임
+			</th>
 		</tr>
 		<c:forEach items="${list}" var="board" varStatus="vs">
 			<tr data-no="${board.no}">
@@ -48,10 +49,8 @@
 		</c:forEach>
 	</table>
 	<nav>${pagebar}</nav>
-</section> 
-
+</section>
 
 </body>
-
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </html>
