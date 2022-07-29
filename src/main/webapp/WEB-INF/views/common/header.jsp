@@ -75,7 +75,7 @@ Kakao.init('22289034ae7ed5aa331cb59ea6ac1625');
 									</a>
 								</li>
 								<li class="header-menu-li">
-									<a href="/community/photoList" class="menu-link">
+									<a href="${pageContext.request.contextPath}/community/communityMain" class="menu-link">
 										<span><img class="menu-logo" src="${pageContext.request.contextPath}/resources/images/common/header/CatWithAPencil.png" alt="" /></span>
 										<h2>커뮤니티</h2>
 									</a>

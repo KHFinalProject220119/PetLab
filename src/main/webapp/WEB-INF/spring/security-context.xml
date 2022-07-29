@@ -18,8 +18,9 @@
 		<intercept-url pattern="/" access="permitAll"  />
 		<intercept-url pattern="/index.jsp" access="permitAll"  />
 		<intercept-url pattern="/store/**" access="permitAll"  />
+		<intercept-url pattern="/member/**" access="permitAll"  />
 		<intercept-url pattern="/admin/**" access="hasRole('ADMIN')"  />
-		<intercept-url pattern="/member/signUpSelection" access="isAnonymous()"  />
+		<!-- <intercept-url pattern="/member/signUpSelection" access="isAnonymous()"  />
 		<intercept-url pattern="/member/agreement" access="isAnonymous()"  />
 		<intercept-url pattern="/member/memberEnroll" access="isAnonymous()"  />
 		<intercept-url pattern="/member/normalSignUp" access="isAnonymous()"  />
@@ -30,7 +31,7 @@
 		<intercept-url pattern="/member/recommendedId" access="isAnonymous()"  />
 		<intercept-url pattern="/member/findMemberByEmail" access="isAnonymous()"  />
 		<intercept-url pattern="/member/welcome" access="isAnonymous()"  />
-		<intercept-url pattern="/member/signIn" access="isAnonymous()"  />
+		<intercept-url pattern="/member/signIn" access="isAnonymous()"  /> -->
 		<intercept-url pattern="/**" access="isAuthenticated()" /> 
 		
 		
