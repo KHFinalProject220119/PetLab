@@ -1,6 +1,7 @@
 package com.kh.petlab.member.model.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.petlab.member.model.dao.MemberDao;
 import com.kh.petlab.member.model.dto.Address;
+import com.kh.petlab.member.model.dto.Attachment;
 import com.kh.petlab.member.model.dto.Member;
 
 @Service
@@ -38,17 +40,26 @@ public class MemberServiceImpl implements MemberService {
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int insertMember(Member member, String memberType) {
-		int result = memberDao.insertMember(member);
+		 int result = 0;
+		 List<Attachment> attachments = member.getAttachments(); 
+		 if(!attachments.isEmpty()) {
+			 for(Attachment attach : attachments) {
+				 result = memberDao.insertAttachment(attach);
+				 member.setAttachGroupId(attach.getAttachGroupId());
+				 } 
+		 }
+
+		result = memberDao.insertMember(member);
 		Map<String, Object> map = new HashMap<>();
 		map.put("memberId", member.getMemberId());
 		map.put("auth", MemberService.ROLE_USER);
 		result = memberDao.insertAuthority(map); // ROLE_USER
-		if(memberType.equals("hospital")) {
+		if (memberType.equals("hospital")) {
 			map.remove("auth");
 			map.put("auth", MemberService.ROLE_HOSPITAL);
 			result = memberDao.insertAuthority(map); // ROLE_HOSPITAL
 		}
-		if(memberType.equals("mall")) {
+		if (memberType.equals("mall")) {
 			map.remove("auth");
 			map.put("auth", MemberService.ROLE_MALL);
 			result = memberDao.insertAuthority(map); // ROLE_MALL
@@ -58,6 +69,11 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int insertAddress(Address address) {
-		return  memberDao.insertAddress(address);
+		return memberDao.insertAddress(address);
+	}
+
+	@Override
+	public int resetPassword(Map<String, Object> param) {
+		return memberDao.resetPassword(param);
 	}
 }

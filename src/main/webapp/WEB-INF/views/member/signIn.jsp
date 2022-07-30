@@ -34,8 +34,8 @@
 							<label for="remember-me" class="auto-login">자동로그인</label>
 						</div>
 						<div class="find-btn-wrapper">
-							<button type="button" class="openButton" onclick="location.href='${pageContext.request.contextPath}/member/findId'">아이디 찾기</button>
-							<button type="button" class="openButton" onclick="location.href='${pageContext.request.contextPath}/member/resetPassword'">비밀번호 재설정</button>
+							<button type="button" class="openButton" onclick="location.href='${pageContext.request.contextPath}/member/findAccountInfo?selectionTab=findId'">아이디 찾기</button>
+							<button type="button" class="openButton" onclick="location.href='${pageContext.request.contextPath}/member/findAccountInfo?selectionTab=resetPassword'">비밀번호 재설정</button>
 						</div>
 					</div>
 					<div class="social-login">
@@ -47,11 +47,18 @@
 						</div>						
 					</div>
 				</div>
+				<form action="${pageContext.request.contextPath}/member/socialSignUp" method="GET" name="socialSignUpFrm">
+					<input type="hidden" name="memberId" />
+					<input type="hidden" name="password" />
+					<input type="hidden" name="email" />
+					<input type="hidden" name="gender" />
+					<input type="hidden" name="socialType" />
+				</form>
 		</div>
 	</article>
 	<script>
 	// 카카오 로그인 초기화
-//	Kakao.init('22289034ae7ed5aa331cb59ea6ac1625'); 
+		Kakao.init('22289034ae7ed5aa331cb59ea6ac1625'); 
 
 	// 카카오로그인
 	function loginWithKakao() {
@@ -67,11 +74,10 @@
 		    	  Kakao.API.request({
 		              url: '/v2/user/me',
 		              success: function (response) {
-		            	  console.log(response);
 		            	  const kakaoAccount = response.kakao_account;
 		            	  const socialType = "kakao";
 		            	  const memberId = socialType + response.id;
-		            	  const gender = kakaoAccount.gender;
+		            	  const password = response.id;
 		            	  const email = kakaoAccount.email;
 		            	
 		            	// 아이디 찾기   	  
@@ -79,15 +85,16 @@
 		            		  url : "${pageContext.request.contextPath}/member/memberIdCheckSocial",
 		            		  method: "GET",
 		            		  data : {"memberId" : memberId },
-		            		  dataType : "text",
 		            		  success : function(res){
 		            		  // 로그인
-		            			  if(res == "T"){
-		            				  createHiddenSignForm(memberId);
+		            		  console.log("success!2")
+		            			  const {available} = res; 
+	     			 			  if(available != true){
+		            				  createHiddenSignForm(memberId, password);
 		            			  }
 		            			  else { 
 		            		  // 사이트 연결은 하였으나 회원가입이 완료되지 않은 경우로 추가 정보 입력을 위한 회원가입 진행 
-		            					 SubmitSignUpSocialForm(memberId, email, gender, socialType);
+		            					 SubmitSignUpSocialForm(memberId, password, email, socialType);
 		            			   } 
 		            		  },
 		            		  error : console.log
@@ -103,7 +110,6 @@
 		        // 로그인
 		    	  Kakao.Auth.login({
 		    	      success: function (response) {
-		    	    	  console.log(response);
 		    	    	  const accessToken = response.access_token;
 		    	    	  const aTokenExpiresTime = response.expires_in;
 		    	    	  const refreshToken = response.refresh_token_expires_in;
@@ -114,28 +120,28 @@
 		    	    	  Kakao.API.request({
 		    	              url: '/v2/user/me',
 		    	              success: function (response) {
-		    	            	  console.log(response);
 		    	            	  const kakaoAccount = response.kakao_account;
 		    	            	  const socialType = "kakao";
 		    	            	  const memberId = socialType + response.id;
-		    	            	  const gender = kakaoAccount.gender;
+		    	            	  const password = response.id + "";
 		    	            	  const email = kakaoAccount.email;
+
 		    	            	
 		    	            	// 아이디 찾기   	  
 		    	         	  $.ajax({
 		    	            		  url : "${pageContext.request.contextPath}/member/memberIdCheckSocial",
 		    	            		  method: "GET",
 		    	            		  data : {"memberId" : memberId },
-		    	            		  dataType : "text",
 		    	            		  success : function(res){
 		    	            		  // 로그인
-		    	            			  if(res == "T"){
-		    	            				  createHiddenSignForm(memberId);
+		    	            			  const {available} = res; 
+	     			  				  if(available != true){
+		    	            			  createHiddenSignForm(memberId, password);
 		    	            			  }
 		    	            			  else { 
 		    	            		  // 사이트 연결은 하였으나 회원가입이 완료되지 않은 경우로 추가 정보 입력을 위한 회원가입 진행 
-		    	            					 SubmitSignUpSocialForm(memberId, email, gender, socialType);
-		    	            			   } 
+		    	            					 SubmitSignUpSocialForm(memberId, password, email, socialType);
+		    	            			   }  
 		    	            		  },
 		    	            		  error : console.log
 		    	            	  });
@@ -153,7 +159,6 @@
 		});
 	 
 	  }
-	
 	  // 구글 로그인 초기화 | 로그인
 	  window.onload = function() {
 	    google.accounts.id.initialize({
@@ -171,21 +176,21 @@
 			 const responsePayload = parseJwt(response.credential);
 		      const socialType = "google";
 		 	  const memberId = socialType + responsePayload.sub;
-		 	  const gender = responsePayload.gender;
+		 	  const password = responsePayload.sub + "";
 		 	  const email = responsePayload.email;
 		 	  
 		 	 $.ajax({
 		 		  url : "${pageContext.request.contextPath}/member/memberIdCheckSocial",
 		 		  method: "GET",
 		 		  data : {"memberId" : memberId },
-		 		  dataType : "text",
 		 		  success : function(res){
-		 			  if(res == "T"){
-		 				  createHiddenSignForm(memberId);
+		 			  const {available} = res; 
+	     			  if(available != true){
+		 				  createHiddenSignForm(memberId, password);
 		 			  }
 		 			  else { 
 		 				  // 회원가입 
-		 					 SubmitSignUpSocialForm(memberId, email, gender, socialType);
+		 					 SubmitSignUpSocialForm(memberId, password, email, socialType);
 		 			   } 
 		 		  },
 		 		  error : console.log
@@ -205,20 +210,20 @@
 	        if (status) {
 	       	 const socialType = "naver";
 	       	 const memberId = socialType + naverLogin.user.getId();
-	          const gender=naverLogin.user.getGender();
-	          const email=naverLogin.user.getEmail();
+	       	 const password = naverLogin.user.getId() + "";
+	         const email=naverLogin.user.getEmail();
 	          
 	          $.ajax({
 	     		  url : "${pageContext.request.contextPath}/member/memberIdCheckSocial",
 	     		  method: "GET",
 	     		  data : {"memberId" : memberId },
-	     		  dataType : "text",
 	     		  success : function(res){
-	     			  if(res == "T"){		
-	     				  createHiddenSignForm(memberId);
+	     			  const {available} = res; 
+	     			  if(available != true){		
+	     				  createHiddenSignForm(memberId, password);
 	     			  }
 	     			  else {	  // 회원가입 
-	     					 SubmitSignUpSocialForm(memberId, email, gender, socialType);
+	     					 SubmitSignUpSocialForm(memberId, password, email, socialType);
 	     			   } 
 	     		  },
 	     		  error : console.log
@@ -226,27 +231,32 @@
 	           } 
 	      });   	
 	  
-	  // 로그인 함수
-		function SubmitSignUpSocialForm(memberId, email, gender, socialType){
+	  // 회원가입 함수
+		function SubmitSignUpSocialForm(memberId, password, email, socialType){
 			const frm = document.socialSignUpFrm;
-			frm.id.value = memberId;
+			frm.memberId.value = memberId;
+			frm.password.value = password;
 			frm.email.value = email;
-			frm.gender.value = gender;
 			frm.socialType.value = socialType;
 			frm.submit(); 
 		}
 
 		// 소셜 로그인폼 
-		function createHiddenSignForm(memberId){
+		function createHiddenSignForm(memberId, password){
 			
 			const frm = document.createElement('form');
 			frm.setAttribute('method', 'POST');
-			frm.setAttribute('action', '${pageContext.request.contextPath}/member/memberSocialSignIn');
-			const hiddenInput = document.createElement('input');
-			hiddenInput.setAttribute('type','hidden');
-			hiddenInput.setAttribute('name', "memberId");
-			hiddenInput.setAttribute('value', memberId);
-			frm.appendChild(hiddenInput);
+			frm.setAttribute('action', '${pageContext.request.contextPath}/member/signIn?${_csrf.parameterName}=${_csrf.token}');
+			const hiddenInputId = document.createElement('input');
+			hiddenInputId.setAttribute('type','hidden');
+			hiddenInputId.setAttribute('name', "memberId");
+			hiddenInputId.setAttribute('value', memberId);
+			const hiddenInputPw = document.createElement('input');
+			hiddenInputPw.setAttribute('type','hidden');
+			hiddenInputPw.setAttribute('name', "password");
+			hiddenInputPw.setAttribute('value', password);
+			frm.appendChild(hiddenInputId);
+			frm.appendChild(hiddenInputPw);
 			document.body.appendChild(frm);
 			frm.submit();
 		}
