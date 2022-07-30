@@ -135,4 +135,15 @@ public class PetLabUtils {
 		
 		return sdf.format(new Date()) + df.format(Math.random() * 1000) + ext;
 	}
+	
+	// 첨부파일 아이디 함수
+	public static String getAttachGroupId(String name) {
+
+		// 파일명 생성
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyMMdd_HHmmssSSS_");
+		DecimalFormat df = new DecimalFormat("000");
+		
+		return name + sdf.format(new Date()) + df.format(Math.random() * 1000);
+	}
+	
 }

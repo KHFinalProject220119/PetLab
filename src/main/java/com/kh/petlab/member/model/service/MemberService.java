@@ -1,5 +1,7 @@
 package com.kh.petlab.member.model.service;
 
+import java.util.Map;
+
 import com.kh.petlab.member.model.dto.Address;
 import com.kh.petlab.member.model.dto.Member;
 
@@ -14,6 +16,7 @@ public interface MemberService {
 	Member selectOneMemberByEmail(String email);
 	int insertMember(Member member, String memberType);
 	int insertAddress(Address address);
+	int resetPassword(Map<String, Object> param);
 	
 	
 	

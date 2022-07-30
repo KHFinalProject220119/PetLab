@@ -84,6 +84,19 @@ const findAddress = () => {
     	// 타이머를 화면에 출력
     	startTimer(leftSec, display);
     } 
+    
+    function sendAuthTimePw(){    
+    	isRunning = true;	
+    	// 남은 시간	
+    	const display = document.querySelector('.timer.pw');
+    	leftSec = 180;	
+    	// 이미 타이머가 작동중이면 중지	
+    	if (isRunning){	   
+    		clearInterval(timer);
+    	}	
+    	// 타이머를 화면에 출력
+    	startTimerPw(leftSec, display);
+    } 
 
     function refreshAuthTime(){   
     	let timerVal = document.querySelector("#timer-valid").value;
@@ -91,6 +104,15 @@ const findAddress = () => {
     	document.querySelector("#timer-valid").value = 1;	
     	clearInterval(timer);
     	sendAuthTime();		
+    	}	
+    } 
+    
+    function refreshAuthTimePw(){   
+    	let timerVal = document.querySelector("#timer-valid-pw").value;
+    	if(timerVal == 0){
+    	document.querySelector("#timer-valid-pw").value = 1;	
+    	clearInterval(timer);
+    	sendAuthTimePw();		
     	}	
     } 
 
@@ -113,6 +135,32 @@ const findAddress = () => {
 					const popCertFrm = document.querySelector(".pop-wrapper");
 					document.querySelector("#timer-valid").value = 0;
 			    	document.querySelector("#emailValid").value = 0;
+			    	popCertFrm.style.display = "none";
+    				clearInterval(timer);
+
+    			} 
+    		}, 1000);
+    	}
+    	
+    function startTimerPw(count, display) { 
+    	document.querySelector(".pop-cert-timer.pw").style.visibility= "visible";	
+    		let minutes;
+    		let seconds;        
+    		timer = setInterval(function () {       
+    			minutes = parseInt(count / 60, 10);       
+    			seconds = parseInt(count % 60, 10);       
+    			minutes = minutes < 10 ? "0" + minutes : minutes;       
+    			seconds = seconds < 10 ? "0" + seconds : seconds;         
+    			display.textContent = minutes + ":" + seconds;         
+    			// 타이머 끝       
+    			if (--count < 0) {	     
+    				clearInterval(timer);	     
+    				display.textContent = "";	    
+    				isRunning = false;
+    				alert("제한 시간을 초과하였습니다. 다시 시도해주세요.")
+					const popCertFrm = document.querySelector(".pop-wrapper.pw");
+					document.querySelector("#timer-valid-pw").value = 0;
+			    	document.querySelector("#emailValidPw").value = 0;
 			    	popCertFrm.style.display = "none";
     				clearInterval(timer);
 
