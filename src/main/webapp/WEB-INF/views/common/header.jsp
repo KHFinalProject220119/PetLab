@@ -51,7 +51,7 @@ Kakao.init('22289034ae7ed5aa331cb59ea6ac1625');
 						</sec:authorize>
 						 <sec:authorize access="isAuthenticated()">
 							<ul class="header-member-menu-ul">
-								<li><a href="${pageContext.request.contextPath}/member/signUpSelection"><span>마이페이지</span></a></li>
+								<li><a href="${pageContext.request.contextPath}/mypage/mypageHome"><span>마이페이지</span></a></li>
 								<li>
 									<form action="${pageContext.request.contextPath}/member/signIn" method="POST">
 										<button type="submit" class="sign-out-btn">로그아웃</button>
