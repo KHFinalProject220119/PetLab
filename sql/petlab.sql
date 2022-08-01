@@ -16,8 +16,31 @@ grant connect, resource to petlab;
 -- petlab 계정
 --=============================================
 
+-- 첨부파일 테이블
+create table attachment (
+    attach_group_id varchar2(256),
+    attach_no number,
+    original_filename varchar2(256) not null,
+    renamed_filename varchar2(256) not null,
+    download_count number default 0,
+    created_at date default sysdate,
+    constraint pk_attachment_attach_group_id primary key(attach_group_id)
+);
+--drop table attachment;
+select * from attachment;
+create sequence seq_attachment_attach_no nocache;
+--drop sequence seq_attachment_attach_no;
+
+--delete from authority;
+--delete from address;
+--delete from member;
+--drop table authority;
+--drop table address;
+--drop table member;
+
 create table member (
 	member_id	varchar2(200)		NOT NULL,
+    attach_group_id  varchar2(256),
 	grade_no	number		NOT NULL,
 	password	varchar2(300) 	NOT	NULL,
 	member_name	varchar2(50)	NOT	NULL,
@@ -35,7 +58,8 @@ create table member (
     constraint pk_member_member_id primary key(member_id),
    constraint ck_member_gender check(gender in ('M', 'F')),
     constraint ck_member_enabled check(enabled in (1, 0)),
-    constraint fk_member_grade_no foreign key(grade_no) references member_grade(grade_no)
+    constraint fk_member_grade_no foreign key(grade_no) references member_grade(grade_no),
+    constraint fk_member_attach_group_id foreign key(attach_group_id) references attachment(attach_group_id)
 );
 commit;
 select * from member;
@@ -43,14 +67,14 @@ select * from member;
 --delete from member where member_id = 'sinsa';
 --delete from member where member_id = 'honggd';
 --delete from member where member_id = 'admin';
---update member set membership_point = 0 where member_id = 'sinsa';
-
+--update member set email = 'veraxanimus@naver.com' where member_id = 'honggd';
+--$2a$10$vXeuyNX1jwvG7GepkNOIZ.lPyuyOLL3ascNo2tHR8Y00Pjoj2PJli
 
 -- 샘플데이터  비밀번호 asdf456!
 -- 회원테이블
-insert into member values('admin', 100, '$2a$10$vXeuyNX1jwvG7GepkNOIZ.lPyuyOLL3ascNo2tHR8Y00Pjoj2PJli', '관리자', '관리자', '01011102220', 'admin@PetLab.com', to_date('88-01-25','rr-mm-dd'), 'M', 'normal', null, 0, 0, 1, default);
-insert into member values('honggd', 97, '$2a$10$vXeuyNX1jwvG7GepkNOIZ.lPyuyOLL3ascNo2tHR8Y00Pjoj2PJli', '홍길동', '신출귀몰', '01011103234', 'honggd@naver.com', to_date('96-05-14','rr-mm-dd'), 'M', 'normal', null, 0, 0, 1, default);
-insert into member values('sinsa', 98, '$2a$10$vXeuyNX1jwvG7GepkNOIZ.lPyuyOLL3ascNo2tHR8Y00Pjoj2PJli', '신사임당', '사임당', '01021478424', 'sinsa@naver.com', to_date('91-12-22','rr-mm-dd'), 'F', 'normal', null, 0, 0, 1, default);
+insert into member values('admin', null, 100, '$2a$10$vXeuyNX1jwvG7GepkNOIZ.lPyuyOLL3ascNo2tHR8Y00Pjoj2PJli', '관리자', '관리자', '01011102220', 'admin@PetLab.com', to_date('88-01-25','rr-mm-dd'), 'M', 'normal', null, 0, 0, 1, default);
+insert into member values('honggd', null, 97, '$2a$10$vXeuyNX1jwvG7GepkNOIZ.lPyuyOLL3ascNo2tHR8Y00Pjoj2PJli', '홍길동', '신출귀몰', '01011103234', 'honggd@naver.com', to_date('96-05-14','rr-mm-dd'), 'M', 'normal', null, 0, 0, 1, default);
+insert into member values('sinsa', null, 98, '$2a$10$vXeuyNX1jwvG7GepkNOIZ.lPyuyOLL3ascNo2tHR8Y00Pjoj2PJli', '신사임당', '사임당', '01021478424', 'sinsa@naver.com', to_date('91-12-22','rr-mm-dd'), 'F', 'normal', null, 0, 0, 1, default);
 -- 주소 테이블
 insert into address values(seq_address_no.nextval, 'admin', default, '06234', '서울 강남구 테헤란로10길 9', '5층 M강의장', '(역삼동)'); 
 insert into address values(seq_address_no.nextval, 'honggd', default, '03076', '서울 종로구 혜화로 12', '1층 102호', '(혜화동)'); 
@@ -91,7 +115,7 @@ CREATE TABLE address (
 );
 
 create sequence seq_address_no nocache;
-
+--drop sequence seq_address_no;
 select * from address order by address_no;
 
 CREATE TABLE authority (
@@ -129,6 +153,7 @@ CREATE TABLE hospital_review (
 	Field	date		NULL
 );
 
+<<<<<<< HEAD
 CREATE TABLE hosptial_image (
 	no	number		NOT NULL,
 	hospital_no	number		NOT NULL,
@@ -138,3 +163,15 @@ CREATE TABLE hosptial_image (
 );
 
 commit;
+=======
+-- rememberme table
+create table persistent_logins (
+        username varchar(64) not null, 
+        series varchar(64) primary key, 
+        token varchar(64) not null,  -- username, password, expiry time을 hashing 한 값
+        last_used timestamp not null
+);
+
+select * from persistent_logins;
+
+>>>>>>> branch 'master' of https://github.com/KHFinalProject220119/PetLab.git

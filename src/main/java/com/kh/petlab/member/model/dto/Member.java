@@ -1,6 +1,9 @@
 package com.kh.petlab.member.model.dto;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -9,15 +12,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
 
 @Data
 @NoArgsConstructor
 @ToString(callSuper = true)
 public class Member extends MemberEntity implements UserDetails {
-
+	private List<Attachment> attachments = new ArrayList<>();
 	List<SimpleGrantedAuthority> authorities;
 
+	
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return authorities;
@@ -42,4 +48,16 @@ public class Member extends MemberEntity implements UserDetails {
 	public boolean isCredentialsNonExpired() {
 		return true;
 	}
+
+	public Member(List<Attachment> attachments, List<SimpleGrantedAuthority> authorities) {
+		super();
+		this.attachments = attachments;
+		this.authorities = authorities;
+	}
+
+	public void addAttachment(@NonNull Attachment attachment) {
+		attachments.add(attachment);
+}
+
+  
 }

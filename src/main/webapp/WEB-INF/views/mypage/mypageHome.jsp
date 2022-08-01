@@ -5,64 +5,99 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/mypagehome.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/mypageMain copy.css" />
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="마이페이지" name="title"/>
 </jsp:include>
 
-<div id="signup-selection-cont">
-	<div class="signup-selection-contents">
-		<div class="signup-selection-wrapper">
-			<h3 class="top-title">마이페이지</h3>
-			<hr>
-			<div class="selection-cont">
-			<h4 class="top-title"></h4> <!-- 회원 아이디 들어가함 -->
-				<div class="selections">
-					<div class="selection">
-						<h5 class="selection-title">나의 주문 내역</h5>
-						<div class="selection-img-wrapper" style="padding-bottom: 8px;">
-							<h1><span class="signup-btn">수량</span></h1>
-						</div>
-						<span class="signup-btn">결제 완료</span>
-						<a href="${pageContext.request.contextPath}"></a>
-							
-						<span class="signup-btn">배송완료</span>
-						<a href="${pageContext.request.contextPath}"></a>
-							<span class="signup-btn">수량</span>
-							<span class="signup-btn">수량</span>
-					</div>
-				</div>
-				<div class="selections">
-					<div class="selection">
-						<h5 class="selection-title">나의 반려동물</h5>
-						<p class="pr">위치기반으로 동물병원을 <br class="pc">홍보할 수 있으니,<br class="pc"><span id="highlight-txt">멍냥연구소</span>에 <br class="pc">지금 바로 가입하세요.<br class="pc">
-						</p>
-						<div  class="selection-img-wrapper" style="padding-bottom: 8px;">
-							<img class="selection-img" src="${pageContext.request.contextPath}/resources/images/member/sign/pethospital.png" alt="">
-						</div>
-						<a href="${pageContext.request.contextPath}/member/agreement?selection=hospital" class="signup-btn-wrapper">
-							<span class="signup-btn">펫병원으로 가입</span>
-						</a>
-					</div>
-				</div>
-				<div class="selections">
-					<div  class="selection">
-						<h5 class="selection-title">문의 내역</h5>
-						<p class="pr">
-							반려펫을 위한 상품 업체이시면<br class="pc"><span id="highlight-txt">멍냥연구소</span>에 <br class="pc">지금 바로 가입 후, <br class="pc">홍보해
-							보세요.<br class="pc">
-						</p>
-						<div class="selection-img-wrapper" style="padding-bottom: 8px;">
-							<img class="selection-img" src="${pageContext.request.contextPath}/resources/images/member/sign/petshop.png" alt="">
-						</div>
-						<a href="${pageContext.request.contextPath}/member/agreement?selection=mall" class="signup-btn-wrapper">
-							<span class="signup-btn">쇼핑몰로 가입</span>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div id="breadcrumb">
+	<dl>
+		<dt>
+		<a href="/mypage/mypageHome"><span>마이페이지</span></a>
+		</dt>
+	</dl>
 </div>
+<div id="container" class="wrap1000 m_wrap15">
+		<div class="top_mypage">
+			<span>회원아이디가 들어갔으면</span>
+			<span class="p_para12 m_para12" style="float: right;">
+			<a href="/my/account/checkAccount">회원정보변경 &gt;</a></span>
+		</div>
+		<div class="tpl_mypage clearfix">
+			<dl class="no1">
+				<p>MY ORDER</p>
+				<dt>
+					<div>
+						<p class="title_totalCnt">나의 주문 내역</p>
+						<h1 class="totalCnt">00</h1>
+					</div>
+					<div>
+						<span>
+							<p>결제완료</p>
+							<h1>00</h1>
+						</span> 
+						<span>
+							<p>배송완료</p>
+							<h1>00</h1>
+						</span>
+					</div>
+					<div>
+						<a href="/product"><span class="clearfix">계속 쇼핑하기 &gt;</span></a>
+					</div>
+				</dt>
+			</dl>
+			<dl class="no2">
+				<p>MY PET</p>
+				<dt>
+					<div>
+						<p class="title_totalCnt">마이펫 목록</p>
+						<h1 class="totalCnt">00</h1>
+					</div>
+					<div>
+						<span>
+							<p>강아지</p>
+							<h1>00</h1>
+						</span> 
+						<span>
+							<p>고양이</p>
+							<h1>00</h1>
+						</span>
+					</div>
+					<div>
+						<a href="mypet/mypetEnroll"> <span class="clearfix">계속 등록하기 &gt;</span></a>
+					</div>
+				</dt>
+			</dl>
+			<dl class="no3 last">
+				<p>Q&nbsp;&amp;&nbsp;A</p>
+				<dt>
+					<div>
+						<p class="title_totalCnt">1:1 문의 내역</p>
+						<h1 class="totalCnt">00</h1>
+					</div>
+					<div>
+						<span>
+							<p>답변대기</p>
+							<h1>00</h1>
+						</span> 
+						<span>
+							<p>답변완료</p>
+							<h1>00</h1>
+						</span>
+					</div>
+					<div>
+						<a href="support/qna"> <span class="clearfix">1:1 문의하기 &gt;</span></a>
+					</div>
+				</dt>
+			</dl>
+		</div>
+		<hr class="solid">
+		<div class="close_mypage">
+			<span class="close_account">CLOSE ACCOUNT</span>
+			<span class="p_para12 m_para12" style="float: right;"><a href="/my/account/close">회원탈퇴&nbsp;&nbsp;&gt;</a></span>
+		</div>
+		<hr class="dash">
+		<div class="p_h100 m_h100"></div>
+	</div>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

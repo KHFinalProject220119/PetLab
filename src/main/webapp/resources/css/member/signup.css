@@ -34,7 +34,8 @@ background-image: linear-gradient(90deg, #FF5B00, #FF5B00, #FF9900,#FF9900); bor
 .fail{display:none; font-family: 'Goyang'; font-size: 0.7rem; font-weight: bold; color: #FF0000;}
 .ok{display:none; font-family: 'Goyang';  font-size: 0.7rem; font-weight: bold; }
 #year{width: 5rem;} 
-#month, #day{width: 3.5rem;}
+#month{width: 4rem;}
+#day{width: 3.5rem;}
 #year, #month, #day{padding: 0.5rem;  font-size: 1rem; border: 0.15rem solid #FF9900;}
 .birth-container{margin: 0 0.5rem;}
 .pop-wrapper{display: none; width: 64%; margin: 1rem auto;}
@@ -49,5 +50,11 @@ background-image: linear-gradient(90deg, #FF5B00, #FF5B00, #FF9900,#FF9900); bor
 display: inline-flex;   align-items: center;   justify-content: center;   line-height: 1.5;text-align: center;
 background-image: linear-gradient(90deg, #FF5B00, #FF5B00, #FF9900,#FF9900); border: none; cursor:pointer; margin: 0 0.2rem;}
 .cert-btn:hover, .refresh-btn:hover{background-image: linear-gradient(90deg,#FF9900,#FF9900,#FF5B00,#FF5B00);}
-#certificationCodeId{padding: 0.1rem; border: 0.15rem solid #FF9900;}
+#certificationCodeId{width: 7rem; padding: 0.1rem; border: 0.15rem solid #FF9900;}
 #certificationCodeId:focus{border: 0.15rem solid #FF5B00; outline:none;}
+#file-box{width: 14rem; margin: 0 0.5rem; padding: 0.3rem; font-size: 1rem; border: 0.15rem solid #FF9900;}
+#file-box:before{content: ""; display: inline-block; vertical-align:middle; text-align:center; height: 100%; }	
+#file-btn{width: 5rem; padding: 0.6rem; font-size: 0.8rem; color: #fff; font-weight: bold;  border-radius: 0.5rem;
+display: inline-flex;   align-items: center;   justify-content: center;   line-height: 1.5;text-align: center;
+background-image: linear-gradient(90deg, #FF5B00, #FF5B00, #FF9900,#FF9900); border: none; cursor:pointer; margin: 0 0.2rem;
+}
