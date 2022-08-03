@@ -26,9 +26,9 @@
 						<div class="social">
 							<span class="sns-text">SNS로 간편 가입하기</span>
 							<span class="link">
-								<a><img class="sns-img-sign" src="${pageContext.request.contextPath}/resources/images/member/sign/kakao.png" alt=""></a>
-								<a><img class="sns-img-sign" src="${pageContext.request.contextPath}/resources/images/member/sign/naver.png" alt=""></a>
-								<a><img class="sns-img-sign" src="${pageContext.request.contextPath}/resources/images/member/sign/google.png" alt=""></a>
+								<a href="${pageContext.request.contextPath}/member/signIn"><img class="sns-img-sign" src="${pageContext.request.contextPath}/resources/images/member/sign/kakao.png" alt=""></a>
+								<a href="${pageContext.request.contextPath}/member/signIn"><img class="sns-img-sign" src="${pageContext.request.contextPath}/resources/images/member/sign/naver.png" alt=""></a>
+								<a href="${pageContext.request.contextPath}/member/signIn"><img class="sns-img-sign" src="${pageContext.request.contextPath}/resources/images/member/sign/google.png" alt=""></a>
 							</span>
 						</div>
 					</div>
