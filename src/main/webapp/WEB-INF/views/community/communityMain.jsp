@@ -19,7 +19,7 @@
 <section id="community-container" class="container">
 <!-- 	<input type="button" value="글쓰기" id="btn-add" class="btn btn-outline-success" onclick="goToBoardForm();"/> -->
 	<table id="cm-board" class="table table-striped table-hover text-center">
-		<tr>
+		<tr id="tr_commu">
 			<span><img class="menu-logo" src="${pageContext.request.contextPath}/resources/images/common/header/CatWithAPencil.png" alt="" /></span>
 			커뮤니티
 		</tr>
