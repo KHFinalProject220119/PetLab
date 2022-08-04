@@ -37,6 +37,7 @@ create table member (
     constraint ck_member_enabled check(enabled in (1, 0)),
     constraint fk_member_grade_no foreign key(grade_no) references member_grade(grade_no)
 );
+
 commit;
 select * from member;
 --delete from member where member_id = 'mrjeon';

@@ -1,0 +1,70 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'Goyang';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Goyang.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Dovemayo-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/Dovemayo-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body{font-family: 'Dovemayo-Medium'}   /* 둘기마요체 */
+/*      article{
+     margin-left:522px;
+     } */
+     .category-tab{
+     position: sticky;
+     }
+      body {
+        position: relative;
+        height: 100%;
+      }
+
+      .swiper {
+        width: 100%;
+        height: 100%;
+      }
+
+      .swiper-slide {
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 98%;
+        height: 98%;
+        object-fit: cover;
+      }
+
+      .swiper {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+#check-btn1 { display: none; }
+#check-btn1:checked ~ .menubars1 { display: block; }
+#check-btn2 { display: none; }
+#check-btn2:checked ~ .menubars2 { display: block; } 
+#check-btn3 { display: none; }
+#check-btn3:checked ~ .menubars3 { display: block; } 
+.menubars1 { display: none; }
+.menubars2 { display: none; }
+.menubars3 { display: none; }
+a{color:#1c1a1a; font-size: 1.12rem;}
+.menu:hover{cursor: pointer;}

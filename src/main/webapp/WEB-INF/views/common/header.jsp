@@ -61,6 +61,13 @@ Kakao.init('22289034ae7ed5aa331cb59ea6ac1625');
 								<li><a href="${pageContext.request.contextPath}/customerservice/csCenter">고객센터</a></li>
 							</ul>
 						</sec:authorize>
+						
+						<sec:authorize access="hasRole('ADMIN')">
+						    <ul class="header-member-list-ul">
+						    	<li><a class="nav-link" href="${pageContext.request.contextPath}/admin/memberList">회원관리</a></li>
+						    </ul>
+				    	</sec:authorize>
+						
 						</div>
 					</div>
 				</div>
