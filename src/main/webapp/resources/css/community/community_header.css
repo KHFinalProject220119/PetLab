@@ -1,0 +1,40 @@
+@charset "UTF-8";
+.section-tab-container {
+    z-index: 2;
+    position: relative;
+    margin: 40px auto 0;
+    max-width: 800px;
+    width: 100%;
+}
+
+.tab-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+}
+
+ul {
+    list-style: none;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.tab-list--block>li {
+    border-bottom: 2px solid #32a69f;
+}
+
+.tab-list>li {
+    margin-top: -1px;
+    margin-left: -1px;
+    flex: 1;
+    transition: all .3s ease-in-out;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}

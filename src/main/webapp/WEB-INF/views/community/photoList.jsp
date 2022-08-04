@@ -8,6 +8,9 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="커뮤니티" name="title" />
 </jsp:include>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/community/photo.css" />
+
 <head>
 <meta charset="UTF-8">
 <title></title>

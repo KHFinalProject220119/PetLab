@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
-<jsp:include page="/WEB-INF/views/common/header.jsp">
+<jsp:include page="/WEB-INF/views/community/community_header.jsp">
 	<jsp:param value="커뮤니티" name="title" />
 </jsp:include>
 <link rel="stylesheet"
@@ -23,12 +23,12 @@
 			<span><img class="menu-logo" src="${pageContext.request.contextPath}/resources/images/common/header/CatWithAPencil.png" alt="" /></span>
 			커뮤니티
 		</tr>
-		<tr>
+<%-- 		<tr>
 			<th><a href="${pageContext.request.contextPath}/community/smallGroupMain">소모임</a></th>
 			<th><a href="${pageContext.request.contextPath}/community/knowhowList">노하우</a></th>
 			<th><a href="${pageContext.request.contextPath}/community/freeBoardList">자유게시판</a></th>
 			<th><a href="${pageContext.request.contextPath}/community/photoList">멍냥이 갤러리</a></th>
-		</tr>
+		</tr> --%>
 		<c:forEach items="${list}" var="board" varStatus="vs">
 			<tr data-no="${board.no}">
 				<td>${board.no}</td>

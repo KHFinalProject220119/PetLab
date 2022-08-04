@@ -8,6 +8,9 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="커뮤니티" name="title" />
 </jsp:include>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/community/smallGroupMain.css" />
+
 <head>
 <meta charset="UTF-8">
 <title></title>
@@ -15,19 +18,21 @@
 <body>
 <section id="community-container" class="container">
 
-	<table id="sg-board" class="table table-striped table-hover text-center">
-		<tr>
+
 			<span><img class="menu-logo" src="${pageContext.request.contextPath}/resources/images/common/header/CatWithAPencil.png" alt="" /></span>
 			커뮤니티
-		</tr>
-		<tr>
+
+	<table id="sg-board" class="table table-striped table-hover text-center">
+
+		<tr id="top_menu">
 			<th><a href="${pageContext.request.contextPath}/community/smallGroupMain">소모임</a></th>
 			<th><a href="${pageContext.request.contextPath}/community/knowhowList">노하우</a></th>
 			<th><a href="${pageContext.request.contextPath}/community/freeBoardList">자유게시판</a></th>
 			<th><a href="${pageContext.request.contextPath}/community/photoList">멍냥이 갤러리</a></th>
 		</tr>
-		<tr>
-			<th>지금 가장 핫!한 모임</th>
+		<tr id="small_hot">
+			<br><br><br><br>
+			<th colspan="4">지금 가장 핫!한 모임</th>
 		</tr>
 		<tr>
 			<th>총 0개</th>

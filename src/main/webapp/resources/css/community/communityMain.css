@@ -16,3 +16,8 @@ tr#tr_commu {
     margin-left: auto;
     margin-right: auto;
 }
+
+table#cm-board {
+	width: 70%;
+    margin: 0 auto;
+}

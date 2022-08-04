@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+table#sg-board {
+	width: 70%;
+    margin: 0 auto;
+}
+
+tr#small_hot {
+	margin: 0 auto;
+}
