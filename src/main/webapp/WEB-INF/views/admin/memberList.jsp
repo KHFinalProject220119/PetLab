@@ -31,15 +31,22 @@
 				<td>${vs.count}</td>
 				<td>${member.memberId}</td>
 				<td>${member.memberName}</td>
+				
 				<td>
 					<% 
 						
 					%>
 					<input type="checkbox" name="authority" id="role-user-${vs.count}" value="ROLE_USER" <%= hasRole(pageContext, "ROLE_USER") ? "checked" : "" %>/>
-					<label for="role-user-${vs.count}">일반</label>
+					<label for="role-user-${vs.count}">펫오너</label>
+					&nbsp;
+					<input type="checkbox" name="authority" id="role-hospital-${vs.count}" value="ROLE_HOSPITAL" <%= hasRole(pageContext, "ROLE_HOSPITAL") ? "checked" : "" %>/>
+					<label for="role-admin-${vs.count}">병원 관계자</label>
+					&nbsp;
+					<input type="checkbox" name="authority" id="role-mall-${vs.count}" value="ROLE_MALL" <%= hasRole(pageContext, "ROLE_MALL") ? "checked" : "" %>/>
+					<label for="role-mall-${vs.count}">쇼핑몰 관계자</label>
 					&nbsp;
 					<input type="checkbox" name="authority" id="role-admin-${vs.count}" value="ROLE_ADMIN" <%= hasRole(pageContext, "ROLE_ADMIN") ? "checked" : "" %>/>
-					<label for="role-admin-${vs.count}">관리자</label>
+					<label for="role-admin-${vs.count}">관리자</label>					
 				</td>
 				<td>
 					<button type="button" class="btn btn-outline-primary btn-update-authority" value="${member.memberId}">수정</button>
