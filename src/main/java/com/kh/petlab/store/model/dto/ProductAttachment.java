@@ -8,11 +8,12 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-public class ProductAttachment {
+@AllArgsConstructor 
+public class ProductAttachment{
 	
-	private int attachNo;
-	private String productId;
-	private String originalFilename;
-	private String renamedFilename;
+	private int No;
+	private int productNo;
+	private String originalFilename; 
+	private String renamedFilename; 
+
 }

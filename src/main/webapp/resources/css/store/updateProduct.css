@@ -1,0 +1,31 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'Goyang';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Goyang.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Dovemayo-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/Dovemayo-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body{font-family: 'Dovemayo-Medium'}
+#board-container{margin-left:37rem;}
+h2{font-size:2rem;}
+.menu{font-size:1.2rem; margin-right:1rem; }
+.form-control{height: 2.7rem; width: 13rem; border: 2px solid #FF9900; border-radius: 0.3rem;
+margin-bottom:1rem;}
+.form-control:focus{  outline: none; border: 2px solid #FF9900;}
+
+.update-btn{font-family: 'Dovemayo-Medium';
+font-size: 1.2rem; color: #fff; font-weight: bold;   padding: 0.9rem 2.7rem 0.9rem 2.7rem; margin-top:1rem;
+display: inline-flex;  text-align: center; margin-left:4.6rem; color: white; background-color: #CA965C; border-radius: 0.6rem;
+border: none;}
+.update-btn:hover{cursor:pointer; background-color: #c48036;}
+
+.back-btn{font-size: 1.2rem; font-weight: bold;   padding:0.7rem; margin-top:1rem;font-family: 'Dovemayo-Medium'; 
+text-align: center; margin-left:1rem; margin-top:2.3rem;color: white; background-color: #CA965C; border-radius: 0.6rem;
+border: none;}
+.back-btn:hover{cursor:pointer; background-color: #c48036;}
