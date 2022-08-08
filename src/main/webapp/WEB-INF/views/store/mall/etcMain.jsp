@@ -1,27 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<c:set var="path" value="${ pageContext.request.contextPath }"/> 
-<link rel="stylesheet" href="${ path }/resources/css/store/productMain.css" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<c:set var="path" value="${ pageContext.request.contextPath }" />
+<link rel="stylesheet"
+	href="${ path }/resources/css/store/productMain.css" />
 <jsp:include page="/WEB-INF/views/common/header.jsp">
-	<jsp:param value="기타" name="title" />
+	<jsp:param value="목욕/위생/미용" name="title" />
 </jsp:include>
-<h1>기타상품 전체보기</h1>
+<h1>목욕/위생/미용상품 전체보기</h1>
+
 
 
 
 <section class="lists">
 
 <!--썸네일띄우기 -->
-	<div class="img-content">
-		<c:forEach items="${ product.attachments }" var="attach">
-			<img class="imgg"
-				src="${path}/resources/upload/store/mall/${attach.renamedFilename}">
-	</div>
-	</c:forEach>
+
 <!--썸네일 이미지 부분 끝-->
 
 
@@ -38,7 +35,10 @@
 		<c:forEach items="${list}" var="product" varStatus="vs">
 			<c:set var="product.categoryId" value="etc" />
 			<c:if test="${product.categoryId eq 'etc' }">
-
+			
+	
+		
+			
 			<div class="pro_cate_name">
 			<a href="${path}/store/mall/ProductDetail?no=${product.productNo}" >
 			<span class="product_sub_catgory">[${product.categorySubId}]</span>
@@ -55,5 +55,5 @@
 
 
 </section>
-	
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

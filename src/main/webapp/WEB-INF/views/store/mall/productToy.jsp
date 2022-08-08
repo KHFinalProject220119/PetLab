@@ -19,11 +19,7 @@
 <section class="lists">
 
 <!--썸네일띄우기 -->
-	<c:forEach items="${ product.attachments }" var="attach">
-			<img class="imgg"
-				src="${path}/resources/upload/store/mall/${attach.renamedFilename}">
-	</div>
-	</c:forEach>
+
 
 <!--썸네일 이미지 부분 끝-->
 
@@ -41,11 +37,10 @@
 		<c:forEach items="${list}" var="product" varStatus="vs">
 			<c:set var="product.categorySubId" value="toy" />
 			<c:if test="${product.categorySubId eq 'toy' }">
-					
+	
 			<div class="pro_cate_name" >
 			<a href="${path}/store/mall/ProductDetail?no=${product.productNo}" >
 			
-			<img src="${path}/resources/upload/store/mall/${attachments.renamedFilename}">
 			
 			<span class="product_sub_catgory">[${product.categorySubId}]</span>
 			<span class="product_name" > ${product.productName}</span>

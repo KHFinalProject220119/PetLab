@@ -77,7 +77,7 @@ enctype="multipart/form-data">
 <tr>
 <th><span class="menu">상품 상세 이미지</span> </th>
 <td>			
-			<input type="file" class="input-file-btn" name="upFile">
+			<input type="file" class="input-file-btn" name="desFile">
 </td>
 </tr>
 

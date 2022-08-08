@@ -25,6 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.kh.petlab.common.PetLabUtils;
 import com.kh.petlab.store.model.dto.Product;
 import com.kh.petlab.store.model.dto.ProductAttachment;
+import com.kh.petlab.store.model.dto.ProductdesAttachment;
 import com.kh.petlab.store.model.dto.ProductEntity;
 import com.kh.petlab.store.model.service.StoreService;
 
@@ -51,7 +52,7 @@ public class StoreController {
 			HttpServletRequest request) {
 		try {
 			// 목록조회
-			int numPerPage = 5;
+			int numPerPage = 10;
 			List<Product> list = storeService.selectProductList(cPage, numPerPage);
 			log.debug("list = {}", list);
 			mav.addObject("list", list);
@@ -93,7 +94,7 @@ public class StoreController {
 			mav.addObject("pagebar", pagebar);
 
 		} catch (Exception e) {
-			log.error("상품(사료) 목록 조회 오류", e);
+			log.error("상품(간식) 목록 조회 오류", e);
 		}
 		return mav;
 	}
@@ -119,7 +120,7 @@ public class StoreController {
 			mav.addObject("pagebar", pagebar);
 
 		} catch (Exception e) {
-			log.error("상품(사료) 목록 조회 오류", e);
+			log.error("상품(급식/급수기) 목록 조회 오류", e);
 		}
 		return mav;
 	}
@@ -145,7 +146,7 @@ public class StoreController {
 			mav.addObject("pagebar", pagebar);
 
 		} catch (Exception e) {
-			log.error("상품(사료) 목록 조회 오류", e);
+			log.error("상품(샴푸/세정제) 목록 조회 오류", e);
 		}
 		return mav;
 	}
@@ -171,7 +172,7 @@ public class StoreController {
 			mav.addObject("pagebar", pagebar);
 
 		} catch (Exception e) {
-			log.error("상품(사료) 목록 조회 오류", e);
+			log.error("상품(배변판/패드) 목록 조회 오류", e);
 		}
 		return mav;
 	}
@@ -197,7 +198,7 @@ public class StoreController {
 			mav.addObject("pagebar", pagebar);
 
 		} catch (Exception e) {
-			log.error("상품(사료) 목록 조회 오류", e);
+			log.error("상품(브러쉬/가위) 목록 조회 오류", e);
 		}
 		return mav;
 	}
@@ -223,10 +224,11 @@ public class StoreController {
 			mav.addObject("pagebar", pagebar);
 
 		} catch (Exception e) {
-			log.error("상품(사료) 목록 조회 오류", e);
+			log.error("상품(장난감/스크래쳐) 목록 조회 오류", e);
 		}
 		return mav;
 	}
+
 
 	@GetMapping("/mall/productBag")
 	public ModelAndView producBag(@RequestParam(defaultValue = "1") int cPage, ModelAndView mav,
@@ -249,7 +251,7 @@ public class StoreController {
 			mav.addObject("pagebar", pagebar);
 
 		} catch (Exception e) {
-			log.error("상품(사료) 목록 조회 오류", e);
+			log.error("상품(이동가방) 목록 조회 오류", e);
 		}
 		return mav;
 	}
@@ -270,8 +272,6 @@ public class StoreController {
 			log.debug("list = {}", list);
 			mav.addObject("list", list);
 
-			mav.setViewName("store/mall/feedMain");
-
 			// 페이지바
 			int totalContent = storeService.selectTotalContent();
 
@@ -280,6 +280,9 @@ public class StoreController {
 
 			mav.addObject("pagebar", pagebar);
 
+			/*
+			 * // viewName설정 mav.setViewName("store/mall/feedMain");
+			 */
 		} catch (Exception e) {
 			log.error("상품(사료) 목록 조회 오류", e);
 		}
@@ -345,7 +348,9 @@ public class StoreController {
 	// 상품등록
 	@RequestMapping(value = "/mall/insertProduct", method = RequestMethod.POST)
 	public ModelAndView insertProduct(Product product,
-			@RequestParam(value = "upFile", required = true) MultipartFile[] upFiles, HttpServletRequest request,
+			@RequestParam(value="upFile",required = true) MultipartFile[] upFiles, 
+			@RequestParam(value="desFile",required = true) MultipartFile[] upFiless, 
+			HttpServletRequest request,
 			RedirectAttributes redirectAttr, ModelAndView mav) {
 		
 		
@@ -365,14 +370,31 @@ public class StoreController {
 					File destFile = new File(saveDirectory, renamedFilename);
 					upFile.transferTo(destFile); // 파일저장
 					ProductAttachment attach = new ProductAttachment();
+
 					attach.setOriginalFilename(originalFilename);
 					attach.setRenamedFilename(renamedFilename);
+
 					product.addAttachment(attach);
-				
 					
 				}
 			}
+			
+			for (MultipartFile desFile : upFiless) {
+				if (desFile.getSize() > 0) {
+					String originalFilename = desFile.getOriginalFilename();
+					String renamedFilename = PetLabUtils.getRenamedFilename(originalFilename);
 
+					File destFile = new File(saveDirectory, renamedFilename);
+					desFile.transferTo(destFile); // 파일저장
+					ProductdesAttachment attach = new ProductdesAttachment();
+
+					attach.setOriginalFilename(originalFilename);
+					attach.setRenamedFilename(renamedFilename);
+
+					product.adddesAttachment(attach);
+					
+				}
+			}
 			int result = storeService.insertProduct(product);
 			redirectAttr.addFlashAttribute("msg", "피드 등록 완료 !");
 
@@ -394,9 +416,12 @@ public class StoreController {
 		try {
 
 			Product product = storeService.selectOneProductCollection(no);
+			Product productdes = storeService.selectOneProductdesCollection(no);
 			log.debug("product = {}", product);
 			
 			mav.addObject("product", product);
+			mav.addObject("productdes", productdes);
+
 			mav.setViewName("store/mall/productDetail");
 		} catch (Exception e) {
 			log.error("상품 상세 페이지 조회 오류", e);
