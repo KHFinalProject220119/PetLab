@@ -22,7 +22,6 @@
 <jsp:include page="/WEB-INF/views/community/community_header.jsp">
 	<jsp:param value="커뮤니티" name="title" />
 </jsp:include>	
-
 		<tr>
 			<th id="small_hot" colspan="4">지금 가장 핫!한 모임</th>
 		</tr>
