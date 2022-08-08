@@ -10,6 +10,8 @@ import org.apache.ibatis.session.RowBounds;
 
 import com.kh.petlab.store.model.dto.Product;
 import com.kh.petlab.store.model.dto.ProductAttachment;
+import com.kh.petlab.store.model.dto.ProductdesAttachment;
+
 
 
 
@@ -28,6 +30,8 @@ public interface StoreDao {
 
 	//상품첨부파일 등록
 	int insertAttachment(ProductAttachment attach);
+	int insertdesAttachment(ProductdesAttachment att);
+
 	
 	//상품 삭제
 	int deleteProduct(int no);
@@ -41,10 +45,22 @@ public interface StoreDao {
 	@Select("select * from product_attachment where product_no = #{productNo}")
 	List<ProductAttachment> selectAttachmentListByProductNo(int no);
 	
+	@Select("select * from product_des_attachment where product_no = #{productNo}")
+	List<ProductdesAttachment> selectdesAttachmentListByProductNo(int no);
+	
+	@Select("select * from product_attachment where product_att_no = #{No}")
+	ProductAttachment selectOneAttachment(int attachNo);
+	
+	@Select("select * from product_des_attachment where product_att_no = #{No}")
+	ProductdesAttachment selectOnedesAttachment(int attachNo);
+	
+	
 	//상품 상세
 	Product selectOneProductCollection(int no);
+	Product selectOneProductdesCollection(int no);
 
 	int deleteAttachment(int no);
+	int deletedesAttachment(int no);
 	
 	@Update("update product set product_name = #{productName}, product_price = #{productPrice}, "
 			+ "product_des = #{productDes} "

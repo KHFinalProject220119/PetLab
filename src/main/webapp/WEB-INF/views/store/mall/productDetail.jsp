@@ -38,35 +38,44 @@
 
 
 <section class="content">
-	<h1>왜안돼</h1>
 
-
-
-
-	<%-- <c:if test="${ not empty product.attachments}"> --%>
+<!--상품 썸네일 시작 -->
 	<div class="img-content">
 		<c:forEach items="${ product.attachments }" var="attach">
 			<img class="imgg"
 				src="${path}/resources/upload/store/mall/${attach.renamedFilename}">
 	</div>
 	</c:forEach>
-
-	<br> <span class="product_name">${product.productName}<!--별점이 들어갈 공간-->
+	<!--썸네일 끝-->
+	
+	<!--상품 기본정보 -->
+		<br> <span class="product_name">${product.productName}<!--별점이 들어갈 공간-->
 	</span>
 	<div class="product_price">
 		<b><fmt:formatNumber value="${product.productPrice}"
 				pattern="#,###" /></b>원
 	</div>
 	<div class="product_des">${product.productDes}</div>
-
-	<%-- 			</c:if> --%>
-
-
-
-
+	<!--상품 기본정보 끝 -->
+	
+	
+	<!--상품 상세 이미지 시작-->
+		<c:if test="${empty productdes.att}">
+		<p>상품 상세이미지 없음</p>
+		</c:if>
+		
+				<c:if test="${not empty productdes.att}">
+				<c:forEach items="${ productdes.att }" var="attach">
+			<img class="img_des"
+				src="${path}/resources/upload/store/mall/${attach.renamedFilename}">
+	</div>
+	</c:forEach>
+		</c:if>
+		<!--상세이미지 끝-->
+	
 </section>
 
-
+<!--장바구니/ 결제-->
 <div class="cart_and_buy">
 	<div class="cart_add">
 		<a href="${path}/store/cart/addCart" class="add-cart"> <img
@@ -78,7 +87,7 @@
 		class="pay-btn">구매하기</span>
 	</a>
 </div>
-
+<!--장바구니/ 결제 끝-->
 
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

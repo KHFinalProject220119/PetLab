@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kh.petlab.store.model.dao.StoreDao;
 import com.kh.petlab.store.model.dto.Product;
 import com.kh.petlab.store.model.dto.ProductAttachment;
+import com.kh.petlab.store.model.dto.ProductdesAttachment;
+
 
 
 @Service
@@ -40,6 +42,7 @@ public class StoreServiceImpl implements StoreService {
 		result = storeDao.insertProduct(product);
 
 		List<ProductAttachment> attachments = product.getAttachments();
+		List<ProductdesAttachment> att = product.getAtt();
 
 		if (attachments != null) {
 			
@@ -49,6 +52,15 @@ public class StoreServiceImpl implements StoreService {
 				result = storeDao.insertAttachment(attach);
 			}
 		}
+		
+		if (att != null) {
+			
+			for(ProductdesAttachment a: att) {
+				a.setProductNo(product.getProductNo());
+				
+				result = storeDao.insertdesAttachment(a);
+			}
+		}
 
 		return result;
 	}
@@ -56,6 +68,11 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	public Product selectOneProductCollection(int no) {
 		return storeDao.selectOneProductCollection(no);
+	}
+	
+	@Override
+	public Product selectOneProductdesCollection(int no) {
+		return storeDao.selectOneProductdesCollection(no);
 	}
 
 	@Override
@@ -69,15 +86,23 @@ public class StoreServiceImpl implements StoreService {
 		Product product = storeDao.selectOneProduct(no);
 		List<ProductAttachment> attachments = storeDao.selectAttachmentListByProductNo(no);
 		product.setAttachments(attachments);
+		List<ProductdesAttachment> att = storeDao.selectdesAttachmentListByProductNo(no);
+		product.setAtt(att);
 		
 		return product;
 	}
 
 	@Override
 	public ProductAttachment selectOneAttachment(int no) {
-		// TODO Auto-generated method stub
-		return null;
+		return storeDao.selectOneAttachment(no);
 	}
+	
+	@Override
+	public ProductdesAttachment selectOnedesAttachment(int no) {
+		return storeDao.selectOnedesAttachment(no);
+	}
+	
+	
 
 	@Override
 	public int deleteAttachment(int no) {
@@ -97,6 +122,15 @@ public class StoreServiceImpl implements StoreService {
 				}
 				return result;
 	}
+
+	@Override
+	public int deletedesAttachment(int no) {
+		return storeDao.deletedesAttachment(no);
+	}
+
+
+
+	
 	
 	
 	

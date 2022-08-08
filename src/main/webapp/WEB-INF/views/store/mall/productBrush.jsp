@@ -16,20 +16,7 @@
 <section class="lists">
 
 <!--썸네일띄우기 -->
-<table class="table">
-	<c:if test="${empty  product.attachList}">
-		<tr>
-			<td colspan="6" class="text-center">등록된 이미지가 없습니다.</td>
-		</tr>
-	</c:if>
 
-	<c:if test="${not empty product.attachList}">
-		<c:forEach items="${product.attachList}" var="attach">
-			<img
-				src="${path}/resources/upload/store/mall/${attach.renamedFilename}">
-		</c:forEach>
-	</c:if>
-</table>
 <!--썸네일 이미지 부분 끝-->
 
 
@@ -46,7 +33,9 @@
 		<c:forEach items="${list}" var="product" varStatus="vs">
 			<c:set var="product.categorySubId" value="brush" />
 			<c:if test="${product.categorySubId eq 'brush' }">
-
+<div class="img-dv">
+		<img src="${path}/resources/upload/store/mall/${product.attachments}">
+			</div>
 			<div class="pro_cate_name">
 			<a href="${path}/store/mall/ProductDetail?no=${product.productNo}" >
 			<span class="product_sub_catgory">[${product.categorySubId}]</span>

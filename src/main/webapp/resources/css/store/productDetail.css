@@ -12,12 +12,12 @@
     font-style: normal;
 }
 body{font-family: 'Dovemayo-Medium'}
-.content{margin-left:37rem;}
-.img-content{margin-bottom:2rem;}
-.imgg{width:250px; height:420px;}
-.product_name{margin-left:37rem; font-size:1.7rem;}
-.product_price{margin-left:37rem; font-size: 1.2rem;margin-top:1rem;}
-.product_des{margin-left:37rem; font-size: 1.1rem;margin-top:1rem;}
+.content{margin-left:35rem;}
+.img-content{margin-bottom:2rem; margin-top:2rem;}
+.imgg{width:250px; height:320px;}
+.product_name{font-size:1.7rem;}
+.product_price{font-size: 1.2rem;margin-top:1rem;}
+.product_des{ font-size: 1.1rem;margin-top:1rem;margin-bottom:2rem;}
 
 .insert-update-btn{font-size: 1.2rem; color: #fff; font-weight: bold;   padding:0.9rem; margin-top:1rem;
 display: inline-flex;  text-align: center; margin-left:4.6rem; color: white; background-color: #CA965C; border-radius: 0.6rem;}
@@ -39,4 +39,5 @@ display: inline-flex;  text-align: center; color: white; background-color: #FF99
 .pay-product{font-size: 1.2rem; color: #fff; font-weight: bold;   padding:0.9rem 2.7rem 0.9rem 2.7rem; margin-top:1rem;
 display: inline-flex;  text-align: center;  color: white; background-color: #FF9900;border-radius: 0.2rem;}
 .pay-product:hover{cursor:pointer; background-color: #f7ac3b;}
+
 
