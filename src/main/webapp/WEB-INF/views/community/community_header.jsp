@@ -5,29 +5,18 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
-<jsp:include page="/WEB-INF/views/common/header.jsp">
-	<jsp:param value="커뮤니티" name="title" />
-</jsp:include>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/community/community_header.css" />
 <head>
 <body>
-
-<div class="section-tab-container">
-	<ul class="tab-list tab-list--block">
-		<li class="on">
-			<a href="${pageContext.request.contextPath}/community/smallGroupMain">소모임</a>
-		</li>
-		<li>
-			<a href="${pageContext.request.contextPath}/community/knowhowList">노하우</a>
-		</li>
-		<li>
-			<a href="${pageContext.request.contextPath}/community/freeBoardList">자유게시판</a>
-		</li>
-		<li>
-			<a href="${pageContext.request.contextPath}/community/photoList">멍냥이 갤러리</a>
-		</li>
-		</ul>
+	<div id="commu">
+			커뮤니티
+	</div>
+	<div class="btn-group" role="group" aria-label="...">
+  		<button type="button" class="btn btn-outline-primary" onclick ="location.href ='${pageContext.request.contextPath}/community/smallGroupMain'">소모임</button>
+  		<button type="button" class="btn btn-outline-primary" onclick ="location.href ='${pageContext.request.contextPath}/community/knowhowList'">노하우</button>
+  		<button type="button" class="btn btn-outline-primary" onclick ="location.href ='${pageContext.request.contextPath}/community/freeBoardList'">자유게시판</button>
+  		<button type="button" class="btn btn-outline-primary" onclick ="location.href ='${pageContext.request.contextPath}/community/photoList'">멍냥이 갤러리</button>
 	</div>
 
 </body>

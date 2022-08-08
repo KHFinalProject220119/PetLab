@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
-<jsp:include page="/WEB-INF/views/community/community_header.jsp">
+<jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="커뮤니티" name="title" />
 </jsp:include>
 <link rel="stylesheet"
@@ -18,17 +18,12 @@
 <body>
 <section id="community-container" class="container">
 <!-- 	<input type="button" value="글쓰기" id="btn-add" class="btn btn-outline-success" onclick="goToBoardForm();"/> -->
+
 	<table id="cm-board" class="table table-striped table-hover text-center">
-		<tr id="tr_commu">
-			<span><img class="menu-logo" src="${pageContext.request.contextPath}/resources/images/common/header/CatWithAPencil.png" alt="" /></span>
-			커뮤니티
-		</tr>
-<%-- 		<tr>
-			<th><a href="${pageContext.request.contextPath}/community/smallGroupMain">소모임</a></th>
-			<th><a href="${pageContext.request.contextPath}/community/knowhowList">노하우</a></th>
-			<th><a href="${pageContext.request.contextPath}/community/freeBoardList">자유게시판</a></th>
-			<th><a href="${pageContext.request.contextPath}/community/photoList">멍냥이 갤러리</a></th>
-		</tr> --%>
+<jsp:include page="/WEB-INF/views/community/community_header.jsp">
+	<jsp:param value="커뮤니티" name="title" />
+</jsp:include>		
+		
 		<c:forEach items="${list}" var="board" varStatus="vs">
 			<tr data-no="${board.no}">
 				<td>${board.no}</td>

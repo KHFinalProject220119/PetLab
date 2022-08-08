@@ -9,7 +9,7 @@
 	<jsp:param value="커뮤니티" name="title" />
 </jsp:include>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/community/smallGroupMain.css" />
+	href="${pageContext.request.contextPath}/resources/css/community/communityMain.css" />
 
 <head>
 <meta charset="UTF-8">
@@ -18,28 +18,40 @@
 <body>
 <section id="community-container" class="container">
 
-
-			<span><img class="menu-logo" src="${pageContext.request.contextPath}/resources/images/common/header/CatWithAPencil.png" alt="" /></span>
-			커뮤니티
-
 	<table id="sg-board" class="table table-striped table-hover text-center">
+<jsp:include page="/WEB-INF/views/community/community_header.jsp">
+	<jsp:param value="커뮤니티" name="title" />
+</jsp:include>	
 
-		<tr id="top_menu">
-			<th><a href="${pageContext.request.contextPath}/community/smallGroupMain">소모임</a></th>
-			<th><a href="${pageContext.request.contextPath}/community/knowhowList">노하우</a></th>
-			<th><a href="${pageContext.request.contextPath}/community/freeBoardList">자유게시판</a></th>
-			<th><a href="${pageContext.request.contextPath}/community/photoList">멍냥이 갤러리</a></th>
-		</tr>
-		<tr id="small_hot">
-			<br><br><br><br>
-			<th colspan="4">지금 가장 핫!한 모임</th>
+		<tr>
+			<th id="small_hot" colspan="4">지금 가장 핫!한 모임</th>
 		</tr>
 		<tr>
-			<th>총 0개</th>
+			<th><img class="danzi" src="${pageContext.request.contextPath}/resources/images/community/yeoulmu.jpg" alt="" /></th>
+			<th><img class="eungsam" src="${pageContext.request.contextPath}/resources/images/community/eungsam.jpg" alt="" /></th>
+			<th><img class="danzi" src="${pageContext.request.contextPath}/resources/images/community/danzi.jpg" alt="" /></th>
+			<th><img class="danzi" src="${pageContext.request.contextPath}/resources/images/community/commi.jpg" alt="" /></th>
+		</tr>
+		<tr>
+			<th>멍냥이즈뭔들</th>
+			<th>소모임어때</th>
+			<th>소모임나도해</th>
+			<th>니가해라소모임</th>
+		</tr>
+		<tr>
+			<th>멤버 23</th>
+			<th>멤버 15</th>
+			<th>멤버 10</th>
+			<th>멤버 3</th>
+		</tr>
+		<tr>
+			<th id="count">총 0개</th>
+			<th></th>
+			<th></th>
 			<th>최신순</th>
 		</tr>
 		<tr>
-			<th>
+			<th colspan="4">
 				<input type="button" value="새 모임 만들기" id="btn-add" class="btn btn-outline-success" onclick="goToBoardForm();"/>
 			</th>
 		</tr>
