@@ -23,7 +23,7 @@
 <div id="container" class="mp">
 		<div class="top_mypage">
 			<c:forEach var="item" items="${list}"> 
-			<span>${member.memberId}</span>
+			<span>${member.loginMember}</span>
 			</c:forEach>
 			<span class="p_para12 m_para12" style="float: right;">
 			<a href="${pageContext.request.contextPath}/mypage/updateMember">회원정보변경 &gt;</a></span>
@@ -37,9 +37,6 @@
 						<h1 class="totalCnt">00</h1>
 					</div>
 					<div>
-						<a href="${pageContext.request.contextPath}/store/storeMain"><span class="clearfix">계속 쇼핑하기 &gt;</span></a>
-					</div>
-					<div>
 						<span>
 							<p>결제완료</p>
 							<h1>00</h1>
@@ -49,6 +46,7 @@
 							<h1>00</h1>
 						</span>
 					</div>
+					<a href="${pageContext.request.contextPath}/store/storeMain"><span class="clearfix">계속 쇼핑하기 &gt;</span></a>
 				</dt>
 			</dl>
 			<dl class="no2">
@@ -68,22 +66,16 @@
 							<h1>00</h1>
 						</span>
 					</div>
+						<a href="${pageContext.request.contextPath}/mypage/mypetEnroll"><span class="clearfix">계속 등록하기 &gt;</span></a>
 				</dt>
-					<div>
-						<a href="${pageContext.request.contextPath}/mypage/mypetEnroll">
-						<span class="clearfix">계속 등록하기 &gt;</span>
-						</a>
-					</div>
 			</dl>
+			
 			<dl class="no3 last">
 				<p>Q&nbsp;&amp;&nbsp;A</p>
 				<dt>
 					<div>
 						<p class="title_totalCnt">1:1 문의 내역</p>
 						<h1 class="totalCnt">00</h1>
-					</div>
-					<div>
-						<a href="${pageContext.request.contextPath}/support/qna"><span class="clearfix">1:1 문의하기 &gt;</span></a>
 					</div>
 					<div>
 						<span>
@@ -95,15 +87,9 @@
 							<h1>00</h1>
 						</span>
 					</div>
+						<a href="${pageContext.request.contextPath}/support/qna"><span class="clearfix">1:1 문의하기 &gt;</span></a>
 				</dt>
 			</dl>
 		</div>
-		<div class="close_mypage">
-			<span class="close_account">CLOSE ACCOUNT</span>
-			<span class="p_para12 m_para12" style="float: right;">
-				<a href="/my/account/close">회원탈퇴&nbsp;&nbsp;&gt;</a>
-			</span>
-		</div>
-	</div>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
