@@ -12,10 +12,17 @@
 	 width : 200px;
 	 height : 60px;
 	 font-size : 20px;
+	 color : #00BFFF;
+	 background-color : white;
+	 border : none;
+}
+
+.button:focus {
+  background-color: skyblue;
 }
 
 .btn:hover {
-  background-color: pink;
+  background-color: skyblue;
   color: white;
 }
 
@@ -25,5 +32,7 @@ div#commu {
     font-size: 50px; 
     padding-top: 50px;
     padding-bottom : 80px;
-    background-color: skyblue;
+    background-color: #CEF6F5;
+    font-weight: bold;
+    color: gray;
 }

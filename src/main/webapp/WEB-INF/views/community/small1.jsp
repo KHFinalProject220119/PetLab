@@ -32,10 +32,10 @@
 			<th id="small_hot" colspan="4">지금 가장 핫!한 모임</th>
 		</tr>
 		<tr>
-			<th><img class="danzi" src="${pageContext.request.contextPath}/resources/images/community/yeoulmu.jpg" alt="" /></th>
-			<th><img class="eungsam" src="${pageContext.request.contextPath}/resources/images/community/eungsam.jpg" alt="" /></th>
-			<th><img class="danzi" src="${pageContext.request.contextPath}/resources/images/community/danzi.jpg" alt="" /></th>
-			<th><img class="danzi" src="${pageContext.request.contextPath}/resources/images/community/commi.jpg" alt="" /></th>
+			<th><img class="pet" src="${pageContext.request.contextPath}/resources/images/community/yeoulmu.jpg" alt="" /></th>
+			<th><img class="pet" src="${pageContext.request.contextPath}/resources/images/community/eungsam.jpg" alt="" /></th>
+			<th><img class="pet" src="${pageContext.request.contextPath}/resources/images/community/danzi.jpg" alt="" /></th>
+			<th><img class="pet" src="${pageContext.request.contextPath}/resources/images/community/commi.jpg" alt="" /></th>
 		</tr>
 		<tr>
 			<th>멍냥이즈뭔들</th>

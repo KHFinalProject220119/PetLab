@@ -24,42 +24,48 @@
   <div id="Pmypage-submenu" class="submenu">
     <ul id="sub">
          <li><a href="${pageContext.request.contextPath}/community/small1" onmouseover="mousein(this);" onmouseout="mouseout(this)">소모임</a></li>
- 	     <li><a href="${pageContext.request.contextPath}/community/small2" onmouseover="mousein(this);" onmouseout="mouseout(this)">내모임</a></li>
+ 	     <li><a id="now_menu" class="current" onmouseover="mousein(this);" onmouseout="mouseout(this)">내모임</a></li>
  	</ul>
  </div>
 	<table id="sg-board" class="table table-striped table-hover text-center">
 		<tr>
-			<th id="small_hot" colspan="4">지금 가장 핫!한 모임</th>
-		</tr>
-		<tr>
+			<th><img class="plus" src="${pageContext.request.contextPath}/resources/images/community/plus.png" alt="" /></th>
 			<th><img class="pet" src="${pageContext.request.contextPath}/resources/images/community/yeoulmu.jpg" alt="" /></th>
 			<th><img class="pet" src="${pageContext.request.contextPath}/resources/images/community/eungsam.jpg" alt="" /></th>
 			<th><img class="pet" src="${pageContext.request.contextPath}/resources/images/community/danzi.jpg" alt="" /></th>
-			<th><img class="pet" src="${pageContext.request.contextPath}/resources/images/community/commi.jpg" alt="" /></th>
 		</tr>
 		<tr>
-			<th>멍냥이즈뭔들</th>
+			<th rowspan="2">
+				<input type="button" value="새 모임 만들기" id="btn-add" class="btn btn-outline-success" onclick="goToBoardForm();"/>
+			</th>
 			<th>소모임어때</th>
 			<th>소모임나도해</th>
 			<th>니가해라소모임</th>
 		</tr>
 		<tr>
-			<th>멤버 23</th>
 			<th>멤버 15</th>
 			<th>멤버 10</th>
 			<th>멤버 3</th>
 		</tr>
 		<tr>
-			<th id="count">총 0개</th>
-			<th></th>
-			<th></th>
-			<th>최신순</th>
+			<th><img class="pet" src="${pageContext.request.contextPath}/resources/images/community/mong2.jpg" alt="" /></th>
+			<th><img class="pet" src="${pageContext.request.contextPath}/resources/images/community/gunbam.jpg" alt="" /></th>
+			<th><img class="pet" src="${pageContext.request.contextPath}/resources/images/community/fraddy.jpg" alt="" /></th>
+			<th><img class="pet" src="${pageContext.request.contextPath}/resources/images/community/commi.jpg" alt="" /></th>
 		</tr>
 		<tr>
-			<th colspan="4">
-				<input type="button" value="새 모임 만들기" id="btn-add" class="btn btn-outline-success" onclick="goToBoardForm();"/>
-			</th>
+			<th>나만따라와</th>
+			<th>냥집사모여라</th>
+			<th>나만따라와</th>
+			<th>멍순이드루와</th>
 		</tr>
+		<tr>
+			<th>멤버 3</th>
+			<th>멤버 3</th>
+			<th>멤버 3</th>
+			<th>멤버 3</th>
+		</tr>
+
 	</table>
 
 </section>

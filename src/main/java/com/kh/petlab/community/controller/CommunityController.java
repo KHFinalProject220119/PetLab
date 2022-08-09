@@ -20,6 +20,9 @@ public class CommunityController {
 	@GetMapping("/small1")
 	public void small1() {}
 	
+	@GetMapping("/small2")
+	public void small2() {}
+	
 	@GetMapping("/freeBoardList")
 	public void freeBoardList() {}
 	

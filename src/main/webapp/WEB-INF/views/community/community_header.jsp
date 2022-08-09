@@ -13,11 +13,22 @@
 			커뮤니티
 	</div>
 	<div class="btn-group" role="group" aria-label="...">
-  		<button type="button" class="btn btn-outline-primary" onclick ="location.href ='${pageContext.request.contextPath}/community/smallGroupMain'">소모임</button>
+  		<button type="button" id="b1" class="btn btn-outline-primary" onclick = "click1()">소모임</button>
   		<button type="button" class="btn btn-outline-primary" onclick ="location.href ='${pageContext.request.contextPath}/community/knowhowList'">노하우</button>
   		<button type="button" class="btn btn-outline-primary" onclick ="location.href ='${pageContext.request.contextPath}/community/freeBoardList'">자유게시판</button>
   		<button type="button" class="btn btn-outline-primary" onclick ="location.href ='${pageContext.request.contextPath}/community/photoList'">멍냥이 갤러리</button>
 	</div>
+
+<script>
+	function click1() {
+		document.getElementById("b1").style.background="skyblue";
+		location.href ='${pageContext.request.contextPath}/community/smallGroupMain'
+		
+/*  		var push1 = document.getElementById("b1");
+		push1.style=.background="skyblue";  */
+	}
+
+</script>
 
 </body>
 </html>
