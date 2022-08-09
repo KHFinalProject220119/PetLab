@@ -23,33 +23,33 @@
 		<img
 		src="${pageContext.request.contextPath}/resources/images/store/menu.png"
 		width="12px" class="menu" /> <a
-		href="${pageContext.request.contextPath}/store/feed">사료</a>
+		href="${pageContext.request.contextPath}/store/mall/feedMain"><span class="cate">사료</span></a>
 	</label>
 	<ul class="menubars1">
-		<li><a href="${pageContext.request.contextPath}/store/feed">사료</a></li>
-		<li><a href="${pageContext.request.contextPath}/store/snack">간식</a></li>
-		<li><a href="${pageContext.request.contextPath}/store/feeding">급식/급수기</a></li>
+		<li><a href="${pageContext.request.contextPath}/store/mall/productFeed">사료</a></li>
+		<li><a href="${pageContext.request.contextPath}/store/mall/productSnack">간식</a></li>
+		<li><a href="${pageContext.request.contextPath}/store/mall/productFeeding">급식/급수기</a></li>
 	</ul>
 	<br> <input id="check-btn2" type="checkbox" /> <label
 		for="check-btn2"> <img
 		src="${pageContext.request.contextPath}/resources/images/store/menu.png"
 		width="12px" class="menu" /> <a
-		href="${pageContext.request.contextPath}/store/bath">목욕·위생·미용</a>
+		href="${pageContext.request.contextPath}/store/mall/bathMain"><span class="cate">목욕·위생·미용</span></a>
 	</label>
 	<ul class="menubars2">
-		<li><a href="${pageContext.request.contextPath}/store/shampoo">샴푸/세정제</a></li>
-		<li><a href="${pageContext.request.contextPath}/store/pad">배변판/패드</a></li>
-		<li><a href="${pageContext.request.contextPath}/store/brush">브러쉬/가위</a></li>
+		<li><a href="${pageContext.request.contextPath}/store/mall/productShampoo">샴푸/세정제</a></li>
+		<li><a href="${pageContext.request.contextPath}/store/mall/productPad">배변판/패드</a></li>
+		<li><a href="${pageContext.request.contextPath}/store/mall/productBrush">브러쉬/가위</a></li>
 	</ul>
 	<br> <input id="check-btn3" type="checkbox" /> <label
 		for="check-btn3"> <img
 		src="${pageContext.request.contextPath}/resources/images/store/menu.png"
 		width="12px" class="menu" /> <a
-		href="${pageContext.request.contextPath}/store/etc">기타용품</a>
+		href="${pageContext.request.contextPath}/store/mall/etcMain"><span class="cate">기타용품</span></a>
 	</label>
 	<ul class="menubars3">
-		<li><a href="${pageContext.request.contextPath}/store/toy">장난감/스크래쳐</a></li>
-		<li><a href="${pageContext.request.contextPath}/store/bag">이동가방</a></li>
+		<li><a href="${pageContext.request.contextPath}/store/mall/productToy">장난감/스크래쳐</a></li>
+		<li><a href="${pageContext.request.contextPath}/store/mall/productBag">이동가방</a></li>
 	</ul>
 
 

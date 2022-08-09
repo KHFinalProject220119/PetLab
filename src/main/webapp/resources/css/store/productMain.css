@@ -1,0 +1,29 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'Goyang';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Goyang.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Dovemayo-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/Dovemayo-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body{font-family: 'Dovemayo-Medium'}
+
+a:link{color:black; text-decoration: none;}
+a:visited{color:black; text-decoration: none;}
+a:hover{color:#494646; text-decoration: none;}
+a:active{color:black; text-decoration: none;}
+
+h1{ text-align: center; font-size:2rem;}
+.lists{margin-left:17rem; margin-top:4.2rem;}    
+
+
+.product-cover-list{margin-top:2rem;}
+.pro_cate_name{margin-bottom:0.5rem; margin-top:1rem;}
+.product_sub_catgory{color:#8C8C8C;}
+.product_name{font-size:1.4rem; margin-right:2rem;}
+.product_price{font-size:1.08rem;}
