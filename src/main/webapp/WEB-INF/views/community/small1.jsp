@@ -23,7 +23,7 @@
 </jsp:include>	
   <div id="Pmypage-submenu" class="submenu">
     <ul id="sub">
-         <li><a href="<%= request.getContextPath() %>/community/small1" onmouseover="mousein(this);" onmouseout="mouseout(this)">소모임</a></li>
+         <li><a id="now_menu" class="current" onmouseover="mousein(this);" onmouseout="mouseout(this)">소모임</a></li>
  	     <li><a href="<%= request.getContextPath() %>/community/small2" onmouseover="mousein(this);" onmouseout="mouseout(this)">내모임</a></li>
  	</ul>
  </div>

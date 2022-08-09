@@ -17,6 +17,9 @@ public class CommunityController {
 	@GetMapping("/smallGroupMain")
 	public void smallGroupMain() {}
 	
+	@GetMapping("/small1")
+	public void small1() {}
+	
 	@GetMapping("/freeBoardList")
 	public void freeBoardList() {}
 	
