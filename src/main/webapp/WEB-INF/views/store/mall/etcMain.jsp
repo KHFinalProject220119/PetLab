@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -8,52 +8,59 @@
 <link rel="stylesheet"
 	href="${ path }/resources/css/store/productMain.css" />
 <jsp:include page="/WEB-INF/views/common/header.jsp">
-	<jsp:param value="목욕/위생/미용" name="title" />
+	<jsp:param value="기타" name="title" />
 </jsp:include>
-<h1>목욕/위생/미용상품 전체보기</h1>
+<h1>기타상품 전체보기</h1>
 
 
 
 
 <section class="lists">
 
-<!--썸네일띄우기 -->
+	<!--썸네일띄우기 -->
 
-<!--썸네일 이미지 부분 끝-->
-
-
-<!--상품 정보 시작-->
-<div class="product-cover-list">
-	<c:if test="${empty list}">
-		<tr>
-			<td colspan="6" class="text-center">등록된 상품이 없습니다.</td>
-		</tr>
-	</c:if>
+	<!--썸네일 이미지 부분 끝-->
 
 
-	<c:if test="${not empty list}">
-		<c:forEach items="${list}" var="product" varStatus="vs">
-			<c:set var="product.categoryId" value="etc" />
-			<c:if test="${product.categoryId eq 'etc' }">
-			
-	
-		
-			
-			<div class="pro_cate_name">
-			<a href="${path}/store/mall/ProductDetail?no=${product.productNo}" >
-			<span class="product_sub_catgory">[${product.categorySubId}]</span>
-			<span class="product_name">${product.productName}</span>
-			</div>
-			<span class="product_price"><b><fmt:formatNumber value="${product.productPrice}"
-								pattern="#,###" /></b>원</span></a>				
-			</c:if>
+	<!--상품 정보 시작-->
+	<div class="product-cover-list">
+		<c:if test="${empty list}">
+			<tr>
+				<td colspan="6" class="text-center">등록된 상품이 없습니다.</td>
+			</tr>
+		</c:if>
 
-		</c:forEach>
-	</c:if>
-<!--상품정보끝-->
-</div>
+		<c:if test="${not empty list}">
+									<c:forEach items="${attlist}" var="attlist">
+									<img class="img_des"
+											src="${path}/resources/upload/store/mall/${attlist.renamedFilename}"><br>
+												</c:forEach>			
+												
+
+			<c:forEach items="${list}" var="product" varStatus="vs">
+				<c:set var="product.categoryId" value="etc" />
+				<c:if test="${product.categoryId eq 'etc' }">
+
+
+
+					<div class="pro_cate_name">
+						<a href="${path}/store/mall/ProductDetail?no=${product.productNo}">
+									
+																
+							<span class="product_sub_catgory">[${product.categorySubId}]</span>
+							<span class="product_name">${product.productName}</span>
+					</div>
+					<span class="product_price"><b><fmt:formatNumber
+								value="${product.productPrice}" pattern="#,###" /></b>원</span>
+					</a>
+				</c:if>
+
+			</c:forEach>
+		</c:if>
+		<!--상품정보끝-->
+	</div>
 
 
 </section>
 
-<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include> --%>

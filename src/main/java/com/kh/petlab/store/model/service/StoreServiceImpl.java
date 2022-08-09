@@ -29,7 +29,51 @@ public class StoreServiceImpl implements StoreService {
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		return storeDao.selectProductList(rowBounds);
 	}
+	
+	
+	
+	@Transactional(readOnly = true)
+	@Override
+	public 	List<ProductAttachment> selectattToyList() {
+		return storeDao.selectattToyList();
+	}
+	@Override
+	public List<ProductAttachment> selectattBagList() {
+		return storeDao.selectattBagList();
+	}
 
+	@Override
+	public List<ProductAttachment> selectattBrushList() {
+		return storeDao.selectattBrushList();
+	}
+
+	@Override
+	public List<ProductAttachment> selectattPadList() {
+		return storeDao.selectattPadList();
+	}
+
+	@Override
+	public List<ProductAttachment> selectattShamList() {
+		return storeDao.selectattShamList();
+	}
+
+	@Override
+	public List<ProductAttachment> selectattFeedingList() {
+		return storeDao.selectattFeedingList();
+	}
+
+	@Override
+	public List<ProductAttachment> selectattSnackList() {
+		return storeDao.selectattSnackList();
+	}
+
+	@Override
+	public List<ProductAttachment> selectattFeedList() {
+		return storeDao.selectattFeedList();
+	}
+	
+	
+	
 	@Override
 	public int selectTotalContent() {
 		return storeDao.selectTotalContent();
@@ -127,6 +171,7 @@ public class StoreServiceImpl implements StoreService {
 	public int deletedesAttachment(int no) {
 		return storeDao.deletedesAttachment(no);
 	}
+
 
 
 

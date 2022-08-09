@@ -20,6 +20,15 @@ public interface StoreDao {
 	
 	//상품 목록 조회
 	List<Product> selectProductList(RowBounds rowBounds);
+	//썸네일띄우기
+	List<ProductAttachment> selectattToyList();
+	List<ProductAttachment> selectattBagList();
+	List<ProductAttachment> selectattBrushList();
+	List<ProductAttachment> selectattPadList();
+	List<ProductAttachment> selectattShamList();
+	List<ProductAttachment> selectattFeedingList();
+	List<ProductAttachment> selectattSnackList();
+	List<ProductAttachment> selectattFeedList();
 	
 	@Select("select count(*) from product")
 	int selectTotalContent();

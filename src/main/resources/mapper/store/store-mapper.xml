@@ -61,6 +61,55 @@ select
 	</select>
 
 
+	<select id="selectattToyList" resultType="ProductAttachment">
+select a.renamed_filename
+from product_attachment a, product p
+where p.category_sub_id='toy' and a.product_no = p.product_no order by product_att_no desc
+	</select>
+	
+		<select id="selectattBagList" resultType="ProductAttachment">
+select a.renamed_filename
+from product_attachment a, product p
+where p.category_sub_id='bag' and a.product_no = p.product_no order by product_att_no desc
+	</select>
+	
+		<select id="selectattBrushList" resultType="ProductAttachment">
+select a.renamed_filename
+from product_attachment a, product p
+where p.category_sub_id='brush' and a.product_no = p.product_no order by product_att_no desc
+	</select>
+	
+		<select id="selectattPadList" resultType="ProductAttachment">
+select a.renamed_filename
+from product_attachment a, product p
+where p.category_sub_id='pad' and a.product_no = p.product_no order by product_att_no desc
+	</select>
+	
+		<select id="selectattShamList" resultType="ProductAttachment">
+select a.renamed_filename
+from product_attachment a, product p
+where p.category_sub_id='shampoo' and a.product_no = p.product_no order by product_att_no desc
+	</select>
+	
+	
+			<select id="selectattFeedingList" resultType="ProductAttachment">
+select a.renamed_filename
+from product_attachment a, product p
+where p.category_sub_id='feeding' and a.product_no = p.product_no order by product_att_no desc
+	</select>
+	
+			<select id="selectattSnackList" resultType="ProductAttachment">
+select a.renamed_filename
+from product_attachment a, product p
+where p.category_sub_id='snack' and a.product_no = p.product_no order by product_att_no desc
+	</select>
+	
+			<select id="selectattFeedList" resultType="ProductAttachment">
+select a.renamed_filename
+from product_attachment a, product p
+where p.category_sub_id='feedd' and a.product_no = p.product_no order by product_att_no desc
+	</select>
+
 	<resultMap id="product" type="product">
 		<id column="product_no" property="productNo" />
 		<result column="category_id" property="categoryId" />

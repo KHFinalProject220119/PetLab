@@ -11,7 +11,6 @@
 	<jsp:param value="장난감/스크래쳐" name="title" />
 </jsp:include>
 
-
 <h1>장난감/스크래쳐</h1>
 
 
@@ -19,7 +18,6 @@
 <section class="lists">
 
 <!--썸네일띄우기 -->
-
 
 <!--썸네일 이미지 부분 끝-->
 
@@ -32,18 +30,22 @@
 		</tr>
 	</c:if>
 
-
 	<c:if test="${not empty list}">
 		<c:forEach items="${list}" var="product" varStatus="vs">
 			<c:set var="product.categorySubId" value="toy" />
 			<c:if test="${product.categorySubId eq 'toy' }">
-	
-			<div class="pro_cate_name" >
+			
+			
+			<div class="pro_cate_name">
 			<a href="${path}/store/mall/ProductDetail?no=${product.productNo}" >
-			
-			
+	<c:forEach items="${attlist}" var="attlist">
+									<img class="img_des"
+											src="${path}/resources/upload/store/mall/${attlist.renamedFilename}"><br>
+												</c:forEach>
+															
+
 			<span class="product_sub_catgory">[${product.categorySubId}]</span>
-			<span class="product_name" > ${product.productName}</span>
+			<span class="product_name">${product.productName}</span>
 			</div>
 			<span class="product_price"><b><fmt:formatNumber value="${product.productPrice}"
 								pattern="#,###" /></b>원</span></a>				

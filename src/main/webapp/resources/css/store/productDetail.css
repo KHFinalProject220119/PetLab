@@ -12,9 +12,10 @@
     font-style: normal;
 }
 body{font-family: 'Dovemayo-Medium'}
-.content{margin-left:35rem;}
+.content{margin-left:32rem;}
 .img-content{margin-bottom:2rem; margin-top:2rem;}
 .imgg{width:250px; height:320px;}
+.img_des{margin-right:5rem;}
 .product_name{font-size:1.7rem;}
 .product_price{font-size: 1.2rem;margin-top:1rem;}
 .product_des{ font-size: 1.1rem;margin-top:1rem;margin-bottom:2rem;}
@@ -40,4 +41,4 @@ display: inline-flex;  text-align: center; color: white; background-color: #FF99
 display: inline-flex;  text-align: center;  color: white; background-color: #FF9900;border-radius: 0.2rem;}
 .pay-product:hover{cursor:pointer; background-color: #f7ac3b;}
 
-
+.product_des{width:420px; height:420px;}
