@@ -21,6 +21,11 @@ table#photo-board {
     margin: 0 auto;
 }
 
+table#photo-board2 {
+	width: 70%;
+    margin: 0 auto;
+}
+
 table#sg-board {
 	width: 70%;
     margin: 0 auto;
@@ -51,24 +56,48 @@ input#btn-add {
     font-size : 15px;
 } 
 
+th#p_content {
+	padding-left : 50px;
+	text-align : left;
+}
+
+th#p_writer {
+	padding-left : 50px;
+	text-align : left;
+}
+
+th#p_best_count {
+	padding-right : 50px;
+	text-align : right;
+}
+
+th#p_enroll_date {
+	padding-right : 50px;
+	text-align : right;
+}
+
 th#content {
-	padding-left : 30px;
+	padding-left : 20px;
 	text-align : left;
 }
 
 th#writer {
-	padding-left : 30px;
+	padding-left : 20px;
 	text-align : left;
 }
 
 th#best_count {
-	padding-right : 35px;
+	padding-right : 20px;
 	text-align : right;
 }
 
 th#enroll_date {
-	padding-right : 35px;
+	padding-right : 20px;
 	text-align : right;
+}
+
+th#btn_photo_add {
+	padding-left : 150px;
 }
 
 .pet {
