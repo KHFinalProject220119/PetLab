@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'Goyang';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Goyang.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Dovemayo-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/Dovemayo-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body{font-family: 'Dovemayo-Medium'}
+
+h1{font-size:2rem;}
+.insertpro{display: flex;align-items: center;justify-content: center;}
+.menu{font-size:1.2rem; margin-right:1rem; margint-bottom:1rem;}
+
+
+.selectBox {
+  position: relative;
+  width: 150px;
+  height: 35px;
+  border-radius: 4px;
+  border: 2px solid #FF9900;
+  margin-bottom:1rem;
+}
+.selectBox .select {
+  width: inherit;
+  height: inherit;
+  background: transparent;
+  border: 0 none;
+  outline: 0 none;
+  padding: 0 5px;
+  position: relative;
+  z-index: 3;
+}
+.selectBox .select option {
+  background: #FF9900; 
+  color: #fff;
+  padding: 3px 0;
+  font-size: 16px;
+}
+
+.tbl-input{height: 2.7rem; width: 13rem; border: 2px solid #FF9900; border-radius: 0.3rem;margin-bottom:1rem;}
+.tbl-input:focus{  outline: none; border: 2px solid #FF9900;}
+
+.btn-enroll{font-size: 1.3rem; font-weight: bold;   padding:0.9rem; margin-top:1rem;font-family: 'Dovemayo-Medium'; 
+text-align: center; margin-left:12rem; margin-top:3.3rem;color: white; background-color: #CA965C; border-radius: 0.6rem;
+border: none;}
+.btn-enroll:hover{cursor:pointer; background-color: #c48036;}
+
