@@ -16,10 +16,9 @@
 <section id="container">
   <div id="Pmypage-submenu" class="submenu">
     <ul id="sub">
-      <li><a href="#" id="now_menu" class="current" onmouseover="mousein(this);" onmouseout="mouseout(this)">포트폴리오</a></li>
-    
-      <li><a href="<%= request.getContextPath() %>/mypage/applylist" onmouseover="mousein(this);" onmouseout="mouseout(this)">지원한 공고</a></li>
-      <li><a href="<%= request.getContextPath() %>/mypage/ckpw?type=update&role=P" onmouseover="mousein(this);" onmouseout="mouseout(this)">회원정보 수정</a></li>
+      <li><a href="#" onmouseover="mousein(this);" onmouseout="mouseout(this)">회원정보 수정</a></li>
+      <li><a href="<%= request.getContextPath() %>/mypage/ckpw?type=update&role=P" id="now_menu" class="current" onmouseover="mousein(this);" onmouseout="mouseout(this)">내가 쓴 글</a></li>
+      <li><a href="<%= request.getContextPath() %>/mypage/applylist" onmouseover="mousein(this);" onmouseout="mouseout(this)">마이펫</a></li>
       <li><a href="<%= request.getContextPath() %>/mypage/ckpw?type=del&role=P" onmouseover="mousein(this);" onmouseout="mouseout(this)">회원탈퇴</a></li>
     </ul>
   </div>
@@ -39,7 +38,7 @@
       </form>
     </div>
   </div>
-  <form name="enrollWorkFrm" action="<%= request.getContextPath() %>/mypage/gotoEditPortfolio">
+  <form name="enrollWorkFrm" action="<%= request.getContextPath() %>/mypage/gotoEditMyPet">
   	<input type="hidden" name="portType" value="New"/>
   	<input type="hidden" name="attachNo" value="130">
   </form>
@@ -78,8 +77,4 @@
   
   
 </section>
-<%@ include file="/WEB-INF/views/common/footer.jsp" %>
-
-
-
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
