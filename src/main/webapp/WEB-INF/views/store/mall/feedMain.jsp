@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -8,9 +8,9 @@
 <link rel="stylesheet"
 	href="${ path }/resources/css/store/productMain.css" />
 <jsp:include page="/WEB-INF/views/common/header.jsp">
-	<jsp:param value="사료" name="title" />
+	<jsp:param value="사료/간식/급식급수기" name="title" />
 </jsp:include>
-<h1>사료 전체보기</h1>
+<h1>사료/간식/급식,급수기 전체보기</h1>
 
 
 
@@ -37,6 +37,8 @@
 			<c:if test="${product.categoryId eq 'feed' }">
 			
 	
+		
+			
 			<div class="pro_cate_name">
 			<a href="${path}/store/mall/ProductDetail?no=${product.productNo}" >
 			<span class="product_sub_catgory">[${product.categorySubId}]</span>
@@ -54,4 +56,4 @@
 
 </section>
 
-<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include> --%>

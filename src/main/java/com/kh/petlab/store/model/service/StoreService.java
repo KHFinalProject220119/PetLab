@@ -9,6 +9,14 @@ import com.kh.petlab.store.model.dto.ProductdesAttachment;
 public interface StoreService {
 
 	List<Product> selectProductList(int cPage,int numPerPage);
+	List<ProductAttachment> selectattToyList();
+	List<ProductAttachment> selectattBagList();
+	List<ProductAttachment> selectattBrushList();
+	List<ProductAttachment> selectattPadList();
+	List<ProductAttachment> selectattShamList();
+	List<ProductAttachment> selectattFeedingList();
+	List<ProductAttachment> selectattSnackList();
+	List<ProductAttachment> selectattFeedList();
 	
 	int selectTotalContent();
 	

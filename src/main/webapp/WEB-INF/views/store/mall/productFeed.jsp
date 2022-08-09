@@ -7,10 +7,12 @@
 <c:set var="path" value="${ pageContext.request.contextPath }" />
 <link rel="stylesheet"
 	href="${ path }/resources/css/store/productMain.css" />
-	<jsp:include page="/WEB-INF/views/common/header.jsp">
+<jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="사료" name="title" />
 </jsp:include>
+
 <h1>사료</h1>
+
 
 
 <section class="lists">
@@ -28,19 +30,24 @@
 		</tr>
 	</c:if>
 
+				<c:forEach items="${attlist}" var="attlist">
+									<img class="img_des"
+											src="${path}/resources/upload/store/mall/${attlist.renamedFilename}">
+
+												</c:forEach>
 
 	<c:if test="${not empty list}">
 		<c:forEach items="${list}" var="product" varStatus="vs">
-			<c:set var="product.categorySubId" value="feed" />
-			<c:if test="${product.categorySubId eq 'feed' }">
-			<div class="img-dv">
-		<img src="${path}/resources/upload/store/mall/${product.attachments}">
-			</div>
+			<c:set var="product.categorySubId" value="feedd" />
+			<c:if test="${product.categorySubId eq 'feedd' }">
+					
 			<div class="pro_cate_name">
 			<a href="${path}/store/mall/ProductDetail?no=${product.productNo}" >
+
 			<span class="product_sub_catgory">[${product.categorySubId}]</span>
 			<span class="product_name">${product.productName}</span>
 			</div>
+			
 			<span class="product_price"><b><fmt:formatNumber value="${product.productPrice}"
 								pattern="#,###" /></b>원</span></a>				
 			</c:if>
@@ -50,6 +57,6 @@
 <!--상품정보끝-->
 </div>
 
-</section>
 
+</section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

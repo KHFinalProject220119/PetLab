@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+* {
+ 		font-family: 'Goyang', serif;
+}
+
+.memberUDT{
+        float: left;
+        font-size: 1.1rem; 
+        }
+        
+.memberUD{
+        float: right;
+        font-size: 1.1rem; 
+        }   
+        
+.top_mypage{
+        width: 70%;
+		height: 30px;
+		border-bottom: 1px solid #000;
+		margin-bottom: 62px;
+		padding-bottom: 3px;
+        }
+        
+#title{
+        font-size: 3em;
+        font-weight: bold; 
+        text-align: left; 
+        margin: 50px 0 0 10px; 
+        }
+        
+#mypage-submenu {
+        margin: 50px 0 0 10px;
+        text-align: left;
+        width: 15%;
+         }   
+
+#mypage-submenu ul {
+        padding: 0;
+        }
+
+#mypage-submenu li {
+        list-style: none;
+        margin: 10px 0 0 10px; 
+        font-weight: 500;
+        font-size: x-large;
+        }
+
+#mypage-submenu a:hover {
+        color: #32537e;
+        }
+
+#mypage-submenu a {
+        color: black;
+        text-decoration: none;
+         }    
+
+.current {
+        color: #376b57 !important;
+  }
+  
+.tpl_mypage {
+		margin-top: 10px;
+		margin-bottom: 80px;
+		width: 70%;
+	}
+.tpl_mypage dl {
+		float: left;
+		margin-right: 85px;
+	}
+.tpl_mypage dl.last {
+		margin-right: 0;
+	}
+.tpl_mypage dl h4 {
+		color: #000;
+		font-size: 30px;
+		letter-spacing: 2px;
+		margin-bottom: 24px;
+	}
+.tpl_mypage dl dt {
+		width: 270px;
+		height: 200px;
+		text-align: center;
+		border: 2px #231f20 solid;
+		margin-bottom: 35px;
+		padding: 120px 0 274px 0;
+	}
+
+.tpl_mypage dl dt p {
+		font-size: 14px;
+		font-weight: bold;
+	}
+.tpl_mypage dl dt h1 {
+		font-size: 50px;
+		letter-spacing: 3px;
+	}
+.tpl_mypage dl dt div {
+		width: 205px;
+		margin: 0 auto;
+	}
+.tpl_mypage dl dt div span {
+		float: left;
+		width: 70px;
+		padding: 50px 15px 0 15px;
+		margin-bottom: 80px;
+	}
+.tpl_mypage dl dt div span:FIRST-CHILD {
+		margin-right: 0px;
+	}
+.tpl_mypage dl dt div span>h1 {
+		margin-top: 8px;
+		font-size: 28px;
+		text-decoration: underline;
+	}
+.tpl_mypage span.clearfix {
+		width: 148px;
+		margin: 0 0 0 12px;
+		padding: 20px 18px 20px 18px;
+	}
+
+.link{
+		cursor:pointer;
+		}
+		
+
+.close_mypage{
+        width: 70%;
+		height: 30px;
+		border-top: 1px dashed #000;
+		border-bottom: 1px solid #000;
+		margin-bottom: 62px;
+		padding-bottom: 3px;
+        }
