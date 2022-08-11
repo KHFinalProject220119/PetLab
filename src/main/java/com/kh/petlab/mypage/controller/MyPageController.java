@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequestMapping("/mypage")
 @Slf4j
-public class myPageController {
+public class MyPageController {
 	
 		@GetMapping("/mypageHome")
 		public void mypageHome() {}

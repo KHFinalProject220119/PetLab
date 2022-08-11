@@ -11,7 +11,7 @@
 	<jsp:param value="회원정보수정" name="title"/>
 </jsp:include>
 
-<div id="container" class="wrap1200">
+
 <div id="_my_order_list">
 
 	<h1 class="title1 p_pt40 p_pb25 m_pt10 m_pb40">회원정보수정</h1>
@@ -35,7 +35,10 @@
 				</tr>
 				<tr>
 					<th class="w110">아이디</th>
-					<td>${MemberEntity.memberId}</td>
+					<td>
+					<label type="text" name="text" title="dkdlel" value="${MemberEntity.id}" class="w340 m_w175 required email" placeholder="petlab@naver.com">
+					</label>
+					</td>
 				</tr>
 				<tr>
 					<th>이메일</th>

@@ -1,133 +1,180 @@
 @charset "UTF-8";
-
 * {
- 		font-family: 'Goyang', serif;
+  font-family: "Goyang";
 }
-
 .memberUDT{
-        float: left;
-        font-size: 1.1rem; 
+            float: left;
+            font-size: 1.1rem; 
         }
         
 .memberUD{
-        float: right;
-        font-size: 1.1rem; 
+            float: right;
+            font-size: 1.1rem; 
         }   
-        
-.top_mypage{
-        width: 70%;
-		height: 30px;
-		border-bottom: 1px solid #000;
-		margin-bottom: 62px;
-		padding-bottom: 3px;
-        }
-        
-#title{
-        font-size: 3em;
-        font-weight: bold; 
-        text-align: left; 
-        margin: 50px 0 0 10px; 
-        }
-        
+
+hr {
+	margin: 0 auto;
+	width: 71%;
+	height: 1px;
+	font-size: 0;
+	border: 0px;
+	margin-top : 165px;
+}
+
+hr.dash1 {
+    border-top:1px dashed black;
+}
+
+hr.solid {
+	background-color: #231f20;
+	margin-right:8%;
+}
+
 #mypage-submenu {
-        margin: 50px 0 0 10px;
-        text-align: left;
-        width: 15%;
+            width: 12%;
+            text-align: left; 
+            margin-left: 15px; 
+            margin-top:15px;
+            float: left;
          }   
 
 #mypage-submenu ul {
-        padding: 0;
+            padding: 0;
+        
         }
 
 #mypage-submenu li {
-        list-style: none;
-        margin: 10px 0 0 10px; 
-        font-weight: 500;
-        font-size: x-large;
+            list-style: none;
+            margin: 15px 0;
+            font-weight: 500;
+            font-size: x-large;
         }
 
 #mypage-submenu a:hover {
-        color: #32537e;
+            color: #32537e;
         }
 
 #mypage-submenu a {
-        color: black;
-        text-decoration: none;
+            color: black;
+            text-decoration: none;
          }    
 
 .current {
-        color: #376b57 !important;
+            color: #376b57 !important;
   }
-  
-.tpl_mypage {
-		margin-top: 10px;
-		margin-bottom: 80px;
-		width: 70%;
-	}
-.tpl_mypage dl {
-		float: left;
-		margin-right: 85px;
-	}
-.tpl_mypage dl.last {
-		margin-right: 0;
-	}
-.tpl_mypage dl h4 {
-		color: #000;
-		font-size: 30px;
-		letter-spacing: 2px;
-		margin-bottom: 24px;
-	}
-.tpl_mypage dl dt {
-		width: 270px;
-		height: 200px;
-		text-align: center;
-		border: 2px #231f20 solid;
-		margin-bottom: 35px;
-		padding: 120px 0 274px 0;
-	}
 
-.tpl_mypage dl dt p {
-		font-size: 14px;
-		font-weight: bold;
-	}
-.tpl_mypage dl dt h1 {
-		font-size: 50px;
-		letter-spacing: 3px;
-	}
-.tpl_mypage dl dt div {
-		width: 205px;
-		margin: 0 auto;
-	}
-.tpl_mypage dl dt div span {
-		float: left;
-		width: 70px;
-		padding: 50px 15px 0 15px;
-		margin-bottom: 80px;
-	}
-.tpl_mypage dl dt div span:FIRST-CHILD {
-		margin-right: 0px;
-	}
-.tpl_mypage dl dt div span>h1 {
-		margin-top: 8px;
-		font-size: 28px;
-		text-decoration: underline;
-	}
-.tpl_mypage span.clearfix {
-		width: 148px;
-		margin: 0 0 0 12px;
-		padding: 20px 18px 20px 18px;
-	}
 
-.link{
-		cursor:pointer;
-		}
-		
-
-.close_mypage{
-        width: 70%;
-		height: 30px;
-		border-top: 1px dashed #000;
-		border-bottom: 1px solid #000;
-		margin-bottom: 62px;
-		padding-bottom: 3px;
+.top-title{
+            font-size: 2.5rem; 
+            font-weight: bold; 
+            text-align: left; 
+            margin: 0 auto; 
         }
+        
+.top_mypage{
+            font-weight: bold; 
+        	text-align: center;
+        	font-size: 1.5rem;  
+        }
+        
+.top_mypage span{
+            float: left;
+            text-align: center; 
+            margin-left : 9%;
+            margin-top : 65px;
+            margin-bottom : 15px; 
+        }  
+        
+.top_mypage a{
+            float: right;
+            text-align: center; 
+            margin-right : 9%;
+            margin-top : 65px;
+            margin-bottom : 15px; 
+        }   
+        
+.close_mypage{
+            font-weight: bold; 
+            text-align: center; 
+            margin: 0 auto; 
+            margin-top : 45px;
+            font-size: 1.5rem;  
+        }
+ 
+         
+.close_mypage span{
+            float: left;
+            text-align: center; 
+            margin-left : 22%;
+            margin-top : 10px;
+        }         
+.close_mypage a{
+            float: right;
+            text-align: center; 
+            margin-right :9%;
+            margin-top : 10px;
+        }       
+.selection-cont{
+            display:flex;
+            justify-content: space-between; 
+            width: 70%; 
+            margin: 0 auto;
+        }
+
+.selections {
+            width: 33%; 
+            text-align:center;
+        }
+
+.selection {
+            height: 80%;
+            padding: 2rem 2rem;
+            text-align: center;  
+            border: 2px solid;
+        }
+
+.selection-title{ 
+            font-size: 2.5rem;   
+            margin: 2rem 0;
+        }
+
+.selection:hover{border: 6px solid #32537e;}
+
+.link{cursor:pointer;}
+
+.ph h4 {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.totalCnt {
+    font-size: 80px;
+    letter-spacing: 3px;
+}
+.ph div {
+    width: 205px;
+    margin: 0 auto;
+}
+.ph span {
+    float: left;
+    width: 70px;
+    padding: 50px 15px 0 15px;
+    margin-bottom: 80px;
+}
+.ph h1 {
+    margin-top: 8px;
+    font-size: 28px;
+    text-decoration: underline;
+}
+.clearfix {
+    width: 80px;
+    display:inline-block;
+    zoom:1;.display:inline;
+}
+
+.ph {
+    float: left;
+    width: 70px;
+    padding: 50px 15px 0 15px;
+    margin-bottom: 80px;
+}
