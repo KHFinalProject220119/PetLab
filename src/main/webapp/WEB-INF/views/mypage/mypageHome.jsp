@@ -47,7 +47,8 @@
 											</span>
 										</div>
 										<div>
-										<a href="${pageContext.request.contextPath}/store/storeMain"><span class="clearfix">계속 쇼핑하기 &gt;</span></a>
+										<a href="${pageContext.request.contextPath}/store/storeMain">
+										<span class="clearfix">계속 쇼핑하기 &gt;</span></a>
 										</div>
 								</div>
 							</div>

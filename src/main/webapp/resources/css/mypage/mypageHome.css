@@ -32,9 +32,9 @@ hr.solid {
 
 #mypage-submenu {
             width: 12%;
-            text-align: left; 
+            text-align: right; 
             margin-left: 15px; 
-            margin-top:15px;
+            margin-top:60px;
             float: left;
          }   
 
@@ -67,7 +67,7 @@ hr.solid {
 .top-title{
             font-size: 2.5rem; 
             font-weight: bold; 
-            text-align: left; 
+            text-align: right; 
             margin: 0 auto; 
         }
         
@@ -131,6 +131,9 @@ hr.solid {
             padding: 2rem 2rem;
             text-align: center;  
             border: 2px solid;
+                display: flex;
+   				 flex-direction: column;
+    align-items: center;
         }
 
 .selection-title{ 
@@ -167,7 +170,7 @@ hr.solid {
     text-decoration: underline;
 }
 .clearfix {
-    width: 80px;
+    width: 100px;
     display:inline-block;
     zoom:1;.display:inline;
 }
