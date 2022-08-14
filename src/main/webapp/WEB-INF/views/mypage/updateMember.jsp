@@ -6,16 +6,23 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<link type="text/css" href="/resources/css/mypage/" rel="stylesheet">
+<link type="text/css" href="${pageContext.request.contextPath}/resources/css/mypage/" rel="stylesheet">
+
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="회원정보수정" name="title"/>
 </jsp:include>
 
+	<div id="mypage-submenu" class="submenu">
+	<h4 class="top-title">MY PAGE</h4>
+	<ul id="sub">
+		<li><a href="${pageContext.request.contextPath}/mypage/updateMember" onmouseover="mousein(this);" onmouseout="mouseout(this)">회원정보 수정</a></li>
+		<li><a href="${pageContext.request.contextPath}/mypage/myBorad" onmouseover="mousein(this);" onmouseout="mouseout(this)">내가 쓴 글</a></li>
+		<li><a href="${pageContext.request.contextPath}/mypage/mypet" onmouseover="mousein(this);" onmouseout="mouseout(this)">마이펫</a></li>
+		<li><a href="${pageContext.request.contextPath}/mypage/closeMember" onmouseover="mousein(this);" onmouseout="mouseout(this)">회원탈퇴</a></li>
+	</ul>
+</div>
 
 <div id="_my_order_list">
-
-	<h1 class="title1 p_pt40 p_pb25 m_pt10 m_pb40">회원정보수정</h1>
-
 	<div class="clearfix">
 
 		<!-- // left -->
