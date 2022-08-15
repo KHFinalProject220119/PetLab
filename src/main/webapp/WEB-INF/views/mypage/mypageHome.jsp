@@ -13,7 +13,7 @@
 <div id="mypage-submenu" class="submenu">
 	<h4 class="top-title">MY PAGE</h4>
 	<ul id="sub">
-		<li><a href="${pageContext.request.contextPath}/mypage/memberInfo" onmouseover="mousein(this);" onmouseout="mouseout(this)">회원정보 수정</a></li>
+		<li><a href="${pageContext.request.contextPath}/mypage/memberInfo" onmouseover="mousein(this);" onmouseout="mouseout(this)">회원정보</a></li>
 		<li><a href="${pageContext.request.contextPath}/mypage/myBorad" onmouseover="mousein(this);" onmouseout="mouseout(this)">내가 쓴 글</a></li>
 		<li><a href="${pageContext.request.contextPath}/mypage/mypet" onmouseover="mousein(this);" onmouseout="mouseout(this)">마이펫</a></li>
 		<li><a href="${pageContext.request.contextPath}/mypage/closeMember" onmouseover="mousein(this);" onmouseout="mouseout(this)">회원탈퇴</a></li>
