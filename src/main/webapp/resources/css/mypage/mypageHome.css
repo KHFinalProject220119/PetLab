@@ -1,6 +1,7 @@
 @charset "UTF-8";
-* {
-  font-family: "Goyang";
+
+@font-face {
+   font-family: 'CookieRun-Regular';
 }
 .memberUDT{
             float: left;
@@ -11,24 +12,6 @@
             float: right;
             font-size: 1.1rem; 
         }   
-
-hr {
-	margin: 0 auto;
-	width: 71%;
-	height: 1px;
-	font-size: 0;
-	border: 0px;
-	margin-top : 165px;
-}
-
-hr.dash1 {
-    border-top:1px dashed black;
-}
-
-hr.solid {
-	background-color: #231f20;
-	margin-right:8%;
-}
 
 #mypage-submenu {
             width: 12%;
@@ -73,24 +56,26 @@ hr.solid {
         
 .top_mypage{
             font-weight: bold; 
-        	text-align: center;
-        	font-size: 1.5rem;  
+            text-align: center; 
+            margin: 0 auto; 
+            margin-top : 45px;
+            font-size: 1.5rem;  
         }
         
 .top_mypage span{
             float: left;
             text-align: center; 
             margin-left : 9%;
-            margin-top : 65px;
-            margin-bottom : 15px; 
+            margin-top : 50px;
+            margin-bottom : 45px; 
         }  
         
 .top_mypage a{
             float: right;
             text-align: center; 
             margin-right : 9%;
-            margin-top : 65px;
-            margin-bottom : 15px; 
+            margin-top : 50px;
+            margin-bottom : 45px; 
         }   
         
 .close_mypage{
@@ -100,8 +85,7 @@ hr.solid {
             margin-top : 45px;
             font-size: 1.5rem;  
         }
- 
-         
+
 .close_mypage span{
             float: left;
             text-align: center; 
@@ -113,7 +97,30 @@ hr.solid {
             text-align: center; 
             margin-right :9%;
             margin-top : 10px;
-        }       
+        }   
+
+hr.dash1 {
+	margin: 0 auto;
+	width: 71%;
+	height: 1px;
+	font-size: 0;
+	border: 0px;
+	margin-top : 165px;
+	margin-bottom:20px;
+    border-top:1px dashed black;
+}
+
+hr.dash2 {
+	margin: 0 auto;
+	width: 71%;
+	height: 1px;
+	font-size: 0;
+	border: 0px;
+	margin-top : 100px;
+    border-top:1px dashed black;
+    margin-left: 21%;
+}
+    
 .selection-cont{
             display:flex;
             justify-content: space-between; 
@@ -181,9 +188,10 @@ hr.solid {
     text-decoration: underline;
 }
 .clearfix {
-    width: 100px;
+    width: 100%;
     display:inline-block;
     zoom:1;.display:inline;
+    color: black;
 }
 
 .ph {

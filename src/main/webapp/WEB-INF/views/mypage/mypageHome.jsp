@@ -20,7 +20,14 @@
 	</ul>
 </div>
 		<div class="top_mypage">
-  			<span class="loginmember">회원 아이디 출력</span>
+  			<sec:authorize access="isAuthenticated()">
+			    	<%-- 로그인한 경우 --%>
+			    	<span>
+			    		<sec:authentication property="principal.username"/>
+				    	</a>님
+				    </span>
+			
+			 </sec:authorize>
   			<a href="/my/account/update">회원정보수정&nbsp;&nbsp;&gt;</a>
 			<hr class="dash1">
 		</div>
@@ -33,7 +40,7 @@
 								<h4 class="selection-title">MY ORDER</h4>
 									<div class="selection">
 										<div>
-											<h4 class="selection2">나의 주문 내역</h4>
+											<h4 class="selection2">주문 내역</h4>
 											<h1 class="totalCnt">00</h1>
 										</div>
 										<div>
@@ -79,7 +86,7 @@
 									<h4 class="selection-title">Q&A</h4>
 								<div  class="selection">
 										<div>
-											<h4 class="selection2">1:1 문의 내역</h4>
+											<h4 class="selection2">문의 내역</h4>
 											<h1 class="totalCnt">00</h1>
 										</div>
 										<div>
@@ -101,11 +108,10 @@
 					</div>
 				</div>
 			</div>
-			 <hr class="solid">
+			 <hr class="dash2">
   				<div class="close_mypage">
    				<span class="close_account">CLOSE ACCOUNT</span><a href="/my/account/close">회원탈퇴&nbsp;&nbsp;&gt;</a>
  				</div>
-  			<hr class="dash">
 		    <div></div>
 </div>
   
