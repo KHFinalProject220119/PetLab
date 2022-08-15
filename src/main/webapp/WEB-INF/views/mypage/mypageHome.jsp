@@ -28,7 +28,7 @@
 				    </span>
 			
 			 </sec:authorize>
-  			<a href="/my/account/update">회원정보수정&nbsp;&nbsp;&gt;</a>
+  			<a href="/mypage/updateMember">회원정보수정&nbsp;&nbsp;&gt;</a>
 			<hr class="dash1">
 		</div>
 	<div></div>
@@ -110,7 +110,8 @@
 			</div>
 			 <hr class="dash2">
   				<div class="close_mypage">
-   				<span class="close_account">CLOSE ACCOUNT</span><a href="/my/account/close">회원탈퇴&nbsp;&nbsp;&gt;</a>
+   				<span class="close_account">CLOSE ACCOUNT</span>
+   				<a href="/mypage/closeMember">회원탈퇴&nbsp;&nbsp;&gt;</a>
  				</div>
 		    <div></div>
 </div>
