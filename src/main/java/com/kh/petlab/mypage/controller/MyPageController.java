@@ -14,6 +14,12 @@ public class MyPageController {
 		@GetMapping("/mypageHome")
 		public void mypageHome() {}
 		
+		@GetMapping("/myPetHome")
+		public void myPetHome() {}
+		
+		@GetMapping("/memberDetail")
+		public void memberDetail() {}
+		
 		
 	}
 

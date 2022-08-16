@@ -1,0 +1,139 @@
+@charset "UTF-8";
+
+.top-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: right;
+    margin: 0 auto;
+}
+#mypage-submenu {
+    margin-top: 100px;
+    text-align: right;
+    width: 15%;
+ }   
+
+#mypage-submenu ul {
+    padding: 0;
+
+}
+
+#mypage-submenu li {
+    list-style: none;
+    margin: 15px 0;
+    font-weight: 500;
+    font-size: x-large;
+}
+
+#mypage-submenu a:hover {
+    color: #32537e;
+}
+
+#mypage-submenu a {
+    color: black;
+    text-decoration: none;
+ }    
+
+.current {
+    color: #376b57 !important;
+}
+
+.section_gap{
+	width: 70%;
+	
+}
+.accomodation_item {
+  margin-bottom: 30px;
+}
+
+.accomodation_item .pet_img {
+  position: relative;
+  margin-bottom: 10px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.accomodation_item .pet_img img {
+  -webkit-transition: all 0.4s linear;
+  -o-transition: all 0.4s linear;
+  transition: all 0.4s linear;
+}
+
+.accomodation_item .pet_img .theme_btn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  transform: translate(-50%);
+  padding: 5px 25px;
+  max-width: 128px;
+}
+
+.accomodation_item .pet_img:hover img {
+  -webkit-transform: scale(1.19);
+  -ms-transform: scale(1.19);
+  transform: scale(1.19);
+}
+
+.accomodation_item h5 {
+  font-size: 24px;
+  line-height: 28px;
+  color: #52c5fd;
+  font-weight: 600;
+  margin-bottom: 0px;
+}
+
+.accomodation_item h5 small {
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.sec_h4 {
+  font-size: 18px;
+  line-height: 38px;
+  font-weight: 600;
+  color: #222222;
+  margin-bottom: 0px;
+}
+
+.accomodation_two {
+  margin-bottom: -40px;
+}
+
+.accomodation_two .accomodation_item {
+  margin-bottom: 45px;
+}
+
+.mb_30 {
+      margin-bottom: -30px;
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+}
+.theme_btn {
+  font-size: 14px;
+  line-height: 30px;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 600;
+  background: #f3c300;
+  padding: 5px 30px;
+}
+
+.theme_btn {
+  font-size: 14px;
+  line-height: 30px;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 600;
+  background: #f3c300;
+  padding: 5px 30px;
+}
+
+.theme_btn:before {
+  background: #f8b100;
+}
+
+.theme_btn:hover {
+  color: #fff;
+}
