@@ -117,7 +117,7 @@ where p.category_sub_id='feedd' and a.product_no = p.product_no order by product
 		<result column="product_name" property="productName" />
 		<result column="product_price" property="productPrice" />
 		<result column="product_des" property="productDes" />
-
+		
 		<collection property="attachments"
 			ofType="ProductAttachment">
 			<id column="product_att_no" property="No" />
