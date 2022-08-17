@@ -1,48 +1,90 @@
 @charset "UTF-8";
-
-.top-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    text-align: right;
-    margin: 0 auto;
+@font-face {
+   font-family: 'CookieRun-Regular';
 }
 #mypage-submenu {
-    margin-top: 100px;
-    text-align: right;
-    width: 15%;
- }   
+            width: 12%;
+            text-align: right; 
+            margin-left: 15px; 
+            margin-top:60px;
+            float: left;
+         }   
 
 #mypage-submenu ul {
-    padding: 0;
-
-}
+            padding: 0;
+        
+        }
 
 #mypage-submenu li {
-    list-style: none;
-    margin: 15px 0;
-    font-weight: 500;
-    font-size: x-large;
-}
+            list-style: none;
+            margin: 15px 0;
+            font-weight: 500;
+            font-size: x-large;
+        }
 
 #mypage-submenu a:hover {
-    color: #32537e;
-}
+            color: #32537e;
+        }
 
 #mypage-submenu a {
-    color: black;
-    text-decoration: none;
- }    
+            color: black;
+            text-decoration: none;
+         }    
 
 .current {
-    color: #376b57 !important;
+            color: #376b57 !important;
+  }
+
+
+.top-title{
+            font-size: 2.5rem; 
+            font-weight: bold; 
+            text-align: right; 
+            margin: 0 auto; 
+        }
+        
+.top_mypage{
+            font-weight: bold; 
+            text-align: center; 
+            margin: 0 auto; 
+            margin-top : 45px;
+            font-size: 1.5rem;  
+        }
+        
+.top_mypage span{
+            float: left;
+            text-align: center; 
+            margin-left : 9%;
+            margin-bottom : 45px; 
+        }  
+        
+.top_mypage a{
+            float: right;
+            text-align: center; 
+            margin-right : 9%;
+            margin-top : 50px;
+            margin-bottom : 45px;
+            color: black; 
+        }   
+hr.dash1 {
+	margin: 0 auto;
+	width: 71%;
+	height: 1px;
+	font-size: 0;
+	border: 0px;
+	margin-bottom:20px;
+    border-top:1px dashed black;
 }
 
-.section_gap{
-	width: 70%;
-	
+#pet-container{
+	    width: 60%;
+   		margin: 0 auto;
 }
 .accomodation_item {
-  margin-bottom: 30px;
+  	margin-bottom: 30px;
+    padding: 2rem 2rem;
+    text-align: center;
+    border: 2px solid;
 }
 
 .accomodation_item .pet_img {
@@ -105,10 +147,11 @@
 }
 
 .mb_30 {
-      margin-bottom: -30px;
-      display: flex;
-      justify-content: space-evenly;
-      flex-wrap: wrap;
+        display: flex;
+   		margin: 0 auto;
+    	text-align: center;
+    	flex-direction: column;
+}
 }
 .theme_btn {
   font-size: 14px;
