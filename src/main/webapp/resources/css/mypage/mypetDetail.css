@@ -55,9 +55,9 @@
             float: left;
             text-align: center; 
             margin-left : 9%;
+            margin-top : 50px;
             margin-bottom : 45px; 
-        }  
-        
+        } 
 .top_mypage a{
             float: right;
             text-align: center; 
@@ -77,12 +77,22 @@ hr.dash1 {
 }
 
 #pet-container{
-	    width: 60%;
-   		margin: 0 auto;
+	    	display:flex;
+            justify-content: space-between; 
+            width: 70%; 
+            margin: 0 auto;
 }
+.selection-title{ 
+            font-size: 1.5rem;   
+            margin: 1rem 0;
+            text-align: left;  
+            
+        }
+        
 .accomodation_item {
   	margin-bottom: 30px;
-    padding: 2rem 2rem;
+  	margin-right: 30px;
+    padding: 1rem 1rem;
     text-align: center;
     border: 2px solid;
 }
@@ -92,6 +102,8 @@ hr.dash1 {
   margin-bottom: 10px;
   overflow: hidden;
   border-radius: 10px;
+  max-width: 350px;
+  max-height: 400px;
 }
 
 .accomodation_item .pet_img img {
@@ -108,7 +120,7 @@ hr.dash1 {
   -ms-transform: translate(-50%);
   transform: translate(-50%);
   padding: 5px 25px;
-  max-width: 128px;
+  max-width: 60px;
 }
 
 .accomodation_item .pet_img:hover img {
@@ -122,7 +134,6 @@ hr.dash1 {
   line-height: 28px;
   color: #52c5fd;
   font-weight: 600;
-  margin-bottom: 0px;
 }
 
 .accomodation_item h5 small {
@@ -147,12 +158,15 @@ hr.dash1 {
 }
 
 .mb_30 {
-        display: flex;
-   		margin: 0 auto;
-    	text-align: center;
-    	flex-direction: column;
+	display: flex;
+    width: 70%;
+    margin: 0 auto;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    
 }
-}
+
 .theme_btn {
   font-size: 14px;
   line-height: 30px;

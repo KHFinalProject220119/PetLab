@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.petlab.mypage.model.dao.MypageDao;
+import com.kh.petlab.mypage.model.dto.MyPet;
 import com.kh.petlab.member.model.dto.Member;
 
 @Service
@@ -58,6 +59,16 @@ public class MypageServicempl implements MypageService {
 	public List<Member> selectMemberList() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public MyPet selectOnePet(String petId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public int updatePet(MyPet pet) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 	
+//petId -> principal.username
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

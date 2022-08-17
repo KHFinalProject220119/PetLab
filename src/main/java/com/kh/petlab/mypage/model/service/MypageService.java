@@ -3,6 +3,7 @@ package com.kh.petlab.mypage.model.service;
 import java.util.List;
 
 import com.kh.petlab.member.model.dto.Member;
+import com.kh.petlab.mypage.model.dto.MyPet;
 
 public interface MypageService {
 	
@@ -14,12 +15,15 @@ public interface MypageService {
 	Member selectOneMember(String memberId);
 	Member selectOneMemberByNickname(String nickname);
 	Member selectOneMemberByEmail(String email);
+	MyPet selectOnePet(String petId);
 	
 	int updateMember(Member member);
 
 	List<Member> selectMemberList();
 
 	int updateMemberRole(String memberId, List<String> authorities);
+	
+	int updatePet(MyPet pet);
 
 	
 

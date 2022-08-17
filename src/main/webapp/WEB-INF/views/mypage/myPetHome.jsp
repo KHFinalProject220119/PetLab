@@ -25,27 +25,29 @@
 			    	<%-- 로그인한 경우 --%>
 			    	<span>
 			    		<sec:authentication property="principal.username"/>
-				    	</a>님의 마이펫
+				    	</a>님
 				    </span>
 			
 			 </sec:authorize>
+  			<a href="${pageContext.request.contextPath}/mypage/myPetEnroll">마이펫 등록하기&nbsp;&nbsp;&gt;</a>
 			<hr class="dash1">
 		</div>
 	<div></div>
 		<div id="pet-container">
                 <div class="container">
                     <div class="text-center">
-                        <h2 class="title_color"></h2>
+                        <h4 class="selection-title">MY PET LIST</h4>
                     </div>
                     <div class="row mb_30"> <!--flex-->
+                    <sec:authentication property="principal" var="loginMember"/>
                         <div class="col-lg-3 col-sm-6">
                             <div class="accomodation_item text-center">
-                                <div class="pet_img">
+                                 <div class="pet_img">
                                     <img src="${pageContext.request.contextPath}/resources/images/mypage/유연응삼.jpg" alt="">
                                     <a href="#" class="btn theme_btn button_hover">수정하기</a>
                                 </div>
-								<h2 class="sec_h4">애기이름</h2>
-                                <h5>$250<small>/night</small></h5>
+                                 <h4 class="sec_h4">대분류 개/고양이/기타</h4>
+                                <h5>펫이름<small>/성별</small></h5>
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6">
@@ -54,10 +56,8 @@
                                     <img src="${pageContext.request.contextPath}/resources/images/mypage/유연응삼.jpg" alt="">
                                     <a href="#" class="btn theme_btn button_hover">수정하기</a>
                                 </div>
-                                <a href="#">
-                                <h4 class="sec_h4">Single Deluxe Room</h4>
-                                </a>
-                                <h5>$200<small>/night</small></h5>
+                                 <h4 class="sec_h4">대분류 개/고양이/기타</h4>
+                                <h5>펫이름<small>/성별</small></h5>
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6">
@@ -66,23 +66,10 @@
                                     <img src="${pageContext.request.contextPath}/resources/images/mypage/유연응삼.jpg" alt="">
                                     <a href="#" class="btn theme_btn button_hover">수정하기</a>
                                 </div>
-                                <h4 class="sec_h4">Honeymoon Suit</h4>
-                                
-                                <h5>$750<small>/night</small></h5>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="accomodation_item text-center">
-                                 <div class="pet_img">
-                                    <img src="${pageContext.request.contextPath}/resources/images/mypage/유연응삼.jpg" alt="">
-                                    <a href="#" class="btn theme_btn button_hover">수정하기</a>
-                                </div>
-                                <a href="#">
-                                <h4 class="sec_h4">Economy Double</h4>
-                                </a>
-                                <h5>$200<small>/night</small></h5>
-                            </div>
-                       </div>
+                                 <h4 class="sec_h4">대분류 개/고양이/기타</h4>
+                                <h5>펫이름<small>/성별</small></h5>
+                           </div>
+                      </div>
                  </div>
             </div>
      </div>
