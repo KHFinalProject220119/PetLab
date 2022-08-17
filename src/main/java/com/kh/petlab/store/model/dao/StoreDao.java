@@ -76,4 +76,11 @@ public interface StoreDao {
 			+ "where product_no = #{productNo}")
 	int updateProduct(Product product);
 	
+	
+	
+	
+	
+	
+	
+	
 }
