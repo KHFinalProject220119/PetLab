@@ -14,12 +14,13 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @ToString(callSuper = true)
-public class Community{
-	
-	private int freebNo;
-	private String freebTitle;
-	private String content;
+public class Photo {
+
+	private int photoNo;
+	private String pTitle;
+	private String pContent;
 	private int readCount;
-	private LocalDateTime regDate;
 	private int likeCount;
+	private LocalDateTime regDate;
+	
 }
