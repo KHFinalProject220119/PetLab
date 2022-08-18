@@ -13,7 +13,7 @@
 	href="${pageContext.request.contextPath}/resources/css/store/storeMain.css" />
 
 <sec:authorize access="hasRole('MALL')">
-<a href="${pageContext.request.contextPath}/store/mall/insertProduct" class="insert-pro-btn">
+<a href="${pageContext.request.contextPath}/store/mall/insertProzduct" class="insert-pro-btn">
 <span class="insert-btn">상품등록</span>
 </a>
 </sec:authorize>
