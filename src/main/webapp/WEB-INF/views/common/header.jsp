@@ -44,6 +44,7 @@ Kakao.init('22289034ae7ed5aa331cb59ea6ac1625');
 						<div class="header-member-menu">
 						<sec:authorize access="isAnonymous()">
 							<ul class="header-member-menu-ul">
+								<li><a href="${pageContext.request.contextPath}/adminnotice/adminNoticeList"><span>공지사항</span></a></li>							
 								<li><a href="${pageContext.request.contextPath}/member/signIn"><span>로그인</span></a></li>
 								<li><a href="${pageContext.request.contextPath}/member/signUpSelection"><span>회원가입</span></a></li>
 								<li><a href="${pageContext.request.contextPath}/customerservice/csCenter">고객센터</a></li>

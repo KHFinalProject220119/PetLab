@@ -11,6 +11,11 @@
     font-weight: normal;
     font-style: normal;
 }
+#memberList-container{width: 75%; margin: 0 auto;}
+#title-wrapper{width: 14%; margin: 0 auto;}
+#cont-title{
+	font-size: 3rem;
+}
 body{font-family: 'Dovemayo-Medium'}   /* 둘기마요체 */
 /*      article{
      margin-left:522px;
@@ -23,48 +28,11 @@ body{font-family: 'Dovemayo-Medium'}   /* 둘기마요체 */
         height: 100%;
       }
 
-      .swiper {
-        width: 100%;
-        height: 100%;
-      }
 
-      .swiper-slide {
 
-        /* Center slide text vertically */
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
-      }
 
-      .swiper-slide img {
-        display: block;
-        width: 98%;
-        height: 98%;
-        object-fit: cover;
-      }
-
-      .swiper {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      
-#check-btn1 { display: none; }
-#check-btn1:checked ~ .menubars1 { display: block; }
-#check-btn2 { display: none; }
-#check-btn2:checked ~ .menubars2 { display: block; } 
-#check-btn3 { display: none; }
-#check-btn3:checked ~ .menubars3 { display: block; } 
-.menubars1 { display: none; }
-.menubars2 { display: none; }
-.menubars3 { display: none; }
-a{color:#1c1a1a; font-size: 1.12rem;}
-.menu:hover{cursor: pointer;}
+#tbl-member{margin: 0 auto;}
+table#tbl-member th, table#tbl-member td{height: 3rem; padding: 0.15rem; text-align:center;}
+table#tbl-member th{font-size: 1.2rem;}
+.member-role{border: 1px solid #34C5F0; border-radius: 0.3rem;}
+#pagebar{display:flex; justify-content: center; align-items: center; width: 30%; margin: 0 auto;}
