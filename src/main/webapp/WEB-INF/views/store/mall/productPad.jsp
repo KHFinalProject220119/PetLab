@@ -8,7 +8,7 @@
 <link rel="stylesheet"
 	href="${ path }/resources/css/store/productMain.css" />
 <jsp:include page="/WEB-INF/views/common/header.jsp">
-	<jsp:param value="배변판/패드" name="title" />
+	<jsp:param value="배변판/배변패드" name="title" />
 </jsp:include>
 
 <h1>배변판/패드</h1>
@@ -30,19 +30,24 @@
 		</tr>
 	</c:if>
 
+				<c:forEach items="${attlist}" var="attlist">
+									<img class="img_des"
+											src="${path}/resources/upload/store/mall/${attlist.renamedFilename}">
+
+												</c:forEach>
 
 	<c:if test="${not empty list}">
 		<c:forEach items="${list}" var="product" varStatus="vs">
 			<c:set var="product.categorySubId" value="pad" />
 			<c:if test="${product.categorySubId eq 'pad' }">
-<div class="img-dv">
-		<img src="${path}/resources/upload/store/mall/${product.attachments}">
-			</div>
+					
 			<div class="pro_cate_name">
 			<a href="${path}/store/mall/ProductDetail?no=${product.productNo}" >
+
 			<span class="product_sub_catgory">[${product.categorySubId}]</span>
 			<span class="product_name">${product.productName}</span>
 			</div>
+			
 			<span class="product_price"><b><fmt:formatNumber value="${product.productPrice}"
 								pattern="#,###" /></b>원</span></a>				
 			</c:if>

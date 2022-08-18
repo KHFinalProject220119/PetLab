@@ -39,6 +39,8 @@
 
 <section class="content">
 
+<form method="post"  action="<c:url value='/store/cart/addCart?${_csrf.parameterName}=${_csrf.token}' />">
+
 <!--상품 썸네일 시작 -->
 	<div class="img-content">
 		<c:forEach items="${ product.attachments }" var="attach">
@@ -78,16 +80,45 @@
 <!--장바구니/ 결제-->
 <div class="cart_and_buy">
 	<div class="cart_add">
-		<a href="${path}/store/cart/addCart" class="add-cart"> <img
-			src="${path}/resources/images/store/cart.png" width=44px;> <!-- <span class="cart-btn">장바구니</span> -->
-		</a>
+	<input type="text" name="memberId" value="${member.memberId}" readonly/>
+<c:if test="${not empty memberId}">
+									<input type="submit" id="insertCart" value="장바구니에 담기">
+									<input type="button" id="insertOrder" value="바로 주문하기">
+					          </c:if>
+
+
+	
+<%-- 	<button id="btn-cart" class="btn-cart">장바구니</button>
+	<form action="${path}/store/cart/addCart" id="cartFrm">
+		<input type="hidden" name="productNo" value="${product.productNo}" />
+	</form> --%>
+	
+
+
+						
 	</div>
 
 	<a href="${path}/store/pay" class="pay-product"> <span
 		class="pay-btn">구매하기</span>
 	</a>
 </div>
+
+</form>
 <!--장바구니/ 결제 끝-->
 
+<script>
+/* function cartSubmit(){
+   	if($("#memberId").val()){
+		$("#cart").attr("action", "${ pageContext.request.contextPath }/store/cart/addCart")
+		.submit();
+   	} */
+	$("#btn-cart").click(function() {
+		if (!confirm("상품을 추가?"))
+			return;
+		$("#cartFrm").submit();
+	});
+	
+
+</script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
