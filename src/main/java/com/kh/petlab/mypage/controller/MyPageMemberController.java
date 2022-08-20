@@ -1,6 +1,7 @@
 package com.kh.petlab.mypage.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kh.petlab.member.model.dto.Address;
 import com.kh.petlab.member.model.dto.Member;
 import com.kh.petlab.mypage.model.service.MypageService;
 
@@ -25,9 +27,19 @@ public class MyPageMemberController {
 	MypageService mypageService;
 	
 	@GetMapping("/memberDetail")
-	public void memberDetail() {
-		
+	public void memberDetail(
+					@AuthenticationPrincipal Member loginMember, Model model) {
+		try {
+			String memberId = loginMember.getMemberId();
+			Address address = mypageService.selectAddress(memberId);
+			model.addAttribute("address", address);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 	}
+	
 	
 	@PostMapping("/updateMember")
 	public String updateMember(

@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -224,13 +226,23 @@ public class MemberController {
 			}
 			
 			
-			// Date로 변환
-			Date birthday = null;
+			// Date로 변환 -> local로 바꿈 /*박지수*/
+//			Date birthday = null;
+//			if(rawBirthday != null && !"".equals(rawBirthday)) {
+//				birthday = Date.valueOf(rawBirthday);
+//				member.setBirthday(birthday);
+//			}
 			if(rawBirthday != null && !"".equals(rawBirthday)) {
-				birthday = Date.valueOf(rawBirthday);
-				member.setBirthday(birthday);
+				if(!"-월-0".equals(rawBirthday)) {
+					log.debug("rawBirthday = {}", rawBirthday);
+					int year = Integer.parseInt(rawBirthday.substring(0, 4));
+					int month = Integer.parseInt(rawBirthday.substring(5, 7));
+					int day = Integer.parseInt(rawBirthday.substring(8, 10));
+				
+					LocalDate ldt = LocalDate.of(year, month, day);
+					member.setBirthday(ldt);
+				}
 			}
-			
 			// 암호화 처리
 			String rawPassword = member.getPassword();
 			String encryptedPassword = bcryptPasswordEncoder.encode(rawPassword);
@@ -339,13 +351,23 @@ public class MemberController {
 			}
 			
 			
-			// Date로 변환
-			Date birthday = null;
+			// Date로 변환 -> LocalDate변겅 /*박지수*/
+//			Date birthday = null;
+//			if(rawBirthday != null && !"".equals(rawBirthday)) {
+//				birthday = Date.valueOf(rawBirthday);
+//				member.setBirthday(birthday);
+//			}
 			if(rawBirthday != null && !"".equals(rawBirthday)) {
-				birthday = Date.valueOf(rawBirthday);
-				member.setBirthday(birthday);
+				if(!"-월-0".equals(rawBirthday)) {
+					log.debug("rawBirthday = {}", rawBirthday);
+					int year = Integer.parseInt(rawBirthday.substring(0, 4));
+					int month = Integer.parseInt(rawBirthday.substring(5, 7));
+					int day = Integer.parseInt(rawBirthday.substring(8, 10));
+				
+					LocalDate ldt = LocalDate.of(year, month, day);
+					member.setBirthday(ldt);
+				}
 			}
-			
 			// 암호화 처리
 			String rawPassword = member.getPassword();
 			String encryptedPassword = bcryptPasswordEncoder.encode(rawPassword);
