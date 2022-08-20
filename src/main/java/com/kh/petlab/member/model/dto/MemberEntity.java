@@ -1,11 +1,9 @@
 package com.kh.petlab.member.model.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
-import com.kh.petlab.common.PetLabUtils;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,8 +30,9 @@ public class MemberEntity {
 	protected String phone;
 	@NonNull
 	protected String email;
+//	LocalDate변경 /*박지수*/
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	protected Date birthday;
+	protected LocalDate birthday;
 	protected Gender gender;
 	protected String memberSocial;
 	protected String recommendedId;
