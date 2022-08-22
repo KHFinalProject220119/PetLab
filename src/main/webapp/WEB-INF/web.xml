@@ -58,6 +58,16 @@
           <url-pattern>/*</url-pattern>
       </filter-mapping>
       
+      <!--  파일 전송 관련  -->
+    <filter>
+     <display-name>springMultipartFilter</display-name>
+     <filter-name>springMultipartFilter</filter-name>
+     <filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>
+  </filter>
+  <filter-mapping>
+     <filter-name>springMultipartFilter</filter-name>
+     <url-pattern>/*</url-pattern>
+  </filter-mapping>
       
       <!-- #9.3. Security Filter 등록  -->
      <filter>

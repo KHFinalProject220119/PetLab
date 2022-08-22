@@ -97,7 +97,7 @@
 			<th></th>
 			<th></th>
 			<th id="btn_photo_add">
-				<button type="button" id="btn-add-photo" class="btn_photo" onclick="goToBoardForm();">사진 올리기</button>
+				<button type="button" id="btn-add-photo" class="btn_photo" onclick="goToBoardForm();"><a href="${pageContext.request.contextPath}/community/enroll">사진 올리기</button>
 				<!-- 마우스를 가져갈 시 커서 뿐 아니라 그라데이션 물결 효과를 얻고싶다아아...왜안되니.... -->
 			</th>
 		</tr>

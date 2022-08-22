@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.petlab.community.model.dao.CommunityDao">
+
+	<insert id="enroll">
+		insert into
+			community_photo
+		values(
+			seq_community_photo_photo_no.nextval,
+			#{memberId},
+			#{attachGroupId},
+			#{pTitle},
+			#{pContent},
+			0,
+			0,
+			sysdate
+		)
+	</insert>
+	
+		<insert id="attachmentEnroll">
+		insert into
+			attachment
+		values(
+			#{attachGroupId},
+			seq_attachment_attach_no.nextval,
+			#{originalFilename},
+			#{renamedFilename},
+			default,
+			default
+		)
+	</insert>
+</mapper>
