@@ -9,7 +9,7 @@
  <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="마이페이지" name="title"/>
 </jsp:include>
-<div class="flex">
+<sec:authentication property="principal" var="loginMember"/>
 <div id="mypage-submenu" class="submenu">
 	<h4 class="top-title">MY PAGE</h4>
 	<ul id="sub">
@@ -23,8 +23,7 @@
   			<sec:authorize access="isAuthenticated()">
 			    	<%-- 로그인한 경우 --%>
 			    	<span>
-			    		<sec:authentication property="principal.username"/>
-				    	</a>님
+			    		${loginMember.memberName}
 				    </span>
 			
 			 </sec:authorize>
@@ -114,6 +113,5 @@
    				<a href="/mypage/closeMember">회원탈퇴&nbsp;&nbsp;&gt;</a>
  				</div>
 		    <div></div>
-</div>
   
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

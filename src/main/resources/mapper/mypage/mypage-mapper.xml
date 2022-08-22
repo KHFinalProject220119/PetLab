@@ -18,20 +18,20 @@
  		update
  			member
  		<set>
- 			<if test="name != null">
-	 			name = #{name},
+ 			<if test="memberName != null">
+	 			member_name = #{memberName},
  			</if>
- 			<if test="birthday != null">
-				birthday = #{birthday},
+ 			<if test="nickname != null">
+	 			nickname = #{nickname},
+ 			</if>
+ 			<if test="phone != null">
+				phone = #{phone},
 			</if>
  			<if test="email != null">
 				email = #{email},
 			</if>
- 			<if test="phone != null">
-				phone = #{phone},
-			</if>
- 			<if test="address != null">
-				address = #{address},
+ 			<if test="birthday != null">
+				birthday = #{birthday},
 			</if>
  			<if test="gender != null">
 				gender = #{gender},
@@ -40,6 +40,20 @@
  		where
  			member_id = #{memberId}
  	</update>
+ 	
+ 	<update id= "updateAddress">
+ 		update
+ 			address
+ 		<set>
+ 			address = #{address},
+ 			postcode = #{postcode},
+			address_detail = #{addressDetail},
+			address_extra = #{addressExtra}
+ 		</set>
+ 		where
+			member_id = #{memberId}
+ 	</update>
+ 
  	
  	<resultMap type="member" id="memberMap">
 		<id column="member_id" property="memberId" />

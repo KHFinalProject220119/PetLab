@@ -25,12 +25,12 @@ public class MyPagePetController {
 		
 	}
 	
-	@GetMapping("/myPetEnroll")
+	@GetMapping("/petEnroll")
 	public void myPetEnroll() {
 		
 	}
 	
-	@GetMapping("/myPetUpdate")
+	@GetMapping("/petUpdate")
 	public void myPetUpdate() {
 		
 	}

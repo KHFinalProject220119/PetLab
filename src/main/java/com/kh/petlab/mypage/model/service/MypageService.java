@@ -19,6 +19,7 @@ public interface MypageService {
 	
 	int updatePet(MyPet pet);
 	Address selectAddress(String memberId);
+	int updateAddress(Address address);
 
 	
 

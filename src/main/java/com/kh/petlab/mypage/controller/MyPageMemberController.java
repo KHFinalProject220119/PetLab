@@ -5,7 +5,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -32,7 +31,9 @@ public class MyPageMemberController {
 		try {
 			String memberId = loginMember.getMemberId();
 			Address address = mypageService.selectAddress(memberId);
+			Member member = mypageService.selectOneMember(memberId);
 			model.addAttribute("address", address);
+			model.addAttribute("member", member);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -43,14 +44,15 @@ public class MyPageMemberController {
 	
 	@PostMapping("/updateMember")
 	public String updateMember(
-					@ModelAttribute("loginMember") Member loginMember, 
-					RedirectAttributes redirectAttr, 
-					Model model) {
+			Member loginMember, Address address,
+			RedirectAttributes redirectAttr, Model model) {
 		
+		log.info("address = {}", address);
 		try {
 			
 			log.info("loginMember = {}", loginMember);
 			int result = mypageService.updateMember(loginMember);
+			result = mypageService.updateAddress(address);
 			redirectAttr.addFlashAttribute("msg", "회원정보를 성공적으로 변경했습니다");
 			
 			// 세션 정보 갱신

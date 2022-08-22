@@ -23,4 +23,6 @@ public interface MypageDao {
 
 	Address selectAddress(String memberId);
 
+	int updateAddress(Address address);
+
 }

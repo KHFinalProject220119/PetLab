@@ -66,5 +66,9 @@ public class MypageServicempl implements MypageService {
 		
 		return mypageDao.selectAddress(memberId);
 	}
+	@Override
+	public int updateAddress(Address address) {
+		return mypageDao.updateAddress(address);
+	}
 	
 }
