@@ -23,7 +23,14 @@
 		<!-- member - 공통 : 회원가입/ 로그인 / 로그아웃 등  -->
 		<intercept-url pattern="/member/signOut" access="permitAll"  />
 		<intercept-url pattern="/member/**" access="isAnonymous()"  />
+		<!-- hospital  -->
 		
+		<intercept-url pattern="/hospital/hospitalEnroll" access="hasRole('HOSPITAL', 'ADMIN')"  />
+		<intercept-url pattern="/hospital/**" access="permitAll"  />
+		
+		<!-- 고객센터  -->
+		<intercept-url pattern="/customerservice/**" access="permitAll"  />
+
 		<!-- 전체  -->
 		<intercept-url pattern="/**" access="isAuthenticated()" /> 
 

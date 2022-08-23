@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.petlab.hospital.model.dao.HospitalDao">
+
+ 	<select id="selectHospital" resultType="hospital">
+ 		select 
+ 			* 
+ 		from 
+ 			hospital 
+ 		where 
+ 			id = #{id}
+ 	</select>
+ 	
+ 	<select id="selectAttachmentHostpital" resultType="attachment">
+ 		select 
+ 			*
+ 		from
+ 			attachment
+ 		where 
+ 			attach_group_id = #{attachGroupId}
+ 	</select>
+ 	
+ 	<select id="selectAttachmentHosReview" resultType="attachment">
+ 		select 
+ 			*
+ 		from
+ 			attachment
+ 		where 
+ 			attach_group_id = #{attachGroupId}
+ 	</select>
+ 	
+ 	<select id="selectReviews" resultType="pethosreview">
+ 		select 			
+ 			p.*,
+ 			((nvl(r.kindness, 1) + nvl(r.description, 1) + nvl(r.diagnosis, 1) + nvl(r.facility, 1) + nvl(r.price, 1)) / 5) average,
+            (select avg((nvl(r.kindness, 1) + nvl(r.description, 1) + nvl(r.diagnosis, 1) + nvl(r.facility, 1) + nvl(r.price, 1)) / 5)  from pet_hos_review p join hos_review_rate r on p.hos_review_no = r.hos_review_no where p.id = #{id} ) total_avg,
+            (select avg(nvl(r.kindness, 1)) from pet_hos_review p join hos_review_rate r on p.hos_review_no = r.hos_review_no where p.id = #{id} ) kindness_avg,
+            (select avg(nvl(r.description, 1)) from pet_hos_review p join hos_review_rate r on p.hos_review_no = r.hos_review_no where p.id = #{id} ) description_avg,
+            (select avg(nvl(r.diagnosis, 1)) from pet_hos_review p join hos_review_rate r on p.hos_review_no = r.hos_review_no where p.id = #{id} ) diagnosis_avg,
+            (select avg(nvl(r.facility, 1)) from pet_hos_review p join hos_review_rate r on p.hos_review_no = r.hos_review_no where p.id = #{id} ) facility_avg,
+            (select avg(nvl(r.price, 1)) from pet_hos_review p join hos_review_rate r on p.hos_review_no = r.hos_review_no where p.id = #{id} ) price_avg
+ 		from
+ 			pet_hos_review p join hos_review_rate r on p.hos_review_no = r.hos_review_no 
+ 		where 
+ 			p.id = #{id}
+ 	</select>
+ 	
+ 	<select id="selectReviewRate" resultType="hosreviewrate">
+ 		select 
+ 			*
+ 		from
+ 			hos_review_rate
+ 		where 
+ 			hos_review_no = #{hosReviewNo}
+ 	</select>
+
+ 	<select id="selectHospitalReviewByAttachGroupId" resultType="pethosreview">
+ 		select 
+ 			*
+ 		from
+ 			pet_hos_review
+ 		where 
+ 			attach_group_id = #{attachGroupId}
+ 	</select>
+ 
+	<insert id="hospitalEnroll">
+		insert into 
+			hospital
+		values(
+
+			#{id}, 
+			#{attachGroupId},
+			#{placeName}, 
+			#{tel}, 
+			#{addressName}, 
+			#{roadAddressName}, 
+			#{distance}, 
+			#{operationHours}, 
+			#{placeUrl}, 
+			#{chiefVeterinarian}, 
+			#{cntVeterinarian}, 
+			#{content}, 
+			#{isparked}, 
+			#{x}, 
+			#{y}, 
+			sysdate
+		) 
+	</insert>
+	
+	<insert id="hospitalReviewEnroll">
+		insert into 
+			pet_hos_review
+		values(
+			seq_pet_hos_review_no.nextval, 
+			#{attachGroupId},
+			#{memberId}, 
+			#{id}, 
+			#{title}, 
+			#{content},  
+			sysdate
+		) 
+	</insert>
+
+	<insert id="reviewRateEnroll">
+		insert into 
+			hos_review_rate
+		values(
+			seq_hos_review_rate_no.nextval, 
+			#{hosReviewNo},
+			#{kindness}, 
+			#{description}, 
+			#{diagnosis}, 
+			#{facility},  
+			#{price}
+		) 
+	</insert>
+ 	
+ 	<update id="updateHospitalReview">
+ 		update
+ 			pet_hos_review
+ 		<set> 
+ 			<if test="title != null">
+	 			title = #{title},
+ 			</if>
+ 			<if test="content != null">
+				content = #{content},
+			</if>
+ 		</set>
+ 		where
+ 			hos_review_no = #{hosReviewNo}
+ 	</update>
+ 	
+ 	<update id="updateHospitalReviewRate">
+ 		update
+ 			hos_review_rate
+ 		<set> 
+ 			<if test="kindness != null">
+	 			kindness = #{kindness},
+ 			</if>
+ 			<if test="description != null">
+				description = #{description},
+			</if>
+ 			<if test="diagnosis != null">
+				diagnosis = #{diagnosis},
+			</if>
+ 			<if test="facility != null">
+				facility = #{facility},
+			</if>
+ 			<if test="price != null">
+				price = #{price},
+			</if>
+ 		</set>
+ 		where
+ 			no = #{no}
+ 	</update>
+ 		
+	
+	<resultMap type="hospital" id="hospitalMap">
+		<id column="id" property="id" />
+		<result column="attach_group_id" property="attachGroupId"  />
+		<result column="place_name" property="placeName"  />
+		<result column="tel" property="tel"  />
+		<result column="address_name" property="addressName"  />
+		<result column="road_address_name" property="roadAddressName"  />
+		<result column="distance" property="distance"  />
+		<result column="operation_hours" property="operationHours"  />
+		<result column="place_url" property="placeUrl"  />
+		<result column="chief_veterinarian" property="chiefVeterinarian"  />
+		<result column="cnt_veterinarian" property="cntVeterinarian"  />
+		<result column="content" property="content"  />
+		<result column="isparked" property="isparked"  />
+		<result column="x" property="x"  />
+		<result column="y" property="y"  />
+		<result column="enroll_date" property="enrollDate"  />
+	</resultMap>
+	
+	<resultMap type="pethosreview" id="pethosreviewMap">
+		<id column="hos_review_no" property="hosReviewNo" />
+		<result column="attach_group_id" property="attachGroupId"  />
+		<result column="member_id" property="memberId"  />
+		<result column="id" property="id"  />
+		<result column="title" property="title"  />
+		<result column="content" property="content"  />
+		<result column="reg_date" property="regDate"  />
+	</resultMap>
+
+	<resultMap type="hosreviewrate" id="hosreviewrateMap">
+		<id column="no" property="no" />
+		<result column="hos_review_no" property="hosReviewNo"  />
+		<result column="kindness" property="kindness"  />
+		<result column="description" property="description"  />
+		<result column="diagnosis" property="diagnosis"  />
+		<result column="facility" property="facility"  />
+		<result column="price" property="price"  />
+	</resultMap>
+ 
+	
+	
+</mapper>
