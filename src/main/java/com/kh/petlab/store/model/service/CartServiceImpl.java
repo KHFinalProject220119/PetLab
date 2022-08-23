@@ -1,5 +1,6 @@
 package com.kh.petlab.store.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -30,6 +31,21 @@ public class CartServiceImpl implements CartService {
 	public int deleteCart(int no) {
 		int result = cartDao.deleteCart(no);
 		return result;
+	}
+
+	@Override
+	public int sameProduct(int productNo, String memberId) {
+		HashMap<String,Object> map = new HashMap<String,Object>();
+		map.put("productNo", productNo);
+		map.put("memberId", memberId);
+		
+		return cartDao.sameProduct(map);
+	}
+
+	@Override
+	public void productCount(Cart cart) {
+		cartDao.productCount(cart);
+		
 	}
 
 }
