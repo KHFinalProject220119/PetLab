@@ -282,7 +282,7 @@ public class StoreController {
 
 	// 상품등록
 	@RequestMapping(value = "/mall/insertProduct", method = RequestMethod.POST)
-	public ModelAndView insertProduct(Product product,
+	public String insertProduct(Product product,
 			@RequestParam(value = "upFile", required = true) MultipartFile[] upFiles,
 			@RequestParam(value = "desFile", required = true) MultipartFile[] upFiless, HttpServletRequest request,
 			RedirectAttributes redirectAttr, ModelAndView mav) {
@@ -331,14 +331,14 @@ public class StoreController {
 			int result = storeService.insertProduct(product);
 			redirectAttr.addFlashAttribute("msg", "피드 등록 완료 !");
 
-			mav.setViewName("/store/storeMain");
+			//mav.setViewName("/store/mall/ProductDetail?no=");
 
 		} catch (Exception e) {
 			log.error("상품등록 오류", e);
 
 		}
-		// return "redirect:/store/storeMain";
-		return mav;
+		 return "redirect:/store/mall/ProductDetail?no="+product.getProductNo();
+		//return mav;
 	}
 
 	// 상품상세

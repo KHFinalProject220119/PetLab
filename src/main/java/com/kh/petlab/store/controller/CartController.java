@@ -27,11 +27,10 @@ public class CartController {
 
 	@Autowired
 	StoreService storeService;
-	
+
 	@Autowired
 	MemberService memberService;
-	
-	
+
 	@Autowired
 	ServletContext application;
 
@@ -41,18 +40,21 @@ public class CartController {
 		
 		String memberId = (String)session.getAttribute("memberId");
 
-		cart.setMemberId(memberId);
+		//cart.setMemberId(memberId);
 		
 		// (1) 동일 상품이 존재하는지 확인
-		//int count = cartService.checkPrdInCart(vo.getPrdNo(), memId);
+		int count = cartService.sameProduct(cart.getProductNo(), memberId);
 		
-		//if(count == 0) { // 동일 상품이 존재하지 않으면
+		if(count == 0) { // 동일 상품이 존재하지 않으면
 			cartService.insertCart(cart); // (2) 장바구에 새로 추가
-		//} else { // (3) 존재하면 장바구니에서 해당 상품의 주문수량 변경
-			//cartService.updateQtyInCart(vo);
-		//}
-		
-		return "redirect:/product/cartList";
+		} else { 
+			// (3) 존재하면 장바구니에서 해당 상품의 주문수량 변경
+			cartService.productCount(cart);
+		}
+
+
+	return "redirect:/store/cart/cartList";
+
 	}
 
 	@RequestMapping("/cartList")
