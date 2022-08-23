@@ -1,0 +1,174 @@
+@charset "UTF-8";
+
+.detail-info-title-cont{background-color: #FF9900; }
+.title-wrapper{width:60%; margin: 0 auto; }
+.title-wrapper p{ font-family: 'Goyang'; font-size: 2rem; font-weight: bold; text-align: center; width: 60%; margin: 0 auto; color: red;}
+.top-title {font-family: 'Goyang'; font-size: 3.5rem; font-weight: bold; text-align: center; margin: 0; color: #FFF;}
+.border-box{width: 30%; display:flex; justify-content: center; flex-direction: row; margin: 1rem auto; padding: 1rem; border: 6px solid #FF9900; }
+.map-wrapper{width: 60%; height: 40rem; margin: 2rem auto; border: 0.4rem solid #FF9900; border-radius: 0.4rem; }
+#map{width: 100%; height: 100%;}
+.place-top-wrapper{width: 60%; display:flex; flex-direction: column; align-items: center; margin: 2rem auto; padding: 1rem 0; border-bottom: 0.3rem solid #FF5B00;
+line-height: 2rem; }
+.address{font-family: 'Goyang';font-size: 2rem; font-weight: bold; margin: 0.5rem 0; }
+.tel{font-family: 'Goyang';font-size: 2rem;   margin: 0.5rem 0; color: #000; }
+.location-img{width:2.5rem; height:2.5rem;}
+.inner{display:flex; align-items: center}
+.inner div{font-family: 'Goyang';padding: 0 1rem; text-align: center;}
+.function-cont{width: 16rem; border-radius: 0.4rem;}
+.place-info-list{padding:0; font-size: 1.5rem; }
+.title{font-weight: bold;}
+.seperator{font-size: 2rem; font-weight: bold; color: #FF9900;}
+.function-wrapper{display: flex; flex-direction: row; justify-content: space-evenly; font-size: 1.7rem;  padding: 0.8rem 0.5rem; margin: 0; }
+.place-body-wrapper{width: 60%; display:flex; flex-direction: column; align-items: center; margin: 2rem auto 1rem; padding: 1rem 0 2rem; border-bottom: 0.3rem solid #FF5B00;
+line-height: 2rem; }
+.place-info-detail{width: 60%; margin: 0 auto;}
+.place-review{width: 60%; margin: 0 auto;}
+.detail-img-wrapper{padding: 0;}
+.detail-img-wrapper .title{font-family: 'Goyang';font-size: 2rem; font-weight: bold; margin: 1rem 0; }
+.detail-img-wrapper li{display: flex;  flex-direction: column; padding: 1rem 0 2rem; border-bottom: 0.3rem solid #FF5B00;}
+.func-img{width: 1.5rem; height: 1.5rem;}
+.hospital-tel, .hospital-share{ display:flex; flex-direction: row; align-items: center; font-family: 'Goyang';font-size: 1.5rem; font-weight: bold; color: #000; cursor:pointer;}
+.img-list{display:flex; flex-direction: row;}
+.hp-img-wrapper{width: 13.5rem; height: 13.5rem; border: 0.2rem solid #FF9900; border-radius: 0.3rem; margin: 0 0.2rem; cursor:pointer;}
+.hp-img-wrapper:focus{border: 0.2rem solid #FF5B00;}
+.hospital-img{width: 13.5rem; height: 13.5rem;}
+.review-icon{width:3rem; height:3rem;}
+.top-btn-wrapper{display:flex; flex-direction: row; align-items: center; width: 40%;}
+.review-title-top{font-family: 'Goyang';font-size: 2rem; font-weight: bold;}
+.review-text-top{margin: 0 1rem;}
+.write-btn, .review-btn{font-family: 'Goyang';font-size: 1.5rem; font-weight: bold; border: none; color: #FF9900; background-color: #FFF; cursor:pointer;}
+.write-btn:focus, .review-btn:focus{outline: none;}
+.review-btn{border: 0.2rem solid #FFE3A9; border-radius: 0.3rem;}
+.review-btn:hover{outline: none; border: 0.2rem solid #CA965C; background-color: #EEE;}
+.review-body{width: 100%; height: 25rem;}
+.review-total{margin: 1rem 0;}
+.total-title{font-family: 'Goyang';font-size: 1.5rem; font-weight: bold; text-align: center;}
+.total-rate{font-family: 'Goyang';font-size: 3rem; font-weight: bold; text-align: center; margin: 1rem 0;}
+.rating{width: 40%; display:flex; flex-direction: row; align-items: center; justify-content: space-evenly; margin: 0 auto;}
+.fa.fa-star{color:#DDD; cursor:pointer;}
+.fa.fa-star.checked { color: orange;}
+.fa.fa-star.detail-rate {font-size: 1rem;}
+.fa.fa-star.member-rate {font-size: 1rem;}
+.fa.fa-star{font-size: 3.5rem;}
+.detail-rate-title{font-family: 'Goyang';font-size: 1.5rem; font-weight: bold; text-align: center;}
+.review-detail-rate{width: 75%; margin: 0 auto; display:flex; flex-direction: row; justify-content: space-evenly; align-items: center;}
+.bottom-btn-wrapper{width: 13%; margin: 2rem auto;}
+.member-review-top-img{border: 1px solid #FFF; border-radius: 50%; width: 3rem; height: 3rem;}
+.review-img, .receipt-img{width: 8rem; height: 8rem; border: 0.2rem solid #CA965C; border-radius: 0.3rem;}
+.receipt-img{margin: 0.3rem 0;}
+.member-review-container{width: 77%; height: auto; display:flex; margin: 1rem auto; padding: 0.3rem 0; border-bottom: 0.3rem solid #FF9900;}
+.member-review-top{display:flex; flex-direction: row; align-items: center; margin: 0.5rem 0;}
+.member-review-star-rate{margin: 0.5rem 0;}
+.member-review-top-id-wrapper, .member-review-top-date-wrapper{font-family: 'Goyang'; font-size: 1.5rem; text-align: center;}
+.member-review-top-id-wrapper{margin: 0 0.3rem; padding: 0 0.5rem;  font-weight: bold; }
+#reviewContent{width:45rem; height: auto; overflow:visible; border: none; font-family: 'Goyang';font-size: 1.5rem; resize: none; }
+#reviewContent:focus{outline:none;}
+.review-img-wrapper{display: flex; flex-direction: column;}
+
+/* --------------------------------------------  병원 오버레이     ------------------------------------------------  */
+.overlay-wrapper { position: absolute;left: 0;bottom: 40px;width: 16rem;height: 132px;margin-left: -7.9rem; text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+.overlay-wrapper * {padding: 0;margin: 0;}
+.infos {width: 16rem;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background-color: #FFF;} */
+.infos:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+.infos-title {padding: 5px 0 0 10px;height: 30px; background-color: #FF9900; font-size: 18px;  font-weight: bold; color: #FFF;}
+.infos-close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+.infos-close:hover {cursor: pointer;}
+.infos-body {position: relative;overflow: hidden;}
+.infos-desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+.marker-road-address {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+/* .marker-tel {font-size: 0.8rem;color: #888;margin-top: -2px;} */
+.infos-img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+.infos:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+.infos-link {color: #5085BB;}
+
+
+
+/* --------------------------------------------   첨부 이미지     ------------------------------------------------  */
+#file-wrapper{display:flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: center; width: 100%; height: 15rem; margin: 0 auto; padding: 0.3rem; font-size: 1rem; border: 0.2rem solid #FF9900;}
+#file-btn{width: 5rem; padding: 0.6rem; font-size: 0.8rem; color: #fff; font-weight: bold;  border-radius: 0.5rem;
+display: inline-flex;   align-items: center;   justify-content: center;   line-height: 1.5;text-align: center;
+background-image: linear-gradient(90deg, #FF5B00, #FF5B00, #FF9900,#FF9900); border: none; cursor:pointer; margin: 0 0.2rem;
+}    
+.attach-btn{cursor:pointer; border: none; border-radius: 1rem; background-color: #EEE;}
+.attach-btn:hover{background-color: #dbd1d1fa;}
+.attach-img{width:7rem; height: 7rem;}
+.enroll-text-wrapper{display:flex; flex-direction: column; width: 75%; margin: 1rem auto;}
+.enroll-textarea{width:28rem;  height: 16rem; border: 0.15rem solid #FF9900; font-family: 'Goyang';font-size: 1.5rem; resize: none;  padding: 0.5rem;}
+.enroll-textarea:focus{outline:none; border: 0.15rem solid #FF5B00;}
+#counter{font-family: 'Goyang'; text-align: right;}
+
+.thumbnail-wrapper{display:flex; flex-direction: column; margin: 0 0.2rem; align-items: center; width: 8rem; height: 10.5rem; border: 0.25rem solid #EEE; border-radius: 1rem;}
+.thumbnail-text{font-family: 'Goyang'; font-size: 1.2rem; font-weight: bold; text-align: center; border-top: 1px solid #EEE;}
+.imgThumbnail{width:6.5rem; height: 6.5rem; border:none; outline:none; backgournd-color: #FFF;}
+.imgThumbnail:focus{outline:none;}
+.thumbnail-img-wrapper{display:flex; flex-direction: row;  justify-content: center; align-items: center;}
+.img-cancel-wrapper{display:flex; flex-direction: row;  justify-content: flex-end;}
+.cancel-btn{cursor:pointer; padding: 0; border:none; background-color: #FFF;}
+.img-cancel{width: 2rem; height: 2rem;}
+.cancel-btn:hover{ background-color: #EEE; border-radius: 4rem;}
+
+
+
+/* --------------------------------------------   병원 모달     ------------------------------------------------  */
+.hospital-modal { display: none; position: fixed; z-index: 1;  left: 0; top: 0; width: 100%;  height: 100%; overflow: auto;  background-color: #FFF; background-color: rgba(0,0,0,0.4);}
+.modal-contents { background-color: #FEFEFE; margin: 15% auto; border-radius: 0.3rem; padding: 0; border: 1px solid #888; width: 50rem; height: 50rem;}
+.modal-content-img{width: 100%; height:100%;}
+.modal-header{display:flex; justify-content: flex-end; justify-content: space-between; align-items: center; flex-direction: row; width: 50rem;}
+.modal-body{width:50rem; height: 50rem;}
+ .modal-title{font-family: 'Goyang';font-size: 1.5rem; font-weight: bold; margin-left:1rem;} 
+.close { color: #AAA; width: 3rem; height: 3rem; font-weight: bold; }
+.close:hover, .close:focus {color: black; text-decoration: none;  cursor: pointer;}
+
+/* --------------------------------------------   공유 모달     ------------------------------------------------  */
+.share-modal { display: none; position: fixed; z-index: 1;  left: 0; top: 0; width: 100%;  height: 100%; overflow: auto;  background-color: #FFF; background-color: rgba(0,0,0,0.4);}
+.share-modal-contents { background-color: #FEFEFE; margin: 15% auto; border-radius: 0.3rem; padding: 0; border: 1px solid #888; width: 18rem; height: 11rem;}
+.share-modal-content-img{width: 100%; height:100%;}
+.share-modal-header{display:flex; align-items: center; flex-direction: row; justify-content: space-between; width: 65%; font-family: 'Goyang'; font-size: 1.5rem; padding-left: 35%; padding-bottom: 0.2rem; font-weight: bold; }
+.share-modal-body{display:flex; width:100%; height: 8.5rem; border-top: 0.2rem solid #FF9900;}
+.share-btn-cont{width: 50%; display:flex; flex-direction: column; align-items: center; justify-content: center;}
+.share-close-img{width:100%; height: 100%;}
+.share-modal-content-img{width: 5rem; height: 5rem;}
+.close-share { color: #AAA; width: 2rem; height: 2rem; font-weight: bold; }
+.close-share:hover, .close-share:focus {color: black; text-decoration: none;  cursor: pointer;}
+.share-btn-text{text-align: center; margin: 1rem 0 0; font-family: 'Goyang'; font-size: 1.2rem;font-weight: bold;}
+.url-share-btn{background-color: #FFF; border:none; cursor:pointer; border-radius: 0.4rem;}
+.url-share-btn:hover{background-color: #EEE;}
+#create-kakaotalk-sharing-btn{display:flex; flex-direction: column; align-items: center; justify-content: center; color: #000;}
+#create-kakaotalk-sharing-btn img{width: 5rem; height; 5rem;}
+#create-kakaotalk-sharing-btn:hover{background-color: #EEE; border-radius: 0.4rem;}
+/*------------------------------------------------ 리뷰 등록 폼 모달 ---------------------------------------------  */
+#reviewFrm{padding: 2rem 0;}
+.review-modal {display:none;  position: fixed; z-index: 1;  left: 0; top: 0; width: 100%;  height: 58rem; overflow: auto;  background-color: #FFF; background-color: rgba(0,0,0,0.4);}
+.modal-content {background-color: #FEFEFE; margin: 2% auto; height: 100%; border-radius: 0.3rem; padding: 0; border: 1px solid #888; width: 43%;}
+.modal-content-img{width: 100%; height:100%;}
+.review-modal-header{display:flex; align-items: center; flex-direction: row;}
+.review-modal-title-wrapper{width: 94%; display: flex; flex-direction: row; justify-content: center; align-items: center;}
+.review-close-wrapper{width: 6%; display: flex; flex-direction: row; align-items: center; justify-content: flex-end;}
+.review-modal-title{font-family: 'Goyang';font-size: 2.5rem; font-weight: bold; margin-left: 5rem;} 
+.review-modal-close { color: #AAA; width: 3rem; height: 3rem; font-weight: bold; }
+.close:hover, .close:focus {color: black; text-decoration: none;  cursor: pointer;}
+#counter{font-family: 'Goyang'; text-align: right;}
+.review-enroll-text-wrapper{display:flex; flex-direction: column; width: 85%; margin: 1rem auto;}
+.review-rate-enroll-title{font-family: 'Goyang'; font-size: 1.5rem; font-weight: bold;}
+.review-rate-enroll-wrapper{ width: 50%; display:flex; justify-content: space-around; align-items: center; flex-direction: row; margin: 1rem auto;}
+.review-enroll-img-wrapper{margin-top: 1rem;}
+.info-wrapper{width: 85%; display:flex; flex-direction: column; align-items: center; padding-top: 0.5rem;  margin: 0 auto;}
+.enroll-textarea{width:43.5rem;  height: 10rem; border: 0.2rem solid #FF9900; font-family: 'Goyang';font-size: 1.5rem; resize: none; }
+.enroll-textarea:focus{outline:none; border: 0.2rem solid #FF5B00;}
+.label-wrapper{width: 6rem;}
+.label-wrapper label {font-family: 'Goyang'; font-size: 1.5rem; font-weight: bold; width: 8rem;}
+.file-box{font-family: 'Goyang'; width: 13.6rem;margin: 0 0.5rem; padding: 1rem 0.5rem; font-size: 1rem; border: 0.15rem solid #FF9900;}
+.file-box:before{font-family: 'Goyang'; content: ""; display: inline-block; vertical-align:middle; text-align:center; height: 100%; }	
+.file-btn{font-family: 'Goyang'; width: 3rem; padding: 0.3rem; font-size: 0.8rem; color: #fff; font-weight: bold;  border-radius: 0.5rem;
+display: inline-flex;   align-items: center;   justify-content: center;   line-height: 1.5; text-align: center;
+background-image: linear-gradient(90deg, #FF5B00, #FF5B00, #FF9900,#FF9900); border: none; cursor:pointer; margin: 0 0.2rem;}
+.submit-btn-wrapper{width: 15%; margin: 2rem auto 0;}
+.submit-btn{font-family: 'Goyang'; width: 6rem; padding: 0.3rem; font-size: 1.5rem; color: #fff; font-weight: bold;  border-radius: 0.5rem;
+display: inline-flex;   align-items: center;   justify-content: center;   line-height: 1.5;text-align: center;
+background-image: linear-gradient(90deg, #FF5B00, #FF5B00, #FF9900,#FF9900); border: none; cursor:pointer; margin: 0 0.2rem;}
+.submit-btn:hover, .file-btn:hover{ background-image: linear-gradient(90deg, #FF9900, #FF9900, #FF5B00,#FF5B00);}
+.review-block{display:block;}
+.review-none{display:none;}
+.enroll-rate-kindness, .enroll-rate-description, .enroll-rate-diagnosis, .enroll-rate-facility, .enroll-rate-price{
+	font-size: 2rem !important;
+}

@@ -205,7 +205,8 @@
 	        <artifactId>json-lib-ext-spring</artifactId>
 	        <version>1.0.2</version>
     	</dependency>
-        
+    	
+
        <!-- #16. XmlMapper 의존 -->
 	    <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>

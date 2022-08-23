@@ -1,0 +1,73 @@
+@charset "UTF-8";
+.signup-cont{width: 65%; margin: 0 auto;}
+.top-title{font-family: 'Goyang'; font-size: 3.5rem; font-weight: bold; text-align: center;}
+.signup-title{font-family: 'Goyang'; font-size: 2rem; font-weight: bold; text-align: center;}
+.signup-order-img{width: 37%; margin: 0 auto;}
+.signup-form-wrapper{width: 50%; margin: 2rem auto; padding-top: 1rem; border-top: 0.2rem solid #FF5B00; } 
+  
+.info-wrapper{display:flex; flex-direction: row; align-items: center; padding: 1.4rem 0; border-bottom: 2px solid #E5E5E5; }
+.info-wrapper-with-msg{display:flex; flex-direction: column; padding-top: 1.4rem; border-bottom: 2px solid #E5E5E5; }
+.info-wrapper-post{display:flex; flex-direction: column; padding-top: 1rem; padding-bottom: 2rem; border-bottom: 2px solid #E5E5E5;}
+.post-inner-wrapper{display:flex; flex-direction: row; padding: 0.5rem 0;}
+.inner-wrapper{display:flex; }
+.info-wrapper label, .info-wrapper-post label, .inner-wrapper label{font-family: 'Goyang'; font-size: 1.7rem; font-weight: bold;}
+.input-cont{width: 15rem; margin: 0 0.5rem; padding: 0.5rem; font-size: 1rem; border: 0.15rem solid #FF9900; }
+.input-cont-url{width: 20rem; margin: 0 0.5rem; padding: 0.5rem; font-size: 1rem; border: 0.15rem solid #FF9900; }
+.operation-hour{width: 4rem; margin: 0 0.5rem; padding: 0.2rem; font-size: 1.2rem; text-align:center; border: 0.15rem solid #FF9900; }
+.hour-txt{width: 3rem; font-family: 'Goyang'; font-size: 1.5rem; font-weight: bold;}
+.input-cont:focus, .input-cont-addr:focus, .input-cont-url:focus,  .input-cont-hour:focus, .operation-hour:focus {border: 0.15rem solid #FF5B00; outline:none;}
+.input-cont-addr{width: 28rem; padding: 0.5rem; font-size: 1rem; border: 0.15rem solid #FF9900; }
+.btn-wrapper{margin-top: 2rem;}
+.label-wrapper {width: 10rem;}
+.btn-wrapper{width: 55%; margin: 1rem auto;}
+.find-hospital-btn, .select-hospital-btn{
+color: #fff;  font-size: 0.8rem; font-weight: bold;  border-radius: 0.3rem;
+display: inline-flex;   align-items: center;   justify-content: center;   line-height: 1.5; 
+text-align: center; background-image: linear-gradient(90deg, #FF5B00, #FF5B00, #FF9900,#FF9900); 
+border: none; cursor:pointer; margin: 0 0.2rem;
+}
+.back-btn, .submit-btn{width: 9rem; padding: 0.5rem; font-size: 1.2rem; color: #fff; font-weight: bold;  border-radius: 0.5rem;
+display: inline-flex;   align-items: center;   justify-content: center;   line-height: 1.5;text-align: center;
+background-image: linear-gradient(90deg, #FF5B00, #FF5B00, #FF9900,#FF9900); border: none; cursor:pointer; margin: 0 0.2rem;}
+.select-hospital-btn:hover, .find-hospital-btn:hover, .back-btn:hover, .submit-btn:hover{background-image: linear-gradient(90deg,#FF9900,#FF9900,#FF5B00,#FF5B00);}
+.birth-container{margin: 0 0.5rem;}
+#file-wrapper{display:flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: center; width: 28rem; height: 24rem; margin: 0 0.5rem; padding: 0.3rem; font-size: 1rem; border: 0.15rem solid #FF9900;}
+#file-btn{width: 5rem; padding: 0.6rem; font-size: 0.8rem; color: #fff; font-weight: bold;  border-radius: 0.5rem;
+display: inline-flex;   align-items: center;   justify-content: center;   line-height: 1.5;text-align: center;
+background-image: linear-gradient(90deg, #FF5B00, #FF5B00, #FF9900,#FF9900); border: none; cursor:pointer; margin: 0 0.2rem;
+}
+.attach-btn{cursor:pointer; border: none; border-radius: 1rem; background-color: #EEE;}
+.attach-btn:hover{background-color: #dbd1d1fa;}
+.attach-img{width:7rem; height: 7rem;}
+.enroll-text-wrapper{display:flex; flex-direction: column; width: 75%; margin: 1rem auto;}
+.enroll-textarea{width:28rem;  height: 16rem; border: 0.15rem solid #FF9900; font-family: 'Goyang';font-size: 1.5rem; resize: none;  padding: 0.5rem;}
+.enroll-textarea:focus{outline:none; border: 0.15rem solid #FF5B00;}
+#counter{font-family: 'Goyang'; text-align: right;}
+
+.thumbnail-wrapper{display:flex; flex-direction: column; margin: 0 0.2rem; align-items: center; width: 8rem; height: 10.5rem; border: 0.25rem solid #EEE; border-radius: 1rem;}
+.thumbnail-text{font-family: 'Goyang'; font-size: 1.2rem; font-weight: bold; text-align: center; border-top: 1px solid #EEE;}
+.imgThumbnail{width:6.5rem; height: 6.5rem; border:none; outline:none; backgournd-color: #FFF;}
+.imgThumbnail:focus{outline:none;}
+.thumbnail-img-wrapper{display:flex; flex-direction: row;  justify-content: center; align-items: center;}
+.img-cancel-wrapper{display:flex; flex-direction: row;  justify-content: flex-end;}
+.cancel-btn{cursor:pointer; padding: 0; border:none; background-color: #FFF;}
+.img-cancel{width: 2rem; height: 2rem;}
+.cancel-btn:hover{ background-color: #EEE; border-radius: 4rem;}
+/*------------------------------------------------ 주소 선택 모달 ---------------------------------------------  */
+.hospital-modal {display: none; position: fixed; z-index: 1;  left: 0; top: 0; width: 100%;  height: 100%; overflow: auto;  background-color: #FFF; background-color: rgba(0,0,0,0.4);}
+.modal-content {display:flex; flex-direction: column; align-items: center; align-content: center; background-color: #FEFEFE; margin: 15% auto; border-radius: 0.3rem; padding: 0; border: 1px solid #888; width: 60rem; height: 35rem;}
+.modal-content-img{width: 100%; height:100%;}
+.modal-header{display:flex; width: 100%; justify-content: space-between; align-items: center; flex-direction: row;}
+.modal-body{width: 95%; margin: 1rem 0;}
+.modal-title-wrapper{display:flex; flex-direction: row; justify-content: center; width: 100%;}
+.modal-title{font-family: 'Goyang';font-size: 3rem; font-weight: bold; text-align: center; height: 100%; } 
+.close { color: #AAA; width: 3rem; height: 3rem; font-weight: bold; }
+.close:hover, .close:focus {color: black; text-decoration: none;  cursor: pointer;}
+.modal-button-wrap{height: 33%; margin-top: 0.5rem;  }
+.select-btn{color:#FFF; background-color: #FF9900; border: none; border-radius: 0.4rem; font-size: 1.6rem; cursor:pointer; margin-bottom: 0.3rem;}
+
+.hospital-list-wrapper{width: 97%; margin: 0 auto; }
+.hospital-list-desc{width: 100%; display:flex; font-size: 1.6rem; font-weight: bold; justify-content: space-between;  padding: 0 0 1rem; border-bottom: 0.3rem solid #FF5B00; }
+.hospital-list{display:flex; margin: 0.5rem 0; align-items: center;}
+.hospital-list td{margin: 1rem 0; }
+tbody{ text-align:center; font-size: 1.4rem; font-weight: bold;}
