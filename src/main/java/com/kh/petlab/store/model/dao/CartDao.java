@@ -22,6 +22,10 @@ public interface CartDao {
 	//장바구니 삭제
 	int deleteCart(int no);
 	
+	//장바구니 전체삭제
+	int deleteAllCart(String memberId);
+	
+	
 	int countCart(Cart cart);
 	
 	int sameProduct(HashMap<String,Object> map);

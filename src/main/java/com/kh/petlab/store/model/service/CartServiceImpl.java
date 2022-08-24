@@ -28,6 +28,11 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
+	public int deleteAllCart(String memberId) {
+		return cartDao.deleteAllCart(memberId);
+	}
+
+	@Override
 	public int deleteCart(int no) {
 		int result = cartDao.deleteCart(no);
 		return result;
@@ -47,5 +52,6 @@ public class CartServiceImpl implements CartService {
 		cartDao.productCount(cart);
 		
 	}
+
 
 }
