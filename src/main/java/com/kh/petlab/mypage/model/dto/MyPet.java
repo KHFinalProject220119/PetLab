@@ -1,16 +1,19 @@
 package com.kh.petlab.mypage.model.dto;
 
-import java.util.ArrayList;
-import java.util.List;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.ToString;
 	
 @Data
-
+@NoArgsConstructor
+@ToString(callSuper = true)
 public class MyPet extends MyPetEntity{
-	
+	private String attachGroupId;
 
+	public void addAttachment(PetAttachment attach) {
+		
+	}
+
+	
 }
 

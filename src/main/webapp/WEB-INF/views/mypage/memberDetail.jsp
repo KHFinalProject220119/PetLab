@@ -10,16 +10,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!-- <%
-	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-	Member loginMember = (Member) authentication.getPrincipal();
-	
- %> -->
+
  
 	
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/memberDetail.css"/>
 <script	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/signup.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
@@ -29,10 +24,13 @@
 <div id="mypage-submenu" class="submenu">
 	<h4 class="top-title"> <a href="${pageContext.request.contextPath}/mypage/mypageHome">MY PAGE </a></h4>
 		<ul id="sub">
-			<li><a href="${pageContext.request.contextPath}/mypage/memberDetail" onmouseover="mousein(this);" onmouseout="mouseout(this)">회원정보</a></li>
-			<li><a href="${pageContext.request.contextPath}/mypage/myBorad" onmouseover="mousein(this);" onmouseout="mouseout(this)">내가 쓴 글</a></li>
-			<li><a href="${pageContext.request.contextPath}/mypage/myPetHome" onmouseover="mousein(this);" onmouseout="mouseout(this)">마이펫</a></li>
-			<li><a href="${pageContext.request.contextPath}/mypage/closeMember" onmouseover="mousein(this);" onmouseout="mouseout(this)">회원탈퇴</a></li>
+			<li><a href="${pageContext.request.contextPath}/mypage/memberDetail">회원정보</a></li>
+			<sec:authorize access="hasRole('HOSPITAL')">
+            <li><a href="${pageContext.request.contextPath}/hospital/hospitalEnroll">병원 상세정보 등록</a></li>
+            </sec:authorize>
+			<li><a href="${pageContext.request.contextPath}/mypage/myBorad">내가 쓴 글</a></li>
+			<li><a href="${pageContext.request.contextPath}/mypage/myPetHome">마이펫</a></li>
+			<li><a href="${pageContext.request.contextPath}/mypage/closeMember">회원탈퇴</a></li>
 		</ul>
 </div>
 <div class="top_mypage">
@@ -208,7 +206,23 @@
 				</div>
 			</div>
 		</div>
-
+<!--         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5>회원탈퇴</h5> 
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">탈퇴하기</button>
+              </div>
+              <div class="modal-body">
+                회원을 정말 탈퇴시키겠습니까?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                <button type="button" class="btn btn-secondary" onclick="location.href='${pageContext.request.contextPath}/mypage/closeMember">탈퇴하기</button>
+              </div>
+            </div>
+          </div>
+        </div>  -->
 <script>
 // 현재 기준 연도 max 설정
 window.onload = () =>{

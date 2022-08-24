@@ -13,21 +13,21 @@
 <div id="mypage-submenu" class="submenu">
 	<h4 class="top-title">MY PAGE</h4>
 	<ul id="sub">
-		<li><a href="${pageContext.request.contextPath}/mypage/memberDetail" onmouseover="mousein(this);" onmouseout="mouseout(this)">회원정보</a></li>
-		<li><a href="${pageContext.request.contextPath}/mypage/myBorad" onmouseover="mousein(this);" onmouseout="mouseout(this)">내가 쓴 글</a></li>
-		<li><a href="${pageContext.request.contextPath}/mypage/myPetHome" onmouseover="mousein(this);" onmouseout="mouseout(this)">마이펫</a></li>
-		<li><a href="${pageContext.request.contextPath}/mypage/closeMember" onmouseover="mousein(this);" onmouseout="mouseout(this)">회원탈퇴</a></li>
+			<li><a href="${pageContext.request.contextPath}/mypage/memberDetail" >회원정보</a></li>
+			<li><a href="${pageContext.request.contextPath}/mypage/myBorad">내가 쓴 글</a></li>
+			<li><a href="${pageContext.request.contextPath}/mypage/myPetList">마이펫</a></li>
+			<li><a href="${pageContext.request.contextPath}/mypage/closeMember">회원탈퇴</a></li>
 	</ul>
 </div>
 		<div class="top_mypage">
   			<sec:authorize access="isAuthenticated()">
 			    	<%-- 로그인한 경우 --%>
 			    	<span>
-			    		${loginMember.memberName}
+			    		${member.memberName} 님
 				    </span>
 			
 			 </sec:authorize>
-  			<a href="/mypage/updateMember">회원정보수정&nbsp;&nbsp;&gt;</a>
+  			<a href="${pageContext.request.contextPath}/mypage/memberDetail">회원정보수정&nbsp;&nbsp;&gt;</a>
 			<hr class="dash1">
 		</div>
 	<div></div>

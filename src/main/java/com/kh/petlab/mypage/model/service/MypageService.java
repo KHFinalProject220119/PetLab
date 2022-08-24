@@ -11,15 +11,22 @@ public interface MypageService {
 	Member selectOneMember(String memberId);
 	Member selectOneMemberByNickname(String nickname);
 	Member selectOneMemberByEmail(String email);
-	MyPet selectOnePet(String petId);
 	
-	int updateMember(Member member);
-
 	List<Member> selectMemberList();
-	
-	int updatePet(MyPet pet);
 	Address selectAddress(String memberId);
 	int updateAddress(Address address);
+	
+	int updateMember(Member member);
+	
+	MyPet selectOnePet(String memberId);
+//	MyPet selectPet(String memberId);
+	
+	int insertPet(MyPet mypet);
+	int updatePet(MyPet mypet);
+	List<MyPet> selectPetList(int cPage, int numPerPage);
+	int selectTotalContent();
+	
+
 
 	
 

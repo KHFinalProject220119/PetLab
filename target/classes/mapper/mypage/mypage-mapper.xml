@@ -53,8 +53,7 @@
  		where
 			member_id = #{memberId}
  	</update>
- 
- 	
+  	
  	<resultMap type="member" id="memberMap">
 		<id column="member_id" property="memberId" />
 		<result column="attach_group_id" property="attachGroupId"  />
@@ -80,12 +79,115 @@
 	</resultMap>
 	
 	
-	<delete id="deleteMemberRole">
+
+	
+	<select id="selectOnePet" resultType="mypet">
+	select
+		*
+	from
+		pet
+	where
+		member_id = #{memberId} and pet_name = #{petName}
+
+	</select>
+		
+	<insert id="myPetEnroll">`
+		insert into
+			pet
+		values(
+			seq_pet_pet_no.nextval,
+			#{memberId},
+			#{typeId},
+			#{breed},
+			#{attachGroupId},
+			#{petId},
+			#{petName},
+			#{gender},
+			#{weight},
+			#{birthday},
+			#{neutering}	)	
+
+	</insert>
+	
+		<insert id="insertPet">
+		insert into
+			pet
+		values(
+			seq_pet_pet_no.nextval,
+			#{memberId},
+			#{typeId},
+			#{breed},
+			#{attachGroupId},
+			#{petId},
+			#{petName},
+			#{gender},
+			#{weight},
+			#{birthday},
+			#{neutering}	)	
+
+	</insert>
+	
+	
+	<insert id="attachmentEnroll">
+        insert into
+            attachment
+        values(
+            #{attachGroupId},
+            seq_attachment_attach_no.nextval,
+            #{originalFilename},
+            #{renamedFilename},
+            default,
+            default
+        )
+    </insert>
+    
+	<update id="updatePet">
+		update
+			pet
+		<set>
+			type_id = #{typeId},
+			breed = #{breed},
+			attach_group_id = #{attachGroupId},
+			pet_id = #{petId},
+			breed = #{breed},
+			pet_name = #{petName},
+			gender = #{gender},
+			weight = #{weight},
+			birthday = #{birthday},
+			neutering = #{neutering}		
+		</set>
+		where
+			member_id = #{memberId}
+	
+	</update>
+	
+	 <delete id="deletePet">
 		delete from
-			authority
+			pet
 		where
 			member_id = #{memberId}
 	</delete>
+	
+	<select id="selectPetList" resultType="mypet">
+	select p.*,
+		(select count(*) from attachment where pet_no = p.pet_no) attach_count 
+	from pet p 
+	order by pet_no desc
+	</select>
+	
+	<resultMap type="myPet" id="mypetMap">
+		<id column="member_id" property="memberId" />
+		<result column="attach_group_id" property="attachGroupId"  />
+		<result column="pet_no" property="petNo"  />
+		<result column="type_id" property="typeId"  />
+		<result column="breed" property="breed"  />
+		<result column="pet_id" property="petId"  />
+		<result column="pet_name" property="petName"  />
+		<result column="gender" property="gender"  />
+		<result column="weight" property="weight"  />
+		<result column="birthday" property="birthday"  />
+		<result column="neutering" property="neutering"  />
+	</resultMap>
 	
 	
 </mapper>
