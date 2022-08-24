@@ -5,6 +5,8 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.kh.petlab.common.PetLabUtils;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +21,7 @@ public class MemberEntity {
 
 	@NonNull
 	protected String memberId;
+	protected String attachGroupId;
 	protected int gradeNo;
 	protected String password;
 	@NonNull

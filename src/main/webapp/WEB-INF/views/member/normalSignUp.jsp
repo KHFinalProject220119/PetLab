@@ -29,7 +29,7 @@
 						<img src="${pageContext.request.contextPath}/resources/images/member/sign/tab2.png" alt="">
 					</div>
 					<div class="signup-form-wrapper" >
-						<form name="signupFrm" id="signupFrm" method="POST" action="${pageContext.request.contextPath}/member/memberEnroll">
+						<form name="signupFrm" id="signupFrm" action="${pageContext.request.contextPath}/member/memberEnroll?${_csrf.parameterName}=${_csrf.token}" method="POST" enctype="multipart/form-data">
 							<div class="necessary-info">
 								<h3 class="necessary-title">필수입력</h3>
 								<div class="info-wrapper-with-msg">
@@ -194,7 +194,7 @@
 								<div class="info-wrapper-with-msg">
 									<div class="inner-wrapper">
 										<div class="label-wrapper">
-											<label for="recommendedId">추천인 아이디</label><span class="neccesary-star">*</span>
+											<label for="recommendedId">추천인 아이디</label>
 										</div>
 										<input type="text" id="recommendedId" name="recommendedId" class="input-cont" placeholder="추천인 아이디 입력" />
 										<input type="hidden" id="recommendedIdValid" value="0" />
@@ -334,13 +334,13 @@ document.querySelector("#recommendedId").addEventListener('keyup', (e) => {
 			console.log(response);
 			const {recommendedId, available} = response;
 			if(!available){
-				error.style.display = "none";
-				ok.style.display = "inline";
+				error.style.display = "inline";
+				ok.style.display = "none";
 				recommendedIdValid.value = 1;
 			}
 			else {
-				error.style.display = "inline";
-				ok.style.display = "none";
+				error.style.display = "none";
+				ok.style.display = "inline";
 				recommendedIdValid.value = 0;
 			}
 		},

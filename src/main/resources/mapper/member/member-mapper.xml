@@ -39,6 +39,7 @@
 		values(
  
 			#{memberId}, 
+			#{attachGroupId},
 			#{gradeNo}, 
 			#{password}, 
 			#{memberName}, 
@@ -68,6 +69,22 @@
 		values(
 			seq_address_no.nextval, #{memberId}, default, #{postcode}, #{address}, #{addressDetail}, #{addressExtra})
 	</insert>
+ 	
+ 	<insert id="insertAttachment" >
+ 		insert into 
+ 			attachment 
+ 		values(
+ 			#{attachGroupId}, seq_attachment_attach_no.nextval, #{originalFilename}, #{renamedFilename}, default, default)
+ 	</insert>
+ 	
+ 	<update id="resetPassword">
+ 		update 
+ 			member
+ 		set
+ 			password = #{password}
+ 		where 
+ 			member_id = #{memberId}
+ 	</update>
  	
  	<update id="updateMember">
  		update
@@ -107,8 +124,16 @@
         	enroll_date desc
 	</select>
 	
+	<delete id="deleteMemberRole">
+		delete from
+			authority
+		where
+			member_id = #{memberId}
+	</delete>
+	
 	<resultMap type="member" id="memberMap">
 		<id column="member_id" property="memberId" />
+		<result column="attach_group_id" property="attachGroupId"  />
 		<result column="grade_no" property="gradeNo"  />
 		<result column="password" property="password"  />
 		<result column="member_name" property="memberName"  />
@@ -131,12 +156,7 @@
 	</resultMap>
 	
 	
-	<delete id="deleteMemberRole">
-		delete from
-			authority
-		where
-			member_id = #{memberId}
-	</delete>
+
 	
 	
 </mapper>
