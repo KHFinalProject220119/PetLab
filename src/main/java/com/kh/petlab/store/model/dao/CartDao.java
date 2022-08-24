@@ -1,5 +1,6 @@
 package com.kh.petlab.store.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -23,8 +24,9 @@ public interface CartDao {
 	
 	int countCart(Cart cart);
 	
+	int sameProduct(HashMap<String,Object> map);
 	
-	
+	void productCount(Cart cart);
 	
 	
 }

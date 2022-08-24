@@ -1,3 +1,18 @@
+--============================================
+-- 관리자 계정
+--============================================
+-- petlab 계정 생성
+--alter session set _oracle_script = true;
+
+--create user petlab
+--IDENTIFIED by petlab
+--default tablespace users;
+
+--alter user petlab quota unlimited on users;
+
+--grant connect, resource to petlab;
+
+
 --=============================================
 -- petlab 계정
 --=============================================
@@ -291,9 +306,6 @@ ALTER TABLE   product_review   ADD CONSTRAINT   PK_PRODUCT_REVIEW   PRIMARY KEY 
 );
 
 
-
-
-
 create table product(
     product_no number,
     category_id varchar2(30) not null,
@@ -453,6 +465,7 @@ select * from breed;
 select * from pet_type;
 select p.*, t.type_name, b.breed_name from pet p join pet_type t on p.type_id = t.type_id join breed b on p.breed_id = b.breed_id;
 insert into pet values(seq_pet_pet_no.nextval, 'honggd', 'dog', 'Maltese',  null, '410000001513331', '연구소', 'M', 3, to_date('20-02-24','rr-mm-dd'),  'T');
+
 
 COMMENT ON COLUMN   pet  .  pet_type   IS 'D  - dog
 C - cat
@@ -1017,4 +1030,5 @@ ALTER TABLE   group_board   ADD CONSTRAINT   FK_attachment_TO_group_board_1   FO
 REFERENCES   attachment   (
 	  attach_group_id  
 );
+
 

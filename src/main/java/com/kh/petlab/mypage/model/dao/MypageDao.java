@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.kh.petlab.member.model.dto.Address;
 import com.kh.petlab.member.model.dto.Member;
 
 @Mapper
@@ -20,7 +21,6 @@ public interface MypageDao {
 
 	List<Member> selectMemberList();
 
-	int deleteMemberRole(String memberId);
+	Address selectAddress(String memberId);
 
-	int insertAuthority(Map<String, Object> param);
 }

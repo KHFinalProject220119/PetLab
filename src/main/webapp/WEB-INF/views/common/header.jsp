@@ -57,38 +57,6 @@ naverLogOut.init();
 // 카카오		
 Kakao.init('22289034ae7ed5aa331cb59ea6ac1625'); 
 
-// 로그아웃 핸들러
-const frm = document.signoutFrm;
-frm.addEventListener('submit', (e) => {
-	e.preventDefault();
-
-	const memberSocialTyped = "${loginMember.memberSocial}";	
-	const kakao = "kakao";
-	const google = "google";
-	const naver = "naver";
-	
-	//카카오로그아웃  
-	if(kakao === memberSocialType){
-		console.log(memberSocialType);
-		logoutWithKakao();			
-	}
-	
-	// 구글 로그아웃
-	else if(google === memberSocialType){
-		console.log(memberSocialType);
-		location.href = "https://mail.google.com/mail/u/0/?logout&hl=en";
-	}
-	
-	// 네이버 로그아웃
-	else if(naver === memberSocialType){
-		naverLogOut.logout();
-		location.href = "http://nid.naver.com/nidlogin.logout";	 
-		
-
-	}
- 
-	frm.submit();
-});
 
 // 카카오 로그아웃
 function logoutWithKakao() {
@@ -114,6 +82,7 @@ function logoutWithKakao() {
 						<div class="header-member-menu">
 						<sec:authorize access="isAnonymous()">
 							<ul class="header-member-menu-ul">
+								<li><a href="${pageContext.request.contextPath}/adminnotice/adminNoticeList"><span>공지사항</span></a></li>							
 								<li><a href="${pageContext.request.contextPath}/member/signIn"><span>로그인</span></a></li>
 								<li><a href="${pageContext.request.contextPath}/member/signUpSelection"><span>회원가입</span></a></li>
 								<li><a href="${pageContext.request.contextPath}/customerservice/csCenter">고객센터</a></li>
@@ -130,6 +99,13 @@ function logoutWithKakao() {
 								<li><a href="${pageContext.request.contextPath}/customerservice/csCenter">고객센터</a></li>
 							</ul>
 						</sec:authorize>
+						
+						<sec:authorize access="hasRole('ADMIN')">
+						    <ul class="header-member-list-ul">
+						    	<li><a class="nav-link" href="${pageContext.request.contextPath}/admin/memberList">회원관리</a></li>
+						    </ul>
+				    	</sec:authorize>
+						
 						</div>
 					</div>
 				</div>
@@ -138,13 +114,17 @@ function logoutWithKakao() {
 						<div class="header-menu">
 							<ul class="header-menu-ul">
 								<li class="header-menu-li">
-									<a href="/hospital/searchHospital" class="menu-link">
+									<a href="${pageContext.request.contextPath}/hospital/searchHospital" class="menu-link">
 										<span><img class="menu-logo" src="${pageContext.request.contextPath}/resources/images/common/header/Dr.Dog.png" alt="" /></span>
 										<h2>동물병원 찾기</h2>
 									</a>
 								</li>
 								<li class="header-menu-li">
+<<<<<<< HEAD
 									<a href="${pageContext.request.contextPath}/community/communityMain" class="menu-link">
+=======
+									<a href="${pageContext.request.contextPath}/community/photoList" class="menu-link">
+>>>>>>> branch 'master' of https://github.com/KHFinalProject220119/PetLab.git
 										<span><img class="menu-logo" src="${pageContext.request.contextPath}/resources/images/common/header/CatWithAPencil.png" alt="" /></span>
 										<h2>커뮤니티</h2>
 									</a>

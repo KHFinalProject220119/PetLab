@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.petlab.mypage.model.dao.MypageDao">
+
+<select id="selectAddress" resultType="address">
+	select
+		*
+	from
+		address
+	where
+		member_id = #{memberId}
+
+</select>
+
+<update id="updateMember">
+ 		update
+ 			member
+ 		<set>
+ 			<if test="name != null">
+	 			name = #{name},
+ 			</if>
+ 			<if test="birthday != null">
+				birthday = #{birthday},
+			</if>
+ 			<if test="email != null">
+				email = #{email},
+			</if>
+ 			<if test="phone != null">
+				phone = #{phone},
+			</if>
+ 			<if test="address != null">
+				address = #{address},
+			</if>
+ 			<if test="gender != null">
+				gender = #{gender},
+			</if>
+ 		</set>
+ 		where
+ 			member_id = #{memberId}
+ 	</update>
+ 	
+ 	<resultMap type="member" id="memberMap">
+		<id column="member_id" property="memberId" />
+		<result column="attach_group_id" property="attachGroupId"  />
+		<result column="grade_no" property="gradeNo"  />
+		<result column="password" property="password"  />
+		<result column="member_name" property="memberName"  />
+		<result column="nickname" property="nickname"  />
+		<result column="phone" property="phone"  />
+		<result column="email" property="email"  />
+		<result column="birthday" property="birthday"  />
+		<result column="gender" property="gender"  />
+		<result column="member_social" property="memberSocial"  />
+		<result column="recommended_id" property="recommendedId"  />
+		<result column="membership_point" property="membershipPoint"  />
+		<result column="point" property="point"  />
+		<result column="enabled" property="enabled"  />
+		<result column="enroll_date" property="enrollDate"  />
+		<collection property="authorities" ofType="simpleGrantedAuthority" >
+			<constructor>
+				<arg column="auth" javaType="string" />
+			</constructor>
+		</collection>
+	</resultMap>
+	
+	
+	<delete id="deleteMemberRole">
+		delete from
+			authority
+		where
+			member_id = #{memberId}
+	</delete>
+	
+	
+</mapper>
