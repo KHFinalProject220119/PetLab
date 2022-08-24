@@ -24,6 +24,9 @@
 		<intercept-url pattern="/member/signOut" access="permitAll"  />
 		<intercept-url pattern="/member/**" access="isAnonymous()"  />
 		
+		<!-- 커뮤니티  -->
+		<intercept-url pattern="/community/**" access="permitAll" /> 
+		
 		<!-- 전체  -->
 		<intercept-url pattern="/**" access="isAuthenticated()" /> 
 

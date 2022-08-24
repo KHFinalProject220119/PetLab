@@ -10,8 +10,11 @@ public interface CommunityService {
 
 	int enroll(CommunityPhoto communityPhoto);
 
-	/*
-	 * List<Photo> selectPhotoList(int cPage, int numPerPage);
-	 */
+	List<CommunityPhoto> selectPhotoList(int cPage, int numPerPage);
+
+	List<Attachment> selectAttachmentForPhoto(String attachGroupId);
+
+	List<CommunityPhoto> selectPhotoListByLike();
+	 
 
 }

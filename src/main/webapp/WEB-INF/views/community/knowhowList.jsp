@@ -19,14 +19,16 @@
 <section id="community-container" class="container">
 <!-- 	<input type="button" value="글쓰기" id="btn-add" class="btn btn-outline-success" onclick="goToBoardForm();"/> -->
 
-	<table id="knowhow-board" class="table table-striped table-hover text-center">
 <jsp:include page="/WEB-INF/views/community/community_header.jsp">
 	<jsp:param value="커뮤니티" name="title" />
 </jsp:include>	
-		<tr>
-			<th>전문가 노하우</th>
-			<th>일반인 노하우</th>
-		</tr>
+  <div id="Pmypage-submenu" class="submenu">
+    <ul id="sub">
+         <li><a href="${pageContext.request.contextPath}/community/small1" onmouseover="mousein(this);" onmouseout="mouseout(this)">전문가 노하우</a></li>
+ 	     <li><a href="${pageContext.request.contextPath}/community/small2" onmouseover="mousein(this);" onmouseout="mouseout(this)">일반인 노하우</a></li>
+ 	</ul>
+ </div>
+	<table id="knowhow-board" class="table table-striped table-hover text-center">
 		<tr>
 			<th>총 0개</th>
 			<th>최신순</th>

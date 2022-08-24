@@ -1,8 +1,11 @@
 package com.kh.petlab.community.controller;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,11 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.petlab.common.PetLabUtils;
 import com.kh.petlab.community.model.dto.CommunityPhoto;
 import com.kh.petlab.community.model.service.CommunityService;
 import com.kh.petlab.member.model.dto.Attachment;
+
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -49,30 +54,53 @@ public class CommunityController {
 	public void knowhowList() {}
 	
 	@GetMapping("/photoList")
-	public void photoList() {}
-/*	public ModelAndView photoList(@RequestParam(defaultValue = "1") int cPage, ModelAndView mav,
+	public ModelAndView photoList(@RequestParam(defaultValue = "1") int cPage, ModelAndView mav,
 			HttpServletRequest request) {
 		try {
 			// 목록조회
 			int numPerPage = 10;
-			List<Photo> list = communityService.selectPhotoList(cPage, numPerPage);
-			 List<ProductAttachment> attlist = CommunityService.selectPhotoList(); 
-			log.debug("list = {}", list);
+			List<CommunityPhoto> photoLists = communityService.selectPhotoList(cPage, numPerPage);
+			List<CommunityPhoto> list = new ArrayList<>();
+			if(!photoLists.isEmpty()) {  
+				for(CommunityPhoto photoList : photoLists) {
+					List<Attachment> photoAttachs = communityService.selectAttachmentForPhoto(photoList.getAttachGroupId());
+					photoList.setAttachments(photoAttachs);
+					list.add(photoList);
+				}
+			}
+			List<CommunityPhoto> listForBest = communityService.selectPhotoListByLike();
+			List<CommunityPhoto> bestList = new ArrayList<>();
+			if(!listForBest.isEmpty()) {  
+				for(CommunityPhoto bestPhoto : listForBest) {
+					List<Attachment> BestAttachs = communityService.selectAttachmentForPhoto(bestPhoto.getAttachGroupId());
+					bestPhoto.setAttachments(BestAttachs);
+					bestList.add(bestPhoto);
+				}
+			}
+			/* List<CommunityPhoto> attlist = communityService.selectPhotoList(); */
+			System.out.println("List=" + list);
+			 
 			mav.addObject("list", list);
-			 mav.addObject("attlist", attlist); 
+			mav.addObject("bestList", bestList);
+			/* mav.addObject("attlist", attlist); */
 
 			mav.setViewName("community/photoList");
 
 			
-			 * // 페이지바 int totalContent = storeService.selectTotalContent();
+			/* 페이징바
+			 * int totalContent = storeService.selectTotalContent(); */
 			 
 			
-			String url = request.getRequestURI();
-			
+			/*
+			 * 
+			 * String url = request.getRequestURI();
+			 * 
 			 * String pagebar = PetLabUtils.getPagebar(cPage, numPerPage, totalContent,
 			 * url);
 			 * 
 			 * mav.addObject("pagebar", pagebar);
+			 */
+			 
 			 
 
 		} catch (Exception e) {
@@ -80,7 +108,7 @@ public class CommunityController {
 		}
 		return mav;
 		
-	}*/
+	}
 	
 	@GetMapping("/enroll")
 	public void enroll() {}
@@ -110,7 +138,7 @@ public class CommunityController {
 				
 				attachment.setRenamedFilename(renamedFilename);
 				
-				communityPhoto.setAttachment(attachment);
+	//			communityPhoto.setAttachment(attachment);
 			}
 			
 			int result = communityService.enroll(communityPhoto);

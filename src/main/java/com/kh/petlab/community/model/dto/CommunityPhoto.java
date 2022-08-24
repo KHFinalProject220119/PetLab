@@ -7,6 +7,7 @@ import com.kh.petlab.member.model.dto.Attachment;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
 
 @Data
@@ -14,8 +15,17 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class CommunityPhoto extends CommunityPhotoEntity {
 	
-	List <CommunityPhotoReply> replies = new ArrayList<>();
-	Attachment attachment = new Attachment(); 
+	private List<Attachment> attachments = new ArrayList<>();
+	
+	public void addAttachment(@NonNull Attachment attachment) {
+		attachments.add(attachment);
+	}
+
+	public CommunityPhoto(List<Attachment> attachments) {
+		super();
+		this.attachments = attachments;
+	}
+	
 	
 	
 }

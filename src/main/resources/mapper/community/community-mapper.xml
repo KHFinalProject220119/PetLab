@@ -31,4 +31,42 @@
 			default
 		)
 	</insert>
+	
+	<select id="selectPhotoList" resultMap="communityPhotoMap">
+	select 
+		* 
+	from 
+		community_photo
+
+	</select>
+	<select id="selectPhotoListByLike" resultMap="communityPhotoMap">
+	select 
+		p.* 
+	from 
+		(select row_number() over(order by like_count desc) rnum, p.* from community_photo p) p
+	where 
+		rnum between 1 and 3
+
+	</select>
+	
+	<select id="selectAttachmentForPhoto" resultType="attachment">
+		select 
+			*
+		from
+		 	attachment
+		where 
+			attach_group_id =  #{attachGroupId}
+	</select>
+
+	<resultMap id="communityPhotoMap" type="communityPhoto">
+	  <id column="photo_no" property="photoNo" />
+	  <result column="member_id" property="memberId"/>
+      <result column="attach_group_id" property="attachGroupId"/>
+      <result column="p_title" property="pTitle"/>
+      <result column="p_content" property="pContent"/>
+      <result column="read_count" property="readCount"/>
+      <result column="like_count" property="likeCount"/>
+      <result column="reg_date" property="regDate"/>
+	</resultMap>
+	
 </mapper>

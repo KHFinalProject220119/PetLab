@@ -20,31 +20,42 @@ public class CommunityServiceImpl implements CommunityService {
 
 	
 	 @Autowired private CommunityDao communityDao;
-	/* 
-	 * @Transactional(readOnly = true)
-	 * 
-	 * @Override public List<Photo> selectPhotoList(int cPage, int numPerPage) { int
-	 * offset = (cPage - 1) * numPerPage; int limit = numPerPage; RowBounds
-	 * rowBounds = new RowBounds(offset, limit); return
-	 * communityDao.selectPhotoList(rowBounds);
-	 * 
-	 * }
-	 */
 	 
+	 
+	  @Transactional(readOnly = true)
+	  
+	  @Override public List<CommunityPhoto> selectPhotoList(int cPage, int numPerPage) { int
+	  offset = (cPage - 1) * numPerPage; int limit = numPerPage; RowBounds
+	  rowBounds = new RowBounds(offset, limit); return
+	  communityDao.selectPhotoList(rowBounds);
+	  }
+	  
 	 @Override
-	public int enroll(CommunityPhoto communityPhoto) {
+	 public int enroll(CommunityPhoto communityPhoto) {
 		 //community insert
 		 int result = communityDao.enroll(communityPhoto);
 		 
 		 // 첨부파일 insert
-		 Attachment attachment = communityPhoto.getAttachment();
-			if(attachment != null) {
-
-				result = communityDao.attachmentEnroll(attachment);
-			}
+			/*
+			 * Attachment attachment = communityPhoto.getAttachment(); if(attachment !=
+			 * null) {
+			 * 
+			 * result = communityDao.attachmentEnroll(attachment); }
+			 */
 			
 			return result;
 		 
+	}
+
+	@Override
+	public List<Attachment> selectAttachmentForPhoto(String attachGroupId) {
+		return communityDao.selectAttachmentForPhoto(attachGroupId);
+	}
+
+	@Override
+	public List<CommunityPhoto> selectPhotoListByLike() {
+		// TODO Auto-generated method stub
+		return   communityDao.selectPhotoListByLike();
 	}
 	
 

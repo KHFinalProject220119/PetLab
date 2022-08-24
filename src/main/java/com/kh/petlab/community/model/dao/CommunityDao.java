@@ -11,12 +11,16 @@ import com.kh.petlab.member.model.dto.Attachment;
 
 @Mapper
 public interface CommunityDao {
-
-	/*
-	 * List<Photo> selectPhotoList(RowBounds rowBounds);
-	 */
+	
+	List<CommunityPhoto> selectPhotoList(RowBounds rowBounds);
 
 	int enroll(CommunityPhoto communityPhoto);
 
 	int attachmentEnroll(Attachment attachment);
+
+	List<CommunityPhoto> selectPhotoList();
+
+	List<Attachment> selectAttachmentForPhoto(String attachGroupId);
+
+	List<CommunityPhoto> selectPhotoListByLike();
 }

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-	
+.modal-img{display:none;}	
 table#cm-board {
 	width: 70%;
     margin: 0 auto;
