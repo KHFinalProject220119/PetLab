@@ -13,15 +13,15 @@ AND  product_count= #{productCount}
 select c.cart_no, p.product_no, a.renamed_filename,p.product_name, p.product_price, c.product_count, c.member_id
 		from product p, cart c, product_attachment a
 		where p.product_no = c.product_no AND c.member_id=#{memberId}
-		order by c.cart_no;
+		order by c.cart_no
     </select>
 
 
 <insert id="insertCart" >
 		insert into
-		cart (cart_no,product_no,member_id,product_count,product_price)
+		cart (cart_no,product_no,member_id,product_count)
 		values(
-		seq_cart_no.nextval, #{productNo}, #{memberId}, #{productCount},#{productPrice})
+		seq_cart_no.nextval, #{productNo}, #{memberId}, #{productCount})
 	</insert>
 
 
@@ -32,10 +32,19 @@ select c.cart_no, p.product_no, a.renamed_filename,p.product_name, p.product_pri
 				product_no = #{productNo}
 	</delete>
 
+	<update id="productCount" >
+		update cart
+		set product_count = product_count + #{productCount}
+		where member_id=#{memberId} and product_no=#{productNo}	
+	</update>
 
 
-
-
+	<select id="sameProduct" parameterType="hashmap"
+												   resultType="int">
+		select count(*)
+		from cart
+		where product_no=#{productNo} and member_id=#{memberId}										   
+	</select>
 
 
 

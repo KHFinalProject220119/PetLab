@@ -36,4 +36,42 @@
 	</footer>
 </div>
 </body>
+
+<sec:authorize access="isAuthenticated()">
+<sec:authentication property="principal" var="loginMember" scope="page"/>
+<script>
+// 로그아웃 핸들러
+const signoutFrm = document.signoutFrm;
+signoutFrm.addEventListener('submit', (e) => {
+	e.preventDefault();
+
+	const memberSocialTyped = "${loginMember.memberSocial}";	
+	const kakao = "kakao";
+	const google = "google";
+	const naver = "naver";
+	
+	//카카오로그아웃  
+	if(kakao === memberSocialType){
+		console.log(memberSocialType);
+		logoutWithKakao();			
+	}
+	
+	// 구글 로그아웃
+	else if(google === memberSocialType){
+		console.log(memberSocialType);
+		location.href = "https://mail.google.com/mail/u/0/?logout&hl=en";
+	}
+	
+	// 네이버 로그아웃
+	else if(naver === memberSocialType){
+		naverLogOut.logout();
+		location.href = "http://nid.naver.com/nidlogin.logout";	 
+		
+
+	}
+ 
+	signoutFrm.submit();
+});
+</script>
+</sec:authorize>
 </html> 

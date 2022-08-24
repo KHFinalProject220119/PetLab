@@ -13,5 +13,8 @@ public interface CartService {
 	void insertCart(Cart cart);
 
 	int deleteCart(int no);
+	
+	int sameProduct(int productNo, String memberId);
 
+	void productCount(Cart cart);
 }

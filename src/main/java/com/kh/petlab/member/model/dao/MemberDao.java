@@ -1,5 +1,6 @@
 package com.kh.petlab.member.model.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -22,6 +23,13 @@ public interface MemberDao {
 	int insertAuthority(Map<String, Object> map);
 
 	int insertAddress(Address address);
+	
+	List<Member> selectMemberList();
+
+	int updateMember(Member member);
+	
+	int deleteMemeberRole(String memberId);
+	
 
 	int resetPassword(Map<String, Object> param);
 
