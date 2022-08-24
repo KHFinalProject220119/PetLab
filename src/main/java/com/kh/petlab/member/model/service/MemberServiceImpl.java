@@ -76,4 +76,26 @@ public class MemberServiceImpl implements MemberService {
 	public int resetPassword(Map<String, Object> param) {
 		return memberDao.resetPassword(param);
 	}
+	
+	@Override
+	public List<Member> selectMemberList() {
+		return memberDao.selectMemberList();
+	}
+	
+	
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int updateMemberRole(String memberId, List<String> authorities) {
+		// 기존권한 삭제
+		int result = memberDao.deleteMemeberRole(memberId);
+		// 새권한 등록
+		for(String auth : authorities) {
+			Map<String, Object> map = new HashMap<>();
+			map.put("memberId", memberId);
+			map.put("auth", auth);
+			result = memberDao.insertAuthority(map);
+		}
+		return result;
+	}
+	
 }

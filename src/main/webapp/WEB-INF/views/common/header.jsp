@@ -82,6 +82,7 @@ function logoutWithKakao() {
 						<div class="header-member-menu">
 						<sec:authorize access="isAnonymous()">
 							<ul class="header-member-menu-ul">
+								<li><a href="${pageContext.request.contextPath}/adminnotice/adminNoticeList"><span>공지사항</span></a></li>							
 								<li><a href="${pageContext.request.contextPath}/member/signIn"><span>로그인</span></a></li>
 								<li><a href="${pageContext.request.contextPath}/member/signUpSelection"><span>회원가입</span></a></li>
 								<li><a href="${pageContext.request.contextPath}/customerservice/csCenter">고객센터</a></li>
@@ -98,6 +99,13 @@ function logoutWithKakao() {
 								<li><a href="${pageContext.request.contextPath}/customerservice/csCenter">고객센터</a></li>
 							</ul>
 						</sec:authorize>
+						
+						<sec:authorize access="hasRole('ADMIN')">
+						    <ul class="header-member-list-ul">
+						    	<li><a class="nav-link" href="${pageContext.request.contextPath}/admin/memberList">회원관리</a></li>
+						    </ul>
+				    	</sec:authorize>
+						
 						</div>
 					</div>
 				</div>
