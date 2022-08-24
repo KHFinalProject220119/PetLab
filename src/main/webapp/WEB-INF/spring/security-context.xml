@@ -19,21 +19,22 @@
 		<intercept-url pattern="/index.jsp" access="permitAll"  />
 		<intercept-url pattern="/store/**" access="permitAll"  />
 		<intercept-url pattern="/admin/**" access="hasRole('ADMIN')"  />
-		<intercept-url pattern="/member/**" access="permitAll" />
-<!--  		<intercept-url pattern="/member/signUpSelection" access="isAnonymous()"  />
-		<intercept-url pattern="/member/agreement" access="isAnonymous()"  />
-		<intercept-url pattern="/member/memberEnroll" access="isAnonymous()"  />
-		<intercept-url pattern="/member/normalSignUp" access="isAnonymous()"  />
-		<intercept-url pattern="/member/hospitalSignUp" access="isAnonymous()"  />
-		<intercept-url pattern="/member/mallSignUp" access="isAnonymous()"  />
-		<intercept-url pattern="/member/duplicateId" access="isAnonymous()"  />
-		<intercept-url pattern="/member/duplicateNickname" access="isAnonymous()"  />
-		<intercept-url pattern="/member/recommendedId" access="isAnonymous()"  />
-		<intercept-url pattern="/member/findMemberByEmail" access="isAnonymous()"  />
-		<intercept-url pattern="/member/welcome" access="isAnonymous()"  />
-		<intercept-url pattern="/member/signIn" access="isAnonymous()"  /> -->
+
+		
+		<!-- member - 공통 : 회원가입/ 로그인 / 로그아웃 등  -->
+		<intercept-url pattern="/member/signOut" access="permitAll"  />
+		<intercept-url pattern="/member/**" access="isAnonymous()"  />
+		<!-- hospital  -->
+		
+		<intercept-url pattern="/hospital/hospitalEnroll" access="hasRole('HOSPITAL', 'ADMIN')"  />
+		<intercept-url pattern="/hospital/**" access="permitAll"  />
+		
+		<!-- 고객센터  -->
+		<intercept-url pattern="/customerservice/**" access="permitAll"  />
+
+		<!-- 전체  -->
 		<intercept-url pattern="/**" access="isAuthenticated()" /> 
- 		
+
 		
 	<!-- 	 login-page GET 방식 로그인 폼페이지 요청(핸들러 작성 필요)
 		 login-processing-url POST 방식 로그인 처리 요청(핸들러 작성 불필요-자동작성) -->

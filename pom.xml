@@ -207,14 +207,38 @@
 	        <artifactId>json-lib-ext-spring</artifactId>
 	        <version>1.0.2</version>
     	</dependency>
+    	
+
+       <!-- #16. XmlMapper 의존 -->
+	    <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+            <version>2.13.3</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.13.3</version>
+            <scope>compile</scope>
+        </dependency>
         
-        <!-- #15. MessageConvet의 json 처리용 빈 -->
+        <!-- #17. websocket 의존 -->
         <dependency>
 	        <groupId>com.fasterxml.jackson.core</groupId>
 	        <artifactId>jackson-databind</artifactId>
 	        <version>2.9.5</version>
     	</dependency>
-
+	        <groupId>org.springframework</groupId>
+	        <artifactId>spring-websocket</artifactId>
+	        <version>${org.springframework-version}</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.springframework</groupId>
+	        <artifactId>spring-messaging</artifactId>
+	        <version>${org.springframework-version}</version>
+	    </dependency>
+    
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>

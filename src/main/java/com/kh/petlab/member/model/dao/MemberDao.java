@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.kh.petlab.member.model.dto.Address;
+import com.kh.petlab.member.model.dto.Attachment;
 import com.kh.petlab.member.model.dto.Member;
 
 @Mapper
@@ -29,5 +30,11 @@ public interface MemberDao {
 	
 	int deleteMemeberRole(String memberId);
 	
+
+	int resetPassword(Map<String, Object> param);
+
+	int insertAttachment(Attachment attach);
+
+	int findCurrentAttachmentNo();
 
 }

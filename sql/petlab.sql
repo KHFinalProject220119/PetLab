@@ -16,7 +16,7 @@
 --=============================================
 -- petlab 계정
 --=============================================
-select * from member;
+
 -- 첨부파일 테이블
 create table attachment (
     attach_group_id varchar2(256),
@@ -306,19 +306,35 @@ ALTER TABLE   product_review   ADD CONSTRAINT   PK_PRODUCT_REVIEW   PRIMARY KEY 
 );
 
 
-
-
-
-CREATE TABLE   product   (
-	  product_no  	number		NOT NULL,
-	  category_id  	varchar2(30)		NOT NULL,
-	  category_sub_id  	varchar2(30)		NOT NULL,
-	  attach_group_id  	varchar2(256)		NOT NULL,
-	  product_name  	varchar2(150)		NULL,
-	  product_price  	number		NULL,
-	  product_des  	varchar2(3000)		NULL
+create table product(
+    product_no number,
+    category_id varchar2(30) not null,
+    category_sub_id varchar2(30) not null,
+    attach_group_id varchar2(256),
+    product_name varchar2(150),
+    product_price number,
+    product_des varchar2(3000),
+    
+    constraint pk_product_no primary key(product_no),
+    constraint fk_product_category_id foreign key(category_id) references product_category(category_id) on delete cascade,
+    constraint fk_product_category_sub_id foreign key(category_sub_id) references product_sub_category(category_sub_id) on delete cascade,
+    constraint fk_attach_group_id foreign key(attach_group_id) references attachment(attach_group_id) on delete cascade
 );
+create sequence seq_product_no;
 
+
+select * from attachment;
+	select 
+			b.*,
+			(select count(*) from attachment where product_no  = b.product_no) attach_count
+		from
+			product b
+		order by
+			product_no desc;
+
+
+
+commit;
 create sequence seq_product_no nocache;
 
 ALTER TABLE   product   ADD CONSTRAINT   PK_PRODUCT   PRIMARY KEY (
@@ -432,20 +448,24 @@ REFERENCES   product_category   (
 
 
 CREATE TABLE   pet   (
-	  pet_no  	number		NOT NULL,
-	  member_id  	varchar2(200)		NOT NULL,
-	  type_id  	varchar2(30)		NOT NULL,
-	  breed_id  	varchar2(30)		NOT NULL,
-	  attach_group_id  	varchar2(256)		NOT NULL,
-	  pet_id  	varchar2(100)		NULL,
-	  pet_name  	varchar2(50)		NULL,
-	  pet_type  	char(1)		NULL,
-	  breed  	varchar2(30)		NULL,
-	  gender  	char(1)		NULL,
-	  weight  	number		NULL,
-	  birthday  	date		NULL,
-	  Field  	char(1)		NULL
+     pet_no     number      NOT NULL,
+     member_id     varchar2(200)      NOT NULL,
+     type_id     varchar2(30)      NOT NULL,
+     breed_id     varchar2(30)      NOT NULL,
+     attach_group_id     varchar2(256)      NULL,
+     pet_id     varchar2(100)      NULL,
+     pet_name     varchar2(50)      NULL,
+     gender     char(1)      NULL,
+     weight     number      NULL,
+     birthday     date      NULL,
+     neutering     char(1)      NULL
 );
+select * from pet;
+select * from breed;
+select * from pet_type;
+select p.*, t.type_name, b.breed_name from pet p join pet_type t on p.type_id = t.type_id join breed b on p.breed_id = b.breed_id;
+insert into pet values(seq_pet_pet_no.nextval, 'honggd', 'dog', 'Maltese',  null, '410000001513331', '연구소', 'M', 3, to_date('20-02-24','rr-mm-dd'),  'T');
+
 
 COMMENT ON COLUMN   pet  .  pet_type   IS 'D  - dog
 C - cat

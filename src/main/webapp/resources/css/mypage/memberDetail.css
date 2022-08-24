@@ -1,0 +1,313 @@
+@charset "UTF-8";
+
+#mypage-submenu {
+            width: 12%;
+            text-align: right; 
+            margin-left: 15px; 
+            margin-top:60px;
+            float: left;
+         }   
+#mypage-submenu ul {
+            padding: 0;
+        
+        }
+#mypage-submenu li {
+            list-style: none;
+            margin: 15px 0;
+            font-weight: 500;
+            font-size: x-large;
+        }
+#mypage-submenu a:hover {
+            color: #32537e;
+        }
+#mypage-submenu a {
+            color: black;
+            text-decoration: none;
+         }    
+.current {
+            color: #376b57 !important;
+  }
+.top-title{
+            font-size: 2.5rem; 
+            font-weight: bold; 
+            text-align: right; 
+            margin: 0 auto; 
+        }   
+.top_mypage{
+            font-weight: bold; 
+            text-align: center; 
+            margin: 0 auto; 
+            margin-top : 45px;
+            font-size: 1.5rem;  
+        }     
+.top_mypage span{
+            float: left;
+            text-align: center; 
+            margin-left : 9%;
+            margin-top : 50px;
+            margin-bottom : 45px; 
+        }    
+.top_mypage a{
+            float: right;
+            text-align: center; 
+            margin-right : 9%;
+            margin-top : 50px;
+            margin-bottom : 45px;
+            color: black; 
+        }   
+hr.dash1 {
+			margin: 0 auto;
+			width: 71%;
+			height: 1px;
+			font-size: 0;
+			border: 0px;
+			margin-top : 165px;
+			margin-bottom:20px;
+   			border-top:1px dashed black;
+		}    
+.signup-cont{
+			width: 100%; 
+			margin: 0 auto;
+			text-aline:center;
+		}
+			
+.signup-title{
+            font-size: 2rem;
+            font-weight: bold; 
+            text-align: center;
+	    }
+.signup-order-img{
+	        width: 37%; 
+            margin: 0 auto;
+	    }
+.signup-form-wrapper{
+	        width: 57%;
+    		margin: 1rem auto;
+	    }       
+.neccesary-star{
+	        color: #FF0000;
+	    }
+.necessary-title, .optional-title{
+	        font-size: 1.8rem; 
+            font-weight: bold; 
+            margin: 1rem 0;
+	    }
+.info-wrapper{
+	        display:flex; 
+            flex-direction: row; 
+            padding: 1.4rem 0; 
+            border-bottom: 2px solid #E5E5E5;
+        }
+.info-wrapper-with-msg{
+	        display:flex; 
+            flex-direction: column; 
+            padding-top: 1.4rem; 
+            border-bottom: 2px solid #E5E5E5; 
+	    }
+.info-wrapper-post{
+            display:flex; 
+            flex-direction: column; 
+            padding-top: 1rem; 
+            padding-bottom: 2rem; 
+            border-bottom: 0.2rem dashed #FF5B00;
+        }
+.post-inner-wrapper{
+             display:flex; 
+             flex-direction: row; 
+             padding: 0.5rem 0;
+        }
+.inner-wrapper{
+            display:flex;
+        }
+.info-wrapper label, .info-wrapper-post label, .inner-wrapper label{
+            font-weight: bold;
+        }
+.input-cont{
+            width: 15rem; 
+            margin: 0 0.5rem; 
+            padding: 0.5rem; 
+            font-size: 1rem; 
+            border: 0.15rem solid #FF9900; 
+        }
+.input-cont:focus, .input-cont-postcode:focus, #year:focus, #month:focus, #day:focus {
+            border: 0.15rem solid #FF5B00; 
+            outline:none;
+        }
+.input-cont-postcode{
+    		width: 15rem;
+    		margin: 0 0.5rem;
+    		padding: 0.5rem;
+    		font-size: 1rem;
+    		border: 0.15rem solid #FF9900;
+        }
+.btn-wrapper{
+            margin-top: 2rem;
+        }
+.label-wrapper {
+            width: 10rem;
+        }
+.void-space {
+            width: 11rem;
+        }
+.msg-wrapper{
+            display:flex; 
+            height: 1.4rem;
+        }
+.duplicate-result, .password-result, .nickname-result, .recommendedId-result{
+            width: 15rem;
+        }
+.btn-wrapper{
+            width: 55%; 
+            margin: 1rem auto;
+        }
+.cert-btn, .find-address-btn{
+            color: #fff;  
+            font-size: 0.8rem; 
+            font-weight: bold;  
+            border-radius: 0.3rem;
+            display: inline-flex;   
+            align-items: center;   
+            justify-content: center;   
+            line-height: 1.5; 
+            text-align: center; 
+            background-image: linear-gradient(90deg, #FF5B00, #FF5B00, #FF9900,#FF9900); 
+            border: none; 
+            cursor:pointer; 
+            margin: 0 0.2rem;
+        }
+.back-btn, .submit-btn{
+            width: 9rem; 
+            padding: 0.5rem; 
+            font-size: 1.2rem; 
+            color: #fff; 
+            font-weight: bold;  
+            border-radius: 0.5rem;
+            display: inline-flex;   
+            align-items: center;   
+            justify-content: center;   
+            line-height: 1.5;
+            text-align: center;
+            background-image: linear-gradient(90deg, #FF5B00, #FF5B00, #FF9900,#FF9900);
+            border: none; 
+            cursor:pointer; 
+            margin: 0 0.2rem;
+        }
+.cert-btn:hover, .find-address-btn:hover, .back-btn:hover, .submit-btn:hover{
+            background-image: linear-gradient(90deg,#FF9900,#FF9900,#FF5B00,#FF5B00);
+        }
+.fail{
+            display:none; 
+            font-size: 0.7rem; 
+            font-weight: bold; 
+            color: #FF0000;
+        }
+.ok{
+            display:none; 
+            font-size: 0.7rem; 
+            font-weight: bold; 
+        }
+#year{
+            width: 5rem;
+        } 
+#month{
+            width: 4rem;
+        }
+#day{
+            width: 3.5rem;
+        }
+#year, #month, #day{
+            padding: 0.5rem;  
+            font-size: 1rem;
+            border: 0.15rem solid #FF9900;
+        }
+.birth-container{
+            margin: 0 0.5rem;
+        }
+.pop-wrapper{
+            display: none; 
+            width: 64%; 
+            margin: 1rem auto;
+        }
+.email-wrapper{
+            padding-bottom: 1.4rem;
+        }
+.timer-text{
+            font-size: 1rem; 
+            margin: 0.2rem 0;
+        }
+.btn-inner{
+            display: flex;
+        }
+.btn-inner span, .timer{
+            font-size: 1rem; 
+            width: 4rem;
+        }
+.cert-btn{
+            width: 6rem;
+        }
+.timer-wrapper{
+            display:flex; 
+            width: 7rem;
+        }
+.refresh-btn{
+            width: 9rem;
+        }
+.cert-btn, .refresh-btn{
+            padding: 0.2rem; 
+            font-size: 0.8rem; 
+            color: #fff; 
+            font-weight: bold;  
+            border-radius: 0.5rem;
+            display: inline-flex;   
+            align-items: center;   
+            justify-content: center;   
+            line-height: 1.5;
+            text-align: center;
+            background-image: linear-gradient(90deg, #FF5B00, #FF5B00, #FF9900,#FF9900); 
+            border: none; 
+            cursor:pointer; 
+            margin: 0 0.2rem;
+        }
+.cert-btn:hover, .refresh-btn:hover{
+            background-image: linear-gradient(90deg,#FF9900,#FF9900,#FF5B00,#FF5B00);
+        }
+#certificationCodeId{
+            width: 7rem; 
+            padding: 0.1rem; 
+            border: 0.15rem solid #FF9900;
+        }
+#certificationCodeId:focus{
+            border: 0.15rem solid #FF5B00; 
+            outline:none;
+        }
+#file-box{
+            width: 14rem; 
+            margin: 0 0.5rem; 
+            padding: 0.3rem; 
+            font-size: 1rem; 
+            border: 0.15rem solid #FF9900;
+        }
+#file-box:before{
+            content: ""; 
+            display: inline-block; 
+            vertical-align:middle; 
+            text-align:center; 
+            height: 100%; 
+        }	
+#file-btn{
+            width: 5rem; 
+            padding: 0.6rem; 
+            font-size: 0.8rem;
+            color: #fff; 
+            font-weight: bold;  
+            border-radius: 0.5rem;
+            display: inline-flex;   
+            align-items: center;   
+            justify-content: center;   
+            line-height: 1.5;
+            text-align: center;
+            background-image: linear-gradient(90deg, #FF5B00, #FF5B00, #FF9900,#FF9900); 
+            border: none; 
+            cursor:pointer; 
+            margin: 0 0.2rem;
+}
