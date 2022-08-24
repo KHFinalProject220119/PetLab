@@ -1,0 +1,40 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'Goyang';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Goyang.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Dovemayo-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/Dovemayo-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+#adminNotice-container{width: 75%; margin: 0 auto;}
+#title-wrapper{width: 14%; margin: 0 auto;}
+#cont-title{
+	font-size: 3rem;
+}
+body{font-family: 'Dovemayo-Medium'}   /* 둘기마요체 */
+/*      article{
+     margin-left:522px;
+     } */
+     .category-tab{
+     position: sticky;
+     }
+      body {
+        position: relative;
+        height: 100%;
+      }
+
+
+
+#tbl-adminNotice{
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+table#tbl-adminNotice th, table#tbl-adminNotice td{height: 3rem; padding: 0.15rem; text-align:center;}
+table#tbl-adminNotice th{font-size: 1.2rem;}
+.notice-role{border: 1px solid #34C5F0; border-radius: 0.3rem;}
+#pagebar{display:flex; justify-content: center; align-items: center; width: 30%; margin: 0 auto;}

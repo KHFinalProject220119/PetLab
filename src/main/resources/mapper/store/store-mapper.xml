@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.petlab.store.model.dao.StoreDao">
+
+<insert id="insertdesAttachment">
+		insert into
+		product_des_attachment (product_att_no,product_no,original_filename,renamed_filename)
+		values(
+		product_des_att_no.nextval, #{productNo}, #{originalFilename}, #{renamedFilename})
+	</insert>
+
+	<insert id="insertAttachment">
+		insert into
+		product_attachment (product_att_no,product_no,original_filename,renamed_filename)
+		values(
+		product_att_no.nextval, #{productNo}, #{originalFilename}, #{renamedFilename})
+	</insert>
+
+	<insert id="insertProduct">
+		insert into
+		product
+		values (
+		seq_product_no.nextval,
+		#{categoryId},
+		#{categorySubId},
+		#{productName},
+		#{productPrice},
+		#{productDes})
+		<selectKey keyProperty="productNo" resultType="_int"
+			order="AFTER">
+			select
+			seq_product_no.currval
+			from
+			dual
+		</selectKey>
+	</insert>
+
+	<delete id="deleteProduct">
+		delete
+			from
+			product
+		where
+		product_no=#{productNo}
+	</delete>
+
+
+
+
+
+
+	<select id="selectProductList" resultType="product">
+select
+		b.*,
+		(select count(*) from product_attachment where product_no = b.product_no) attach_count
+		from
+		product b
+		order by
+		product_no desc
+	</select>
+
+
+	<select id="selectattToyList" resultType="ProductAttachment">
+select a.renamed_filename
+from product_attachment a, product p
+where p.category_sub_id='toy' and a.product_no = p.product_no order by product_att_no desc
+	</select>
+	
+		<select id="selectattBagList" resultType="ProductAttachment">
+select a.renamed_filename
+from product_attachment a, product p
+where p.category_sub_id='bag' and a.product_no = p.product_no order by product_att_no desc
+	</select>
+	
+		<select id="selectattBrushList" resultType="ProductAttachment">
+select a.renamed_filename
+from product_attachment a, product p
+where p.category_sub_id='brush' and a.product_no = p.product_no order by product_att_no desc
+	</select>
+	
+		<select id="selectattPadList" resultType="ProductAttachment">
+select a.renamed_filename
+from product_attachment a, product p
+where p.category_sub_id='pad' and a.product_no = p.product_no order by product_att_no desc
+	</select>
+	
+		<select id="selectattShamList" resultType="ProductAttachment">
+select a.renamed_filename
+from product_attachment a, product p
+where p.category_sub_id='shampoo' and a.product_no = p.product_no order by product_att_no desc
+	</select>
+	
+	
+			<select id="selectattFeedingList" resultType="ProductAttachment">
+select a.renamed_filename
+from product_attachment a, product p
+where p.category_sub_id='feeding' and a.product_no = p.product_no order by product_att_no desc
+	</select>
+	
+			<select id="selectattSnackList" resultType="ProductAttachment">
+select a.renamed_filename
+from product_attachment a, product p
+where p.category_sub_id='snack' and a.product_no = p.product_no order by product_att_no desc
+	</select>
+	
+			<select id="selectattFeedList" resultType="ProductAttachment">
+select a.renamed_filename
+from product_attachment a, product p
+where p.category_sub_id='feedd' and a.product_no = p.product_no order by product_att_no desc
+	</select>
+
+	<resultMap id="product" type="product">
+		<id column="product_no" property="productNo" />
+		<result column="category_id" property="categoryId" />
+		<result column="category_sub_id" property="categorySubId" />
+		<result column="product_name" property="productName" />
+		<result column="product_price" property="productPrice" />
+		<result column="product_des" property="productDes" />
+		
+		<collection property="attachments"
+			ofType="ProductAttachment">
+			<id column="product_att_no" property="No" />
+			<result column="product_no" property="productNo" />
+			<result column="original_filename" property="originalFilename"
+				jdbcType="VARCHAR" javaType="string" />
+			<result column="renamed_filename" property="renamedFilename"
+				jdbcType="VARCHAR" javaType="string" />
+			<!-- <result column="status" property="status" javaType="_int" jdbcType="BOOLEAN"/> -->
+		</collection>
+		
+	<collection property="att"
+			ofType="ProductdesAttachment">
+			<id column="product_att_no" property="No" />
+			<result column="product_no" property="productNo" />
+			<result column="original_filename" property="originalFilename"
+				jdbcType="VARCHAR" javaType="string" />
+			<result column="renamed_filename" property="renamedFilename"
+				jdbcType="VARCHAR" javaType="string" />
+			<!-- <result column="status" property="status" javaType="_int" jdbcType="BOOLEAN"/> -->
+		</collection>
+
+	</resultMap>
+
+	<select id="selectOneProductCollection" resultMap="product">
+		select
+		*
+		from
+		product p left join product_attachment a
+		on p.product_no = a.product_no
+		where
+		p.product_no = #{productNo}
+	</select>
+	
+	<select id="selectOneProductdesCollection" resultMap="product">
+		select
+		*
+		from
+		product p left join product_des_attachment a
+		on p.product_no = a.product_no
+		where
+		p.product_no = #{productNo}
+	</select>
+
+</mapper>
+
+	<!-- <insert id="insertAttachment" > insert into product_attachment (no,product_no,original_filename,renamed_filename) 
+		values( product_att_no.nextval, #{productNo}, #{originalFilename}, #{renamedFilename}) 
+		</insert> -->
+	<!-- <insert id="insertProduct"> insert into product values( seq_product_no.nextval, 
+		#{categoryId}, #{categorySubId}, #{attachgroupId}, #{productName}, #{productPrice}, 
+		#{productDes} ) </insert> -->
