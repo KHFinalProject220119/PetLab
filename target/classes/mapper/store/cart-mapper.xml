@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.petlab.store.model.dao.CartDao">
+
+<select id="countCart" parameterType="Cart" resultType="int">
+  		SELECT COUNT(*) FROM CART WHERE member_id= #{memberId} 
+AND  product_count= #{productCount}
+  	</select>
+  	
+ 	<select id="CartList" parameterType="String" resultMap="cart">
+select c.cart_no, p.product_no, a.renamed_filename,p.product_name, p.product_price, c.product_count, c.member_id
+		from product p, cart c, product_attachment a
+		where p.product_no = c.product_no AND c.member_id=#{memberId}
+		order by c.cart_no;
+    </select>
+
+
+<insert id="insertCart" >
+		insert into
+		cart (cart_no,product_no,member_id,product_count,product_price)
+		values(
+		seq_cart_no.nextval, #{productNo}, #{memberId}, #{productCount},#{productPrice})
+	</insert>
+
+
+<delete id="deleteCart" parameterType="Cart">
+		delete 
+			from cart
+			where
+				product_no = #{productNo}
+	</delete>
+
+
+
+
+
+
+
+
+
+<resultMap id="cart" type="cart">
+		<id column="cart_no" property="cartNo" />
+		<result column="product_no" property="productNo" />
+		<result column="member_id" property="memberId" />
+		<result column="product_count" property="productCount" />
+		<result column="product_price" property="productPrice" />
+	
+	</resultMap>
+
+
+</mapper>
