@@ -75,25 +75,19 @@
 		attach_group_id = #{attachGroupId}
 	</select>
 
-<!-- 	<select id="selectFreeBoardList" resultType="board">
-		select
-		b.*,
-		(select
-		count(*) from attachment where freeb_no = b.no) attach_count
-		from
-		community_free_board b
-		order by
-		no desc
-	</select> -->
-<!-- 		<select id="selectFreeBoardList" resultMap="communityFreeBoardMap">
-		select
-		*
-		from
-		community_free_board
+	<!-- <select id="selectFreeBoardList" resultType="board"> select b.*, (select 
+		count(*) from attachment where freeb_no = b.no) attach_count from community_free_board 
+		b order by no desc </select> -->
+	<select id="selectFreeBoardList" resultType="communityFreeBoard">
+		select f.*,
+		(select count(*) from attachment where freeb_no = f.freeb_no) attach_count
+		from community_free_board f
+		order by freeb_no desc
 
 	</select>
 
-	<resultMap type="communityFreeBoardMap" id="communityFreeBoard">
+	<resultMap type="communityFreeBoard"
+		id="communityFreeBoardMap">
 		<id column="freeb_no" property="freebNo" />
 		<result column="member_id" property="memberId" />
 		<result column="attach_group_id" property="attachGroupId" />
@@ -102,7 +96,7 @@
 		<result column="read_count" property="readCount" />
 		<result column="reg_date" property="regDate" />
 		<result column="like_count" property="likeCount" />
-	</resultMap> -->
+	</resultMap>
 
 	<resultMap id="communityPhotoMap" type="communityPhoto">
 		<id column="photo_no" property="photoNo" />

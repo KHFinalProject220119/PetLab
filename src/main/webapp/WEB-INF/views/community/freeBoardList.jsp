@@ -28,24 +28,16 @@
 				<th>제목</th>
 				<th>작성자</th>
 				<th>작성일</th>
-				<th>첨부파일</th>
 				<!-- 첨부파일 있을 경우, /resources/images/file.png 표시 width: 16px-->
 				<th>조회수</th>
 			</tr>
-			<c:forEach items="${list}" var="board" varStatus="vs">
-				<tr data-no="${board.no}">
-					<td>${board.no}</td>
-					<td>${board.title}</td>
-					<td>${board.memberId}</td>
-					<td><fmt:parseDate value="${board.createdAt}"
-							pattern="yyyy-MM-dd'T'HH:mm" var="createdAt" /> <fmt:formatDate
-							value="${createdAt}" pattern="MM-dd HH:mm" /></td>
-					<td><c:if test="${board.attachCount gt 0}">
-							<img
-								src="${pageContext.request.contextPath}/resources/images/file.png"
-								width="16px" />
-						</c:if></td>
-					<td>${board.readCount}</td>
+			<c:forEach items="${list}" var="communityFreeBoard" varStatus="vs">
+				<tr data-no="${communityFreeBoard.freebNo}">
+					<td>${communityFreeBoard.freebNo}</td>
+					<td>${communityFreeBoard.freebTitle}</td>
+					<td>${communityFreeBoard.memberId}</td>
+					<td>${communityFreeBoard.regDate}</td>
+					<td>${communityFreeBoard.readCount}</td>
 				</tr>
 			</c:forEach>
 		</table>

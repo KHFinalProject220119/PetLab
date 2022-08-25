@@ -46,10 +46,7 @@ public class CommunityController {
 	
 	@GetMapping("/small2")
 	public void small2() {}
-	
-	@GetMapping("/freeBoardList")
-	public void freeBoardList() {}
-	
+
 	@GetMapping("/freebEnroll")
 	public void freebEnroll() {}
 	
@@ -92,17 +89,18 @@ public class CommunityController {
 		return "redirect:/community/freeBoardList";
 	}
 	
-	@GetMapping("/freeBoardList.do")
-	public ModelAndView boardList(
+	@GetMapping("/freeBoardList")
+	public ModelAndView freeBoardList(
 				@RequestParam(defaultValue = "1") int cPage, 
 				ModelAndView mav,
 				HttpServletRequest request) {
 		try {
 			// 목록조회
 			int numPerPage = 5;
-			List<CommunityFreeBoard> list = communityService.selectFreeBoardList(cPage, numPerPage);
-			log.debug("list = {}", list);
-			mav.addObject("list", list);
+			List<CommunityFreeBoard> freeBoardList = communityService.selectFreeBoardList(cPage, numPerPage);
+			log.debug("list = {}", freeBoardList);
+			mav.addObject("list", freeBoardList);
+			System.out.println(freeBoardList);
 			
 			// 페이지바
 			int totalContent = communityService.selectTotalContent();

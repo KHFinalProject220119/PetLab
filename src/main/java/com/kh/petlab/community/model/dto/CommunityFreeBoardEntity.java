@@ -1,6 +1,8 @@
 package com.kh.petlab.community.model.dto;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,7 +23,8 @@ public class CommunityFreeBoardEntity {
 	protected String freebTitle;
 	protected String content;
 	protected int readCount;
-	protected LocalDateTime regDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	protected LocalDate regDate;
 	protected int likeCount;
 }
 	
