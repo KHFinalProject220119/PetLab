@@ -2,87 +2,117 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.kh.petlab.community.model.dao.CommunityDao">
+<mapper
+	namespace="com.kh.petlab.community.model.dao.CommunityDao">
 
 	<insert id="enroll">
 		insert into
-			community_photo
+		community_photo
 		values(
-			seq_community_photo_photo_no.nextval,
-			#{memberId},
-			#{attachGroupId},
-			#{pTitle},
-			#{pContent},
-			0,
-			0,
-			sysdate
+		seq_community_photo_photo_no.nextval,
+		#{memberId},
+		#{attachGroupId},
+		#{pTitle},
+		#{pContent},
+		0,
+		0,
+		sysdate
 		)
 	</insert>
-	
-		<insert id="freebEnroll">
+
+	<insert id="freebEnroll">
 		insert into
-			community_free_board
+		community_free_board
 		values(
-			seq_community_free_board_freeb_no .nextval,
-			#{memberId},
-			#{attachGroupId},
-			#{attachThemeId}
-			#{freebTitle},
-			#{content},
-			0,	
-			sysdate,
-			0
+		seq_community_free_board_freeb_no.nextval,
+		#{memberId},
+		#{attachGroupId},
+		#{freebTitle},
+		#{content},
+		0,
+		sysdate,
+		0
 		)
 	</insert>
-	
-		<insert id="attachmentEnroll">
+
+	<insert id="attachmentEnroll">
 		insert into
-			attachment
+		attachment
 		values(
-			#{attachGroupId},
-			seq_attachment_attach_no.nextval,
-			#{originalFilename},
-			#{renamedFilename},
-			default,
-			default
+		#{attachGroupId},
+		seq_attachment_attach_no.nextval,
+		#{originalFilename},
+		#{renamedFilename},
+		default,
+		default
 		)
 	</insert>
-	
+
 	<select id="selectPhotoList" resultMap="communityPhotoMap">
-	select 
-		* 
-	from 
+		select
+		*
+		from
 		community_photo
 
 	</select>
 	<select id="selectPhotoListByLike" resultMap="communityPhotoMap">
-	select 
-		p.* 
-	from 
-		(select row_number() over(order by like_count desc) rnum, p.* from community_photo p) p
-	where 
+		select
+		p.*
+		from
+		(select row_number() over(order by like_count desc) rnum, p.* from
+		community_photo p) p
+		where
 		rnum between 1 and 3
 
 	</select>
-	
+
 	<select id="selectAttachmentForPhoto" resultType="attachment">
-		select 
-			*
+		select
+		*
 		from
-		 	attachment
-		where 
-			attach_group_id =  #{attachGroupId}
+		attachment
+		where
+		attach_group_id = #{attachGroupId}
 	</select>
 
+<!-- 	<select id="selectFreeBoardList" resultType="board">
+		select
+		b.*,
+		(select
+		count(*) from attachment where freeb_no = b.no) attach_count
+		from
+		community_free_board b
+		order by
+		no desc
+	</select> -->
+<!-- 		<select id="selectFreeBoardList" resultMap="communityFreeBoardMap">
+		select
+		*
+		from
+		community_free_board
+
+	</select>
+
+	<resultMap type="communityFreeBoardMap" id="communityFreeBoard">
+		<id column="freeb_no" property="freebNo" />
+		<result column="member_id" property="memberId" />
+		<result column="attach_group_id" property="attachGroupId" />
+		<result column="freeb_title" property="freebTitle" />
+		<result column="content" property="content" />
+		<result column="read_count" property="readCount" />
+		<result column="reg_date" property="regDate" />
+		<result column="like_count" property="likeCount" />
+	</resultMap> -->
+
 	<resultMap id="communityPhotoMap" type="communityPhoto">
-	  <id column="photo_no" property="photoNo" />
-	  <result column="member_id" property="memberId"/>
-      <result column="attach_group_id" property="attachGroupId"/>
-      <result column="p_title" property="pTitle"/>
-      <result column="p_content" property="pContent"/>
-      <result column="read_count" property="readCount"/>
-      <result column="like_count" property="likeCount"/>
-      <result column="reg_date" property="regDate"/>
+		<id column="photo_no" property="photoNo" />
+		<result column="member_id" property="memberId" />
+		<result column="attach_group_id" property="attachGroupId" />
+		<result column="p_title" property="pTitle" />
+		<result column="p_content" property="pContent" />
+		<result column="read_count" property="readCount" />
+		<result column="like_count" property="likeCount" />
+		<result column="reg_date" property="regDate" />
 	</resultMap>
-	
+
 </mapper>

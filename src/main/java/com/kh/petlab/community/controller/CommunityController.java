@@ -22,7 +22,6 @@ import com.kh.petlab.community.model.dto.CommunityPhoto;
 import com.kh.petlab.community.model.service.CommunityService;
 import com.kh.petlab.member.model.dto.Attachment;
 
-
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -78,8 +77,7 @@ public class CommunityController {
 				attachment.setOriginalFilename(originalFilename);
 				
 				attachment.setRenamedFilename(renamedFilename);
-				
-				String attachThemeId = "CommunityFree";
+			
 				
 	//			communityPhoto.setAttachment(attachment);
 			}
@@ -92,6 +90,34 @@ public class CommunityController {
 		}
 		
 		return "redirect:/community/freeBoardList";
+	}
+	
+	@GetMapping("/freeBoardList.do")
+	public ModelAndView boardList(
+				@RequestParam(defaultValue = "1") int cPage, 
+				ModelAndView mav,
+				HttpServletRequest request) {
+		try {
+			// 목록조회
+			int numPerPage = 5;
+			List<CommunityFreeBoard> list = communityService.selectFreeBoardList(cPage, numPerPage);
+			log.debug("list = {}", list);
+			mav.addObject("list", list);
+			
+			// 페이지바
+			int totalContent = communityService.selectTotalContent();
+			// log.debug("totalContent = {}", totalContent);
+			String url = request.getRequestURI();
+			String pagebar = PetLabUtils.getPagebar(cPage, numPerPage, totalContent, url);
+			// log.debug("pagebar = {}", pagebar);
+			mav.addObject("pagebar", pagebar);
+			
+			// viewName설정
+			mav.setViewName("community/freeBoardList");
+		} catch (Exception e) {
+			log.error("게시글 목록 조회 오류", e);
+		}
+		return mav;
 	}
 	
 	

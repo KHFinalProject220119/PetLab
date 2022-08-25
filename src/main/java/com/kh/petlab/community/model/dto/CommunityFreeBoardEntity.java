@@ -18,7 +18,6 @@ public class CommunityFreeBoardEntity {
 	protected int freebNo;
 	protected String memberId;
 	protected String attachGroupId;
-	protected String boardThemeId;
 	protected String freebTitle;
 	protected String content;
 	protected int readCount;

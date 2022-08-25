@@ -17,6 +17,10 @@ public interface CommunityService {
 	List<CommunityPhoto> selectPhotoListByLike();
 
 	int freebEnroll(CommunityFreeBoard communityFreeBoard);
+
+	List<CommunityFreeBoard> selectFreeBoardList(int cPage, int numPerPage);
+
+	int selectTotalContent();
 	 
 
 }

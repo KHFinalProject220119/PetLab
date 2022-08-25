@@ -26,4 +26,6 @@ public interface CommunityDao {
 	List<CommunityPhoto> selectPhotoListByLike();
 
 	int freebEnroll(CommunityFreeBoard communityFreeBoard);
+
+	List<CommunityFreeBoard> selectFreeBoardList(RowBounds rowBounds);
 }

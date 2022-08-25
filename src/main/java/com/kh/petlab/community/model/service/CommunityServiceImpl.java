@@ -1,6 +1,6 @@
 package com.kh.petlab.community.model.service;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
+
 
 import java.util.List;
 
@@ -14,6 +14,7 @@ import com.kh.petlab.community.model.dto.Community;
 import com.kh.petlab.community.model.dto.CommunityFreeBoard;
 import com.kh.petlab.community.model.dto.CommunityPhoto;
 import com.kh.petlab.member.model.dto.Attachment;
+
 
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -75,5 +76,20 @@ public class CommunityServiceImpl implements CommunityService {
 			return result;
 		 
 	}
+	 
+		@Transactional(readOnly = true)
+		@Override
+		public List<CommunityFreeBoard> selectFreeBoardList(int cPage, int numPerPage) {
+			int offset = (cPage -1) * numPerPage;
+			int limit = numPerPage;
+			RowBounds rowBounds = new RowBounds(offset, limit);
+			return communityDao.selectFreeBoardList(rowBounds);
+		}
+
+		@Override
+		public int selectTotalContent() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
 
 }
