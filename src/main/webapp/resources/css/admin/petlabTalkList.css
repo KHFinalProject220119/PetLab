@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'Goyang';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Goyang.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@charset "UTF-8";
+
+.title-wrapper{width: 70%; text-align: center; margin: 0 auto;}
+.chatlist-title{font-size: 3rem; font-weight: bold;}
+.table{width: 70%; margin: 0 auto;}
+th{font-size:1.6rem; font-weight: bold; padding: 0.5rem; }
+td{font-size:1.2rem; font-weight: bold; padding: 0.5rem; text-align: center;}
+.border{font-size: 1.1rem; font-weigth: bold; padding: 0 0.4rem; border: 0.15rem solid #FF9900; border-radius: 25%; color: #FFF; background-color: #FF9900;}
+.d-none{display:none;}

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.petlab.chat.model.dao.ChatDao">
+
+	<insert id="insertChatMember">
+		insert into 
+			chat_member (chatroom_id, member_id) 
+		values (
+			#{chatroomId}, #{memberId}
+		)
+	</insert>
+	
+	<select id="findChatMemberByMemberId" resultType="chatmember">
+		select 
+			* 
+		from 
+			chat_member 
+		where 
+			member_id = #{memberId}
+	</select>
+	
+	<insert id="insertChatLog">
+		insert into 
+			chat_log 
+		values (
+			seq_chat_log_no.nextval, #{chatroomId}, #{memberId}, #{msg}, #{time}, #{timer}
+		)
+	</insert>
+	
+	<select id="findChatLogByChatroomId" resultType="chatlog">
+		 select
+			 * 
+		 from 
+		 	chat_log 
+		 where 
+		 	chatroom_id = #{chatroomId} 
+		 order by
+			timer
+	</select>
+	
+	<update id="updateLastCheck">
+		update 
+			chat_member 
+		set 
+			last_check = #{lastCheck}
+		where 
+			chatroom_id = #{chatroomId} and member_id = #{memberId}
+	</update>
+	
+	<select id="findRecentChatLogList" resultType="chatLog">
+		select 
+		    no,
+		    chatroom_id,
+		    (select member_id from chat_member where chatroom_id = cl.chatroom_id and member_id != #{counsellor}) member_id,
+		    msg,
+		    time,
+		    timer,
+		    (select count(*) from chat_log where chatroom_id = cl.chatroom_id and timer > (select last_check from chat_member where chatroom_id = cl.chatroom_id and member_id = #{counsellor})) unread_count
+		from (
+		    select
+		        cl.*,
+		        row_number() over(partition by chatroom_id order by time desc) rnum
+		    from 
+		        chat_log cl) cl
+		where 
+		    rnum = 1
+		order by
+			timer desc
+	</select>
+	
+	<select id="getUnreadCount" resultType="_int">
+		select 
+		    count(*) 
+		from 
+		    chat_log 
+		where 
+		    chatroom_id = #{chatroomId}
+		    and 
+		    timer > (select 
+		    			last_check 
+		    		from 
+		    			chat_member 
+		    		where 
+		    			chatroom_id = #{chatroomId} 
+		    			and 
+		    			member_id = #{memberId})
+	</select>
+	
+</mapper>

@@ -60,8 +60,8 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 	@Override
 	public AdminNotice selectOneAdminNotice(int no) {
 		AdminNotice adminnotice = adminNoticeDao.selectOneAdminNotice(no);
-		List<AdminNoticeAttachment> attachments = adminNoticeDao.selectAttchmentListByBoardNo(no);
-		adminnotice.setAttachments(attachments);
+	//	List<AdminNoticeAttachment> attachments = adminNoticeDao.selectAttchmentListByBoardNo(no);
+		//adminnotice.setAttachments(attachments);
 		return adminnotice;
 	}
 	

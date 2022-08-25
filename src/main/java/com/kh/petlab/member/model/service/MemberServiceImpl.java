@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.kh.petlab.hospital.model.dto.HosReviewRate;
+import com.kh.petlab.hospital.model.dto.PetHosReview;
 import com.kh.petlab.member.model.dao.MemberDao;
 import com.kh.petlab.member.model.dto.Address;
 import com.kh.petlab.member.model.dto.Attachment;
@@ -19,9 +21,15 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDao memberDao;
 
+	
 	@Override
 	public Member selectOneMember(String memberId) {
 		Member member = memberDao.selectOneMember(memberId);
+		String attachGroupId = member.getAttachGroupId();
+		if(member != null) {
+			Attachment attach = memberDao.selectOneAttachment(attachGroupId);
+			member.setAttach(attach);
+		}			
 		return member;
 	}
 
@@ -48,7 +56,13 @@ public class MemberServiceImpl implements MemberService {
 				 member.setAttachGroupId(attach.getAttachGroupId());
 				 } 
 		 }
-
+		if(!memberType.equals("admin")){
+			String counsellor = "counsellor";
+			List<Member> counsellorList = memberDao.selectCounsellor(counsellor);
+			int no = (int) Math.floor(Math.random() * counsellorList.size() + 1);
+			String counsellorId = "counsellor" + no;
+			member.setCounsellor(counsellorId);
+		}
 		result = memberDao.insertMember(member);
 		Map<String, Object> map = new HashMap<>();
 		map.put("memberId", member.getMemberId());
