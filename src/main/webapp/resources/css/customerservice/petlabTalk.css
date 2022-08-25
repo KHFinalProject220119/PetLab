@@ -1,0 +1,76 @@
+@font-face {
+    font-family: 'Goyang';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Goyang.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@charset "UTF-8";
+body{margin: 0; overflow: hidden;}
+#sweet-talk-top{width: 100%; height: 5%; background-color: #FF5B00; margin:0;}
+ #title-wrapper{width: 100%; text-align: center; margin: 0 auto; padding: 0.5rem;} 
+#top-title{font-size: 1.2rem; font-weight: bold; color:#fff;}
+#sweet-talk-aside{position:absolute; width: 30%; height: 45%; margin:0 70% 0 0; z-index: 50;}
+#sweet-talk-section{position: absolute; width: 70%; height: 90%; margin: 0 0 0 30%; z-index: 100;}
+#sweet-talk-content{height: 84.5%;}
+#sweet-talk-footer{position: absolute; width: 30%; height: 20%; margin: 55% 70% 0 0; z-index: 51;}
+.sweet-talk-bot-img {width: 3rem; height: 3rem; border-radius: 0.5rem;}
+.cs-talk-profile{display:flex; padding: 0.5rem; border-bottom: 1px solid #c7c7c7; background-color: #FF9900;}
+.detail{display:flex; flex-direction: column; justify-content: center; color: #000; padding: 0 0.6rem;}
+.detail p{margin: 0; font-weight: bold; font-size: 1rem; color: #FFF;}
+.thmb{width: 3rem; height: 3rem; }
+.desc{ font-size: 0.8rem;  color: #FFF;}
+.msg-view{width: 100%; height: 100%; overflow-y: scroll; overflow-x: hidden; background-color: #EBEBEB;}
+.msg_aside_imgbx{font-size: 1.3rem; margin: 1rem auto;}
+.msg_aside_box{display:flex; flex-direction: column;  text-align: center; vertical-align: middle; padding: 1rem 1rem 1rem 1rem;}
+.msg_aside_type{display:flex; flex-direction: row; border-bottom: 1px solid #c7c7c7; border-top: 1px solid #c7c7c7; padding: 1.5rem 0;}
+.msg_aside_chat{display:flex; flex-direction: column; align-items: center} 
+.ico_bot, .ico_people{width: 3rem; height: 3rem; padding-top: 0.2rem; }
+.ico_bot:before, .ico_people:before { content: ""; display: inline-block;  margin: auto; width: 0;  height: 100%; vertical-align: middle;}
+#chat-img-icon{width: 5rem; height: 5rem;}
+.inner-txt{font-size: 0.8rem; text-align: center; padding: 0.3rem 0.84rem;} 
+#chatTextarea{ font-family: 'Goyang'; display: block; border: 0; width: 95%; font-size: 1.1rem; font-weight: bold; color: #222; resize: none; box-sizing: border-box; padding: 0.6rem;}
+ #chatTextarea:focus{outline: none;}
+ .col-group{display: flex; justify-content: space-between;align-items: center;	height: 100%; 	width: 100%; 	border: 1px solid #ddd;
+    border-radius: 5px;    background: #fff;    box-sizing: border-box;    }
+.col-input{width: 100%;}
+.txt-send-btn{	height: 1.3rem;  vertical-align: middle;width: 1.3rem;  border-left: 1px solid #ddd;  padding: 0 0.5rem; }
+em{font-style: normal;}
+.msg-date{position: relative;  margin: 30px 15px 20px;  text-align: center; }
+.msg-date:before {  content: "";  position: absolute;  top: 50%;  left: 0;  width: 100%;  border: 1px solid #dedede;}
+.msg-date em { display: inline-block;  position: relative; padding: 0 1rem; background: #ececec; color: #888; font-size: 1rem;}
+.msg-unit-cs{display: flex;flex-direction: row;position: relative; margin: 1rem; padding: 0 0.2rem;}
+.msg-unit-me{display: flex;flex-direction: row;position: relative; margin: 1rem; padding: 0 0.2rem;}
+.msg-thmb { position: inline-block; top: 0; left: 0;}
+.thmb-img { display: block; width: 2rem; height: 2rem; border-radius: 50%; background: #f5f5f5;}
+.msg-bx{display:flex; flex-direction:column; align-items:flex-end; float: left; padding-left: 2rem;  padding-right: 4rem;	position: relative; clear: both; max-width: 375px; margin-bottom: 10px; box-sizing: border-box; border-radius: 0.5rem;}
+.msg-bubble{background-color: #fff; border-radius: 0.5rem;}
+.msg-txt{margin: 0; padding: 0.7rem; font-size: 0.8rem}
+.msg-unit-me {display:flex;justify-content: flex-end; position: relative; margin: 1rem;}
+.msg-unit-me .msg-bx{float: right;padding-left: 4rem; padding-right: 1rem;position: relative; clear: both; max-width: 375px; margin-bottom: 10px; box-sizing: border-box; border-radius: 0.5rem;}
+.msg-unit-me .msg-bubble{background-color: #35C5F0; border-radius: 0.5rem;}
+.msg-unit-me .msg-txt{margin: 0; padding: 0.5rem 0.5rem; font-size: 0.8rem; color: #fff;}
+.msg-text-inner{display:flex; flex-direction: column;}
+.msg-unit-cs .msg-bubble:before { content: ""; position: absolute; top: 0; left: 1.5rem; width: 0; border: 14px solid transparent; border-top-color: #FFF; border-radius: 3px;}
+.msg-unit-me .msg-bubble:after { content: ""; position: absolute; top: 0; right: 10px; width: 0; border: 8px solid transparent; border-top-color: #35C5F0; border-radius: 3px;}
+.top-btn{display: absolute; width: 1.5rem; height: 1.5rem; margin-left:95%; border:none; cursor:pointer; background-size: 100% 100%; background-color: #ececec;} 
+.bottom-btn{display: absolute; width: 1.5rem; height: 1.5rem; margin: 1% 0 0 95%; border:none; cursor:pointer; background-size: 100% 100%; background-color: #ececec;}
+.tx-time{font-size: 0.7rem; color: #888;}
+.msg-info{width: 3rem; margin-top: 0.2rem;}
+.btn-submit-send{width: 1.3rem; height: 1.3rem; background-size: 100% 100%; border: none; background-color: #fff; padding: 0; cursor:pointer;}
+#btn-submit-img{width: 1.3rem; height: 1.3rem;}
+.bta{cursor:pointer;}
+.chatroom_profile_img{width: 3rem; height: 3rem; margin: 0 auto;}
+.chatroom_txt{font-size: 1rem; font-weight:bold; color: #767676; text-align: center; margin-bottom: 1.5rem;}
+.msg-input-bx{background-color: #d8d6d6; height: 10%; padding: 0.5rem;}
+.chatroom_controls{display:flex; flex-direction: column; align-items: center;}
+.chatroom_tel_num span{font-weight:bold;}
+.btn-leave-area{ width: 9rem; margin: 0 auto;  margin-top: 2rem;}
+.btn-leave-chatroom{background-color: #FF9900; font-weight:bold; border-radius: 0.5rem; color: #fff; border: none; cursor: pointer; font-size: 1.3rem;}
+.btn-leave-chatroom:hover{background-color: #FF5B00;}
+.msg-view::-webkit-scrollbar { width: 0.5rem; }
+.msg-view::-webkit-scrollbar-thumb { height: 30%; background: #35C5F0; border-radius: 0.6rem; }
+.msg-view::-webkit-scrollbar-track { background: #217af41a; }
+.counsellor-name{margin: 0 0 0.3rem 1.8rem;}
+.member-name{display:flex; flex-direction: row; justify-content: flex-end; margin: 0 0.8rem 0.3rem 0; }
+.top-bottom-btn-wrapper{position: absolute; bottom: 2.5rem; width: 98%; display: flex; flex-direction: column; align-content: flex-end;}
