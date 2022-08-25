@@ -22,14 +22,25 @@
 <div id="mypage-submenu" class="submenu">
 	<h4 class="top-title"> <a href="${pageContext.request.contextPath}/mypage/mypageHome">MY PAGE </a></h4>
 		<ul id="sub">
+<<<<<<< HEAD
 			<li><a href="${pageContext.request.contextPath}/mypage/memberDetail">회원정보</a></li>
 			<sec:authorize access="hasRole('HOSPITAL')">
             <li><a href="${pageContext.request.contextPath}/hospital/hospitalEnroll">병원 상세정보 등록</a></li>
             </sec:authorize>
 			<li><a href="${pageContext.request.contextPath}/mypage/myBorad">내가 쓴 글</a></li>
 			<li><a href="${pageContext.request.contextPath}/mypage/myPetHome">마이펫</a></li>
+=======
+		 
+			<li><a href="${pageContext.request.contextPath}/mypage/memberDetail" >회원정보</a></li>
+			<li><a href="${pageContext.request.contextPath}/mypage/myBorad">내가 쓴 글</a></li>
+			<li><a href="${pageContext.request.contextPath}/mypage/myPetHome">마이펫</a></li>
+			<sec:authorize access="hasRole('HOSPITAL')">
+			<li><a href="${pageContext.request.contextPath}/hospital/hospitalEnroll">병원 상세정보 등록</a></li>
+			</sec:authorize>
+>>>>>>> branch 'master' of https://github.com/KHFinalProject220119/PetLab.git
 			<li><a href="${pageContext.request.contextPath}/mypage/closeMember">회원탈퇴</a></li>
 		</ul>
+	 
 </div>
 <div class="top_mypage">
   			<sec:authorize access="isAuthenticated()">
@@ -325,6 +336,7 @@ const passwordValidator = () => {
 // 비밀번호 확인 이벤트리스너
 document.querySelector("#passwordCheck").addEventListener('blur', passwordValidator);
 
+<<<<<<< HEAD
 // 현재 연도를 초과한 숫자 입력 시 올해로 변경
 document.querySelector("#year").addEventListener('keyup', (e) => {
 	const year = e.target.value;
@@ -519,4 +531,8 @@ const checkCertCode = () => {
     }
 }
 </script>    
+=======
+
+</script>  
+>>>>>>> branch 'master' of https://github.com/KHFinalProject220119/PetLab.git
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

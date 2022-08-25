@@ -3,7 +3,6 @@ package com.kh.petlab.chat.controller;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpSession;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.kh.petlab.chat.model.dto.ChatLog;
 import com.kh.petlab.chat.model.dto.ChatMember;
 import com.kh.petlab.chat.model.service.ChatService;
- 
 import com.kh.petlab.member.model.dto.Attachment;
 import com.kh.petlab.member.model.dto.Member;
 import com.kh.petlab.member.model.service.MemberService;

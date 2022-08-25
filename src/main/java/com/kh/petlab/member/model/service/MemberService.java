@@ -15,7 +15,7 @@ public interface MemberService {
 	String ROLE_ADMIN = "ROLE_ADMIN";
 	String ROLE_HOSPITAL = "ROLE_HOSPITAL";
 	String ROLE_MALL = "ROLE_MALL";
-	String ROLE_COUNSELOR = "ROLE_COUNSELOR";
+	String ROLE_COUNSELLOR = "ROLE_COUNSELLOR";
 	Member selectOneMember(String memberId);
 	Member selectOneMemberByNickname(String nickname);
 	Member selectOneMemberByEmail(String email);

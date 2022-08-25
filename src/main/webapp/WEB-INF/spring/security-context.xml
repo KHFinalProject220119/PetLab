@@ -20,6 +20,7 @@
 		<intercept-url pattern="/store/**" access="permitAll"  />
 		<intercept-url pattern="/admin/**" access="hasRole('ADMIN')"  />
 
+		<intercept-url pattern="/ws/**" access="permitAll"/>
 		
 		<!-- member - 공통 : 회원가입/ 로그인 / 로그아웃 등  -->
 		<intercept-url pattern="/member/signOut" access="permitAll"  />
@@ -42,6 +43,7 @@
 		<form-login
 			login-page="/member/signIn"
 			login-processing-url="/member/signIn"
+			authentication-success-forward-url="/member/loginSuccess"
 			username-parameter="memberId"
 			password-parameter="password"
 				/>	

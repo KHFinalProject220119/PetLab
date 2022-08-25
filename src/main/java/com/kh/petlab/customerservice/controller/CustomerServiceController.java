@@ -3,13 +3,19 @@ package com.kh.petlab.customerservice.controller;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +27,8 @@ import com.kh.petlab.common.PetLabUtils;
 import com.kh.petlab.customerservice.model.dto.CsEmailLog;
 import com.kh.petlab.customerservice.model.service.CustomerService;
 import com.kh.petlab.member.model.dto.Attachment;
+import com.kh.petlab.member.model.dto.Member;
+import com.kh.petlab.member.model.service.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,9 +37,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CustomerServiceController {
 
-	 @Autowired CustomerService customerService;
+	 @Autowired 
+	 CustomerService customerService;
 	 
-	 @Autowired ServletContext application;
+	 @Autowired 
+	 MemberService memberService;
+	 
+	 @Autowired 
+	 ServletContext application;
 	 
 	 @GetMapping("/csCenter")
 	 public void customerserviceHome() {};
@@ -66,6 +79,7 @@ public class CustomerServiceController {
 			return mav;
 	 };
 	 
+
 		private Attachment getAttachment(String saveDirectory, String attachGroupId, MultipartFile upfile)
 				throws IOException {
 			String originalFilename = upfile.getOriginalFilename();

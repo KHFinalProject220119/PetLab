@@ -1,7 +1,5 @@
 package com.kh.petlab.adminnotice.model.service;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
@@ -10,8 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.petlab.adminnotice.model.dao.AdminNoticeDao;
-import com.kh.petlab.adminnotice.model.dto.AdminNoticeAttachment;
 import com.kh.petlab.adminnotice.model.dto.AdminNotice;
+import com.kh.petlab.adminnotice.model.dto.AdminNoticeAttachment;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -60,8 +58,10 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 	@Override
 	public AdminNotice selectOneAdminNotice(int no) {
 		AdminNotice adminnotice = adminNoticeDao.selectOneAdminNotice(no);
-//		List<AdminNoticeAttachment> attachments = adminNoticeDao.selectAttchmentListByBoardNo(no);
-//		adminnotice.setAttachments(attachments);
+
+	//	List<AdminNoticeAttachment> attachments = adminNoticeDao.selectAttchmentListByBoardNo(no);
+		//adminnotice.setAttachments(attachments);
+
 		return adminnotice;
 	}
 	

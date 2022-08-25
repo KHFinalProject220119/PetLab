@@ -53,7 +53,8 @@
 			default,
 			default,
 			default,
-			default
+			default,
+			#{counsellor}
 		) 
 	</insert>
 	
@@ -124,6 +125,14 @@
         	enroll_date desc
 	</select>
 	
+	<select id="selectCounsellor" resultType="member">
+		select 
+			*
+		from
+			member
+		where member_id = #{counsellor}||'%'
+	</select>
+	
 	<resultMap type="member" id="memberMap">
 		<id column="member_id" property="memberId" />
 		<result column="attach_group_id" property="attachGroupId"  />
@@ -141,6 +150,7 @@
 		<result column="point" property="point"  />
 		<result column="enabled" property="enabled"  />
 		<result column="enroll_date" property="enrollDate"  />
+		<result column="counsellor" property="counsellor"  />
 		<collection property="authorities" ofType="simpleGrantedAuthority" >
 			<constructor>
 				<arg column="auth" javaType="string" />
@@ -155,6 +165,15 @@
 		where
 			member_id = #{memberId}
 	</delete>
+	
+	<select id="selectOneAttachment" resultType="attachment">
+		select 
+			* 
+		from
+			attachment
+		where 
+			attach_group_id = #{attachGroupId}
+	</select>
 	
 	
 </mapper>
