@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.petlab.common.PetLabUtils;
+import com.kh.petlab.community.model.dto.CommunityFreeBoard;
 import com.kh.petlab.community.model.dto.CommunityPhoto;
 import com.kh.petlab.community.model.service.CommunityService;
 import com.kh.petlab.member.model.dto.Attachment;
@@ -49,6 +50,50 @@ public class CommunityController {
 	
 	@GetMapping("/freeBoardList")
 	public void freeBoardList() {}
+	
+	@GetMapping("/freebEnroll")
+	public void freebEnroll() {}
+	
+	@PostMapping("/freebEnroll")
+	public String freebEnroll(CommunityFreeBoard communityFreeBoard, @RequestParam (name = "upFile", required = false) MultipartFile upFile) {
+		try {
+			log.debug("CommunityFreeBoard = {}", communityFreeBoard);
+			log.debug("upFile ={}", upFile);
+			String saveDirectory = application.getRealPath("/resources/upload/community");
+			Attachment attachment = new Attachment();
+			//업로드한 파일 저장
+			if(upFile.getSize() > 0) {
+				String originalFilename = upFile.getOriginalFilename();
+				String renamedFilename = PetLabUtils.getRenamedFilename(originalFilename);
+				log.debug("renamedFilename = {}", renamedFilename);
+				
+				// 파일 저장
+				File destFile = new File(saveDirectory, renamedFilename);
+				upFile.transferTo(destFile);
+				
+				String attachGroupId = PetLabUtils.getAttachGroupId("Community");
+				attachment.setAttachGroupId(attachGroupId);
+				communityFreeBoard.setAttachGroupId(attachGroupId);
+				
+				attachment.setOriginalFilename(originalFilename);
+				
+				attachment.setRenamedFilename(renamedFilename);
+				
+				String attachThemeId = "CommunityFree";
+				
+	//			communityPhoto.setAttachment(attachment);
+			}
+			
+			int result = communityService.freebEnroll(communityFreeBoard);
+			
+		} catch(Exception e) {
+			log.error("커뮤니티 글 등록 오류", e);
+			e.printStackTrace();
+		}
+		
+		return "redirect:/community/freeBoardList";
+	}
+	
 	
 	@GetMapping("/knowhowList")
 	public void knowhowList() {}

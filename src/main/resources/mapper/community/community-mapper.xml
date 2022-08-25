@@ -19,6 +19,22 @@
 		)
 	</insert>
 	
+		<insert id="freebEnroll">
+		insert into
+			community_free_board
+		values(
+			seq_community_free_board_freeb_no .nextval,
+			#{memberId},
+			#{attachGroupId},
+			#{attachThemeId}
+			#{freebTitle},
+			#{content},
+			0,	
+			sysdate,
+			0
+		)
+	</insert>
+	
 		<insert id="attachmentEnroll">
 		insert into
 			attachment

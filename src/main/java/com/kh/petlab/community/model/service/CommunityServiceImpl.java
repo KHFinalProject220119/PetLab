@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.petlab.community.model.dao.CommunityDao;
 import com.kh.petlab.community.model.dto.Community;
+import com.kh.petlab.community.model.dto.CommunityFreeBoard;
 import com.kh.petlab.community.model.dto.CommunityPhoto;
 import com.kh.petlab.member.model.dto.Attachment;
 
@@ -58,5 +59,21 @@ public class CommunityServiceImpl implements CommunityService {
 		return   communityDao.selectPhotoListByLike();
 	}
 	
+	 @Override
+	 public int freebEnroll(CommunityFreeBoard communityFreeBoard) {
+		 //community insert
+		 int result = communityDao.freebEnroll(communityFreeBoard);
+		 
+		 // 첨부파일 insert
+			/*
+			 * Attachment attachment = communityPhoto.getAttachment(); if(attachment !=
+			 * null) {
+			 * 
+			 * result = communityDao.attachmentEnroll(attachment); }
+			 */
+			
+			return result;
+		 
+	}
 
 }

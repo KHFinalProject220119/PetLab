@@ -120,11 +120,8 @@ function logoutWithKakao() {
 									</a>
 								</li>
 								<li class="header-menu-li">
-<<<<<<< HEAD
 									<a href="${pageContext.request.contextPath}/community/communityMain" class="menu-link">
-=======
 									<a href="${pageContext.request.contextPath}/community/photoList" class="menu-link">
->>>>>>> branch 'master' of https://github.com/KHFinalProject220119/PetLab.git
 										<span><img class="menu-logo" src="${pageContext.request.contextPath}/resources/images/common/header/CatWithAPencil.png" alt="" /></span>
 										<h2>커뮤니티</h2>
 									</a>

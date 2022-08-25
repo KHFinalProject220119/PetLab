@@ -151,3 +151,8 @@ th#btn_photo_add {
     cursor: pointer;
     border-style : none;
 }
+
+.attach_photo {
+	width : 350px;
+	height : 300px;
+}

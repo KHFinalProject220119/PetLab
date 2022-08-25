@@ -31,7 +31,9 @@
 		</tr>
 		<tr>
 			<th>
-				<input type="button" value="글쓰기" id="btn-add" class="btn btn-outline-success" onclick="goToBoardForm();"/>
+					<button type="button" id="btn-add-photo" class="btn_photo">
+						<a href="${pageContext.request.contextPath}/community/freebEnroll">글쓰기 </a>
+					</button> <!-- 마우스를 가져갈 시 커서 뿐 아니라 그라데이션 물결 효과를 얻고싶다아아...왜안되니.... -->
 			</th>
 		</tr>
 	</table>
