@@ -2,14 +2,14 @@ package com.kh.petlab.member.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -17,8 +17,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +29,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.petlab.chat.model.dto.ChatMember;
+import com.kh.petlab.chat.model.service.ChatService;
 import com.kh.petlab.common.PetLabUtils;
+import com.kh.petlab.customerservice.model.service.CustomerService;
 import com.kh.petlab.member.model.dto.Address;
 import com.kh.petlab.member.model.dto.Attachment;
 import com.kh.petlab.member.model.dto.Member;
@@ -41,6 +47,12 @@ public class MemberController {
 
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	CustomerService customerService;
+	
+	@Autowired
+	ChatService chatService;
 	
 	@Autowired
 	BCryptPasswordEncoder bcryptPasswordEncoder;
@@ -224,7 +236,7 @@ public class MemberController {
 					member.addAttachment(attach);
 				}
 			}
-			
+
 			
 			// Date로 변환 -> local로 바꿈 /*박지수*/
 //			Date birthday = null;
@@ -414,4 +426,30 @@ public class MemberController {
 					.header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE)
 					.body(map);
 		}
+	
+	
+	@PostMapping("/loginSuccess")
+	public String loginSuccess(@AuthenticationPrincipal Member member, HttpSession session, Model model) {
+
+		List<SimpleGrantedAuthority> authorities = (List<SimpleGrantedAuthority>) member.getAuthorities();
+		// 관리자가 아닌 경우에만 안읽은 메세지수 체크
+		if(!authorities.contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {			
+			// 관리자와의 1:1채팅 안읽은 메세지 카운팅
+			ChatMember chatMember = chatService.findChatMemberByMemberId(member.getMemberId());
+			if(chatMember != null) {
+				int unreadCount = chatService.getUnreadCount(chatMember);
+				// 세션스코프에 저장
+				session.setAttribute("unreadCount", unreadCount);
+			}
+		}
+		
+		// security redirect사용하기
+		SavedRequest savedRequest = (SavedRequest) session.getAttribute("SPRING_SECURITY_SAVED_REQUEST");
+		String location = "/";
+		if(savedRequest != null)
+			location = savedRequest.getRedirectUrl();
+	
+		return "redirect:" + location;
+	}
+	
 }

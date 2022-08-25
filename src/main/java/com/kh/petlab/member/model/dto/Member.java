@@ -19,8 +19,7 @@ import lombok.ToString;
 public class Member extends MemberEntity implements UserDetails {
 	private List<Attachment> attachments = new ArrayList<>();
 	List<SimpleGrantedAuthority> authorities;
-
-	
+	private Attachment attach;	
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -47,15 +46,17 @@ public class Member extends MemberEntity implements UserDetails {
 		return true;
 	}
 
-	public Member(List<Attachment> attachments, List<SimpleGrantedAuthority> authorities) {
-		super();
-		this.attachments = attachments;
-		this.authorities = authorities;
-	}
-
+	
 	public void addAttachment(@NonNull Attachment attachment) {
 		attachments.add(attachment);
 }
+
+	public Member(List<Attachment> attachments, List<SimpleGrantedAuthority> authorities, Attachment attach) {
+		super();
+		this.attachments = attachments;
+		this.authorities = authorities;
+		this.attach = attach;
+	}
 
   
 }

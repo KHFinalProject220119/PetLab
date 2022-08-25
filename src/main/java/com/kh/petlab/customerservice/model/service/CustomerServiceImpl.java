@@ -16,6 +16,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
 	CustomerServiceDao customerServiceDao;
+	
 	@Autowired
 	MemberDao memberDao;
 
@@ -33,4 +34,6 @@ public class CustomerServiceImpl implements CustomerService {
 		result = customerServiceDao.sendEmail(emailLog);
 		return result;
 	}
+	
+	
 }

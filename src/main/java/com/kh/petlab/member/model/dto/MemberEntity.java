@@ -40,4 +40,6 @@ public class MemberEntity {
 	protected int point;
 	protected boolean enabled;
 	protected LocalDateTime enrollDate;
+	// 상담사 배정을 위해 추가
+	protected String counsellor;
 }

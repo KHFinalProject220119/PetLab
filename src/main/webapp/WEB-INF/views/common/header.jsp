@@ -202,14 +202,21 @@ function logoutWithKakao() {
 			
 				</div>
 			</div>
-
 <script>
 // 고객센터 1:1채팅 Sweet Talk
 const openChat = () => {
-	const title = "PetTalkPopup";
-	const spec = "width=720px, height=660px";
-	const addr = "${pageContext.request.contextPath}/customerservice/pettalk";
-	const popup = open(addr, title, spec);
+	const memberId = "${loginMember.memberId}";
+    if(!memberId){
+		alert('로그인 후 사용하실 수 있습니다.');
+		location.href("${pageContext.request.contextPath}/");
+		return false;	
+    }
+    else{
+		const title = "PetTalkPopup";
+		const spec = "width=720px, height=685px";
+		const addr = "${pageContext.request.contextPath}/chat/chat?memberId=${loginMember.memberId}";
+		const popup = open(addr, title, spec);
+    }
 }
 // top 버튼
 const goToTop = (e) => {

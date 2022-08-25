@@ -37,4 +37,8 @@ public interface MemberDao {
 
 	int findCurrentAttachmentNo();
 
+	List<Member> selectCounsellor(String counsellor);
+
+	Attachment selectOneAttachment(String attachGroupId);
+
 }
