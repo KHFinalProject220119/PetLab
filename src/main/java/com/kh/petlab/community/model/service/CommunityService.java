@@ -21,6 +21,12 @@ public interface CommunityService {
 	List<CommunityFreeBoard> selectFreeBoardList(int cPage, int numPerPage);
 
 	int selectTotalContent();
+
+	CommunityFreeBoard selectOneFreeBoard(int no);
+
+	CommunityFreeBoard selectOneFreeBoardCollection(int no);
+
+	Attachment selectOneAttachment(int attachNo);
 	 
 
 }

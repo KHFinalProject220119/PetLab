@@ -50,7 +50,7 @@ document.querySelectorAll(".attach").forEach((btn) => {
 	btn.addEventListener("click", (e) => {
 		const attachNo = e.target.value;
 		console.log(attachNo);
-		location.href = `${pageContext.request.contextPath}/board/fileDownload.do?no=\${attachNo}`;
+		location.href = `${pageContext.request.contextPath}/community/upload?no=\${attachNo}`;
 	});
 });
 </script>

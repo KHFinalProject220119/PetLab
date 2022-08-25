@@ -85,6 +85,24 @@ public class CommunityServiceImpl implements CommunityService {
 			RowBounds rowBounds = new RowBounds(offset, limit);
 			return communityDao.selectFreeBoardList(rowBounds);
 		}
+		
+		@Override
+		public CommunityFreeBoard selectOneFreeBoard(int no) {
+			CommunityFreeBoard board = communityDao.selectOneFreeBoard(no);
+			List<Attachment> attachments = communityDao.selectAttchmentListByFreeBoardNo(no);
+			board.setAttachments(attachments);
+			return board;
+		}
+		
+		@Override
+		public CommunityFreeBoard selectOneFreeBoardCollection(int no) {
+			return communityDao.selectOneFreeBoardCollection(no);
+		}
+		
+		@Override
+		public Attachment selectOneAttachment(int attachNo) {
+			return communityDao.selectOneAttachment(attachNo);
+		}
 
 		@Override
 		public int selectTotalContent() {

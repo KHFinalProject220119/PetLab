@@ -118,6 +118,22 @@ public class CommunityController {
 		return mav;
 	}
 	
+	@GetMapping("/freeBoardDetail")
+	public ModelAndView boardDetail(@RequestParam int no, ModelAndView mav) {
+		try {
+//			Board board = boardService.selectOneBoard(no);
+			CommunityFreeBoard communityFreeBoard = communityService.selectOneFreeBoardCollection(no);
+			log.debug("CommunityFreeBoard = {}", communityFreeBoard);
+			
+			mav.addObject("communityFreeBoard", communityFreeBoard);
+			mav.setViewName("community/freeboardDetail");
+		} catch (Exception e) {
+			log.error("게시글 조회 오류", e);
+			throw e;
+		}
+		return mav;
+	}
+	
 	
 	@GetMapping("/knowhowList")
 	public void knowhowList() {}

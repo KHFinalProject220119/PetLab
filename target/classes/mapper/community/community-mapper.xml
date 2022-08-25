@@ -85,6 +85,22 @@
 		order by freeb_no desc
 
 	</select>
+	
+<!-- 		<select id="selectOneBoardCollection" resultMap="boardCollectionMap">
+		select
+		    f.*,
+		    m.*,
+		    a.no attach_no,
+		    a.*
+		from
+		    board b
+		        left join member m on f.member_id = m.member_id
+		        left join attachment a on f.no = a.freeb_no
+		where
+		    f.no = #{no}
+		order by 
+		    f.no desc
+	</select> -->
 
 	<resultMap type="communityFreeBoard"
 		id="communityFreeBoardMap">

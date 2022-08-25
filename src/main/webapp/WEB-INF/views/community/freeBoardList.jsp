@@ -65,7 +65,7 @@
 				// 특정 선택자와 일치여부 boolean형 반환
 				if(tr.matches('tr[data-no]')){
 					const no = tr.dataset.no;
-					location.href = '${pageContext.request.contextPath}/community/communityFreeBoardDetail.do?no=' + no;
+					location.href = '${pageContext.request.contextPath}/community/communityFreeBoardDetail?no=' + no;
 				}
 			});
 		});

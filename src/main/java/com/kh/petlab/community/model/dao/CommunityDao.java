@@ -28,4 +28,12 @@ public interface CommunityDao {
 	int freebEnroll(CommunityFreeBoard communityFreeBoard);
 
 	List<CommunityFreeBoard> selectFreeBoardList(RowBounds rowBounds);
+
+	CommunityFreeBoard selectOneFreeBoard(int no);
+
+	List<Attachment> selectAttchmentListByFreeBoardNo(int no);
+
+	CommunityFreeBoard selectOneFreeBoardCollection(int no);
+
+	Attachment selectOneAttachment(int attachNo);
 }
