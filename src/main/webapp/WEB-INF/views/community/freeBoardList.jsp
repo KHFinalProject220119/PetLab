@@ -17,8 +17,11 @@
 <title></title>
 </head>
 <body>
-	<section id="board-container" class="container">
-		<table id="tbl-board"
+	<section id="community-container" class="container">
+		<jsp:include page="/WEB-INF/views/community/community_header.jsp">
+			<jsp:param value="커뮤니티" name="title" />
+		</jsp:include>
+		<table id="free-board"
 			class="table table-striped table-hover text-center">
 			<tr>
 				<th>번호</th>
@@ -47,7 +50,7 @@
 			</c:forEach>
 		</table>
 		<%-- 	<nav>${pagebar}</nav> --%>
-		<button type="button" id="btn-add-photo" class="btn_photo">
+		<button type="button" id="btn-add-free" class="btn_free">
 			<a href="${pageContext.request.contextPath}/community/freebEnroll">글쓰기
 			</a>
 		</button>
@@ -60,6 +63,23 @@
 				</tr>
 
 			</table> -->
+	<script>
+	window.addEventListener('load', (e) => {
+		document.querySelectorAll("tr[data-no]").forEach((tr) => {
+			tr.addEventListener('click', (e) => {
+				// console.log(e.target);	
+				const tr = e.target.parentElement;
+				// console.log(tr);
+				// 특정 선택자와 일치여부 boolean형 반환
+				if(tr.matches('tr[data-no]')){
+					const no = tr.dataset.no;
+					location.href = '${pageContext.request.contextPath}/community/communityFreeBoardDetail.do?no=' + no;
+				}
+			});
+		});
+		
+	});		
+	</script>
 </body>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </html>
