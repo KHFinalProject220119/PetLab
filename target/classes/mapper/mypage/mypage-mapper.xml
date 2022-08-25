@@ -91,7 +91,7 @@
 
 	</select>
 		
-	<insert id="myPetEnroll">`
+<!-- 	<insert id="myPetEnroll">`
 		insert into
 			pet
 		values(
@@ -106,8 +106,8 @@
 			#{weight},
 			#{birthday},
 			#{neutering}	)	
-
-	</insert>
+	
+	</insert> -->
 	
 		<insert id="insertPet">
 		insert into
@@ -175,6 +175,25 @@
 	order by pet_no desc
 	</select>
 	
+	<select id="selectOnePet" resultType="mypet">
+ 		select 
+ 			* 
+ 		from 
+ 			pet
+ 		where 
+ 			member_id = #{memberId}
+ 	</select>
+ 	
+ 	<select id="selectOnePetByPetIdName" resultType="mypet">
+ 		select 
+ 			* 
+ 		from 
+ 			pet
+ 		where 
+ 			pet_id = #{petId} and
+ 			pet_name = #{petName}
+ 	</select>
+	
 	<resultMap type="myPet" id="mypetMap">
 		<id column="member_id" property="memberId" />
 		<result column="attach_group_id" property="attachGroupId"  />
@@ -187,6 +206,15 @@
 		<result column="weight" property="weight"  />
 		<result column="birthday" property="birthday"  />
 		<result column="neutering" property="neutering"  />
+		<association property="member" javaType="member">
+			<id column="member_id" property="memberId"/>
+		</association>
+		<collection property="attachments" javaType="arraylist" ofType="attachment">
+			<id column="attach_no" property="no"/>
+			<result column="original_filename" property="originalFilename"/>
+			<result column="renamed_filename" property="renamedFilename"/>
+			<result column="download_count" property="downloadCount"/>
+		</collection>
 	</resultMap>
 	
 	
