@@ -107,7 +107,7 @@ where p.category_sub_id='snack' and a.product_no = p.product_no order by product
 			<select id="selectattFeedList" resultType="ProductAttachment">
 select a.renamed_filename
 from product_attachment a, product p
-where p.category_sub_id='feedd' and a.product_no = p.product_no order by product_att_no desc
+where p.category_sub_id='feed' and a.product_no = p.product_no order by product_att_no desc
 	</select>
 
 	<resultMap id="product" type="product">

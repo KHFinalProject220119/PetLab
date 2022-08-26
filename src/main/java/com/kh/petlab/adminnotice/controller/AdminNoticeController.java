@@ -2,6 +2,8 @@ package com.kh.petlab.adminnotice.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -29,11 +31,13 @@ import com.kh.petlab.adminnotice.model.dto.AdminNoticeAttachment;
 import com.kh.petlab.adminnotice.model.dto.AdminNotice;
 import com.kh.petlab.adminnotice.model.service.AdminNoticeService;
 import com.kh.petlab.common.PetLabUtils;
+import com.kh.petlab.hospital.model.dto.Hospital;
+import com.kh.petlab.member.model.dto.Attachment;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
-@RequestMapping("/adminNotice")
+@RequestMapping("/adminnotice")
 @Slf4j
 public class AdminNoticeController {
 
@@ -46,7 +50,7 @@ public class AdminNoticeController {
 	@Autowired
 	ResourceLoader resourceLoader;
 	
-	@GetMapping("/adminNoticeList.do")
+	@GetMapping("/adminNoticeList")
 	public ModelAndView adminNoticeList(
 				@RequestParam(defaultValue = "1") int cPage, 
 				ModelAndView mav,
@@ -60,10 +64,8 @@ public class AdminNoticeController {
 			
 			// 페이지바
 			int totalContent = adminNoticeService.selectTotalContent();
-			// log.debug("totalContent = {}", totalContent);
 			String url = request.getRequestURI();
 			String pagebar = PetLabUtils.getPagebar(cPage, numPerPage, totalContent, url);
-			// log.debug("pagebar = {}", pagebar);
 			mav.addObject("pagebar", pagebar);
 			
 			// viewName설정
@@ -78,51 +80,54 @@ public class AdminNoticeController {
 	public void adminNoticeForm() {}
 	
 	@PostMapping("/adminNoticeEnroll")
-	public String adminNoticeEnroll(
+	public ModelAndView adminNoticeEnroll(
+			ModelAndView mav,
 			@ModelAttribute AdminNotice adminNotice,
-			@RequestParam("upFile") MultipartFile[] upFiles,
-			RedirectAttributes redirectAttr) throws Exception {
+			@RequestParam("upFile") MultipartFile[] upFiles
+			) throws Exception {
 		try {
 			log.debug("adminNotice = {}", adminNotice);
-
 			String saveDirectory = application.getRealPath("/resources/upload/adminNotice");
+			String attachGroupId = PetLabUtils.getAttachGroupId("notice");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmssSSS_");
+			
 			
 			// 업로드한 파일 저장
 			for(MultipartFile upFile : upFiles) {
 				if(upFile.getSize() > 0) {
-					// 파일명 재지정
-					String originalFilename = upFile.getOriginalFilename();
-					String renamedFilename = PetLabUtils.getRenamedFilename(originalFilename);
-					log.debug("renamedFilename = {}", renamedFilename);
-					// 파일 저장
-					File destFile = new File(saveDirectory, renamedFilename);
-					upFile.transferTo(destFile); // 파일 저장
-					AdminNoticeAttachment attach = new AdminNoticeAttachment();
-					attach.setOriginalFilename(originalFilename);
-					attach.setRenamedFilename(renamedFilename);
-					adminNotice.addAttachment(attach);
+					adminNotice.addAttachment(getAttachment(saveDirectory, attachGroupId, upFile));
 				}
 			}
-			
 			int result = adminNoticeService.insertAdminNotice(adminNotice);
 			
-			redirectAttr.addFlashAttribute("msg", "게시글을 성공적으로 등록했습니다.");
-			
-		} catch (IOException e) {
-			log.error("첨부파일 저장 오류", e);
-			throw e;
+			mav.addObject("msg", "공지사항 등록 성공");
+			mav.setViewName("redirect:/adminnotice/adminNoticeDetail?noticeNo=" + adminNotice.getNoticeNo());
 		} catch (Exception e) {
 			log.error("게시글 등록 오류", e);
 			throw e;
 		}
 		
-		return "redirect:/adminnotice/adminNoticeDetail?no=" + adminNotice.getAdminNoticeNo();
+		return mav;
+	}
+	
+	private Attachment getAttachment(String saveDirectory, String attachGroupId, MultipartFile upfile)
+			throws IOException {
+		String originalFilename = upfile.getOriginalFilename();
+		String renamedFilename = PetLabUtils.getRenamedFilename(originalFilename);
+		 
+		File destFile = new File(saveDirectory, renamedFilename);
+		upfile.transferTo(destFile); // 파일저장
+		Attachment attach = new Attachment(); 
+		attach.setAttachGroupId(attachGroupId);
+		attach.setOriginalFilename(originalFilename);
+		attach.setRenamedFilename(renamedFilename);
+		return attach;
 	}
 	
 	@GetMapping("/adminNoticeDetail")
-	public ModelAndView adminNoticeDetail(@RequestParam int no, ModelAndView mav) {
+	public ModelAndView adminNoticeDetail(@RequestParam int noticeNo, ModelAndView mav) {
 		try {
-			AdminNotice adminNotice = adminNoticeService.selectOneAdminNoticeCollection(no);
+			AdminNotice adminNotice = adminNoticeService.selectOneAdminNoticeCollection(noticeNo);
 			log.debug("adminNotice = {}", adminNotice);
 			
 			mav.addObject("adminNotice", adminNotice);
@@ -135,9 +140,9 @@ public class AdminNoticeController {
 	}
 	
 	@GetMapping("/adminNoticeUpdate")
-	public void adminNoticeUpdate(@RequestParam int no, Model model) {
+	public void adminNoticeUpdate(@RequestParam int noticeNo, Model model) {
 		try {
-			AdminNotice adminNotice = adminNoticeService.selectOneAdminNotice(no);
+			AdminNotice adminNotice = adminNoticeService.selectOneAdminNoticeCollection(noticeNo);
 			log.debug("adminNotice = {}", adminNotice);
 			model.addAttribute("adminNotice", adminNotice);
 		} catch (Exception e) {
@@ -153,6 +158,8 @@ public class AdminNoticeController {
 			@RequestParam(value="delFile", required=false) int[] delFiles,
 			RedirectAttributes redirectAttr) throws Exception {
 		String saveDirectory = application.getRealPath("/resources/upload/adminNotice");
+		String attachGroupId = PetLabUtils.getAttachGroupId("notice");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmssSSS_");
 		
 		try {
 			
@@ -179,14 +186,7 @@ public class AdminNoticeController {
 
 			for(MultipartFile upFile : upFiles) {
 				if(upFile.getSize() > 0) {
-					AdminNoticeAttachment attach = new AdminNoticeAttachment();
-					attach.setOriginalFilename(upFile.getOriginalFilename());
-					attach.setRenamedFilename(PetLabUtils.getRenamedFilename(upFile.getOriginalFilename()));
-					attach.setNoticeNo(adminNotice.getAdminNoticeNo());
-					adminNotice.addAttachment(attach);
-					
-					File destFile = new File(saveDirectory, attach.getRenamedFilename());
-					upFile.transferTo(destFile);
+					adminNotice.addAttachment(getAttachment(saveDirectory, attachGroupId, upFile));
 				}
 			}
 		
@@ -199,25 +199,11 @@ public class AdminNoticeController {
 			log.error("게시글 수정 오류", e);
 			throw e;
 		}
-		return "redirect:/adminNotice/adminNoticeDetail?no=" + adminNotice.getAdminNoticeNo();
+		return "redirect:/adminNotice/adminNoticeDetail?noticeNo=" + adminNotice.getNoticeNo();
 	}
 	
-	/**
-	 * Resource
-	 * - UrlResource
-	 * - ClassPathResource
-	 * - FileSystemResource 서버컴퓨터 자원
-	 * - ServletContextResource 웹루트상의 자원
-	 * - InputStreamResource
-	 * - ByteArrayResource
-	 * 
-	 * @ResponseBody
-	 * - 응답메세지 바디에 핸들러 리턴객체를 직접 출력
-	 *  
-	 * @param no
-	 * @return
-	 */
-	@GetMapping("/fileDownload.do")
+
+	@GetMapping("/fileDownload")
 	@ResponseBody
 	public Resource fileDownload(@RequestParam int no, HttpServletResponse response) {
 		Resource resource = null;

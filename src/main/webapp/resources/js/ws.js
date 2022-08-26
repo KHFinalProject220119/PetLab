@@ -9,7 +9,7 @@
 // ws.addEventListener('close', (e) => console.log('close :', e));
 
 
-const ws = new SockJS(`http://${location.host}/spring/stomp`);
+const ws = new SockJS(`http://${location.host}/petlab/stomp`);
 const stompClient = Stomp.over(ws);
 
 stompClient.connect({}, (frame) => {
@@ -31,19 +31,11 @@ stompClient.connect({}, (frame) => {
 		const {from, to, msg, time, type} = JSON.parse(message.body);
 		console.log(from, to, msg, time, type);
 		alert(`관리자 공지
-============================
+---------------------------------
 ${msg}`);
 	});
 	
-		
-	stompClient.subscribe(`/app/notice/${memberId}`, (message) => {
-		console.log(`/app/notice/${memberId}`, message);
-		const {from, to, msg, time, type} = JSON.parse(message.body);
-		console.log(from, to, msg, time, type);
-		alert(`개인 공지
-============================
-${msg}`);
-	});
+	
 
 	
 });

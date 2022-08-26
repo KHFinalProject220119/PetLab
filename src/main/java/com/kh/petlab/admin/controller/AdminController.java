@@ -1,5 +1,6 @@
 package com.kh.petlab.admin.controller;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +19,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
+import com.kh.petlab.chat.model.dto.ChatLog;
+import com.kh.petlab.chat.model.dto.ChatMember;
+import com.kh.petlab.chat.model.service.ChatService;
+import com.kh.petlab.member.model.dto.Attachment;
 import com.kh.petlab.member.model.dto.Member;
 import com.kh.petlab.member.model.service.MemberService;
 
@@ -30,6 +35,9 @@ public class AdminController {
 	
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	ChatService chatService;
 	
 
 	@GetMapping("/memberList")
@@ -74,7 +82,41 @@ public class AdminController {
 		}
 		
 		return ResponseEntity.ok(map);
-	}	
+	}
+	
+	
+	@GetMapping("/chatList")
+	public void chatList(@AuthenticationPrincipal Member loginMember, Model model ) {
+		String counsellor = loginMember.getMemberId();
+		List<ChatLog> list = chatService.findRecentChatLogList(counsellor);
+		log.debug("list = {}", list);
+		model.addAttribute("list", list);
+	}
+	
+	@GetMapping("/{chatroomId}/{memberId}/chat")
+	public String chat(	@PathVariable String chatroomId, @PathVariable String memberId, Model model) {
+		log.debug("chatroomId = {}", chatroomId);
+		log.debug("memberId = {}", memberId);
+		
+		List<ChatLog> chatLogList = chatService.findChatLogByChatroomId(chatroomId);
+		
+		Member member = memberService.selectOneMember(memberId);
+		String counsellorId = member.getCounsellor();
+		Member counsellor = memberService.selectOneMember(counsellorId);
+		Attachment counsellorAattach = counsellor.getAttach();
+		
+		ChatMember chatMember = chatService.findChatMemberByMemberId(memberId);
+		LocalDateTime openTime = chatMember.getCreatedAt();
+
+		
+		model.addAttribute("chatLogList", chatLogList);
+		model.addAttribute("memberId", memberId);
+		model.addAttribute("counsellor", counsellor);
+		model.addAttribute("member", member);
+		model.addAttribute("counsellorAattach", counsellorAattach);
+		model.addAttribute("openTime", openTime);
+		return "admin/chat";
+	}
 	
 }
 

@@ -10,18 +10,23 @@ AND  product_count= #{productCount}
   	</select>
   	
  	<select id="CartList" parameterType="String" resultMap="cart">
-select c.cart_no, p.product_no, a.renamed_filename,p.product_name, p.product_price, c.product_count, c.member_id
-		from product p, cart c, product_attachment a
-		where p.product_no = c.product_no AND c.member_id=#{memberId}
-		order by c.cart_no
+
+SELECT (select sum(total_sum)from (select (p.product_price * c.product_count) total_sum, p.*, c.* 
+from product p join cart c on p.product_no = c.product_no where c.member_id = 'sinsa')) total_sum, 
+(p.product_price * c.product_count)product_sum, p.product_no,p.product_name, p.product_price, c.product_count, c.member_id
+    FROM product p, cart c
+    WHERE p.product_no = c.product_no AND c.member_id='sinsa'
+
     </select>
 
 
 <insert id="insertCart" >
-		insert into
+<!-- 		insert into
 		cart (cart_no,product_no,member_id,product_count)
 		values(
-		seq_cart_no.nextval, #{productNo}, #{memberId}, #{productCount})
+		seq_cart_no.nextval, #{productNo}, 'sinsa', #{productCount}+1) -->
+		insert into cart(product_no,member_id,product_count)
+		values(#{productNo},'sinsa',#{productCount}+1)
 	</insert>
 
 
@@ -32,10 +37,16 @@ select c.cart_no, p.product_no, a.renamed_filename,p.product_name, p.product_pri
 				product_no = #{productNo}
 	</delete>
 
+<delete id="deleteAllCart" parameterType="Cart">
+		delete 
+			from cart
+			where member_id= 'sinsa'
+	</delete>
+
 	<update id="productCount" >
-		update cart
-		set product_count = product_count + #{productCount}
-		where member_id=#{memberId} and product_no=#{productNo}	
+update cart
+	set product_count = product_count + 1
+	where member_id='sinsa' and product_no=#{productNo}
 	</update>
 
 
@@ -43,14 +54,14 @@ select c.cart_no, p.product_no, a.renamed_filename,p.product_name, p.product_pri
 												   resultType="int">
 		select count(*)
 		from cart
-		where product_no=#{productNo} and member_id=#{memberId}										   
+		where product_no=#{productNo} and member_id='sinsa'								   
 	</select>
 
 
 
 
 <resultMap id="cart" type="cart">
-		<id column="cart_no" property="cartNo" />
+	<!-- 	<id column="cart_no" property="cartNo" /> -->
 		<result column="product_no" property="productNo" />
 		<result column="member_id" property="memberId" />
 		<result column="product_count" property="productCount" />
