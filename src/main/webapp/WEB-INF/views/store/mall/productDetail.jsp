@@ -58,6 +58,7 @@
 		<!--썸네일 끝-->
 
 		<!--상품 기본정보 -->
+		<div class="inform">
 		<br> <span class="product_name">${product.productName}
 		</span>
 		<div class="product_price">
@@ -65,6 +66,7 @@
 					pattern="#,###" /></b>원
 		</div>
 		<div class="product_des">${product.productDes}</div>
+		</div>
 		<!--상품 기본정보 끝 -->
 
 

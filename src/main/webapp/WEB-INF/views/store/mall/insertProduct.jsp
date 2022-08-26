@@ -42,7 +42,7 @@ enctype="multipart/form-data">
 <td>
 <div class="selectBox">
 <select id="categorySubId" name="categorySubId" class="select">
-<option value="feedd">사료</option>
+<option value="feed">사료</option>
 <option value="snack">간식</option>
 <option value="feeding">급식/급수기</option>
 <option value="shampoo">샴푸/세정제</option>
@@ -54,18 +54,7 @@ enctype="multipart/form-data">
 </td>
 </tr>
 
-<!-- <tr>
-<th>첨부파일 그룹 입력</th>
-<td>
-<select id="attachgroupId" name="attachgroupId">
-<option value="store_feed">사료</option>
-<option value="store_bath">목욕/위생/미용</option>
-<option value="store_etc">기타</option>
-</select>
 
-</td>
-</tr>
- -->
 <tr>
 <th><span class="menu">상품 썸네일</span> </th>
 <td>			
