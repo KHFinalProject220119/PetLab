@@ -329,7 +329,7 @@ public class StoreController {
 				}
 			}
 			int result = storeService.insertProduct(product);
-			redirectAttr.addFlashAttribute("msg", "피드 등록 완료 !");
+			redirectAttr.addFlashAttribute("msg", "상품 등록 완료 !");
 
 			//mav.setViewName("/store/mall/ProductDetail?no=");
 

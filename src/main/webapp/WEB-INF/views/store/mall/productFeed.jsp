@@ -38,8 +38,8 @@
 
 	<c:if test="${not empty list}">
 		<c:forEach items="${list}" var="product" varStatus="vs">
-			<c:set var="product.categorySubId" value="feedd" />
-			<c:if test="${product.categorySubId eq 'feedd' }">
+			<c:set var="product.categorySubId" value="feed" />
+			<c:if test="${product.categorySubId eq 'feed' }">
 					
 			<div class="pro_cate_name">
 			<a href="${path}/store/mall/ProductDetail?no=${product.productNo}" >
