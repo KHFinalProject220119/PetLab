@@ -16,13 +16,13 @@ public interface MypageService {
 	Address selectAddress(String memberId);
 	int updateAddress(Address address);
 	
+	int closeMember(Member member);
 	int updateMember(Member member);
 	
-	MyPet selectOnePet(String memberId);
-//	MyPet selectPet(String memberId);
 	
 	int insertPet(MyPet mypet);
 	int updatePet(MyPet mypet);
+	MyPet selectOnePet(int petNo);
 	List<MyPet> selectPetList(int cPage, int numPerPage);
 	int selectTotalContent();
 	

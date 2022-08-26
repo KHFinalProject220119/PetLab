@@ -53,6 +53,12 @@
  		where
 			member_id = #{memberId}
  	</update>
+ 	
+ 	<update id="closeMember">
+    delete from member where member_id = #{memberId}
+	</update>
+
+ 	
   	
  	<resultMap type="member" id="memberMap">
 		<id column="member_id" property="memberId" />
@@ -81,15 +87,7 @@
 	
 
 	
-	<select id="selectOnePet" resultType="mypet">
-	select
-		*
-	from
-		pet
-	where
-		member_id = #{memberId} and pet_name = #{petName}
 
-	</select>
 		
 <!-- 	<insert id="myPetEnroll">`
 		insert into
@@ -176,24 +174,10 @@
 	</select>
 	
 	<select id="selectOnePet" resultType="mypet">
- 		select 
- 			* 
- 		from 
- 			pet
- 		where 
- 			member_id = #{memberId}
- 	</select>
- 	
- 	<select id="selectOnePetByPetIdName" resultType="mypet">
- 		select 
- 			* 
- 		from 
- 			pet
- 		where 
- 			pet_id = #{petId} and
- 			pet_name = #{petName}
- 	</select>
-	
+		select  * from  pet  where  pet_no = #{petNo} <!-- AND member_id = #{memberId} -->
+
+	</select>
+		
 	<resultMap type="myPet" id="mypetMap">
 		<id column="member_id" property="memberId" />
 		<result column="attach_group_id" property="attachGroupId"  />

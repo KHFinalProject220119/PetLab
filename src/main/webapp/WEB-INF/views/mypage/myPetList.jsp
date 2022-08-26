@@ -61,6 +61,7 @@
           <nav>${pagebar}</nav>
 </section>
 <script>
+
 function goToPetEnrollForm(){
 	location.href = "${pageContext.request.contextPath}/mypage/myPetEnroll";
 }
@@ -74,7 +75,7 @@ window.addEventListener('load', (e) => {
 			// matches -> 특정 선택자와 일치여부 boolean형 반환
 			if(tr.matches('tr')){
 				const no = tr.dataset.no;
-				location.href = '${pageContext.request.contextPath}/mypage/myPetDetail?no=' + no;
+				location.href = '${pageContext.request.contextPath}/mypage/myPetDetail?petNo=' + no;
 			}
 		});	
 	})

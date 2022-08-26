@@ -95,19 +95,37 @@ public class MyPageController {
 			return "redirect:/mypage/memberDetail";
 		}
 		
-//		@GetMapping("/myPetList")
-//		public ModelAndView myPetList(@AuthenticationPrincipal Member loginMember, Model model) {
-//			try {
-//				String memberId = loginMember.getMemberId();
-//				Member member = mypageService.selectOneMember(memberId);
-//				MyPet mypet = mypageService.selectPet(memberId);
-//				model.addAttribute("member", member);
-//				model.addAttribute("mypet", mypet);
-//				
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//				throw e;
-//			}
+		@GetMapping("/closeMember")
+		public void closeMember(@AuthenticationPrincipal Member loginMember, Model model) {
+			try {
+				String memberId = loginMember.getMemberId();
+				Member member = mypageService.selectOneMember(memberId);
+				model.addAttribute("member", member);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw e;
+			}
+			
+		}	
+		
+				
+		@PostMapping("/closeMember")
+			public String closeMember(@AuthenticationPrincipal Member loginMember, 
+					RedirectAttributes redirectAttr, Model model) {
+				try {
+					
+					log.info("loginMember = {}", loginMember);
+				int result = mypageService.closeMember(loginMember);
+				redirectAttr.addFlashAttribute("msg", "회원탈퇴 성공");
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+				throw e;
+			}
+			
+				return "redirect:/";
+		}
 			
 			@GetMapping("/myPetList")
 			public ModelAndView myPetList(
@@ -142,18 +160,19 @@ public class MyPageController {
 				
 				return mav;
 			}
-			
-		
 		
 		@GetMapping("/myPetDetail")
 		public void myPetDetail(
-						@AuthenticationPrincipal Member loginMember, Model model) {
+						@AuthenticationPrincipal Member loginMember, Model model, 
+						@RequestParam int petNo) {
+			
 			try {
 				String memberId = loginMember.getMemberId();
 				Member member = mypageService.selectOneMember(memberId);
-				MyPet mypet = mypageService.selectOnePet(memberId);
+				MyPet mypet = mypageService.selectOnePet(petNo);
 				model.addAttribute("member", member);
 				model.addAttribute("mypet", mypet);
+				log.debug("Detail = {}", mypet);
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -246,4 +265,7 @@ public class MyPageController {
 			}
 			return "redirect:/mypage/myPetDetail?petNo=" + mypet.getPetNo();
 		}
+		
+		
+		
 }

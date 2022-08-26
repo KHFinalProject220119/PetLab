@@ -40,11 +40,13 @@ public interface MypageDao {
 	int insertPet(MyPet mypet);
 
 	// 펫 수정
-	MyPet selectOnePet(String memberId);
+	MyPet selectOnePet(int petNo);
 	int updatePet(MyPet mypet);
 	
 	@Select("select count(*) from pet")
 	int selectTotalContent();
+
+	int closeMember(Member member);
 
 
 }

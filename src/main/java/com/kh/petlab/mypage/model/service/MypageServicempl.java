@@ -46,6 +46,10 @@ public class MypageServicempl implements MypageService {
 		
 	}
 	
+	@Override
+	public int closeMember(Member member) {
+		return mypageDao.closeMember(member);
+	}
 
 	@Override
 	public List<Member> selectMemberList() {
@@ -65,8 +69,8 @@ public class MypageServicempl implements MypageService {
 	}
 
 	@Override
-	public MyPet selectOnePet(String memberId) {
-		return mypageDao.selectOnePet(memberId);
+	public MyPet selectOnePet(int petNo) {
+		return mypageDao.selectOnePet(petNo);
 	}
 //
 //	@Override
@@ -103,6 +107,7 @@ public class MypageServicempl implements MypageService {
 	public int selectTotalContent() {
 		return mypageDao.selectTotalContent();
 	}
+
 
 
 }
