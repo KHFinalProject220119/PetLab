@@ -49,20 +49,24 @@
 	<span class="cart_product_qty">수량: ${cart.productCount}</span><br>
 	<span class="cart_product_name">상품명: ${cart.productName}</span><br><br>
 	
-	<span class="cart_product_total_price">총 결제금액: 
+	<c:set var="sum" value="${cart.totalSum}" />
+<%-- 	<span class="cart_product_total_price">총 결제금액: 
 	<c:set var="total" value="${cart.productPrice * cart.productCount}"/>
 	<c:set var="sum" value="${sum+total }" />
 	
 	<fmt:formatNumber value="${sum}"
-					pattern="#,###" /></b>원
+					pattern="#,###" /></b>원 --%>
 	
-	</span>
 	<br>
 
 	</div>
-	
-	
 	</c:forEach>
+	
+<span class="cart_product_total_price">총 결제금액: 
+	<fmt:formatNumber value="${sum}"
+					pattern="#,###" /></b>원 
+</span>
+
 
 
 </section>
