@@ -66,7 +66,9 @@ public class CartController {
 		
 		String memberId = (String)session.getAttribute("memberId");
 		List<Cart> cartList = cartService.CartList(memberId);
+		//int totalSum = cartList.get(0).getTotalSum();
 		model.addAttribute("cartList", cartList);
+		//model.addAttribute("totalSum ", totalSum);
 		
 		return "store/cart/cartList";
 	}

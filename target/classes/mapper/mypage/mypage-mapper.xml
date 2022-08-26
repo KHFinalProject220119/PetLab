@@ -84,12 +84,8 @@
 		</collection>
 	</resultMap>
 	
-	
 
-	
-
-		
-<!-- 	<insert id="myPetEnroll">`
+<insert id="insertPet">
 		insert into
 			pet
 		values(
@@ -103,28 +99,10 @@
 			#{gender},
 			#{weight},
 			#{birthday},
-			#{neutering}	)	
+			#{neutering}	
+			)	
 	
-	</insert> -->
-	
-		<insert id="insertPet">
-		insert into
-			pet
-		values(
-			seq_pet_pet_no.nextval,
-			#{memberId},
-			#{typeId},
-			#{breed},
-			#{attachGroupId},
-			#{petId},
-			#{petName},
-			#{gender},
-			#{weight},
-			#{birthday},
-			#{neutering}	)	
-
 	</insert>
-	
 	
 	<insert id="attachmentEnroll">
         insert into
@@ -139,20 +117,41 @@
         )
     </insert>
     
-	<update id="updatePet">
-		update
+    <select id="selectNoticeAttachments" resultType="attachment">
+		select
+			 * 
+		from
 			pet
-		<set>
-			type_id = #{typeId},
-			breed = #{breed},
-			attach_group_id = #{attachGroupId},
-			pet_id = #{petId},
-			breed = #{breed},
-			pet_name = #{petName},
-			gender = #{gender},
-			weight = #{weight},
-			birthday = #{birthday},
-			neutering = #{neutering}		
+		where
+			attach_group_id = #{attachGroupId}
+	</select>
+    
+<update id="updatePet">
+ 		update
+ 			pet
+ 		<set>
+ 			<if test="type_id != null">
+	 			type_id = #{typeId},
+	 		</if>
+ 			<if test="breed != null">
+	 			breed = #{breed},
+ 			</if>
+ 			<if test="attach_group_id != null">
+				attach_group_id = #{attachGroupId},
+			</if>
+ 			<if test="pet_id != null">
+				pet_id = #{petId},
+			</if>
+ 			<if test="birthday != null">
+				birthday = #{birthday},
+			</if>
+ 			<if test="weight != null">
+				weight = #{weight},
+			</if>
+ 			<if test="neutering != null">
+				neutering = #{neutering}	
+			</if>
+
 		</set>
 		where
 			member_id = #{memberId}
@@ -177,6 +176,20 @@
 		select  * from  pet  where  pet_no = #{petNo} <!-- AND member_id = #{memberId} -->
 
 	</select>
+	
+	<select id="selectOneAttachment" resultType="attachment">
+		select
+			 * 
+		from
+			pet
+		where
+			attach_group_id = #{attachGroupId}
+	</select>
+	
+	<delete id="deleteAttachment">
+	delete from pet 
+		where no = #{attachNo}
+	</delete>
 		
 	<resultMap type="myPet" id="mypetMap">
 		<id column="member_id" property="memberId" />

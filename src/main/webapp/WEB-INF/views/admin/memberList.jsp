@@ -1,4 +1,6 @@
 <%@page import="java.util.List"%>
+<%@page import="org.springframework.security.core.Authentication"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@page import="org.springframework.security.core.authority.SimpleGrantedAuthority"%>
 <%@page import="com.kh.petlab.member.model.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -28,7 +30,7 @@
 				  <th scope="col">아이디</th>
 				  <th scope="col">이름</th>
 				  <th scope="col">권한</th>
-				  <th scope="col">수정</th>
+				  <th scope="col">수정</th>  
 				</tr>
 			</thead>
 			<tbody>
@@ -55,7 +57,7 @@
 							<label for="role-admin-${vs.count}">관리자</label>					
 						</td>
 						<td>
-							<button type="button" class="btn btn-outline-primary btn-update-authority" value="${member.memberId}">수정</button>
+							<button type="button" class="btn btn-outline-primary btn-update-authority" value="${member.memberId}">수정</button>							
 						</td>
 					</tr>
 				</c:forEach>

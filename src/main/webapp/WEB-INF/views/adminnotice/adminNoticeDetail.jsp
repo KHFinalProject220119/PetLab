@@ -17,20 +17,24 @@ div#adminNotice-container label.custom-file-label{text-align:left;}
 <div id="adminNotice-container" class="mx-auto text-center">
 	<input type="text" class="form-control" 
 		   placeholder="제목" name="adminNoticeTitle" id="title" 
-		   value="${adminNotice.title}" required readonly>
-	<input type="text" class="form-control" value="${adminNotice.member.name} ${adminNotice.member.email}" readonly/>
+		   value="${adminNotice.noticeTitle}" required readonly>
 	<input type="hidden" class="form-control" 
 		   name="memberId" 
 		   value="${adminNotice.memberId}" readonly required>
 
 	<c:if test="${not empty adminNotice.attachments}">
-		<c:forEach items="${adminNotice.attachments}" var="attach" varStatus="vs">		
-			<button 
-				type="button" 
-				class="btn btn-outline-success btn-block attach"
-				value="${attach.no}">
-				첨부파일${vs.count} - ${attach.originalFilename}
-			</button>
+		<c:forEach items="${adminNotice.attachments}" var="attach" varStatus="vs">
+			<div class="img-container">
+				<div class=img-wrapper>
+					<img class="attach-img" src="${pageContext.request.contextPath}/resources/upload/adminNotice/${attach.renamedFilename}">
+				</div>			
+				<button 
+					type="button" 
+					class="btn btn-outline-success btn-block attach"
+					value="${attach.attachNo}">
+					첨부파일${vs.count} - ${attach.originalFilename}
+				</button>
+			</div>
 		</c:forEach>
 	</c:if>
 	
@@ -39,7 +43,7 @@ div#adminNotice-container label.custom-file-label{text-align:left;}
     <input type="number" class="form-control" name="readCount" title="조회수"
 		   value="${adminNotice.readCount}" readonly>
 	<input type="datetime-local" class="form-control" name="created_at" 
-		   value='${adminNotice.createdAt}' readonly>
+		   value='${adminNotice.regDate}' readonly>
 	<c:if test="${not empty loginMember && loginMember.memberId eq adminNotice.memberId}">
 		<button 
 			type="button" 

@@ -214,7 +214,7 @@ window.onload = () =>{
 	document.querySelector("#year").max = year;
 }
 
-const frmSingup = document.updateFrm;
+
 
 // 아이디 중복검사
 document.querySelector("#memberId").addEventListener('keyup', (e) => {
@@ -310,17 +310,7 @@ const passwordValidator = () => {
 // 비밀번호 확인 이벤트리스너
 document.querySelector("#passwordCheck").addEventListener('blur', passwordValidator);
 
-<<<<<<< HEAD
-// 현재 연도를 초과한 숫자 입력 시 올해로 변경
-document.querySelector("#year").addEventListener('keyup', (e) => {
-	const year = e.target.value;
-	const today = new Date();
-	const thisYear = today.getFullYear();
-	if(year > thisYear){
-		e.target.value = thisYear;
-	}
-	
-});
+const frmSingup = document.updateFrm;
 /**
  * 회원가입폼 유효성 검사
  */

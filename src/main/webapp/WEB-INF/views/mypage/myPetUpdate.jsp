@@ -196,7 +196,7 @@ document.querySelector("#year").addEventListener('keyup', (e) => {
  * 유효성 검사
  */
 
- updateFrm.addEventListener('submit', (e) => {
+ const updateFrm = updateFrm.addEventListener('submit', (e) => {
 	 	e.preventDefault();
 	    const typeIdVal = document.querySelector("#typeId").value;
 	    const breedVal = document.querySelector("#breed").value;
@@ -242,6 +242,22 @@ document.querySelector("#year").addEventListener('keyup', (e) => {
 	    updateFrm.submit();
 	});
 	
+ document.querySelectorAll("[name=upFile]").forEach((input) => {
+		input.addEventListener('change', (e) => {
+			const [file] = e.target.files;
+			console.log(file);
+			const label = e.target.nextElementSibling;
+			console.log(label);
+			
+			if(file) {
+				const {name} = file;
+				label.innerText = name;
+			}
+			else {
+				label.innerText = "파일을 선택하세요.";
+			}
+		});
+	});
  
 </script>
 

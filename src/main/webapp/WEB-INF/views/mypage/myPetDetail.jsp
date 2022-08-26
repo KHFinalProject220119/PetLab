@@ -39,14 +39,23 @@
 </div>
 
  	<form name="updatePetFrm" method="post">
-   	  	 <table id="petTable">
+   	  	<table class="table table-hover">
        		 <tbody> 
           		  <tr>
               		  <th rowspan="9" id="img-th">대표사진</th>
               		  <td rowspan="9">
-               		   <div id="pet-img-container">
-                   		 <img src="" id="profile-img">
-                 	   </div>
+               		   <c:if test="${not empty mypet.attachments}">
+							<c:forEach items="${mypet.attachments}" var="attach" varStatus="vs">
+								<div class="img-container">
+									<div class=img-wrapper>
+										<img class="attach-img" src="${pageContext.request.contextPath}/resources/upload/adminNotice/${attach.renamedFilename}">
+									</div>			
+									<button type="button" 
+											class="btn btn-outline-success btn-block attach"
+											value="${attach.attachNo}">첨부파일${vs.count} - ${attach.originalFilename}</button>
+								</div>
+							</c:forEach>
+						</c:if>
            		 </tr>
            		 <tr>
              		 <th style="text-align: left;">분류</th> 
@@ -55,22 +64,22 @@
            			 	<td colspan="3">${mypet.breed}</td>
          		 </tr>
          		 <tr>
-          			<th style="text-align: left;">성별</th>
-               			<td colspan="3">${mypet.gender}</td>
-            		<th style="text-align: left;">성별</th>    
-            			<td colspan="3"></td>
+          			<th style="text-align: left;">이름</th>
+               			<td colspan="3">${mypet.petName}</td>
+            		<th style="text-align: left;">생일</th>    
+            			<td colspan="3">${mypet.birthday}</td>
           		</tr>
          		<tr>
             		<th style="text-align: left;">성별</th>
-            			<td colspan="3"></td>
+            			<td colspan="3">${mypet.gender}</td>
             		<th style="text-align: left;">중성화 여부</th>
-           				<td colspan="3"></td>
+           				<td colspan="3">${mypet.neutering}</td>
          		</tr>
          		<tr>
            			<th style="text-align: left;">인식 칩 번호</th>
-            			<td colspan="3"></td>
+            			<td colspan="3">${mypet.petId}</td>
            			<th style="text-align: left;">체중</th>
-            			<td colspan="3"></td>
+            			<td colspan="3">${mypet.weight} kg</td>
          		</tr>
        			<tr>
            			<td><br></td>
@@ -78,12 +87,15 @@
         </tbody>
     </table>
 </form>
+<button type="button"  class="btn btn-outline-primary btn-block"
+		onclick="location.href='${pageContext.request.contextPath}/mypage/myPetUpdate?no=${mypet.petNo}';">수정</button>
+		
 <script>
 document.querySelectorAll(".attach").forEach((btn) => {
 	btn.addEventListener("click", (e) => {
 		const attachNo = e.target.value;
 		console.log(attachNo);
-		location.href = `${pageContext.request.contextPath}/board/fileDownload.do?no=\${attachNo}`
+		location.href = `${pageContext.request.contextPath}/attachment/fileDownload?no=\${attachNo}`;
 	});
 });
 </script>

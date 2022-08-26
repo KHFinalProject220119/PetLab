@@ -21,21 +21,29 @@ body{position: relative; min-height: 100%; margin:0;}
 a{text-decoration: none;}
 .bx-viewport ul{list-style: none; margin: 0; padding-inline: 0; margin-block: 0;}
 .header-cont{display:flex; flex-direction: column;}
-.header-member-menu-ul{display:flex; flex-direction: row; justify-content: space-evenly; height: 20px; }
+.header-member-menu-ul{display:flex; flex-direction: row; justify-content: space-evenly; align-items: center; height: 20px; }
 .main-logo{width:5rem; height:5rem;}
 .menu-logo{width:3.5rem; height:3.5rem;}
-.header-top{width: 100%;  background-color: #FF5B00;}
-.header-contents{width: 90%; margin: 0 auto; }
+.header-top{width: 100%;  background-color: #FF5B00;}z
+.header-contents{width: 85%; margin: 0 auto; }
 .header-menu-ul{display:flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 0;}
 .sub-menu{display:none;}
 .header-menu-li a{display:flex; flex-direction: row; align-items: center; color:#FFF;}
 .header-menu-li h2{font-size: 2rem;}
 .header-title{font-size: 3.5rem; font-weight: bold;}
-.header-right-nav{width: 15%; margin-left: 85%;}
+.header-right-nav{   margin-left: 75%;}
 .header-right-nav-wrapper{height: 52px; background-color: #FF9900; }
+ 
 .header-right-nav a{color: #FFF; font-weight: bold;}
 .sign-out-btn {font-family: 'Dovemayo-Medium'; font-size: 1rem; font-weight: bold; border: none; color: #fff; background-color: #FF9900; cursor:pointer; }
 .header-member-menu-ul span:before, .header-member-menu-ul a:before { content: ""; display: inline-block;  margin: auto;  width: 0;  height: 100%; vertical-align: bottom;}
+.admin-sub-manage-list{width: 4rem;  height: 3rem; display: flex; flex-direction: column; position: absolute;
+    padding: 0.3rem; background-color: #FFF; border-radius: 0.3rem; align-items: center;  justify-content: center;}
+.admin-submenu-hidden{visibility: hidden;}
+.admin-submenu-visible{visibility: visible;}
+#admin-manage-list{color: #FFF; font-weight: bold; cursor:pointer;}
+.admin-submenu-li{margin: 0.25rem 0;}
+#command{margin: 0;}
 /*------------------------------------------------- carousel ------------------------------------------------ */
 #main-visual{width: 1880px; height: 380px; padding: 0;}
 .bx-controls-wrapper{width: 1880px; margin-top: 0.5rem;}

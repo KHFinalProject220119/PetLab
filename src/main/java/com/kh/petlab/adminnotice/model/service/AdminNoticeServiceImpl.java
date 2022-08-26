@@ -8,8 +8,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.petlab.adminnotice.model.dao.AdminNoticeDao;
+//github.com/KHFinalProject220119/PetLab.git
 import com.kh.petlab.adminnotice.model.dto.AdminNotice;
 import com.kh.petlab.adminnotice.model.dto.AdminNoticeAttachment;
+import com.kh.petlab.member.model.dao.MemberDao;
+import com.kh.petlab.member.model.dto.Attachment;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,6 +23,8 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 	
 	@Autowired
 	AdminNoticeDao adminNoticeDao;
+	@Autowired
+	MemberDao memberDao;
 	
 	@Transactional(readOnly = true)
 	@Override
@@ -42,32 +47,37 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 	@Override
 	public int insertAdminNotice(AdminNotice adminnotice) {
 		// 1. board insert
-		int result = adminNoticeDao.insertAdminNotice(adminnotice);
-		log.debug("board#no = {}", adminnotice.getAdminNoticeNo());
-		// 2. attachments insert
-		List<AdminNoticeAttachment> attachments = adminnotice.getAttachments();
-		if(!attachments.isEmpty()) {
-			for(AdminNoticeAttachment attach : attachments) {
-				attach.setNoticeNo(adminnotice.getAdminNoticeNo());
-				result = adminNoticeDao.insertAttachment(attach);
-			}
-		}
+		int result =0;
+		List<Attachment> attachments = adminnotice.getAttachments(); 
+		 if(!attachments.isEmpty()) {
+			 for(Attachment attach : attachments) {
+				 result = memberDao.insertAttachment(attach);
+				 adminnotice.setAttachGroupId(attach.getAttachGroupId());
+			} 
+		 }		
+		result = adminNoticeDao.insertAdminNotice(adminnotice);
+
 		return result;
 	}
-	
-	@Override
-	public AdminNotice selectOneAdminNotice(int no) {
-		AdminNotice adminnotice = adminNoticeDao.selectOneAdminNotice(no);
 
-	//	List<AdminNoticeAttachment> attachments = adminNoticeDao.selectAttchmentListByBoardNo(no);
-		//adminnotice.setAttachments(attachments);
-
-		return adminnotice;
-	}
-	
+	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public AdminNotice selectOneAdminNoticeCollection(int no) {
-		return adminNoticeDao.selectOneAdminNoticeCollection(no);
+	public AdminNotice selectOneAdminNoticeCollection(int noticeNo) {
+		AdminNotice notice = adminNoticeDao.selectOneAdminNoticeCollection(noticeNo);
+		
+		log.debug("notice = {}", notice);
+		
+		String attachGroupId = notice.getAttachGroupId();
+		
+		log.debug("attachGroupId = {}", attachGroupId);		
+		
+		List<Attachment> noticeAttachList = adminNoticeDao.selectNoticeAttachments(attachGroupId);
+		
+		
+		if (notice != null && !noticeAttachList.isEmpty()) {
+		notice.setAttachments(noticeAttachList);
+		}
+		return notice;
 	}
 	
 	@Override
@@ -86,10 +96,10 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 		int result = adminNoticeDao.updateAdminNotice(adminNotice);
 		
 		// b. attachment테이블의 등록
-		List<AdminNoticeAttachment> attachments = adminNotice.getAttachments();
+		List<Attachment> attachments = adminNotice.getAttachments();
 		if(!attachments.isEmpty()) {
-			for(AdminNoticeAttachment attach : attachments)
-				result = adminNoticeDao.insertAttachment(attach);
+			for(Attachment attach : attachments)
+				result = memberDao.insertAttachment(attach);
 		}
 		return result;
 	}

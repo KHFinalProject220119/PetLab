@@ -5,6 +5,7 @@ import java.util.List;
 import com.kh.petlab.member.model.dto.Address;
 import com.kh.petlab.member.model.dto.Member;
 import com.kh.petlab.mypage.model.dto.MyPet;
+import com.kh.petlab.mypage.model.dto.PetAttachment;
 
 public interface MypageService {
 	
@@ -24,9 +25,12 @@ public interface MypageService {
 	int updatePet(MyPet mypet);
 	MyPet selectOnePet(int petNo);
 	List<MyPet> selectPetList(int cPage, int numPerPage);
-	int selectTotalContent();
 	
-
+	
+	int selectTotalContent();
+	int deleteAttachment(int attachNo);
+	PetAttachment selectOneAttachment(int attachNo);
+	MyPet selectOnePetCollection(int petNo);
 
 	
 

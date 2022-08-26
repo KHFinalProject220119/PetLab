@@ -1,8 +1,8 @@
 // chat.js
-
 document.querySelector("#sendMessageBtn").addEventListener('click', (e) => {
 	const msg = document.querySelector("#chatTextarea").value;
 	if(!msg) return;
+	
 	
 	const now = new Date();
 	let hour = "";
@@ -27,6 +27,7 @@ document.querySelector("#sendMessageBtn").addEventListener('click', (e) => {
 	}
 	
 	const time = hour + minutes;
+	
 	
 	const payload = {
 		chatroomId,
@@ -72,7 +73,8 @@ setTimeout(() => {
 		const {memberId, msg, time} = JSON.parse(message.body);
 		
 		let html = "";
-		if(memberId.contains("counsellor")){
+		
+		if(memberId.includes("counsellor")){
 			html = `<div class="msg-unit-cs">
 						<div class="msg-thmb">
 							<span class="thmb-img">
@@ -121,6 +123,7 @@ setTimeout(() => {
 					</div>`;
 		}
 		container.insertAdjacentHTML('beforeend', html);
+		container.scrollTo(0, container.scrollHeight);
 	});
 	
 }, 500);
