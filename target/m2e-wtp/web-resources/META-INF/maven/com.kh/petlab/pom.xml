@@ -15,6 +15,8 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
+	
+	
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -205,7 +207,8 @@
 	        <artifactId>json-lib-ext-spring</artifactId>
 	        <version>1.0.2</version>
     	</dependency>
-        
+    	
+
        <!-- #16. XmlMapper 의존 -->
 	    <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
@@ -221,7 +224,12 @@
         </dependency>
         
         <!-- #17. websocket 의존 -->
-        <dependency>
+<!--         <dependency>
+	        <groupId>com.fasterxml.jackson.core</groupId>
+	        <artifactId>jackson-databind</artifactId>
+	        <version>2.9.5</version>
+    	</dependency> -->
+    	  <dependency>
 	        <groupId>org.springframework</groupId>
 	        <artifactId>spring-websocket</artifactId>
 	        <version>${org.springframework-version}</version>
@@ -232,6 +240,19 @@
 	        <version>${org.springframework-version}</version>
 	    </dependency>
     
+	    <dependency>
+	       <groupId>jakarta.servlet</groupId>
+	       <artifactId>jakarta.servlet-api</artifactId>
+	       <version>5.0.0</version>
+	       <scope>provided</scope>
+	   </dependency>
+	   <dependency>
+	        <groupId>jakarta.servlet.jsp</groupId>
+	        <artifactId>jakarta.servlet.jsp-api</artifactId>
+	        <version>3.0.0</version>
+	        <scope>provided</scope>
+	    </dependency>
+    
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -239,6 +260,13 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>  
+		
+		<dependency> 
+		      <groupId>javax.servlet</groupId> 
+		      <artifactId>jstl</artifactId> 
+		    <version>1.2</version> 
+		</dependency>
+		
 	</dependencies>
     <build>
         <plugins>

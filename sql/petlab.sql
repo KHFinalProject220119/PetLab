@@ -1,8 +1,64 @@
 
+--============================================
+-- 관리자 계정
+--============================================
+-- petlab 계정 생성
+--alter session set _oracle_script = true;
+
+--create user petlab
+--IDENTIFIED by petlab
+--default tablespace users;
+
+--alter user petlab quota unlimited on users;
+
+--grant connect, resource to petlab;
+
+
+
 --=============================================
 -- petlab 계정
 --=============================================
 select * from member;
+-- 첨부파일 테이블
+create table attachment (
+    attach_group_id varchar2(256),
+    attach_no number,
+    original_filename varchar2(256) not null,
+    renamed_filename varchar2(256) not null,
+    download_count number default 0,
+    created_at date default sysdate,
+    constraint pk_attachment_attach_group_id primary key(attach_group_id)
+);
+--drop table attachment;
+select * from attachment;
+create sequence seq_attachment_attach_no nocache;
+--drop sequence seq_attachment_attach_no;
+
+--delete from authority;
+--delete from address;
+--delete from member;
+--drop table authority;
+--drop table address;
+--drop table member;
+
+
+-- 회원등급 테이블
+CREATE TABLE member_grade (
+	grade_no	number		NOT NULL,
+	grade_title	varchar2(40)	NOT	NULL,
+    constraint pk_member_grade_no primary key(grade_no)
+);
+
+create sequence seq_member_grade_no nocache;
+insert into member_grade values(seq_member_grade_no.nextval, '초보');
+insert into member_grade values(97, '동물병원');
+insert into member_grade values(98, '입점몰');
+insert into member_grade values(99, '상담사');
+insert into member_grade values(100, '관리자');
+
+select * from member_grade;
+
+
 -- 첨부파일 테이블
 create table attachment (
     attach_group_id varchar2(256),
@@ -257,8 +313,23 @@ create table persistent_logins (
 select * from persistent_logins;
 
 
+select
+		    n.*,
+		    m.*,
+		    a.attach_no attach_no,
+		    a.*
+		from
+		    qa_notice n
+		        left join member m on n.member_id = m.member_id
+		        left join attachment a on n.notice_no = a.attach_no
+		where
+		    n.notice_no = 6
+		order by 
+		    n.notice_no desc;
 
-
+update qa_notice set reg_date = sysdate where notice_no = 6;
+update qa_notice set reg_date = sysdate where notice_no = 7;
+select * from qa_notice;
 CREATE TABLE   qa_notice   (
 	  notice_no  	number		NOT NULL,
 	  attach_group_id  	varchar2(256)		NOT NULL,
@@ -270,6 +341,8 @@ CREATE TABLE   qa_notice   (
 	  reg_date  	date		NULL
 );
 
+alter table qa_notice modify attach_group_id  null;
+commit;
 create sequence seq_qa_notice_no nocache;
 ALTER TABLE   qa_notice   ADD CONSTRAINT   PK_QA_NOTICE   PRIMARY KEY (
 	  notice_no  
@@ -332,6 +405,7 @@ ALTER TABLE   product_review   ADD CONSTRAINT   PK_PRODUCT_REVIEW   PRIMARY KEY 
 );
 
 
+<<<<<<< HEAD
 
 
 
@@ -1743,4 +1817,721 @@ REFERENCES   attachment   (
 	  attach_group_id  
 );
 >>>>>>> refs/heads/master
+=======
+create table product(
+    product_no number,
+    category_id varchar2(30) not null,
+    category_sub_id varchar2(30) not null,
+    attach_group_id varchar2(256),
+    product_name varchar2(150),
+    product_price number,
+    product_des varchar2(3000),
+    
+    constraint pk_product_no primary key(product_no),
+    constraint fk_product_category_id foreign key(category_id) references product_category(category_id) on delete cascade,
+    constraint fk_product_category_sub_id foreign key(category_sub_id) references product_sub_category(category_sub_id) on delete cascade,
+    constraint fk_attach_group_id foreign key(attach_group_id) references attachment(attach_group_id) on delete cascade
+);
+create sequence seq_product_no;
+
+
+select * from attachment;
+	select 
+			b.*,
+			(select count(*) from attachment where product_no  = b.product_no) attach_count
+		from
+			product b
+		order by
+			product_no desc;
+
+
+
+commit;
+create sequence seq_product_no nocache;
+
+ALTER TABLE   product   ADD CONSTRAINT   PK_PRODUCT   PRIMARY KEY (
+	  product_no  
+);
+
+ALTER TABLE   product   ADD CONSTRAINT   FK_product_category_TO_product_1   FOREIGN KEY (
+	  category_id  
+)
+REFERENCES   product_category   (
+	  category_id  
+);
+
+ALTER TABLE   product   ADD CONSTRAINT   FK_product_sub_category_TO_product_1   FOREIGN KEY (
+	  category_sub_id  
+)
+REFERENCES   product_sub_category   (
+	  category_sub_id  
+);
+
+ALTER TABLE   product   ADD CONSTRAINT   FK_attachment_TO_product_1   FOREIGN KEY (
+	  attach_group_id  
+)
+REFERENCES   attachment   (
+	  attach_group_id  
+);
+
+
+
+CREATE TABLE   product_category   (
+	  category_id  	varchar2(30)		NOT NULL,
+	  category_name  	varchar2(30)		NULL
+);
+
+CREATE TABLE   product_review   (
+	  review_no  	number		NOT NULL,
+	  product_id  	varchar2(100)		NOT NULL,
+	  attach_group_id  	varchar2(256)		NOT NULL,
+	  member_id  	varchar2(200)		NOT NULL,
+	  review_content  	varchar2(1500)		NOT NULL,
+	  review_grade  	number		NULL,
+	  reg_date  	date		NULL
+);
+
+create sequence seq_product_review_no nocache;
+ALTER TABLE   product_review   ADD CONSTRAINT   FK_product_TO_product_review_1   FOREIGN KEY (
+	  product_id  
+)
+REFERENCES   product   (
+	  product_no  
+);
+
+ALTER TABLE   product_review   ADD CONSTRAINT   FK_attachment_TO_product_review_1   FOREIGN KEY (
+	  attach_group_id  
+)
+REFERENCES   attachment   (
+	  attach_group_id  
+);
+
+ALTER TABLE   product_review   ADD CONSTRAINT   FK_member_TO_product_review_1   FOREIGN KEY (
+	  member_id  
+)
+REFERENCES   member   (
+	  member_id  
+);
+
+
+
+CREATE TABLE   cart   (
+	  cart_no  	number		NOT NULL,
+	  product_id  	varchar2(100)		NOT NULL,
+	  member_id  	varchar2(200)		NOT NULL,
+	  product_count  	number		NULL
+);
+create sequence seq_cart_no nocache;
+ALTER TABLE   cart   ADD CONSTRAINT   PK_CART   PRIMARY KEY (
+	  cart_no  
+);
+
+ALTER TABLE   cart   ADD CONSTRAINT   FK_product_TO_cart_1   FOREIGN KEY (
+	  product_id  
+)
+REFERENCES   product   (
+	  product_no  
+);
+
+ALTER TABLE   cart   ADD CONSTRAINT   FK_member_TO_cart_1   FOREIGN KEY (
+	  member_id  
+)
+REFERENCES   member   (
+	  member_id  
+);
+
+
+CREATE TABLE   product_sub_category   (
+	  category_sub_id  	varchar2(30)		NOT NULL,
+	  category_id  	varchar2(30)		NOT NULL,
+	  category_sub_name  	varchar2(30)		NULL
+);
+
+ALTER TABLE   product_sub_category   ADD CONSTRAINT   PK_PRODUCT_SUB_CATEGORY   PRIMARY KEY (
+	  category_sub_id  
+);
+
+ALTER TABLE   product_sub_category   ADD CONSTRAINT   FK_product_category_TO_product_sub_category_1   FOREIGN KEY (
+	  category_id  
+)
+REFERENCES   product_category   (
+	  category_id  
+);
+
+
+CREATE TABLE   pet   (
+     pet_no     number      NOT NULL,
+     member_id     varchar2(200)      NOT NULL,
+     type_id     varchar2(30)      NOT NULL,
+     breed_id     varchar2(30)      NOT NULL,
+     attach_group_id     varchar2(256)      NULL,
+     pet_id     varchar2(100)      NULL,
+     pet_name     varchar2(50)      NULL,
+     gender     char(1)      NULL,
+     weight     number      NULL,
+     birthday     date      NULL,
+     neutering     char(1)      NULL
+);
+select * from pet;
+select * from breed;
+select * from pet_type;
+select p.*, t.type_name, b.breed_name from pet p join pet_type t on p.type_id = t.type_id join breed b on p.breed_id = b.breed_id;
+insert into pet values(seq_pet_pet_no.nextval, 'honggd', 'dog', 'Maltese',  null, '410000001513331', '연구소', 'M', 3, to_date('20-02-24','rr-mm-dd'),  'T');
+
+
+COMMENT ON COLUMN   pet  .  pet_type   IS 'D  - dog
+C - cat
+E - Etc';
+
+COMMENT ON COLUMN   pet  .  Field   IS 'T 
+F';
+
+create sequence seq_pet_pet_no nocache;
+ALTER TABLE   pet   ADD CONSTRAINT   PK_PET   PRIMARY KEY (
+	  pet_no  
+);
+ALTER TABLE   pet   ADD CONSTRAINT   FK_member_TO_pet_1   FOREIGN KEY (
+	  member_id  
+)
+REFERENCES   member   (
+	  member_id  
+);
+
+ALTER TABLE   pet   ADD CONSTRAINT   FK_pet_type_TO_pet_1   FOREIGN KEY (
+	  type_id  
+)
+REFERENCES   pet_type   (
+	  type_id  
+);
+
+ALTER TABLE   pet   ADD CONSTRAINT   FK_breed_TO_pet_1   FOREIGN KEY (
+	  breed_id  
+)
+REFERENCES   breed   (
+	  breed_id  
+);
+
+ALTER TABLE   pet   ADD CONSTRAINT   FK_attachment_TO_pet_1   FOREIGN KEY (
+	  attach_group_id  
+)
+REFERENCES   attachment   (
+	  attach_group_id  
+);
+
+
+
+CREATE TABLE   breed   (
+	  breed_id  	varchar2(30)		NOT NULL,
+	  type_id  	varchar2(30)		NOT NULL,
+	  breed_name  	varchar2(20)		NULL
+);
+
+ALTER TABLE   breed   ADD CONSTRAINT   PK_BREED   PRIMARY KEY (
+	  breed_id  
+);
+
+ALTER TABLE   breed   ADD CONSTRAINT   FK_pet_type_TO_breed_1   FOREIGN KEY (
+	  type_id  
+)
+REFERENCES   pet_type   (
+	  type_id  
+);
+
+
+
+
+CREATE TABLE   pet_type   (
+	  type_id  	varchar2(30)		NOT NULL,
+	  type_name  	varchar2(20)		NULL
+);
+
+ALTER TABLE   pet_type   ADD CONSTRAINT   PK_PET_TYPE   PRIMARY KEY (
+	  type_id  
+);
+
+COMMENT ON COLUMN   pet_type  .  type_name   IS '개, 고양이, 기타';
+
+
+CREATE TABLE   community_group   (
+	  group_no  	number		NOT NULL,
+	  member_id  	varchar2(200)		NOT NULL,
+	  ggrade_no  	number		NOT NULL,
+	  attach_group_id  	varchar2(256)		NOT NULL,
+	  group_name  	varchar2(200)		NULL,
+	  content  	varchar2(1000)		NULL,
+	  read_count  	number		NULL,
+	  reg_date  	date		NULL,
+	  member_count  	number		NULL,
+	  like_count  	number		NULL
+);
+
+create sequence seq_community_group_no nocache;
+ALTER TABLE   community_group   ADD CONSTRAINT   PK_COMMUNITY_GROUP   PRIMARY KEY (
+	  group_no  
+);
+
+ALTER TABLE   community_group   ADD CONSTRAINT   FK_member_TO_community_group_1   FOREIGN KEY (
+	  member_id  
+)
+REFERENCES   member   (
+	  member_id  
+);
+
+ALTER TABLE   community_group   ADD CONSTRAINT   FK_group_member_grade_TO_community_group_1   FOREIGN KEY (
+	  ggrade_no  
+)
+REFERENCES   group_member_grade   (
+	  ggrade_no  
+);
+
+ALTER TABLE   community_group   ADD CONSTRAINT   FK_attachment_TO_community_group_1   FOREIGN KEY (
+	  attach_group_id  
+)
+REFERENCES   attachment   (
+	  attach_group_id  
+);
+
+
+CREATE TABLE   community_free_board   (
+	  freeb_no  	number		NOT NULL,
+	  member_id  	varchar2(200)		NOT NULL,
+	  attach_group_id  	varchar2(256)		NOT NULL,
+	  board_theme_id  	varchar2(50)		NOT NULL,
+	  freeb_title  	varchar2(200)		NULL,
+	  content  	varchar2(1000)		NULL,
+	  read_count  	number		NULL,
+	  reg_date  	date		NULL,
+	  like_count  	number		NULL
+);
+create sequence seq_community_free_board_freeb_no nocache;
+ALTER TABLE   community_free_board   ADD CONSTRAINT   PK_COMMUNITY_FREE_BOARD   PRIMARY KEY (
+	  freeb_no  
+);
+
+ALTER TABLE   community_free_board   ADD CONSTRAINT   FK_member_TO_community_free_board_1   FOREIGN KEY (
+	  member_id  
+)
+REFERENCES   member   (
+	  member_id  
+);
+
+ALTER TABLE   community_free_board   ADD CONSTRAINT   FK_attachment_TO_community_free_board_1   FOREIGN KEY (
+	  attach_group_id  
+)
+REFERENCES   attachment   (
+	  attach_group_id  
+);
+
+ALTER TABLE   community_free_board   ADD CONSTRAINT   FK_board_theme_TO_community_free_board_1   FOREIGN KEY (
+	  board_theme_id  
+)
+REFERENCES   board_theme   (
+	  board_theme_id  
+);
+
+
+
+CREATE TABLE   freeb_reply   (
+	  fbreply_no  	number		NOT NULL,
+	  freeb_no  	number		NOT NULL,
+	  member_id  	varchar2(200)		NOT NULL,
+	  content  	varchar2(1000)		NULL,
+	  like_count  	number		NULL,
+	  hate_count  	number		NULL,
+	  reg_date  	date		NULL
+);
+
+create sequence seq_freeb_reply_fbreply_no nocache;
+
+ALTER TABLE   freeb_reply   ADD CONSTRAINT   PK_FREEB_REPLY   PRIMARY KEY (
+	  fbreply_no  
+);
+
+
+ALTER TABLE   freeb_reply   ADD CONSTRAINT   FK_community_free_board_TO_freeb_reply_1   FOREIGN KEY (
+	  freeb_no  
+)
+REFERENCES   community_free_board   (
+	  freeb_no  
+);
+
+ALTER TABLE   freeb_reply   ADD CONSTRAINT   FK_member_TO_freeb_reply_1   FOREIGN KEY (
+	  member_id  
+)
+REFERENCES   member   (
+	  member_id  
+);
+
+
+
+CREATE TABLE   community_photo   (
+	  photo_no  	number		NOT NULL,
+	  member_id  	varchar2(200)		NOT NULL,
+	  attach_group_id  	varchar2(256)		NOT NULL,
+	  p_title  	varchar2(200)		NULL,
+	  p_content  	varchar2(1000)		NULL,
+	  read_count  	number		NULL,
+	  like_count  	number		NULL,
+	  reg_date  	date		NULL
+);
+create sequence seq_community_photo_photo_no nocache;
+ALTER TABLE   community_photo   ADD CONSTRAINT   PK_COMMUNITY_PHOTO   PRIMARY KEY (
+	  photo_no  
+);
+
+ALTER TABLE   community_photo   ADD CONSTRAINT   FK_member_TO_community_photo_1   FOREIGN KEY (
+	  member_id  
+)
+REFERENCES   member   (
+	  member_id  
+);
+
+ALTER TABLE   community_photo   ADD CONSTRAINT   FK_attachment_TO_community_photo_1   FOREIGN KEY (
+	  attach_group_id  
+)
+REFERENCES   attachment   (
+	  attach_group_id  
+);
+
+
+
+
+CREATE TABLE   cs_email_type   (
+	  question_type  	number		NOT NULL,
+	  question_type_name  	varchar2(30)		NULL
+);
+
+ALTER TABLE   cs_email_type   ADD CONSTRAINT   PK_CS_EMAIL_TYPE   PRIMARY KEY (
+	  question_type  
+);
+
+
+
+CREATE TABLE   cs_email_log   (
+	  cs_email_log_no  	number		NOT NULL,
+	  question_type  	number		NOT NULL,
+	  name  	varchar2(30)		NULL,
+	  email  	varchar2(100)		NULL,
+	  title  	varchar2(50)		NULL,
+	  content  	varchar2(4000)		NULL,
+	  reg_date  	date		NULL,
+	  attach_group_id  	varchar2(256)		NOT NULL
+);
+
+create sequence cs_email_log_no nocache;
+ALTER TABLE   cs_email_log   ADD CONSTRAINT   PK_CS_EMAIL_LOG   PRIMARY KEY (
+	  cs_email_log_no  
+);
+
+ALTER TABLE   cs_email_log   ADD CONSTRAINT   FK_cs_email_type_TO_cs_email_log_1   FOREIGN KEY (
+	  question_type  
+)
+REFERENCES   cs_email_type   (
+	  question_type  
+);
+
+ALTER TABLE   cs_email_log   ADD CONSTRAINT   FK_attachment_TO_cs_email_log_1   FOREIGN KEY (
+	  attach_group_id  
+)
+REFERENCES   attachment   (
+	  attach_group_id  
+);
+
+
+
+CREATE TABLE   group_reply   (
+	  gbreply_no  	number		NOT NULL,
+	  member_id  	varchar2(200)		NOT NULL,
+	  groupb_no  	number		NOT NULL,
+	  content  	varchar2(1000)		NULL,
+	  like_count  	number		NULL,
+	  hate_count  	number		NULL,
+	  reg_date  	date		NULL
+);
+
+create sequence group_reply_gbreply_no nocache;
+
+ALTER TABLE   group_reply   ADD CONSTRAINT   PK_GROUP_REPLY   PRIMARY KEY (
+	  gbreply_no  
+);
+
+
+ALTER TABLE   group_reply   ADD CONSTRAINT   FK_member_TO_group_reply_1   FOREIGN KEY (
+	  member_id  
+)
+REFERENCES   member   (
+	  member_id  
+);
+
+ALTER TABLE   group_reply   ADD CONSTRAINT   FK_group_board_TO_group_reply_1   FOREIGN KEY (
+	  groupb_no  
+)
+REFERENCES   group_board   (
+	  groupb_no  
+);
+
+
+
+
+
+CREATE TABLE   gphoto_reply   (
+	  gpreply_no  	number		NOT NULL,
+	  photo_no  	number		NOT NULL,
+	  member_id  	varchar2(200)		NOT NULL,
+	  content  	varchar2(1000)		NULL,
+	  like_count  	number		NULL,
+	  hate_count  	number		NULL,
+	  reg_date  	date		NULL
+);
+
+create sequence gphoto_reply_gpreply_no nocache;
+ALTER TABLE   gphoto_reply   ADD CONSTRAINT   PK_GPHOTO_REPLY   PRIMARY KEY (
+	  gpreply_no  
+);
+
+ALTER TABLE   gphoto_reply   ADD CONSTRAINT   FK_group_photo_TO_gphoto_reply_1   FOREIGN KEY (
+	  photo_no  
+)
+REFERENCES   group_photo   (
+	  photo_no  
+);
+
+ALTER TABLE   gphoto_reply   ADD CONSTRAINT   FK_member_TO_gphoto_reply_1   FOREIGN KEY (
+	  member_id  
+)
+REFERENCES   member   (
+	  member_id  
+);
+
+
+
+
+
+
+CREATE TABLE   group_photo   (
+	  photo_no  	number		NOT NULL,
+	  group_no  	number		NOT NULL,
+	  member_id  	varchar2(200)		NOT NULL,
+	  attach_group_id  	varchar2(256)		NOT NULL,
+	  p_title  	varchar2(200)		NULL,
+	  p_content  	varchar2(1000)		NULL,
+	  read_count  	number		NULL,
+	  like_count  	number		NULL,
+	  reg_date  	date		NULL
+);
+
+create sequence group_photo_photo_no nocache;
+ALTER TABLE   group_photo   ADD CONSTRAINT   PK_GROUP_PHOTO   PRIMARY KEY (
+	  photo_no  
+);
+ALTER TABLE   group_photo   ADD CONSTRAINT   FK_community_group_TO_group_photo_1   FOREIGN KEY (
+	  group_no  
+)
+REFERENCES   community_group   (
+	  group_no  
+);
+
+ALTER TABLE   group_photo   ADD CONSTRAINT   FK_member_TO_group_photo_1   FOREIGN KEY (
+	  member_id  
+)
+REFERENCES   member   (
+	  member_id  
+);
+
+ALTER TABLE   group_photo   ADD CONSTRAINT   FK_attachment_TO_group_photo_1   FOREIGN KEY (
+	  attach_group_id  
+)
+REFERENCES   attachment   (
+	  attach_group_id  
+);
+
+
+
+CREATE TABLE   community_photo_reply   (
+	  cpreply_no  	number		NOT NULL,
+	  member_id  	varchar2(200)		NOT NULL,
+	  photo_no  	number		NOT NULL,
+	  content  	varchar2(1000)		NULL,
+	  like_count  	number		NULL,
+	  hate_count  	number		NULL,
+	  reg_date  	date		NULL
+);
+
+create sequence community_photo_reply_cpreply_no nocache;
+
+ALTER TABLE   community_photo_reply   ADD CONSTRAINT   PK_COMMUNITY_PHOTO_REPLY   PRIMARY KEY (
+	  cpreply_no  
+);
+
+ALTER TABLE   community_photo_reply   ADD CONSTRAINT   FK_member_TO_community_photo_reply_1   FOREIGN KEY (
+	  member_id  
+)
+REFERENCES   member   (
+	  member_id  
+);
+
+ALTER TABLE   community_photo_reply   ADD CONSTRAINT   FK_community_photo_TO_community_photo_reply_1   FOREIGN KEY (
+	  photo_no  
+)
+REFERENCES   community_photo   (
+	  photo_no  
+);
+
+
+
+CREATE TABLE   group_schedule   (
+	  schedule_no  	number		NOT NULL,
+	  member_id  	varchar2(200)		NOT NULL,
+	  group_no  	number		NOT NULL,
+	  attach_group_id  	varchar2(256)		NOT NULL,
+	  schedule_title  	varchar2(100)		NULL,
+	  schedule_content  	varchar2(1000)		NULL,
+	  attach_count  	number		NULL,
+	  non_attach_count  	number		NULL,
+	  schedule_date  	date		NULL,
+	  reg_date  	date		NULL,
+	  place  	varchar2(100)		NULL
+);
+
+create sequence group_schedule_schedule_no nocache;
+
+ALTER TABLE   group_schedule   ADD CONSTRAINT   PK_GROUP_SCHEDULE   PRIMARY KEY (
+	  schedule_no  
+);
+
+ALTER TABLE   group_schedule   ADD CONSTRAINT   FK_member_TO_group_schedule_1   FOREIGN KEY (
+	  member_id  
+)
+REFERENCES   member   (
+	  member_id  
+);
+
+ALTER TABLE   group_schedule   ADD CONSTRAINT   FK_community_group_TO_group_schedule_1   FOREIGN KEY (
+	  group_no  
+)
+REFERENCES   community_group   (
+	  group_no  
+);
+
+ALTER TABLE   group_schedule   ADD CONSTRAINT   FK_attachment_TO_group_schedule_1   FOREIGN KEY (
+	  attach_group_id  
+)
+REFERENCES   attachment   (
+	  attach_group_id  
+);
+
+
+
+CREATE TABLE   schedule_reply   (
+	  sreply_no  	number		NOT NULL,
+	  schedule_no  	number		NOT NULL,
+	  member_id  	varchar2(200)		NOT NULL,
+	  content  	varchar2(1000)		NULL,
+	  like_count  	number		NULL,
+	  hate_count  	number		NULL,
+	  reg_date  	date		NULL
+);
+create sequence schedule_reply_sreply_no nocache;
+
+ALTER TABLE   schedule_reply   ADD CONSTRAINT   PK_SCHEDULE_REPLY   PRIMARY KEY (
+	  sreply_no  
+);
+
+ALTER TABLE   schedule_reply   ADD CONSTRAINT   FK_group_schedule_TO_schedule_reply_1   FOREIGN KEY (
+	  schedule_no  
+)
+REFERENCES   group_schedule   (
+	  schedule_no  
+);
+
+ALTER TABLE   schedule_reply   ADD CONSTRAINT   FK_member_TO_schedule_reply_1   FOREIGN KEY (
+	  member_id  
+)
+REFERENCES   member   (
+	  member_id  
+);
+
+
+
+
+CREATE TABLE   order   (
+	  order_no  	number		NOT NULL,
+	  member_id  	varchar2(200)		NOT NULL,
+	  product_id  	varchar2(100)		NOT NULL,
+	  address_no  	number		NOT NULL,
+	  product_name  	varchar2(150)		NULL,
+	  product_total_price  	number		NULL,
+	  order_state  	varchar2(10)		NULL,
+	  order_date  	date		NULL
+);
+
+create sequence order_order_no nocache;
+
+ALTER TABLE   order   ADD CONSTRAINT   PK_ORDER   PRIMARY KEY (
+	  order_no  
+);
+
+ALTER TABLE   order   ADD CONSTRAINT   FK_member_TO_order_1   FOREIGN KEY (
+	  member_id  
+)
+REFERENCES   member   (
+	  member_id  
+);
+
+ALTER TABLE   order   ADD CONSTRAINT   FK_product_TO_order_1   FOREIGN KEY (
+	  product_id  
+)
+REFERENCES   product   (
+	  product_no  
+);
+
+ALTER TABLE   order   ADD CONSTRAINT   FK_address_TO_order_1   FOREIGN KEY (
+	  address_no  
+)
+REFERENCES   address   (
+	  address_no  
+);
+
+
+CREATE TABLE   board_theme   (
+	  board_theme_id  	varchar2(50)		NOT NULL,
+	  theme_name  	varchar2(50)		NULL
+);
+
+ALTER TABLE   board_theme   ADD CONSTRAINT   PK_BOARD_THEME   PRIMARY KEY (
+	  board_theme_id  
+);
+
+
+
+CREATE TABLE   group_board   (
+	  groupb_no  	number		NOT NULL,
+	  group_no  	number		NOT NULL,
+	  attach_group_id  	varchar2(256)		NOT NULL,
+	  groupb_title  	varchar2(200)		NULL,
+	  content  	varchar2(1000)		NULL,
+	  read_count  	number		NULL,
+	  reg_date  	date		NULL,
+	  like_count  	number		NULL
+);
+
+create sequence group_board_groupb_no nocache;
+ALTER TABLE   group_board   ADD CONSTRAINT   PK_GROUP_BOARD   PRIMARY KEY (
+	  groupb_no  
+);
+ALTER TABLE   group_board   ADD CONSTRAINT   FK_community_group_TO_group_board_1   FOREIGN KEY (
+	  group_no  
+)
+REFERENCES   community_group   (
+	  group_no  
+);
+
+ALTER TABLE   group_board   ADD CONSTRAINT   FK_attachment_TO_group_board_1   FOREIGN KEY (
+	  attach_group_id  
+)
+REFERENCES   attachment   (
+	  attach_group_id  
+);
+
+>>>>>>> branch 'eh0203' of https://github.com/KHFinalProject220119/PetLab.git
 

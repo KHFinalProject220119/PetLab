@@ -13,9 +13,7 @@ public interface AdminNoticeService {
 
 	int insertAdminNotice(AdminNotice qa_notice);
 
-	AdminNotice selectOneAdminNotice(int notice_no);
-
-	AdminNotice selectOneAdminNoticeCollection(int notice_no);
+	AdminNotice selectOneAdminNoticeCollection(int noticeNo);
 
 	AdminNoticeAttachment selectOneAttachment(int attachNo);
 

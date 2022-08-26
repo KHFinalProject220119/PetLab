@@ -86,9 +86,11 @@ public class MemberServiceImpl implements MemberService {
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int updateMemberRole(String memberId, List<String> authorities) {
+
 		System.out.println("memberId = "+ memberId);
 		// 기존권한 삭제
 		int result = memberDao.deleteMemberRole(memberId);
+
 		// 새권한 등록
 		for(String auth : authorities) {
 			Map<String, Object> map = new HashMap<>();

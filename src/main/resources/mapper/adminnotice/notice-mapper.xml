@@ -7,75 +7,49 @@
 	<select id="selectAdminNoticeList" resultType="adminnotice">
 		select 
 			n.*,
-			(select count(*) from attachment where notice_no = n.attach_no) attach_count
+			(select count(*) from attachment a where n.notice_no = a.attach_no) attach_count
 		from
 			qa_notice n
 		order by
-			no desc
+			n.notice_no desc
 	</select>
 	
 	<insert id="insertAdminNotice">
 		insert into 
-			qa_notice (notice_no, title, member_id, content) 
+			qa_notice 
 		values (
-			seq_notice_no.nextval, 
-			#{title}, 
+			seq_qa_notice_no.nextval, 
+			#{attachGroupId}, 
 			#{memberId}, 
-			#{content})
-		<selectKey keyProperty="notice_no" resultType="_int" order="AFTER">
-			select 
-				seq_notice_no.currval
-			from
-				dual
-		</selectKey>
+			null, 
+			#{noticeTitle}, 
+			#{content},
+			0,
+			sysdate
+			)
+
 	</insert>
 	
-	<select id="selectOneAdminNoticeCollection" resultMap="adminNoticeCollectionMap">
+	
+	<select id="selectOneAdminNoticeCollection" resultType="adminnotice">
 		select
-		    n.*,
-		    m.*,
-		    a.no attach_no,
-		    a.*
+		    *
 		from
-		    qa_notice n
-		        left join member m on n.member_id = m.member_id
-		        left join attachment a on n.attach_no = a.notice_no
+		    qa_notice 
 		where
-		    n.notice_no = #{notice_no}
+		    notice_no = #{noticeNo}
 		order by 
-		    n.notice_no desc
+		    notice_no desc
 	</select>
 	
-	<resultMap type="adminNotice" id="adminNoticeCollectionMap">
-		<id column="notice_no" property="notice_no"/>
-		<result column="notice_title" property="title"/>
-		<result column="member_id" property="memberId"/>
-		<result column="content" property="content"/>
-		<result column="created_at" property="createdAt"/>
-		<result column="updated_at" property="updatedAt"/>
-		<result column="read_count" property="readCount"/>
-		
-		<association property="member" javaType="member">
-			<id column="member_id" property="memberId"/>
-			<result column="name" property="name"/>
-			<result column="email" property="email"/>
-		</association>
 	
-	
-		
-		<collection property="attachment" javaType="arraylist" ofType="attachment">
-			<id column="attach_no" property="no"/>
-			<result column="original_filename" property="originalFilename"/>
-			<result column="renamed_filename" property="renamedFilename"/>
-			<result column="download_count" property="downloadCount"/>
-		</collection>
-		
-		<collection property="authorities" ofType="simpleGrantedAuthority" >
-			<constructor>
-				<arg column="auth" javaType="string" />
-			</constructor>
-		</collection>
-		
-	</resultMap>
-	
+	<select id="selectNoticeAttachments" resultType="attachment">
+		select
+			 * 
+		from
+			attachment
+		where
+			attach_group_id = #{attachGroupId}
+	</select>
+ 
 </mapper>

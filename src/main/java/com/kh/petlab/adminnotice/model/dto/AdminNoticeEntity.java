@@ -10,11 +10,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AdminNoticeEntity {
-	private int adminNoticeNo;
-	private String noticeTitle;
-	private String memberId;
-	private String content;
-	private LocalDateTime createdAt;
-	private LocalDateTime updatedAt;
-	private int readCount;
+	protected int noticeNo;
+	protected String attachGroupId;
+	protected String memberId;
+	protected String nickname;
+	protected String noticeTitle;
+	protected String content;
+	protected int readCount;
+	protected LocalDateTime regDate;
 }

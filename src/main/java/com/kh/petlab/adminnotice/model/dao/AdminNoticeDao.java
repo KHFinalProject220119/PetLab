@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.session.RowBounds;
 
 import com.kh.petlab.adminnotice.model.dto.AdminNoticeAttachment;
+import com.kh.petlab.member.model.dto.Attachment;
 import com.kh.petlab.adminnotice.model.dto.AdminNotice;
 
 @Mapper
@@ -27,10 +28,8 @@ public interface AdminNoticeDao {
 	int insertAttachment(AdminNoticeAttachment attach);
 
 	@Select("select * from qa_notice where no = #{notice_no}")
-	AdminNotice selectOneAdminNotice(int noticeNo);
 
-	@Select("select * from attachment where notice_no = #{VNo}")
-	List<AdminNoticeAttachment> selectAttchmentListBynoticeNo(int noticeNo);
+	AdminNotice selectOneAdminNotice(int noticeNo);
 	
 	AdminNotice selectOneAdminNoticeCollection(int noticeNo);
 
@@ -40,7 +39,9 @@ public interface AdminNoticeDao {
 	@Delete("delete from attachment where no = #{attachNo}")
 	int deleteAttachment(int attachNo);
 
-	@Update("update qa_notice set title = #{notice_title}, content = #{content}, updated_at = sysdate where no = #{notice_no}")
+	@Update("update qa_notice set notice_title = #{noticeTitle}, content = #{content}, updated_at = sysdate where no = #{notice_no}")
 	int updateAdminNotice(AdminNotice AdminNotice);
+
+	List<Attachment> selectNoticeAttachments(String attachGroupId);
 
 }

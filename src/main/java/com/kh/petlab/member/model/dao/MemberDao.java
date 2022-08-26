@@ -28,7 +28,9 @@ public interface MemberDao {
 
 	int updateMember(Member member);
 	
+
 	int deleteMemberRole(String memberId);
+
 	
 
 	int resetPassword(Map<String, Object> param);

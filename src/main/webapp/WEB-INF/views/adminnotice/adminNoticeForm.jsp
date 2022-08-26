@@ -1,30 +1,37 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@page import="com.kh.petlab.member.model.dto.Member"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%@page import="org.springframework.security.core.Authentication"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/adminnotice/adminNoticeForm.css" />
+<%
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    Member loginMember = (Member) authentication.getPrincipal(); 
+%>
+<sec:authentication property="principal" var="loginMember" scope="page"/>
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="공지사항 게시글 작성" name="title"/>
 </jsp:include>
-<style>
-div#adminNotice-container{width:400px; margin:0 auto; text-align:center;}
-div#adminNotice-container input{margin-bottom:15px;}
-/* 부트스트랩 : 파일라벨명 정렬*/
-div#adminNotice-container label.custom-file-label{text-align:left;}
-</style>
 
-<div id="adminNotice-container">
+
+<div id="adminNoticeForm-container">
+	<div class="top-title-wrapper">
+			<div class="top-title">공지사항 게시</div>
+	</div>
+
 	<form 
 		name="adminNoticeForm" 
 		action="${pageContext.request.contextPath}/adminnotice/adminNoticeEnroll?${_csrf.parameterName}=${_csrf.token}" 
 		method="post"
 		enctype="multipart/form-data">
-		<input type="text" class="form-control" placeholder="제목" name="noticetitle" id="noticetitle" required>
-		<input type="text" class="form-control" name="memberId" value="${member.memberId}" readonly required>
-		<!-- input:file소스 : https://getbootstrap.com/docs/4.1/components/input-group/#custom-file-input -->
+		<input type="text" class="form-control" placeholder="제목" name="noticeTitle" id="noticeTitle" required>
+		<input type="text" class="form-control" name="memberId" value="${loginMember.memberId}" readonly required>
 		<div class="input-group mb-3" style="padding:0px;">
 		  <div class="input-group-prepend" style="padding:0px;">
 		    <span class="input-group-text">첨부파일1</span>
@@ -44,9 +51,14 @@ div#adminNotice-container label.custom-file-label{text-align:left;}
 		  </div>
 		</div>
 		
-	    <textarea class="form-control" name="content" placeholder="내용" required></textarea>
+		<div class="input-wrapper">
+			<div class="textarea-wrapper">
+	    <textarea class="form-control" id="contentsText" name="content" maxlength="500" cols="30" placeholder="내용" required></textarea>
+	    </div>
 		<br />
-		<input type="submit" class="btn btn-outline-success" value="저장" >
+		<div class="button-wrapper">
+			<input type="submit" class="btn btn-outline-success" value="게시하기" >
+		</div>
 	</form>
 </div>
 <script>
@@ -67,12 +79,13 @@ document.querySelectorAll("[name=upFile]").forEach((input) => {
 	});
 });
 
-
-document.adminNoticeFrm.addEventListener('submit', (e) => {
-	const title = document.querySelector("#title");
+const adminNoticeFrm = document.adminNoticeForm;
+adminNoticeFrm.addEventListener('submit', (e) => {
+	e.preventDefault();
+	const notice_title = document.querySelector("#noticeTitle");
 	const content = document.querySelector("#content");
 	
-	if(!/^.+$/.test(title.value)){
+	if(!/^.+$/.test(notice_title.value)){
 		e.preventDefault();
 		alert("제목을 작성해주세요.");
 		return;
@@ -83,7 +96,7 @@ document.adminNoticeFrm.addEventListener('submit', (e) => {
 		alert("내용을 작성해주세요.");
 		return;
 	}
-	
+	adminNoticeFrm.submit();
 });
 </script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
