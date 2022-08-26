@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.petlab.adminnotice.model.dao.AdminNoticeDao">
+
+	<select id="selectAdminNoticeList" resultType="adminnotice">
+		select 
+			n.*,
+			(select count(*) from attachment a where n.notice_no = a.attach_no) attach_count
+		from
+			qa_notice n
+		order by
+			n.notice_no desc
+	</select>
+	
+	<insert id="insertAdminNotice">
+		insert into 
+			qa_notice 
+		values (
+			seq_qa_notice_no.nextval, 
+			#{attachGroupId}, 
+			#{memberId}, 
+			null, 
+			#{noticeTitle}, 
+			#{content},
+			0,
+			sysdate
+			)
+
+	</insert>
+	
+	
+	<select id="selectOneAdminNoticeCollection" resultType="adminnotice">
+		select
+		    *
+		from
+		    qa_notice 
+		where
+		    notice_no = #{noticeNo}
+		order by 
+		    notice_no desc
+	</select>
+	
+	
+	<select id="selectNoticeAttachments" resultType="attachment">
+		select
+			 * 
+		from
+			attachment
+		where
+			attach_group_id = #{attachGroupId}
+	</select>
+ 
+</mapper>

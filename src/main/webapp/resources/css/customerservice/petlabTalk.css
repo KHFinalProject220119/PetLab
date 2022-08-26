@@ -56,7 +56,7 @@ em{font-style: normal;}
 .top-btn{display: absolute; width: 1.5rem; height: 1.5rem; margin-left:95%; border:none; cursor:pointer; background-size: 100% 100%; background-color: #ececec;} 
 .bottom-btn{display: absolute; width: 1.5rem; height: 1.5rem; margin: 1% 0 0 95%; border:none; cursor:pointer; background-size: 100% 100%; background-color: #ececec;}
 .tx-time{font-size: 0.7rem; color: #888;}
-.msg-info{width: 3rem; margin-top: 0.2rem;}
+.msg-info{width: 3.5rem; margin-top: 0.2rem;}
 .btn-submit-send{width: 1.3rem; height: 1.3rem; background-size: 100% 100%; border: none; background-color: #fff; padding: 0; cursor:pointer;}
 #btn-submit-img{width: 1.3rem; height: 1.3rem;}
 .bta{cursor:pointer;}

@@ -18,8 +18,9 @@ stompClient.connect({}, (frame) => {
 		if(!contentType) return;
 		
 		const {memberId, msg, time} = JSON.parse(message.body);
+		
 		let html = "";
-		if(memberId.contains("counsellor")){
+		if(memberId.includes("counsellor")){
 			html = `<div class="msg-unit-cs">
 						<div class="msg-thmb">
 							<span class="thmb-img">
@@ -68,7 +69,9 @@ stompClient.connect({}, (frame) => {
 					</div>`;
 		}
 		
+		
 		container.insertAdjacentHTML('beforeend', html);
+		container.scrollTo(0, container.scrollHeight);
 	});
 });
 
@@ -80,7 +83,7 @@ const lastCheck = () => {
 	console.log('lastCheck!!!');
 	let payload = {
 		chatroomId,
-		memberId,
+		memberId : 'admin',
 		lastCheck : Date.now(),
 		type : "LAST_CHECK" 
 	};

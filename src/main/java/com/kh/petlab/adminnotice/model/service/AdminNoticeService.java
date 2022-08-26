@@ -11,16 +11,14 @@ public interface AdminNoticeService {
 
 	int selectTotalContent();
 
-	int insertAdminNotice(AdminNotice board);
+	int insertAdminNotice(AdminNotice qa_notice);
 
-	AdminNotice selectOneAdminNotice(int no);
-
-	AdminNotice selectOneAdminNoticeCollection(int no);
+	AdminNotice selectOneAdminNoticeCollection(int noticeNo);
 
 	AdminNoticeAttachment selectOneAttachment(int attachNo);
 
 	int deleteAttachment(int attachNo);
 
-	int updateAdminNotice(AdminNotice board);
+	int updateAdminNotice(AdminNotice qa_notice);
 
 }

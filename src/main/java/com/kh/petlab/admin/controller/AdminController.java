@@ -82,7 +82,7 @@ public class AdminController {
 		}
 		
 		return ResponseEntity.ok(map);
-	}	
+	}
 	
 	
 	@GetMapping("/chatList")
