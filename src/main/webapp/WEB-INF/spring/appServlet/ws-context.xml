@@ -13,7 +13,7 @@
 			<sockjs/>
 		</stomp-endpoint>
 		
-		<simple-broker prefix="/topic, /app"/>
+		<simple-broker prefix="/app"/>
 	</message-broker>
 	
 </beans:beans>

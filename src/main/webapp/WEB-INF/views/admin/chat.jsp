@@ -26,8 +26,10 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="stylesheet"	href="${pageContext.request.contextPath}/resources/css/customerservice/petlabTalk.css" />
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js" integrity="sha512-1QvjE7BtotQjkq8PxLeF6P46gEpBRXuskzIVgjFpekzFVF4yjRgrQvTG1MTOJ3yQgvTteKAcO7DSZI92+u/yZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" integrity="sha512-iKDtgDyTHjAitUDdLljGhenhPwrbBfqTKWO1mkhSFH3A7blITC9MhYon6SjnMhp4o0rADGw9yAC6EW4t5a4K3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- WebSocket:sock.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.3.0/sockjs.js"></script>
+<!-- WebSocket: stomp.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
 </head>
 <body>
 	<aside id="sweet-talk-top">
@@ -201,7 +203,8 @@ const chatroomId = '${chatroomId}';
 const profileName = '${counsellorAattach.renamedFilename}';
 const counsellorName = '${counsellor.memberName}';
 const memberId = '${counsellor.memberId}';
-const url = '${pageContext.request.contextPath}';
+const memberName = '${member.memberName}';
+const url = "http://localhost:9090${pageContext.request.contextPath}";
 </script>
 <script src="${pageContext.request.contextPath}/resources/js/adminChat.js"></script>
 </body>
@@ -222,5 +225,9 @@ textMsg.addEventListener('keyup', (e) =>{
 		sendBtn.click();
 	}
 });
+window.onload = () => {
+	const cont = document.querySelector("#msg-view");
+	cont.scrollTo(0, cont.scrollHeight);
+}
 </script>
 </html>

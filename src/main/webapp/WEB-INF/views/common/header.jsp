@@ -96,15 +96,22 @@ function logoutWithKakao() {
 										<button type="submit" class="sign-out-btn">로그아웃</button>
 				    				</form:form>
 			    				</li>
+			    				<li><a href="${pageContext.request.contextPath}/adminnotice/adminNoticeList"><span>공지사항</span></a></li>
 								<li><a href="${pageContext.request.contextPath}/customerservice/csCenter">고객센터</a></li>
+								<sec:authorize access="hasRole('ADMIN')">
+									<li id="admin-manage-list">관리자 메뉴
+										<ul class="admin-sub-manage-list admin-submenu-hidden">
+								    		<li class="admin-submenu-li"><a style="color: #FF9900;"  href="${pageContext.request.contextPath}/admin/memberList"><span>회원관리</span></a></li>
+								    		<sec:authorize access="hasRole('COUNSELLOR')">
+												<li class="admin-submenu-li" ><a style="color: #FF9900;"  href="${pageContext.request.contextPath}/admin/chatList"><span>채팅관리</span></a></li>
+											</sec:authorize>
+										</ul>
+									</li> 
+				    			</sec:authorize>
 							</ul>
 						</sec:authorize>
 						
-						<sec:authorize access="hasRole('ADMIN')">
-						    <ul class="header-member-list-ul">
-						    	<li><a class="nav-link" href="${pageContext.request.contextPath}/admin/memberList">회원관리</a></li>
-						    </ul>
-				    	</sec:authorize>
+
 						
 						</div>
 					</div>
@@ -137,7 +144,7 @@ function logoutWithKakao() {
 									</a>
 								</li>
 								<li class="header-menu-li">
-									<a href="${pageContext.request.contextPath}/contest/contestList" class="menu-link">
+									<a href="${pageContext.request.contextPath}/" class="menu-link">
 										<h2>콘테스트</h2>
 										<span><img class="menu-logo" src="${pageContext.request.contextPath}/resources/images/common/header/CatDecorated.png" alt="" /></span>
 									</a>
@@ -202,21 +209,14 @@ function logoutWithKakao() {
 			
 				</div>
 			</div>
+
 <script>
 // 고객센터 1:1채팅 Sweet Talk
 const openChat = () => {
-	const memberId = "${loginMember.memberId}";
-    if(!memberId){
-		alert('로그인 후 사용하실 수 있습니다.');
-		location.href("${pageContext.request.contextPath}/");
-		return false;	
-    }
-    else{
-		const title = "PetTalkPopup";
-		const spec = "width=720px, height=685px";
-		const addr = "${pageContext.request.contextPath}/chat/chat?memberId=${loginMember.memberId}";
-		const popup = open(addr, title, spec);
-    }
+	const title = "PetTalkPopup";
+	const spec = "width=720px, height=660px";
+	const addr = "${pageContext.request.contextPath}/chat/chat?memberId="+"${loginMember.memberId}";
+	const popup = open(addr, title, spec);
 }
 // top 버튼
 const goToTop = (e) => {
@@ -227,6 +227,20 @@ const goToTop = (e) => {
 const goToBottom = (e) => {
 	window.scrollTo(0,document.body.scrollHeight);
 }
+const adminSubmenuBtn = document.querySelector("#admin-manage-list");
+const adminSubmenu = document.querySelector(".admin-sub-manage-list");
+adminSubmenuBtn.addEventListener('click', (e) => {
+	const className = adminSubmenu.className;
+	if(className === "admin-sub-manage-list admin-submenu-hidden"){
+		adminSubmenu.classList.remove("admin-submenu-hidden");
+		adminSubmenu.classList.add("admin-submenu-visible");
+	}
+	else{
+		adminSubmenu.classList.add("admin-submenu-hidden");
+		adminSubmenu.classList.remove("admin-submenu-visible");
+	}
+	
+});
 </script>
 	</header>
 	<section id="content">
