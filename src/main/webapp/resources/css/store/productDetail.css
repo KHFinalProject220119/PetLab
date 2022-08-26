@@ -12,9 +12,9 @@
     font-style: normal;
 }
 body{font-family: 'Dovemayo-Medium'}
-.content{margin-left:32rem;}
-.img-content{margin-bottom:2rem; margin-top:2rem;}
-.imgg{width:250px; height:320px;}
+.content{width:65%; margin:0 auto;}
+.img-content{width:80%; margin:0 auto;}
+.imgg{width:100%; height:780px;}
 .img_des{margin-right:5rem;}
 .product_name{font-size:1.7rem;}
 .product_price{font-size: 1.2rem;margin-top:1rem;}
