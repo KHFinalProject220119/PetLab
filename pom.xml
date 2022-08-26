@@ -240,7 +240,7 @@
 	        <version>${org.springframework-version}</version>
 	    </dependency>
     
-<!-- 	    <dependency>
+	    <dependency>
 	       <groupId>jakarta.servlet</groupId>
 	       <artifactId>jakarta.servlet-api</artifactId>
 	       <version>5.0.0</version>
@@ -251,7 +251,7 @@
 	        <artifactId>jakarta.servlet.jsp-api</artifactId>
 	        <version>3.0.0</version>
 	        <scope>provided</scope>
-	    </dependency> -->
+	    </dependency>
     
 		<!-- Test -->
 		<dependency>

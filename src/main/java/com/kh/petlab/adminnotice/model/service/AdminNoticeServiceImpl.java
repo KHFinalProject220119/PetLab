@@ -1,7 +1,5 @@
 package com.kh.petlab.adminnotice.model.service;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
@@ -10,12 +8,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.petlab.adminnotice.model.dao.AdminNoticeDao;
+//github.com/KHFinalProject220119/PetLab.git
+import com.kh.petlab.adminnotice.model.dto.AdminNotice;
 import com.kh.petlab.adminnotice.model.dto.AdminNoticeAttachment;
-import com.kh.petlab.hospital.model.dto.HosReviewRate;
-import com.kh.petlab.hospital.model.dto.PetHosReview;
 import com.kh.petlab.member.model.dao.MemberDao;
 import com.kh.petlab.member.model.dto.Attachment;
-import com.kh.petlab.adminnotice.model.dto.AdminNotice;
 
 import lombok.extern.slf4j.Slf4j;
 

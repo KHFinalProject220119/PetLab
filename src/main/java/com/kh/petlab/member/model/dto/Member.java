@@ -49,7 +49,9 @@ public class Member extends MemberEntity implements UserDetails {
 	
 	public void addAttachment(@NonNull Attachment attachment) {
 		attachments.add(attachment);
-}
+
+	}
+	
 
 	public Member(List<Attachment> attachments, List<SimpleGrantedAuthority> authorities, Attachment attach) {
 		super();
