@@ -9,6 +9,7 @@
  <jsp:include page="/WEB-INF/views/common/header.jsp">
  	<jsp:param value="로그인" name="title"/>
  </jsp:include>
+
 	<article class="signIn">
 		<div class="signInFrm-wrapper">
 			<div class="signIn-title-wrapper">
@@ -57,8 +58,6 @@
 		</div>
 	</article>
 	<script>
-	// 카카오 로그인 초기화
-		Kakao.init('22289034ae7ed5aa331cb59ea6ac1625'); 
 
 	// 카카오로그인
 	function loginWithKakao() {

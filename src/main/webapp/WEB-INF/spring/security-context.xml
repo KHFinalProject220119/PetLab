@@ -30,7 +30,8 @@
 		<!-- 커뮤니티  -->
 		<intercept-url pattern="/community/**" access="permitAll" /> 
 		
-		<intercept-url pattern="/hospital/hospitalEnroll" access="hasRole('HOSPITAL', 'ADMIN')"  />
+		<intercept-url pattern="/hospital/hospitalEnroll" access="hasRole('HOSPITAL')"  />
+	 
 		<intercept-url pattern="/hospital/**" access="permitAll"  />
 		
 		<!-- 고객센터  -->
