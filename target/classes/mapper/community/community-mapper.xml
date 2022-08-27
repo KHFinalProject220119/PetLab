@@ -35,6 +35,36 @@
 		)
 	</insert>
 
+	<insert id="doctorKhowEnroll">
+		insert into
+		community_dknow_board
+		values(
+		seq_community_dknow_board_dknowb_no.nextval,
+		#{memberId},
+		#{attachGroupId},
+		#{dknowbTitle},
+		#{content},
+		0,
+		sysdate,
+		0
+		)
+	</insert>
+
+	<insert id="memberKhowEnroll">
+		insert into
+		community_mknow_board
+		values(
+		seq_community_mknow_board_mknowb_no.nextval,
+		#{memberId},
+		#{attachGroupId},
+		#{mknowbTitle},
+		#{content},
+		0,
+		sysdate,
+		0
+		)
+	</insert>
+
 	<insert id="attachmentEnroll">
 		insert into
 		attachment
@@ -80,27 +110,39 @@
 		b order by no desc </select> -->
 	<select id="selectFreeBoardList" resultType="communityFreeBoard">
 		select f.*,
-		(select count(*) from attachment where freeb_no = f.freeb_no) attach_count
+		(select
+		count(*) from attachment where freeb_no = f.freeb_no) attach_count
 		from community_free_board f
 		order by freeb_no desc
 
 	</select>
-	
-<!-- 		<select id="selectOneBoardCollection" resultMap="boardCollectionMap">
-		select
-		    f.*,
-		    m.*,
-		    a.no attach_no,
-		    a.*
-		from
-		    board b
-		        left join member m on f.member_id = m.member_id
-		        left join attachment a on f.no = a.freeb_no
-		where
-		    f.no = #{no}
-		order by 
-		    f.no desc
-	</select> -->
+
+	<select id="selectDknowBoardList"
+		resultType="communityDknowBoard">
+		select d.*,
+		(select count(*) from attachment where dknowb_no
+		= d.dknowb_no) attach_count
+		from community_dknow_board d
+		order by
+		dknowb_no desc
+
+	</select>
+
+	<select id="selectMknowBoardList"
+		resultType="communityMknowBoard">
+		select m.*,
+		(select count(*) from attachment where mknowb_no
+		= m.mknowb_no) attach_count
+		from community_mknow_board m
+		order by
+		mknowb_no desc
+
+	</select>
+
+	<!-- <select id="selectOneBoardCollection" resultMap="boardCollectionMap"> 
+		select f.*, m.*, a.no attach_no, a.* from board b left join member m on f.member_id 
+		= m.member_id left join attachment a on f.no = a.freeb_no where f.no = #{no} 
+		order by f.no desc </select> -->
 
 	<resultMap type="communityFreeBoard"
 		id="communityFreeBoardMap">
@@ -108,6 +150,30 @@
 		<result column="member_id" property="memberId" />
 		<result column="attach_group_id" property="attachGroupId" />
 		<result column="freeb_title" property="freebTitle" />
+		<result column="content" property="content" />
+		<result column="read_count" property="readCount" />
+		<result column="reg_date" property="regDate" />
+		<result column="like_count" property="likeCount" />
+	</resultMap>
+
+	<resultMap type="communityDknowBoard"
+		id="communityDknowBoardMap">
+		<id column="dknowb_no" property="dknowbNo" />
+		<result column="member_id" property="memberId" />
+		<result column="attach_group_id" property="attachGroupId" />
+		<result column="dknowb_title" property="dknowbTitle" />
+		<result column="content" property="content" />
+		<result column="read_count" property="readCount" />
+		<result column="reg_date" property="regDate" />
+		<result column="like_count" property="likeCount" />
+	</resultMap>
+
+	<resultMap type="communityMknowBoard"
+		id="communityMknowBoardMap">
+		<id column="mknowb_no" property="mknowbNo" />
+		<result column="member_id" property="memberId" />
+		<result column="attach_group_id" property="attachGroupId" />
+		<result column="mknowb_title" property="mknowbTitle" />
 		<result column="content" property="content" />
 		<result column="read_count" property="readCount" />
 		<result column="reg_date" property="regDate" />
@@ -127,17 +193,20 @@
 
 	<select id="selectPhotoListForIndex" resultType="communityphoto">
 		select
-			*
+		*
 		from
-			(select rownum rnum, p.* from(select * from community_photo p order by like_count desc) p) 
+		(select rownum rnum, p.* from(select * from community_photo p order by
+		like_count desc) p)
 		where
-         rnum between 1 and 3
+		rnum between 1 and 3
 	</select>
-	<select id="selectPhotoAttachListForIndex" resultType="attachment">
-		select 
-			*
+	<select id="selectPhotoAttachListForIndex"
+		resultType="attachment">
+		select
+		*
 		from
-			attachment
-		where attach_group_id = #{attachGroupId}
+		attachment
+		where attach_group_id =
+		#{attachGroupId}
 	</select>
 </mapper>

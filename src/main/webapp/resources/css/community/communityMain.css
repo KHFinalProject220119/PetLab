@@ -11,7 +11,12 @@ table#free-board {
     margin: 0 auto;
 }
 
-table#knowhow-board {
+table#dknowhow-board {
+	width: 70%;
+    margin: 0 auto;
+}
+
+table#mknowhow-board {
 	width: 70%;
     margin: 0 auto;
 }

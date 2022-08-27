@@ -6,7 +6,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.RowBounds;
 
 import com.kh.petlab.community.model.dto.Community;
+import com.kh.petlab.community.model.dto.CommunityDknowBoard;
 import com.kh.petlab.community.model.dto.CommunityFreeBoard;
+import com.kh.petlab.community.model.dto.CommunityMknowBoard;
 import com.kh.petlab.community.model.dto.CommunityPhoto;
 import com.kh.petlab.member.model.dto.Attachment;
 
@@ -25,19 +27,45 @@ public interface CommunityDao {
 
 	List<CommunityPhoto> selectPhotoListByLike();
 
+	List<CommunityPhoto> selectPhotoListForIndex();
+	
+	Attachment selectPhotoAttachListForIndex(String attachGroudpId);
+	
+	
 	int freebEnroll(CommunityFreeBoard communityFreeBoard);
 
 	List<CommunityFreeBoard> selectFreeBoardList(RowBounds rowBounds);
 
 	CommunityFreeBoard selectOneFreeBoard(int no);
-
+	
 	List<Attachment> selectAttchmentListByFreeBoardNo(int no);
 
 	CommunityFreeBoard selectOneFreeBoardCollection(int no);
+	
+	
+	int doctorKhowEnroll(CommunityDknowBoard communityDknowBoard);
 
+	List<CommunityDknowBoard> selectDknowBoardList(RowBounds rowBounds);
+	
+	List<Attachment> selectAttchmentListByDknowBoardNo(int no);
+	
+	CommunityDknowBoard selectOneDknowBoardCollection(int no);
+
+	
 	Attachment selectOneAttachment(int attachNo);
 
-	List<CommunityPhoto> selectPhotoListForIndex();
+	CommunityDknowBoard selectOneDknowBoard(int no);
 
-	Attachment selectPhotoAttachListForIndex(String attachGroudpId);
+	int memberKhowEnroll(CommunityMknowBoard communityMknowBoard);
+
+	List<CommunityMknowBoard> selectMknowBoardList(RowBounds rowBounds);
+
+	List<Attachment> selectAttchmentListByMknowBoardNo(int no);
+
+	CommunityMknowBoard selectOneMknowBoardCollection(int no);
+
+	CommunityMknowBoard selectOneMknowBoard(int no);
+
+
+
 }

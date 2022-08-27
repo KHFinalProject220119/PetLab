@@ -12,7 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.petlab.community.model.dao.CommunityDao;
 import com.kh.petlab.community.model.dto.Community;
+import com.kh.petlab.community.model.dto.CommunityDknowBoard;
 import com.kh.petlab.community.model.dto.CommunityFreeBoard;
+import com.kh.petlab.community.model.dto.CommunityMknowBoard;
 import com.kh.petlab.community.model.dto.CommunityPhoto;
 import com.kh.petlab.member.model.dto.Attachment;
 
@@ -110,6 +112,84 @@ public class CommunityServiceImpl implements CommunityService {
 			// TODO Auto-generated method stub
 			return 0;
 		}
+		
+		 @Override
+		 public int doctorKhowEnroll(CommunityDknowBoard communityDknowBoard) {
+			 //community insert
+			 int result = communityDao.doctorKhowEnroll(communityDknowBoard);
+			 
+			 // 첨부파일 insert
+				/*
+				 * Attachment attachment = communityPhoto.getAttachment(); if(attachment !=
+				 * null) {
+				 * 
+				 * result = communityDao.attachmentEnroll(attachment); }
+				 */
+				
+				return result;
+			 
+		}
+		
+		 @Transactional(readOnly = true)
+		 @Override
+		 public List<CommunityDknowBoard> selectDknowBoardList(int cPage, int numPerPage) {
+			 int offset = (cPage -1) * numPerPage;
+			 int limit = numPerPage;
+			 RowBounds rowBounds = new RowBounds(offset, limit);
+			 return communityDao.selectDknowBoardList(rowBounds);
+		 }
+		 
+		 @Override
+		 public CommunityDknowBoard selectOneDknowBoard(int no) {
+			 CommunityDknowBoard board = communityDao.selectOneDknowBoard(no);
+			 List<Attachment> attachments = communityDao.selectAttchmentListByDknowBoardNo(no);
+			 board.setAttachments(attachments);
+			 return board;
+		 }
+		 
+		 @Override
+		 public CommunityDknowBoard selectOneDknowBoardCollection(int no) {
+			 return communityDao.selectOneDknowBoardCollection(no);
+		 }
+		 
+		 @Override
+		 public int memberKhowEnroll(CommunityMknowBoard communityMknowBoard) {
+			 //community insert
+			 int result = communityDao.memberKhowEnroll(communityMknowBoard);
+			 
+			 // 첨부파일 insert
+				/*
+				 * Attachment attachment = communityPhoto.getAttachment(); if(attachment !=
+				 * null) {
+				 * 
+				 * result = communityDao.attachmentEnroll(attachment); }
+				 */
+				
+				return result;
+			 
+		}
+		
+		 @Transactional(readOnly = true)
+		 @Override
+		 public List<CommunityMknowBoard> selectMknowBoardList(int cPage, int numPerPage) {
+			 int offset = (cPage -1) * numPerPage;
+			 int limit = numPerPage;
+			 RowBounds rowBounds = new RowBounds(offset, limit);
+			 return communityDao.selectMknowBoardList(rowBounds);
+		 }
+		 
+		 @Override
+		 public CommunityMknowBoard selectOneMknowBoard(int no) {
+			 CommunityMknowBoard board = communityDao.selectOneMknowBoard(no);
+			 List<Attachment> attachments = communityDao.selectAttchmentListByMknowBoardNo(no);
+			 board.setAttachments(attachments);
+			 return board;
+		 }
+		 
+		 @Override
+		 public CommunityMknowBoard selectOneMknowBoardCollection(int no) {
+			 return communityDao.selectOneMknowBoardCollection(no);
+		 }
 
 		@Override
 		public List<CommunityPhoto> selectPhotoListForIndex() {

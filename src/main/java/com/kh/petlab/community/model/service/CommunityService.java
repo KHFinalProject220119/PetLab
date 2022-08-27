@@ -2,7 +2,9 @@ package com.kh.petlab.community.model.service;
 
 import java.util.List;
 
+import com.kh.petlab.community.model.dto.CommunityDknowBoard;
 import com.kh.petlab.community.model.dto.CommunityFreeBoard;
+import com.kh.petlab.community.model.dto.CommunityMknowBoard;
 import com.kh.petlab.community.model.dto.CommunityPhoto;
 import com.kh.petlab.member.model.dto.Attachment;
 
@@ -15,6 +17,9 @@ public interface CommunityService {
 	List<Attachment> selectAttachmentForPhoto(String attachGroupId);
 
 	List<CommunityPhoto> selectPhotoListByLike();
+	
+	List<CommunityPhoto> selectPhotoListForIndex();
+	
 
 	int freebEnroll(CommunityFreeBoard communityFreeBoard);
 
@@ -28,7 +33,22 @@ public interface CommunityService {
 
 	Attachment selectOneAttachment(int attachNo);
 
-	List<CommunityPhoto> selectPhotoListForIndex();
-	 
+
+	int doctorKhowEnroll(CommunityDknowBoard communityDknowBoard);
+
+	List<CommunityDknowBoard> selectDknowBoardList(int cPage, int numPerPage);
+
+
+	CommunityDknowBoard selectOneDknowBoard(int no);
+
+	CommunityDknowBoard selectOneDknowBoardCollection(int no);
+
+	List<CommunityMknowBoard> selectMknowBoardList(int cPage, int numPerPage);
+
+	int memberKhowEnroll(CommunityMknowBoard communityMknowBoard);
+
+	CommunityMknowBoard selectOneMknowBoard(int no);
+
+	CommunityMknowBoard selectOneMknowBoardCollection(int no);
 
 }
