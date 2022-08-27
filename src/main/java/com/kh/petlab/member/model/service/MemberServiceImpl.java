@@ -25,8 +25,8 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member selectOneMember(String memberId) {
 		Member member = memberDao.selectOneMember(memberId);
-		String attachGroupId = member.getAttachGroupId();
 		if(member != null) {
+			String attachGroupId = member.getAttachGroupId();
 			Attachment attach = memberDao.selectOneAttachment(attachGroupId);
 			member.setAttach(attach);
 		}			

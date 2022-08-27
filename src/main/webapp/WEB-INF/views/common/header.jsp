@@ -35,28 +35,30 @@
 <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.1.js" charset="utf-8"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common/common.css" />
 
+
+<script>
+
+//카카오 로그인 초기화
+Kakao.init('22289034ae7ed5aa331cb59ea6ac1625'); 
+
+//소셜로그인 초기화
+//구글
+window.onload = function() {
+  google.accounts.id.initialize({
+    client_id: "699818403547-pvfigermmgeljtvqpjmol26uhist6t19.apps.googleusercontent.com",
+  
+  });
+}
+</script>
 <sec:authorize access="isAuthenticated()">
 <sec:authentication property="principal" var="loginMember" scope="page"/>
 <script>
 const memberSocialType = "${loginMember.memberSocial}";	
-// 소셜로그인 초기화
-//구글
-  window.onload = function() {
-    google.accounts.id.initialize({
-      client_id: "699818403547-pvfigermmgeljtvqpjmol26uhist6t19.apps.googleusercontent.com",
-    
-    });
-}
-
 // 네이버 로그아웃
 const naverLogOut = new naver.LoginWithNaverId({
 			clientId: "KSurOBZGq_POfnJ3N5WS",	
 			} );	
 naverLogOut.init(); 
-
-// 카카오		
-Kakao.init('22289034ae7ed5aa331cb59ea6ac1625'); 
-
 
 // 카카오 로그아웃
 function logoutWithKakao() {
