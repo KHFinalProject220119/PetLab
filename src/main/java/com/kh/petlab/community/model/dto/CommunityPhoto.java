@@ -16,14 +16,16 @@ import lombok.ToString;
 public class CommunityPhoto extends CommunityPhotoEntity {
 	
 	private List<Attachment> attachments = new ArrayList<>();
+	private Attachment attachment;
 	
 	public void addAttachment(@NonNull Attachment attachment) {
 		attachments.add(attachment);
 	}
 
-	public CommunityPhoto(List<Attachment> attachments) {
+	public CommunityPhoto(List<Attachment> attachments, Attachment attachment) {
 		super();
 		this.attachments = attachments;
+		this.attachment = attachment;
 	}
 	
 	

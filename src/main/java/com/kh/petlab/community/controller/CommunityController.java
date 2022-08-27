@@ -223,7 +223,7 @@ public class CommunityController {
 				
 				attachment.setRenamedFilename(renamedFilename);
 				
-	//			communityPhoto.setAttachment(attachment);
+			//	communityPhoto.setAttachment(attachment);
 			}
 			
 			int result = communityService.enroll(communityPhoto);

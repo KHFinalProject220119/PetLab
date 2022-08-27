@@ -127,8 +127,8 @@ function logoutWithKakao() {
 									</a>
 								</li>
 								<li class="header-menu-li">
-									<a href="${pageContext.request.contextPath}/community/communityMain" class="menu-link">
 									<a href="${pageContext.request.contextPath}/community/photoList" class="menu-link">
+									<a href="${pageContext.request.contextPath}/community/communityMain" class="menu-link">
 										<span><img class="menu-logo" src="${pageContext.request.contextPath}/resources/images/common/header/CatWithAPencil.png" alt="" /></span>
 										<h2>커뮤니티</h2>
 									</a>
@@ -228,6 +228,9 @@ const goToTop = (e) => {
 const goToBottom = (e) => {
 	window.scrollTo(0,document.body.scrollHeight);
 }
+</script>
+<sec:authorize access="hasRole('ADMIN')">
+<script>
 const adminSubmenuBtn = document.querySelector("#admin-manage-list");
 const adminSubmenu = document.querySelector(".admin-sub-manage-list");
 adminSubmenuBtn.addEventListener('click', (e) => {
@@ -243,5 +246,6 @@ adminSubmenuBtn.addEventListener('click', (e) => {
 	
 });
 </script>
+</sec:authorize>
 	</header>
 	<section id="content">

@@ -2,6 +2,7 @@ package com.kh.petlab.community.model.service;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
@@ -108,6 +109,21 @@ public class CommunityServiceImpl implements CommunityService {
 		public int selectTotalContent() {
 			// TODO Auto-generated method stub
 			return 0;
+		}
+
+		@Override
+		public List<CommunityPhoto> selectPhotoListForIndex() {
+			List<CommunityPhoto> photoLists = communityDao.selectPhotoListForIndex();
+			List<CommunityPhoto> photoList = new ArrayList<>();
+			if(!photoLists.isEmpty()) {
+				for(CommunityPhoto photo : photoLists) {
+					String attachGroudpId = photo.getAttachGroupId();
+					Attachment attachment = communityDao.selectPhotoAttachListForIndex(attachGroudpId);
+					photo.setAttachment(attachment);
+					photoList.add(photo);
+				}
+			}
+			return photoList;
 		}
 
 }

@@ -286,9 +286,6 @@ const loadHospitalList = (res) =>{
 	        map: map,
 	        position: marker.getPosition()       
 	    });
-	    
-
-
 	}
 
 
