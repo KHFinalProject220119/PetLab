@@ -69,7 +69,7 @@ public class ChatController {
 						new ChatMember(chatroomId, counsellorId));
 				int result = chatService.createChatroom(chatMemberList);
 				
-				ChatMember chatMem = chatService.findChatMemberByMemberId(memberId);
+				chatMember = chatService.findChatMemberByMemberId(memberId);
 				LocalDateTime openTime = chatMember.getCreatedAt();
 				model.addAttribute("openTime", openTime);
 			}
