@@ -1,0 +1,180 @@
+@charset "UTF-8";
+
+.modal-img{display:none;}	
+table#cm-board {
+	width: 70%;
+    margin: 0 auto;
+}
+
+table#free-board {
+	width: 70%;
+    margin: 0 auto;
+}
+
+table#knowhow-board {
+	width: 70%;
+    margin: 0 auto;
+}
+
+table#photo-board {
+	width: 70%;
+    margin: 0 auto;
+}
+
+table#photo-board2 {
+	width: 70%;
+    margin: 0 auto;
+}
+
+table#sg-board {
+	width: 70%;
+    margin: 0 auto;
+}
+
+th#small_hot {
+	margin: 0 auto;
+	padding-bottom : 40px;
+	font-size: 28px;
+}
+
+th#photo_best {
+	margin: 0 auto;
+	padding-top : 20px;
+	padding-bottom : 60px;
+	font-size: 28px;
+}
+
+th#count {
+	padding-top : 40px;
+	padding-bottom : 40px;
+}
+
+
+input#btn-add {
+	width : 120px;
+	height : 40px;
+    font-size : 15px;
+} 
+
+th#p_content {
+	padding-left : 50px;
+	text-align : left;
+}
+
+th#p_writer {
+	padding-left : 50px;
+	text-align : left;
+}
+
+th#p_best_count {
+	padding-right : 50px;
+	text-align : right;
+}
+
+th#p_enroll_date {
+	padding-right : 50px;
+	text-align : right;
+}
+
+th#content {
+	padding-left : 20px;
+	text-align : left;
+}
+
+th#writer {
+	padding-left : 20px;
+	text-align : left;
+}
+
+th#best_count {
+	padding-right : 20px;
+	text-align : right;
+}
+
+th#enroll_date {
+	padding-right : 20px;
+	text-align : right;
+}
+
+th#btn_photo_add {
+	padding-left : 150px;
+}
+
+.pet {
+	width : 350px;
+	height : 300px;
+}
+
+.plus {
+	width : 180px;
+	height : 180px;
+}
+
+.submenu {
+	font-size:25px;
+}
+
+.best {
+	width : 18px;
+	height : 18px;
+}
+
+.prize1 {
+	background-color : #ffd700;
+}
+
+.prize2 {
+	background-color : #c0c0c0;
+}
+
+.prize3 {
+	background-color : #c49c48;
+}
+
+.btn_photo {
+	width : 120px;
+	height : 40px;
+    font-size : 15px;
+	border-radius: 100px!important;
+	overflow: hidden;
+    position: relative;
+    background-size: 300% 100%;
+	color: #fff;
+    background-image: linear-gradient(90deg,#1dc6f7,#00e5c2,#00e5c2,#1dc6f7);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.5;
+    padding: 0 10px;
+    text-align: center;
+    transition: all .15s ease;
+    cursor: pointer;
+    border-style : none;
+}
+
+.btn_free {
+	width : 120px;
+	height : 40px;
+    font-size : 15px;
+	border-radius: 100px!important;
+	overflow: hidden;
+    position: relative;
+    background-size: 300% 100%;
+	color: #fff;
+    background-image: linear-gradient(90deg,#1dc6f7,#00e5c2,#00e5c2,#1dc6f7);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.5;
+    padding: 0 10px;
+    text-align: center;
+    transition: all .15s ease;
+    cursor: pointer;
+    border-style : none;
+}
+
+
+.attach_photo {
+	width : 350px;
+	height : 300px;
+}

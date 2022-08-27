@@ -617,6 +617,11 @@ REFERENCES   board_theme   (
 	  board_theme_id  
 );
 
+ALTER TABLE community_free_board MODIFY freeb_title NOT NULL;
+ALTER TABLE community_free_board MODIFY content  NOT NULL;
+ALTER TABLE community_free_board MODIFY read_count NOT NULL;
+ALTER TABLE community_free_board MODIFY reg_date NOT NULL;
+ALTER TABLE community_free_board MODIFY like_count NOT NULL;
 
 
 CREATE TABLE   freeb_reply   (
@@ -681,6 +686,11 @@ REFERENCES   attachment   (
 	  attach_group_id  
 );
 
+ALTER TABLE community_photo MODIFY p_title NOT NULL;
+ALTER TABLE community_photo MODIFY p_content  NOT NULL;
+ALTER TABLE community_photo MODIFY read_count NOT NULL;
+ALTER TABLE community_photo MODIFY reg_date NOT NULL;
+ALTER TABLE community_photo MODIFY like_count NOT NULL;
 
 
 

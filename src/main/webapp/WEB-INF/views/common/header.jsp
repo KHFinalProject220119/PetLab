@@ -127,15 +127,16 @@ function logoutWithKakao() {
 									</a>
 								</li>
 								<li class="header-menu-li">
+									<a href="${pageContext.request.contextPath}/community/communityMain" class="menu-link">
 									<a href="${pageContext.request.contextPath}/community/photoList" class="menu-link">
 										<span><img class="menu-logo" src="${pageContext.request.contextPath}/resources/images/common/header/CatWithAPencil.png" alt="" /></span>
 										<h2>커뮤니티</h2>
 									</a>
 									<ul class="sub-menu">
-										<li><a href="${pageContext.request.contextPath}/community/smallGroupList">소모임</a></li>
-										<li><a href="${pageContext.request.contextPath}/community/photoList">멍냥이 갤러리</a></li>
-										<li><a href="${pageContext.request.contextPath}/community/freeBoardList">자유게시판</a></li>
+										<li><a href="${pageContext.request.contextPath}/community/smallGroupMain">소모임</a></li>
 										<li><a href="${pageContext.request.contextPath}/community/knowhowList">노하우</a></li>
+										<li><a href="${pageContext.request.contextPath}/community/freeBoardList">자유게시판</a></li>
+										<li><a href="${pageContext.request.contextPath}/community/photoList">멍냥이 갤러리</a></li>
 									</ul>
 								</li>
 								<li class="header-menu-li">

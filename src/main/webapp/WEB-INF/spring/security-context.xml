@@ -26,6 +26,9 @@
 		<intercept-url pattern="/member/signOut" access="permitAll"  />
 		<intercept-url pattern="/member/**" access="isAnonymous()"  />
 		<!-- hospital  -->
+
+		<!-- 커뮤니티  -->
+		<intercept-url pattern="/community/**" access="permitAll" /> 
 		
 		<intercept-url pattern="/hospital/hospitalEnroll" access="hasRole('HOSPITAL', 'ADMIN')"  />
 		<intercept-url pattern="/hospital/**" access="permitAll"  />
