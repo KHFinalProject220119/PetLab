@@ -26,13 +26,13 @@
 		<table id="photo-board"
 			class="table table-striped table-hover text-center">
 			<tr>
-				<th id="photo_best" colspan="6">가장 인기있는 사진 명예의 전당</th>
+				<th id="photo_best" colspan="6">이달의 명냥이 명예의 전당</th>
 			</tr>
-			<tr>
+<!-- 			<tr>
 				<th colspan="2" class="prize1">1등</th>
 				<th colspan="2" class="prize2">2등</th>
 				<th colspan="2" class="prize3">3등</th>
-			</tr>
+			</tr> -->
 
 			<c:if test="${not empty bestList}">
 				<c:forEach items="${bestList}" var="photo">
@@ -45,56 +45,26 @@
 							data-title="${list.pTitle}" data-likeCnt="${list.likeCount}"
 							data-readCnt="${list.readCount}" data-photoNo="${list.photoNo}" --%>
 							class="review-img" /></th>
-							<th colspan="2"><img class="attach_photo"
-								src="${pageContext.request.contextPath}/resources/upload/community/${attachment.renamedFilename}"
-								alt="" data-name="${attachment.originalFilename}"
-								<%-- 							data-memberId="${list.memberId}" data-content="${list.pContent}"
-							data-title="${list.pTitle}" data-likeCnt="${list.likeCount}"
-							data-readCnt="${list.readCount}" data-photoNo="${list.photoNo}" --%>
-							class="review-img" /></th>
-							<th colspan="2"><img class="attach_photo"
-								src="${pageContext.request.contextPath}/resources/upload/community/${attachment.renamedFilename}"
-								alt="" data-name="${attachment.originalFilename}"
-								<%-- 							data-memberId="${list.memberId}" data-content="${list.pContent}"
-							data-title="${list.pTitle}" data-likeCnt="${list.likeCount}"
-							data-readCnt="${list.readCount}" data-photoNo="${list.photoNo}" --%>
-							class="review-img" /></th>
 						</tr>
 
 						<tr>
 							<th>제목</th>
 							<th>좋아요</th>
-							<th>제목</th>
-							<th>좋아요</th>
-							<th>제목</th>
-							<th>좋아요</th>
 						</tr>
-						<tr>
-							<th>${photo.PTitle}</th>
-							<th>좋아요</th>
-							<th>${photo.PTitle}</th>
-							<th>좋아요</th>
+						<tr> 
 							<th>${photo.PTitle}</th>
 							<th>좋아요</th>
 						</tr>
 						<tr>
 							<th>작성자</th>
 							<th>작성일</th>
-							<th>작성자</th>
-							<th>작성일</th>
-							<th>작성자</th>
-							<th>작성일</th>
 						</tr>
 						<tr>
 							<th>${photo.memberId}</th>
 							<th>작성일</th>
-							<th>${photo.memberId}</th>
-							<th>작성일</th>
-							<th>${photo.memberId}</th>
-							<th>작성일</th>
 						</tr>
+
 					</c:forEach>
-
 					<%-- 
 					<tr data-no="${photo.photoNo}">
 						<td colspan="2">${photo.photoNo}</td> --%>
@@ -125,20 +95,12 @@
 
 			<tr>
 				<th id="count">총 0개</th>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
 				<th>최신순</th>
 			</tr>
 		</table>
 		<table id="photo-board2"
 			class="table table-striped table-hover text-center">
 			<tr>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
 				<th></th>
 				<th id="btn_photo_add">
 					<button type="button" id="btn-add-photo" class="btn_photo">

@@ -17,7 +17,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.petlab.common.PetLabUtils;
+import com.kh.petlab.community.model.dto.CommunityDknowBoard;
 import com.kh.petlab.community.model.dto.CommunityFreeBoard;
+import com.kh.petlab.community.model.dto.CommunityMknowBoard;
 import com.kh.petlab.community.model.dto.CommunityPhoto;
 import com.kh.petlab.community.model.service.CommunityService;
 import com.kh.petlab.member.model.dto.Attachment;
@@ -90,9 +92,7 @@ public class CommunityController {
 	}
 	
 	@GetMapping("/freeBoardList")
-	public ModelAndView freeBoardList(
-				@RequestParam(defaultValue = "1") int cPage, 
-				ModelAndView mav,
+	public ModelAndView freeBoardList (@RequestParam(defaultValue = "1") int cPage, ModelAndView mav,
 				HttpServletRequest request) {
 		try {
 			// 목록조회
@@ -135,8 +135,152 @@ public class CommunityController {
 	}
 	
 	
-	@GetMapping("/knowhowList")
-	public void knowhowList() {}
+	
+	@GetMapping("/doctorKhowEnroll")
+	public void doctorKhowEnroll() {}
+	
+	@PostMapping("/doctorKhowEnroll")
+	public String doctorKhowEnroll(CommunityDknowBoard communityDknowBoard, @RequestParam (name = "upFile", required = false) MultipartFile upFile) {
+		try {
+			log.debug("DoctorBoard = {}", communityDknowBoard);
+			log.debug("upFile ={}", upFile);
+			String saveDirectory = application.getRealPath("/resources/upload/community");
+			Attachment attachment = new Attachment();
+			//업로드한 파일 저장
+			if(upFile.getSize() > 0) {
+				String originalFilename = upFile.getOriginalFilename();
+				String renamedFilename = PetLabUtils.getRenamedFilename(originalFilename);
+				log.debug("renamedFilename = {}", renamedFilename);
+				
+				// 파일 저장
+				File destFile = new File(saveDirectory, renamedFilename);
+				upFile.transferTo(destFile);
+				
+				String attachGroupId = PetLabUtils.getAttachGroupId("CommunityKhow");
+				attachment.setAttachGroupId(attachGroupId);
+				communityDknowBoard.setAttachGroupId(attachGroupId);
+				
+				attachment.setOriginalFilename(originalFilename);
+				
+				attachment.setRenamedFilename(renamedFilename);
+			
+				
+				//			communityPhoto.setAttachment(attachment);
+			}
+			
+			int result = communityService.doctorKhowEnroll(communityDknowBoard);
+			
+		} catch(Exception e) {
+			log.error("커뮤니티 글 등록 오류", e);
+			e.printStackTrace();
+		}
+		
+		return "redirect:/community/doctorKnowhowList";
+	}
+	
+	
+	@GetMapping("/doctorKnowhowList")
+	public ModelAndView doctorKnowhowList(
+			@RequestParam(defaultValue = "1") int cPage, 
+			ModelAndView mav,
+			HttpServletRequest request) {
+	try {
+		// 목록조회
+		int numPerPage = 5;
+		List<CommunityDknowBoard> dknowBoardList= communityService.selectDknowBoardList(cPage, numPerPage);
+		log.debug("list = {}", dknowBoardList);
+		mav.addObject("list", dknowBoardList);
+		System.out.println(dknowBoardList);
+		
+		// 페이지바
+		int totalContent = communityService.selectTotalContent();
+		// log.debug("totalContent = {}", totalContent);
+		String url = request.getRequestURI();
+		String pagebar = PetLabUtils.getPagebar(cPage, numPerPage, totalContent, url);
+		// log.debug("pagebar = {}", pagebar);
+		mav.addObject("pagebar", pagebar);
+		
+		// viewName설정
+		mav.setViewName("community/doctorKnowhowList");
+	} catch (Exception e) {
+		log.error("게시글 목록 조회 오류", e);
+	}
+	return mav;
+}
+	
+	
+	@GetMapping("/memberKhowEnroll")
+	public void memberKhowEnroll() {}
+	
+	@PostMapping("/memberKhowEnroll")
+	public String memberKhowEnroll(CommunityMknowBoard communityMknowBoard, @RequestParam (name = "upFile", required = false) MultipartFile upFile) {
+		try {
+			log.debug("MemberBoard = {}", communityMknowBoard);
+			log.debug("upFile ={}", upFile);
+			String saveDirectory = application.getRealPath("/resources/upload/community");
+			Attachment attachment = new Attachment();
+			//업로드한 파일 저장
+			if(upFile.getSize() > 0) {
+				String originalFilename = upFile.getOriginalFilename();
+				String renamedFilename = PetLabUtils.getRenamedFilename(originalFilename);
+				log.debug("renamedFilename = {}", renamedFilename);
+				
+				// 파일 저장
+				File destFile = new File(saveDirectory, renamedFilename);
+				upFile.transferTo(destFile);
+				
+				String attachGroupId = PetLabUtils.getAttachGroupId("CommunityMKhow");
+				attachment.setAttachGroupId(attachGroupId);
+				communityMknowBoard.setAttachGroupId(attachGroupId);
+				
+				attachment.setOriginalFilename(originalFilename);
+				
+				attachment.setRenamedFilename(renamedFilename);
+			
+				
+				//			communityPhoto.setAttachment(attachment);
+			}
+			
+			int result = communityService.memberKhowEnroll(communityMknowBoard);
+			
+		} catch(Exception e) {
+			log.error("커뮤니티 글 등록 오류", e);
+			e.printStackTrace();
+		}
+		
+		return "redirect:/community/memberKnowhowList";
+	}
+	
+	
+	@GetMapping("/memberKnowhowList")
+	public ModelAndView memberKnowhowList(
+			@RequestParam(defaultValue = "1") int cPage, 
+			ModelAndView mav,
+			HttpServletRequest request) {
+	try {
+		// 목록조회
+		int numPerPage = 5;
+		List<CommunityMknowBoard> mknowBoardList= communityService.selectMknowBoardList(cPage, numPerPage);
+		log.debug("list = {}", mknowBoardList);
+		mav.addObject("list", mknowBoardList);
+		System.out.println(mknowBoardList);
+		
+		// 페이지바
+		int totalContent = communityService.selectTotalContent();
+		// log.debug("totalContent = {}", totalContent);
+		String url = request.getRequestURI();
+		String pagebar = PetLabUtils.getPagebar(cPage, numPerPage, totalContent, url);
+		// log.debug("pagebar = {}", pagebar);
+		mav.addObject("pagebar", pagebar);
+		
+		// viewName설정
+		mav.setViewName("community/memberKnowhowList");
+	} catch (Exception e) {
+		log.error("게시글 목록 조회 오류", e);
+	}
+	return mav;
+}
+	
 	
 	@GetMapping("/photoList")
 	public ModelAndView photoList(@RequestParam(defaultValue = "1") int cPage, ModelAndView mav,
