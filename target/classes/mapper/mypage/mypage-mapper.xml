@@ -18,20 +18,20 @@
  		update
  			member
  		<set>
- 			<if test="name != null">
-	 			name = #{name},
+ 			<if test="memberName != null">
+	 			member_name = #{memberName},
  			</if>
- 			<if test="birthday != null">
-				birthday = #{birthday},
+ 			<if test="nickname != null">
+	 			nickname = #{nickname},
+ 			</if>
+ 			<if test="phone != null">
+				phone = #{phone},
 			</if>
  			<if test="email != null">
 				email = #{email},
 			</if>
- 			<if test="phone != null">
-				phone = #{phone},
-			</if>
- 			<if test="address != null">
-				address = #{address},
+ 			<if test="birthday != null">
+				birthday = #{birthday},
 			</if>
  			<if test="gender != null">
 				gender = #{gender},
@@ -41,6 +41,25 @@
  			member_id = #{memberId}
  	</update>
  	
+ 	<update id= "updateAddress">
+ 		update
+ 			address
+ 		<set>
+ 			address = #{address},
+ 			postcode = #{postcode},
+			address_detail = #{addressDetail},
+			address_extra = #{addressExtra}
+ 		</set>
+ 		where
+			member_id = #{memberId}
+ 	</update>
+ 	
+ 	<update id="closeMember">
+    delete from member where member_id = #{memberId}
+	</update>
+
+ 	
+  	
  	<resultMap type="member" id="memberMap">
 		<id column="member_id" property="memberId" />
 		<result column="attach_group_id" property="attachGroupId"  />
@@ -65,13 +84,135 @@
 		</collection>
 	</resultMap>
 	
+
+<insert id="insertPet">
+		insert into
+			pet
+		values(
+			seq_pet_pet_no.nextval,
+			#{memberId},
+			#{typeId},
+			#{breed},
+			#{attachGroupId},
+			#{petId},
+			#{petName},
+			#{gender},
+			#{weight},
+			#{birthday},
+			#{neutering}	
+			)	
 	
-	<delete id="deleteMemberRole">
+	</insert>
+	
+	<insert id="attachmentEnroll">
+        insert into
+            attachment
+        values(
+            #{attachGroupId},
+            seq_attachment_attach_no.nextval,
+            #{originalFilename},
+            #{renamedFilename},
+            default,
+            default
+        )
+    </insert>
+    
+    <select id="selectNoticeAttachments" resultType="attachment">
+		select
+			 * 
+		from
+			pet
+		where
+			attach_group_id = #{attachGroupId}
+	</select>
+    
+<update id="updatePet">
+ 		update
+ 			pet
+ 		<set>
+ 			<if test="type_id != null">
+	 			type_id = #{typeId},
+	 		</if>
+ 			<if test="breed != null">
+	 			breed = #{breed},
+ 			</if>
+ 			<if test="attach_group_id != null">
+				attach_group_id = #{attachGroupId},
+			</if>
+ 			<if test="pet_id != null">
+				pet_id = #{petId},
+			</if>
+ 			<if test="birthday != null">
+				birthday = #{birthday},
+			</if>
+ 			<if test="weight != null">
+				weight = #{weight},
+			</if>
+ 			<if test="neutering != null">
+				neutering = #{neutering}	
+			</if>
+
+		</set>
+		where
+			member_id = #{memberId}
+	
+	</update>
+	
+	 <delete id="deletePet">
 		delete from
-			authority
+			pet
 		where
 			member_id = #{memberId}
 	</delete>
+	
+	<select id="selectPetList" resultType="mypet">
+	select p.*,
+		(select count(*) from attachment where pet_no = p.pet_no) attach_count 
+	from pet p 
+	order by pet_no desc
+	</select>
+	
+	<select id="selectOnePet" resultType="mypet">
+		select  * from  pet  where  pet_no = #{petNo} <!-- AND member_id = #{memberId} -->
+
+	</select>
+	
+	<select id="selectOneAttachment" resultType="attachment">
+		select
+			 * 
+		from
+			pet
+		where
+			attach_group_id = #{attachGroupId}
+	</select>
+	
+	<delete id="deleteAttachment">
+	delete from pet 
+		where no = #{attachNo}
+	</delete>
+		
+	<resultMap type="myPet" id="mypetMap">
+		<id column="member_id" property="memberId" />
+		<result column="attach_group_id" property="attachGroupId"  />
+		<result column="pet_no" property="petNo"  />
+		<result column="type_id" property="typeId"  />
+		<result column="breed" property="breed"  />
+		<result column="pet_id" property="petId"  />
+		<result column="pet_name" property="petName"  />
+		<result column="gender" property="gender"  />
+		<result column="weight" property="weight"  />
+		<result column="birthday" property="birthday"  />
+		<result column="neutering" property="neutering"  />
+		<association property="member" javaType="member">
+			<id column="member_id" property="memberId"/>
+		</association>
+		<collection property="attachments" javaType="arraylist" ofType="attachment">
+			<id column="attach_no" property="no"/>
+			<result column="original_filename" property="originalFilename"/>
+			<result column="renamed_filename" property="renamedFilename"/>
+			<result column="download_count" property="downloadCount"/>
+		</collection>
+	</resultMap>
 	
 	
 </mapper>
