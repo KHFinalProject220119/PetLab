@@ -125,4 +125,19 @@
 		<result column="reg_date" property="regDate" />
 	</resultMap>
 
+	<select id="selectPhotoListForIndex" resultType="communityphoto">
+		select
+			*
+		from
+			(select rownum rnum, p.* from(select * from community_photo p order by like_count desc) p) 
+		where
+         rnum between 1 and 3
+	</select>
+	<select id="selectPhotoAttachListForIndex" resultType="attachment">
+		select 
+			*
+		from
+			attachment
+		where attach_group_id = #{attachGroupId}
+	</select>
 </mapper>

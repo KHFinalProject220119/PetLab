@@ -45,14 +45,14 @@ a{text-decoration: none;}
 .admin-submenu-li{margin: 0.25rem 0;}
 #command{margin: 0;}
 /*------------------------------------------------- carousel ------------------------------------------------ */
-#main-visual{width: 1880px; height: 380px; padding: 0;}
-.bx-controls-wrapper{width: 1880px; margin-top: 0.5rem;}
+#main-visual{width: 1890px; height: 380px; padding: 0;}
+.bx-controls-wrapper{width: 1890px; margin-top: 0.5rem;}
 .bx-controls {display: flex; flex-direction: row; align-items: center;	width: 20rem; height: 3.5rem; padding: 0; margin: 0 auto;}
 .bx-wrapper {position: relative; max-width: 100%; margin: auto; padding: 0;}
 .bx-viewport {position: relative; overflow: hidden; height: 380px;padding: 0;}
-.slider-box {display: flex; transform: translate(0, 0);	width: 1880px;	height: 380px; padding: 0; margin: 0;}
+.slider-box {display: flex; transform: translate(0, 0);	width: 1890px;	height: 380px; padding: 0; margin: 0;}
 .visual {flex: 0 0 100%; list-style: none; height: 380px; padding: 0;}
-.visual-image {display: block; width: 1880px; height: 380px; object-fit: cover;}
+.visual-image {display: block; width: 1890px; height: 380px; object-fit: cover;}
 .bx-prev, .bx-next  {background-size: 100% 100%; background-color: #fff; border: none; width: 2rem;	height: 2rem;}
 .bx-prev:hover, .bx-next:hover  { transform: scale(1.2);}	
 .paginations {display:flex;	align-items: center; width: 15.5rem; height: 2rem; border: none;} 
@@ -60,6 +60,7 @@ a{text-decoration: none;}
 .pagination.active, .pagination:hover {transform: scale(1.3);}
 .pagination:not(:last-child) {margin-right: 0.3rem;}
 #visual-image1, #visual-image2, #visual-image3, #visual-image4, #visual-image5{background-size: 100% 100%;}
+
 
 /*------------------------------------------------- skyScraper ------------------------------------------------ */
 /*********** side menu -sky-scraper*********/
@@ -69,7 +70,7 @@ a{text-decoration: none;}
 .count{content: ""; height: 100%; display: inline-block;  vertical-align: middle;}
 .myViewTit { padding: 5px;  border-top: 1px solid #d3d3d5;  cursor: pointer; position: relative;  }
 .myViewTit a, .myViewTit.on a{font-size: 1rem; color: #000;}
-a {text-decoration: none;}
+a {text-decoration: none !important;}
 .directLink{margin: 0.5rem 0; text-align: center; border-radius: 4px; border: 1px solid #e5e5e5; background: #fff; padding: 0;  width: 7rem; height: 5rem;}
 .talk{display:flex; flex-direction: column;  justify-content: space-around;  align-items: center;  flex-wrap: nowrap; width: 7rem; height: 5rem; margin: 0;}
 .count {float: right; color: #f5232a;}

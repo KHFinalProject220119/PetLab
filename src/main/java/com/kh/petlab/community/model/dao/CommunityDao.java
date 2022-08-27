@@ -36,4 +36,8 @@ public interface CommunityDao {
 	CommunityFreeBoard selectOneFreeBoardCollection(int no);
 
 	Attachment selectOneAttachment(int attachNo);
+
+	List<CommunityPhoto> selectPhotoListForIndex();
+
+	Attachment selectPhotoAttachListForIndex(String attachGroudpId);
 }

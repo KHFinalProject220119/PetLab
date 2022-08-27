@@ -27,6 +27,8 @@ public interface CommunityService {
 	CommunityFreeBoard selectOneFreeBoardCollection(int no);
 
 	Attachment selectOneAttachment(int attachNo);
+
+	List<CommunityPhoto> selectPhotoListForIndex();
 	 
 
 }

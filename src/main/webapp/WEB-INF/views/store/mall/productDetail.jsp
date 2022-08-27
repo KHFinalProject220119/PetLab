@@ -10,8 +10,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-
-
 <c:set var="path" value="${ pageContext.request.contextPath }" />
 <link rel="stylesheet"
 	href="${ path }/resources/css/store/productDetail.css" />
@@ -85,6 +83,8 @@
 		<!--상세이미지 끝-->
 </section>
 
+<!-- 로그인하지 않은 경우 접속하면 오류발생으로 authorize 태그 위치 변경: 김현우 -->
+<sec:authorize access="isAuthenticated()">
 <%
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     Member loginMember = (Member) authentication.getPrincipal(); 
@@ -93,7 +93,7 @@
 <!--장바구니/ 결제-->
 <div class="cart_and_buy">
     <div class="cart_add">
-    <sec:authorize access="isAuthenticated()">
+
    <input type="text" name="memberId" value="${loginMember.memberId}" hidden readonly/>
 
 <c:if test="${not empty loginMember.memberId}">

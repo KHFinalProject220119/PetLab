@@ -2,6 +2,7 @@ package com.kh.petlab.store.model.service;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
@@ -170,6 +171,24 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	public int deletedesAttachment(int no) {
 		return storeDao.deletedesAttachment(no);
+	}
+
+
+
+	@Override
+	public List<Product> selectProductLists() {
+		List<Product> productLists = storeDao.selectProductLists();
+		List<Product> productList = new ArrayList<>();
+		
+		if(!productLists.isEmpty()) {
+			for(Product product : productLists) {
+				int ProductNo = product.getProductNo();
+				List<ProductAttachment> attachtList = storeDao.selectAttachLists(ProductNo);
+				product.setAttachments(attachtList);
+				productList.add(product);
+			}
+		}	
+		return productList;
 	}
 
 

@@ -38,6 +38,9 @@ public interface StoreService {
 
 	
 	int updateProduct(Product product);
+	
+	// 인덱스 페이지 상품 불러오기용(김현우)
+	List<Product> selectProductLists();
 
 
 }

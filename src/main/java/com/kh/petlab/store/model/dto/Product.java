@@ -12,13 +12,13 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString(callSuper = true)
 public class Product extends ProductEntity {
-	private int attachCount;
+	 private int attachCount;
 	 private List<ProductAttachment> attachments = new ArrayList<>(); 
 	 private List<ProductdesAttachment> att = new ArrayList<>(); 
 	//private ProductAttachment attach;
 
 	
-
+	 
 	/*
 	 * public Product(int productNo, String categoryId, String categorySubId, String
 	 * productName, int productPrice, String productDes) {
@@ -38,4 +38,11 @@ public class Product extends ProductEntity {
 		public void adddesAttachment(@NonNull ProductdesAttachment attachment) {
 			att.add(attachment);
 	}
+
+		public Product(int attachCount, List<ProductAttachment> attachments, List<ProductdesAttachment> att) {
+			super();
+			this.attachCount = attachCount;
+			this.attachments = attachments;
+			this.att = att;
+		}
 }

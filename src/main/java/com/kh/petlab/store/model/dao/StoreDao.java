@@ -76,6 +76,9 @@ public interface StoreDao {
 			+ "where product_no = #{productNo}")
 	int updateProduct(Product product);
 	
+	List<Product> selectProductLists();
+	List<ProductAttachment> selectAttachLists(int productNo);
+	
 	
 	
 	

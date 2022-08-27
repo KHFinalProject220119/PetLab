@@ -162,6 +162,24 @@ where p.category_sub_id='feed' and a.product_no = p.product_no order by product_
 		p.product_no = #{productNo}
 	</select>
 
+	<select id="selectProductLists" resultType="product">
+		select
+			*
+		from
+			(select rownum rnum, p.* from product p) 
+		where
+         rnum between 3 and 8
+	</select>
+	
+	<select id="selectAttachLists" resultType="productattachment">
+		select 
+			*
+		from
+			product_attachment
+		where
+			product_no = #{productNo}
+	</select>
+
 </mapper>
 
 	<!-- <insert id="insertAttachment" > insert into product_attachment (no,product_no,original_filename,renamed_filename) 
