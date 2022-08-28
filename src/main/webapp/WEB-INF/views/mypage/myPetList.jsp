@@ -38,15 +38,14 @@
   	<a href="${pageContext.request.contextPath}/mypage/mypageHome">뒤로가기&nbsp;&nbsp;&gt;</a>
 	<hr class="dash1">
 </div>
-<section id="container"><h2>MY PET LIST</h2>
-	<input type="button" value="글쓰기" id="btn-add" class="btn btn-outline-success" onclick="goToPetEnrollForm();"/>
-       	<table id="tbl-board" class="table table-striped table-hover text-center">
-   				<tr>
+<section id="container"><h2 class="h22">MY PET LIST</h2>
+	<input type="button" value="글쓰기" id="btn-add" class="posting-pro-btn" onclick="goToPetEnrollForm();"/>
+       	<table id="pet-table" class="table table-striped table-hover text-center">
+   				<tr style="text-align: center">
 	            	<th>no</th>
 	           		<th>펫 이름</th>
                		<th>생일</th>
                 	<th>성별</th>
-                	<th>첨부파일</th>
 				</tr>
                 <c:forEach items="${list}" var="mypet" varStatus="vs">
                    <tr data-no="${mypet.petNo}">
@@ -58,7 +57,6 @@
                    </tr>
                 </c:forEach>            
           </table>
-          <nav>${pagebar}</nav>
 </section>
 <script>
 

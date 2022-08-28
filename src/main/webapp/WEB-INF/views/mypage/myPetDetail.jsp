@@ -12,7 +12,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/memberDetail.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/mypetDetail.css" />
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="마이펫 등록" name="title" />
 </jsp:include>
@@ -20,7 +20,7 @@
 <sec:authentication property="principal" var="loginMember" />
 <div id="mypage-submenu" class="submenu">
 	<h4 class="top-title">
-		<a href="${pageContext.request.contextPath}/mypage/mypageHome">MYPAGE </a>
+		<a href="${pageContext.request.contextPath}/mypage/memberDetail"">MYPAGE </a>
 	</h4>
 	<ul id="sub">
 			<li><a href="${pageContext.request.contextPath}/mypage/memberDetail" >회원정보</a></li>
@@ -39,24 +39,8 @@
 </div>
 
  	<form name="updatePetFrm" method="post">
-   	  	<table class="table table-hover">
+   	  	<table class="pet-table">
        		 <tbody> 
-          		  <tr>
-              		  <th rowspan="9" id="img-th">대표사진</th>
-              		  <td rowspan="9">
-               		   <c:if test="${not empty mypet.attachments}">
-							<c:forEach items="${mypet.attachments}" var="attach" varStatus="vs">
-								<div class="img-container">
-									<div class=img-wrapper>
-										<img class="attach-img" src="${pageContext.request.contextPath}/resources/upload/adminNotice/${attach.renamedFilename}">
-									</div>			
-									<button type="button" 
-											class="btn btn-outline-success btn-block attach"
-											value="${attach.attachNo}">첨부파일${vs.count} - ${attach.originalFilename}</button>
-								</div>
-							</c:forEach>
-						</c:if>
-           		 </tr>
            		 <tr>
              		 <th style="text-align: left;">분류</th> 
            				 <td colspan="3"> ${mypet.typeId}</td>
@@ -87,9 +71,10 @@
         </tbody>
     </table>
 </form>
-<button type="button"  class="btn btn-outline-primary btn-block"
+<div class="posting">
+<button type="button"  class="posting-pro-btn"
 		onclick="location.href='${pageContext.request.contextPath}/mypage/myPetUpdate?no=${mypet.petNo}';">수정</button>
-		
+</div>	
 <script>
 document.querySelectorAll(".attach").forEach((btn) => {
 	btn.addEventListener("click", (e) => {

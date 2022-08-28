@@ -45,20 +45,7 @@
 					<div class="signup-form-wrapper" >
 						<form name="enrollFrm" id="enrollFrm" 
 						action="${pageContext.request.contextPath}/mypage/myPetEnroll?${_csrf.parameterName}=${_csrf.token} "
-						 enctype="multipart/form-data"
 						 method="POST">
-							<div class="necessary-info">
-									<div id="image_container"></div>
-									<div class="form-group">
-										<input class="form-control form-control-user" type="file" multiple="multiple"
-												name="product_detail_image" id="product_detail_image" onchange="setDetailImage(event);">
-									</div>
-									<div id="images_container">
-									<div class="form-group">
-										<input class="form-control form-control-user" type="file" multiple="multiple"
-												name="product_detail_image" id="product_detail_image" onchange="setDetailImage(event);">
-									</div>
-									</div>
 									<div class="info-wrapper-with-msg">
 										<div class="birth-container-">
 											<label for="typeId">동물 대 분류</label><span class="neccesary-star">*</span>
@@ -68,6 +55,7 @@
 												<option value="고양이" ${typeId == '고양이' ? 'selected' : ''}>고양이</option>
 												<option value="기타" ${typeId == '기타' ? 'selected' : ''}>기타</option>
 											</select>
+										</div>
 									</div>
 								<div class="info-wrapper-with-msg">
 									<div class="inner-wrapper">
@@ -133,19 +121,15 @@
 									</div>
 									<input type="text" id="petId" name="petId" class="input-cont"  placeholder="인식표 번호 등록" />
 								</div>
-							</div>
-						</div>
-						<div class="btn-wrapper">
-						<button type="button" class="back-btn" onclick="backBtn();">뒤로가기</button>
-						<button type="submit" class="submit-btn">등록하기</button>
-						</div>
-						</form>
-					</div>
-				</div>
+								<div class="btn-wrapper">
+								<button type="button" class="back-btn" onclick="backBtn();">뒤로가기</button>
+								<button type="submit" class="submit-btn">등록하기</button>
+								</div>
+				</form>
 			</div>
-		</div>	
-		
-		
+		</div>
+	</div>
+</div>		
 <script>
 //현재 기준 연도 max 설정
 window.onload = () =>{
