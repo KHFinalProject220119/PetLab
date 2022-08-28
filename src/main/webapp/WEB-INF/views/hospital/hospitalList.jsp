@@ -92,8 +92,6 @@
 		
  const handleActivePageNumber = () => {
 	 let numbertest = 0;
-	 console.log("numbertest = ", numbertest );
-	 console.log("currentPage = ", currentPage);
 	 document.querySelectorAll(".pagination-number").forEach((btn) => {
 		   btn.classList.remove("active");
 		    const pageIndex = Number(btn.getAttribute("page-index"));
