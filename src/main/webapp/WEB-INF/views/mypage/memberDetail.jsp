@@ -21,7 +21,7 @@
 </jsp:include>
 <sec:authentication property="principal" var="loginMember"/>
 <div id="mypage-submenu" class="submenu">
-	<h4 class="top-title"> <a href="${pageContext.request.contextPath}/mypage/mypageHome">MY PAGE </a></h4>
+	<h4 class="top-title"> <a href="${pageContext.request.contextPath}/mypage/memberDetail">MY PAGE </a></h4>
 		<ul id="sub">
 			<li><a href="${pageContext.request.contextPath}/mypage/memberDetail" >회원정보</a></li>
 			<sec:authorize access="hasRole('HOSPITAL')">

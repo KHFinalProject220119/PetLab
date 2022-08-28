@@ -20,7 +20,7 @@
 <sec:authentication property="principal" var="loginMember" />
 <div id="mypage-submenu" class="submenu">
 	<h4 class="top-title">
-		<a href="${pageContext.request.contextPath}/mypage/mypageHome">MYPAGE </a>
+		<a href="${pageContext.request.contextPath}/mypage/memberDetail"">MYPAGE </a>
 	</h4>
 	<ul id="sub">
 			<li><a href="${pageContext.request.contextPath}/mypage/memberDetail" >회원정보</a></li>
