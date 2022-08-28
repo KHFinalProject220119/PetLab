@@ -1054,7 +1054,7 @@ const backHome = () =>{
 	location.href ="${pageContext.request.contextPath}/member/signUpSelection";
 }
 
-	const frm = document.agreeFrm;
+const frm = document.agreeFrm;
 document.querySelector("#allAgreement").addEventListener('click', (e) =>{
 	if(!frm.allAgreement.checked){
 		frm.infoAgreement.checked = false;

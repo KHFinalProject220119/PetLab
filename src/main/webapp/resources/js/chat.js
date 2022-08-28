@@ -64,10 +64,8 @@ setTimeout(() => {
 	lastCheck();
 	
 	stompClient.subscribe(`/app/chat/${chatroomId}`, (message) => {
-		console.log(`/app/chat/${chatroomId} : `, message);
-		
 		const {'content-type' : contentType} = message.headers;
-		console.log('contentType : ', contentType);
+		
 		if(!contentType) return;
 		
 		const {memberId, msg, time} = JSON.parse(message.body);

@@ -416,7 +416,9 @@ const loadHospitalList = (res) =>{
 	      autoplay({ duration: 4000 });
 	    }, 300);
 	  }
-	  if (selected <= lastIndex) activePagination(selected);
+	  if (selected <= lastIndex){
+		  activePagination(selected);
+	  }
 	};
 	
 	const autoplay = ({ duration }) => {
