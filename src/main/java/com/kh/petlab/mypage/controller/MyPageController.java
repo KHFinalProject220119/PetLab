@@ -17,16 +17,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.kh.petlab.adminnotice.model.dto.AdminNoticeAttachment;
 import com.kh.petlab.common.PetLabUtils;
 import com.kh.petlab.member.model.dto.Address;
-import com.kh.petlab.member.model.dto.Attachment;
 import com.kh.petlab.member.model.dto.Member;
 import com.kh.petlab.mypage.model.dto.MyPet;
 import com.kh.petlab.mypage.model.dto.PetAttachment;
@@ -203,39 +200,17 @@ public class MyPageController {
 				ModelAndView mav,
 				@ModelAttribute MyPet mypet, 
 				@AuthenticationPrincipal Member loginMember, 
-				@RequestParam("upFile") MultipartFile[] upFiles, RedirectAttributes redirectAttr) {
+				 RedirectAttributes redirectAttr) {
 			log.info("mypet = {}", mypet);
-			log.info("upFile = {}", upFiles);
+		
 			log.info("loginMember.memberid = {}", loginMember.getMemberId());
 			mypet.setMemberId(loginMember.getMemberId());
 
 			
 			try {
-				String saveDirectory = application.getRealPath("/resources/upload/mypage/mypet");
-				String attachGroupId = PetLabUtils.getAttachGroupId("mypet");	
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmssSSS_");
 				
-				// 업로드한 파일 저장
-				for (MultipartFile upFile : upFiles) {
-					if(upFile.getSize() > 0) {
-						String originalFilename = upFile.getOriginalFilename();
-						String renamedFilename = PetLabUtils.getRenamedFilename(originalFilename);
-						 
-						File destFile = new File(saveDirectory, renamedFilename);
-						upFile.transferTo(destFile); // 파일저장
-						PetAttachment attach = new PetAttachment(); 
-						attach.setAttachGroupId(attachGroupId);
-						mypet.setAttachGroupId(attachGroupId);
-						attach.setOriginalFilename(originalFilename);
-						attach.setRenamedFilename(renamedFilename);
-						mypet.addAttachment(attach);
-					}
-				}
-				// service에 insert 요청
 				int result = mypageService.insertPet(mypet);
 								
-			}catch (IOException e) {
-				log.error("첨부파일 저장 오류", e);
 								
 			}catch (Exception e) {
 				log.error("펫 등록 오류", e);
@@ -270,8 +245,8 @@ public class MyPageController {
 			
 		
 		@PostMapping("/myPetUpdate")
-		public String myPetUpdate(MyPet mypet, 
-				@RequestParam RedirectAttributes redirectAttr,
+		public ModelAndView myPetUpdate(MyPet mypet, 
+				ModelAndView mav,
 				@AuthenticationPrincipal Member loginMember, Model model
 				) {
 			
@@ -282,13 +257,14 @@ public class MyPageController {
 				
 				// 펫 수정
 				int result = mypageService.updatePet(mypet);
-				redirectAttr.addFlashAttribute("msg", "펫정보를 성공적으로 변경했습니다");
+				mav.addObject("msg", "펫정보를 성공적으로 변경했습니다");
+				mav.setViewName("mypage/myPetList");
 				
 			} catch (Exception e) {
 				e.printStackTrace();
 				throw e;
 			}
-			return "redirect:/mypage/myPetDetail?petNo=" + mypet.getPetNo();
+			return mav;
 		}
 	
 	

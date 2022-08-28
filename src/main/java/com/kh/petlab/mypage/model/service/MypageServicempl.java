@@ -1,10 +1,7 @@
 package com.kh.petlab.mypage.model.service;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import java.util.List;
 
-import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.petlab.member.model.dao.MemberDao;
 import com.kh.petlab.member.model.dto.Address;
-import com.kh.petlab.member.model.dto.Attachment;
 import com.kh.petlab.member.model.dto.Member;
 import com.kh.petlab.mypage.model.dao.MypageDao;
 import com.kh.petlab.mypage.model.dto.MyPet;

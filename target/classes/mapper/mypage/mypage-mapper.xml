@@ -104,42 +104,21 @@
 	
 	</insert>
 	
-	<insert id="attachmentEnroll">
-        insert into
-            attachment
-        values(
-            #{attachGroupId},
-            seq_attachment_attach_no.nextval,
-            #{originalFilename},
-            #{renamedFilename},
-            default,
-            default
-        )
-    </insert>
-    
-    <select id="selectNoticeAttachments" resultType="attachment">
-		select
-			 * 
-		from
-			pet
-		where
-			attach_group_id = #{attachGroupId}
-	</select>
-    
+
 <update id="updatePet">
  		update
  			pet
  		<set>
- 			<if test="type_id != null">
+ 			<if test="typeId != null">
 	 			type_id = #{typeId},
 	 		</if>
  			<if test="breed != null">
 	 			breed = #{breed},
  			</if>
- 			<if test="attach_group_id != null">
+ 			<if test="attachGroupId != null">
 				attach_group_id = #{attachGroupId},
 			</if>
- 			<if test="pet_id != null">
+ 			<if test="petId != null">
 				pet_id = #{petId},
 			</if>
  			<if test="birthday != null">
@@ -154,7 +133,7 @@
 
 		</set>
 		where
-			member_id = #{memberId}
+			 pet_no = #{petNo}
 	
 	</update>
 	

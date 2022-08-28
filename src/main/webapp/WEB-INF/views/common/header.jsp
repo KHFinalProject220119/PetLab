@@ -92,7 +92,7 @@ function logoutWithKakao() {
 						</sec:authorize>
 						 <sec:authorize access="isAuthenticated()">
 							<ul class="header-member-menu-ul">
-								<li><a href="${pageContext.request.contextPath}/mypage/mypageHome"><span>마이페이지</span></a></li>
+								<li><a href="${pageContext.request.contextPath}/mypage/memberDetail"><span>마이페이지</span></a></li>
 								<li>
 									<form:form name="signoutFrm" action="${pageContext.request.contextPath}/member/signOut" method="POST">
 										<button type="submit" class="sign-out-btn">로그아웃</button>

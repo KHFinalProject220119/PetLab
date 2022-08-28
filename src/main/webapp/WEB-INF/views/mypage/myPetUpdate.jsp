@@ -44,30 +44,18 @@
 		<div class="signup-cont">
 			<div class="signup-form-wrapper">
 				<form name="updateFrm" id="updateFrm"
-					action="${pageContext.request.contextPath}/mypage/myPetDetail?${_csrf.parameterName}=${_csrf.token}"
-					enctype="multipart/form-data"
+					action="${pageContext.request.contextPath}/mypage/myPetUpdate?${_csrf.parameterName}=${_csrf.token}"
 					method="POST">
-					<div class="necessary-info">
-						<div class="form-group">
-							<input class="form-control form-control-user" type="file"
-								name="product_image" id="product_image"
-								onchange="setThumbnail(event);">
-						</div>
-						<div id="image_container"></div>
-						<div class="form-group">
-							<input class="form-control form-control-user" type="file"
-								multiple="multiple" name="product_detail_image"
-								id="product_detail_image" onchange="setDetailImage(event);">
-						</div>
-						<div id="images_container"></div>
 						<div class="info-wrapper-with-msg">
 							<div class="birth-container-">
+							
+							<input type="hidden" name="petNo" value="${mypet.petNo}" />
 								<label for="breed">동물 대 분류</label><span class="neccesary-star">*</span>
 								<select id="typeId" name="typeId">
 									<option disabled selected>동물 분류</option>
-									<option value="dog" ${mypet.typeId == 'dog' ? 'selected' : ''}>강아지</option>
-									<option value="cat" ${mypet.typeId == 'cat' ? 'selected' : ''}>고양이</option>
-									<option value="etc" ${mypet.typeId == 'etc' ? 'selected' : ''}>기타</option>
+									<option value="dog" ${mypet.typeId eq '강아지' ? 'selected' : ''}>강아지</option>
+									<option value="cat" ${mypet.typeId eq '고양이' ? 'selected' : ''}>고양이</option>
+									<option value="etc" ${mypet.typeId eq 'etc' ? 'selected' : ''}>기타</option>
 								</select>
 							</div>
 							<div class="info-wrapper-with-msg">
@@ -75,6 +63,7 @@
 									<div class="label-wrapper">
 										<label for="breed">동물 소 분류</label><span
 											class="neccesary-star">*</span>
+											
 									</div>
 									<input type="text" id="breed" name="breed"
 										class="input-cont" placeholder="ex) 푸들" value="${mypet.breed}"
@@ -123,10 +112,10 @@
 								</div>
 								<div class="gender-wrapper">
 									<input type="radio" name="neutering" value="T" id="neutering-y"
-										${mypet.neutering eq 'T' ? 'checked' : ''} readonly required />
-									<label for="neutering-y">Y</label> <input type="radio"
-										name="neutering" value="F" id="neutering-n"
-										${mypet.neutering eq 'F' ? 'checked' : ''} readonly required />
+										${mypet.neutering eq 'Y' ? 'checked' : ''} readonly required />
+									<label for="neutering-y">Y</label> 
+									<input type="radio"	name="neutering" value="F" id="neutering-n"
+										${mypet.neutering eq 'N' ? 'checked' : ''} readonly required />
 									<label for="neutering-n">N</label>
 								</div>
 							</div>
@@ -147,7 +136,6 @@
 									placeholder="인식표 번호 등록" value="${mypet.petId}" />
 							</div>
 						</div>
-					</div>
 					<div class="btn-wrapper">
 						<button type="button" class="back-btn" onclick="backBtn();">뒤로가기</button>
 						<button type="submit" class="submit-btn">저장하기</button>
@@ -157,6 +145,7 @@
 		</div>
 	</div>
 </div>
+
 
 <script>
 //현재 기준 연도 max 설정

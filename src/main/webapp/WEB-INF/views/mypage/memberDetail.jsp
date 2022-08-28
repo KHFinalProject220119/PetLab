@@ -13,6 +13,7 @@
 	
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/memberDetail.css"/>
 <script	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/signup.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
@@ -23,11 +24,11 @@
 	<h4 class="top-title"> <a href="${pageContext.request.contextPath}/mypage/mypageHome">MY PAGE </a></h4>
 		<ul id="sub">
 			<li><a href="${pageContext.request.contextPath}/mypage/memberDetail" >회원정보</a></li>
-			<li><a href="${pageContext.request.contextPath}/mypage/myBorad">내가 쓴 글</a></li>
-			<li><a href="${pageContext.request.contextPath}/mypage/myPetHome">마이펫</a></li>
 			<sec:authorize access="hasRole('HOSPITAL')">
-			<li><a href="${pageContext.request.contextPath}/hospital/hospitalEnroll">병원 상세정보 등록</a></li>
+			<li><a href="${pageContext.request.contextPath}/hospital/hospitalEnroll">병원정보 등록</a></li>
 			</sec:authorize>
+			<li><a href="${pageContext.request.contextPath}/mypage/myBorad">내가 쓴 글</a></li>
+			<li><a href="${pageContext.request.contextPath}/mypage/myPetList">마이펫</a></li>
 			<li><a href="${pageContext.request.contextPath}/mypage/closeMember">회원탈퇴</a></li>
 		</ul>
 	 

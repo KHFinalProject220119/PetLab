@@ -75,3 +75,75 @@ hr.dash1 {
 	margin-bottom:20px;
     border-top:1px dashed black;
 }
+/* ----------------------------------------------↑고정건들지마 */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+h2.h22 {
+	margin-left : 22%;
+}
+
+input{
+	float:right;
+	margin-right: 9%;
+	margin-top:-2%;
+}
+#pet-table {
+	fonr-size:2 rm;
+    width: 70%;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    float: right;
+    margin-right: 9%;
+}
+
+#pet-table a {
+  color: #333;
+  display: inline-block;
+  line-height: 1.4;
+  word-break: break-all;
+  vertical-align: middle;
+}
+
+#pet-table tbody tr:hover {
+background-color: #f3e9d3;
+}
+
+#pet-table th {
+  text-align: center;
+}
+
+#pet-table th, #pet-table td {
+  padding: 14px 0;
+}
+
+#pet-table tbody td {
+  border-top: 1px solid #e7e7e7;
+  text-align: center;
+}
+
+#pet-table tbody th {
+  padding-left: 28px;
+  padding-right: 14px;
+  border-top: 1px solid #e7e7e7;
+}
+
+#pet-table tbody th p{
+  display: none;
+}
+
+.posting-pro-btn{
+			font-size: 1.2rem; 
+			color: #fff; 
+			font-weight: bold;   
+			display: inline-flex;  
+			text-align: center; 
+			color: white; 
+			background-color: #CA965C; 
+			border-radius: 0.6rem;
+			border:none;
+}
+.posting-pro-btn:hover{cursor:pointer; 
+						background-color: #c48036;}
