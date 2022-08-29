@@ -90,7 +90,7 @@ document.querySelectorAll(".btn-update-authority").forEach((btn) => {
 			success(response){
 				console.log(response);
 				const {msg} = response;
-				alert(msg);
+				alert("회원정보 변경 성공");
 				location.reload();
 			},
 			error : console.log

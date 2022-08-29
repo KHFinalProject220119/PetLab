@@ -11,8 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.petlab.adminnotice.model.dao.AdminNoticeDao;
 import com.kh.petlab.adminnotice.model.dto.AdminNoticeAttachment;
-import com.kh.petlab.hospital.model.dto.HosReviewRate;
-import com.kh.petlab.hospital.model.dto.PetHosReview;
 import com.kh.petlab.member.model.dao.MemberDao;
 import com.kh.petlab.member.model.dto.Attachment;
 import com.kh.petlab.adminnotice.model.dto.AdminNotice;
@@ -43,13 +41,10 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 		return adminNoticeDao.selectTotalContent();
 	}
 	
-	/**
-	 * @Transaction은 Runtime 예외가 발생시에만 rollback처리
-	 */
+
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int insertAdminNotice(AdminNotice adminnotice) {
-		// 1. board insert
 		int result =0;
 		List<Attachment> attachments = adminnotice.getAttachments(); 
 		 if(!attachments.isEmpty()) {

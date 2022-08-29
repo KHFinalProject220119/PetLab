@@ -36,12 +36,11 @@ public interface AdminNoticeDao {
 	@Select("select * from attachment where no = #{attachNo}")
 	AdminNoticeAttachment selectOneAttachment(int attachNo);
 
+	List<Attachment> selectNoticeAttachments(String attachGroupId);
+	
 	@Delete("delete from attachment where no = #{attachNo}")
 	int deleteAttachment(int attachNo);
 
 	@Update("update qa_notice set notice_title = #{noticeTitle}, content = #{content}, updated_at = sysdate where no = #{notice_no}")
 	int updateAdminNotice(AdminNotice AdminNotice);
-
-	List<Attachment> selectNoticeAttachments(String attachGroupId);
-
 }

@@ -31,7 +31,6 @@ import com.kh.petlab.adminnotice.model.dto.AdminNoticeAttachment;
 import com.kh.petlab.adminnotice.model.dto.AdminNotice;
 import com.kh.petlab.adminnotice.model.service.AdminNoticeService;
 import com.kh.petlab.common.PetLabUtils;
-import com.kh.petlab.hospital.model.dto.Hospital;
 import com.kh.petlab.member.model.dto.Attachment;
 
 import lombok.extern.slf4j.Slf4j;

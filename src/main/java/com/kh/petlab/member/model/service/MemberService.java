@@ -26,8 +26,4 @@ public interface MemberService {
 	List<Member> selectMemberList();
 	int updateMemberRole(@NonNull String memberId, List<String> authorities);
 	
-
-	
-	
-	
 }

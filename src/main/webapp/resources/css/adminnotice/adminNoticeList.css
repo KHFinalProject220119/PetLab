@@ -39,7 +39,7 @@ section.notice-container {
 }
 
 .board-table {
-  font-size: 13px;
+  font-size: 20px;
   width: 100%;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
@@ -96,3 +96,7 @@ section.notice-container {
   width: 1100px;
   margin: 0 auto;
 }
+
+.posting-pro-btn{font-size: 1.2rem; color: #fff; font-weight: bold;   padding:0.9rem; margin-top:1rem;
+display: inline-flex;  text-align: center; margin-left:84.6rem; color: white; background-color: #CA965C; border-radius: 0.6rem;}
+.posting-pro-btn:hover{cursor:pointer; background-color: #c48036;}

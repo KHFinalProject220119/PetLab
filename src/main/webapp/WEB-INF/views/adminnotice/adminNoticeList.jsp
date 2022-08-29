@@ -25,10 +25,7 @@ function goToadminNoticeForm(){
 window.addEventListener('load', (e) => {
 	document.querySelectorAll("tr[data-no]").forEach((tr) => {
 		tr.addEventListener('click', (e) => {
-			// console.log(e.target);	
 			const tr = e.target.parentElement;
-			// console.log(tr);
-			// 특정 선택자와 일치여부 boolean형 반환
 			if(tr.matches('tr[data-no]')){
 				const noticeNo = tr.dataset.no;
 				location.href = '${pageContext.request.contextPath}/adminnotice/adminNoticeDetail?noticeNo=' + noticeNo;
@@ -47,9 +44,11 @@ window.addEventListener('load', (e) => {
         </div>
     </div>
 
-	<sec:authorize access="hasRole('ADMIN')">	
-		<input type="button" value="글쓰기" id="btn-add" class="btn btn-outline-success" onclick="goToadminNoticeForm();"/>
-	</sec:authorize>
+<sec:authorize access="hasRole('ADMIN')">
+<a href="${pageContext.request.contextPath}/adminnotice/adminNoticeForm" class="posting-pro-btn">
+<span class="posting-btn">공지사항 등록</span>
+</a>
+</sec:authorize>
 
 	<div class="board-list">
         <div class="container">
@@ -83,7 +82,7 @@ window.addEventListener('load', (e) => {
 				</tr>
 			</c:forEach>
 		</table>
-		<nav>${pagebar}</nav>
+		
 		
 	</div>
 </section> 

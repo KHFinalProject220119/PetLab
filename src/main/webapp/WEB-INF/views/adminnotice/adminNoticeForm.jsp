@@ -22,44 +22,51 @@
 
 <div id="adminNoticeForm-container">
 	<div class="top-title-wrapper">
-			<div class="top-title">공지사항 게시</div>
+		<div class="top-title">공지사항 작성</div>
 	</div>
-
-	<form 
-		name="adminNoticeForm" 
-		action="${pageContext.request.contextPath}/adminnotice/adminNoticeEnroll?${_csrf.parameterName}=${_csrf.token}" 
-		method="post"
-		enctype="multipart/form-data">
-		<input type="text" class="form-control" placeholder="제목" name="noticeTitle" id="noticeTitle" required>
-		<input type="text" class="form-control" name="memberId" value="${loginMember.memberId}" readonly required>
-		<div class="input-group mb-3" style="padding:0px;">
-		  <div class="input-group-prepend" style="padding:0px;">
-		    <span class="input-group-text">첨부파일1</span>
-		  </div>
-		  <div class="custom-file">
-		    <input type="file" class="custom-file-input" name="upFile" id="upFile1" multiple>
-		    <label class="custom-file-label" for="upFile1">파일을 선택하세요</label>
-		  </div>
-		</div>
-		<div class="input-group mb-3" style="padding:0px;">
-		  <div class="input-group-prepend" style="padding:0px;">
-		    <span class="input-group-text">첨부파일2</span>
-		  </div>
-		  <div class="custom-file">
-		    <input type="file" class="custom-file-input" name="upFile" id="upFile2" multiple>
-		    <label class="custom-file-label" for="upFile2">파일을 선택하세요</label>
-		  </div>
-		</div>
-		
+	<div class="body-content-wrapper">
 		<div class="input-wrapper">
-			<div class="textarea-wrapper">
-	    <textarea class="form-control" id="contentsText" name="content" maxlength="500" cols="30" placeholder="내용" required></textarea>
-	    </div>
-		<br />
-		<div class="button-wrapper">
-			<input type="submit" class="btn btn-outline-success" value="게시하기" >
-		</div>
-	</form>
+			<form 
+				name="adminNoticeForm" 
+				action="${pageContext.request.contextPath}/adminnotice/adminNoticeEnroll?${_csrf.parameterName}=${_csrf.token}" 
+				method="post"
+				enctype="multipart/form-data">
+				<input type="text" class="form-control" placeholder="제목" name="noticeTitle" id="noticeTitle" required>
+				<input type="text" class="form-control" name="memberId" value="${loginMember.memberId}" readonly required>
+				<div class="input-group mb-3" style="padding:0px;">
+					<div class="input-group-prepend" style="padding:0px;">
+						<div class="label-wrapper">
+				    		<span class="word">첨부파일1</span>
+				    	</div>
+				  	</div>
+					<div class="custom-file">
+					    <input type="file" class="custom-file-input" name="upFile" id="upFile1" multiple>
+					    <label class="custom-file-label" for="upFile1">파일을 선택하세요</label>
+					</div>
+				</div>
+				<div class="input-group mb-3" style="padding:0px;">
+					<div class="input-group-prepend" style="padding:0px;">
+				    	<span class="word">첨부파일2</span>
+				  	</div>
+					<div class="custom-file">
+					    <input type="file" class="custom-file-input" name="upFile" id="upFile2" multiple>
+					    <label class="custom-file-label" for="upFile2">파일을 선택하세요</label>
+					</div>
+				</div>
+				<div class="input-wrapper">
+					<div class="textarea-wrapper">
+					    <textarea class="form-control" id="contentsText" name="content" maxlength="500" cols="30" placeholder="내용" required></textarea>
+					</div>
+					<br />
+							</div>
+					<div class="button-wrapper">
+						<input type="submit" class="btn btn-outline-success" value="게시하기" >
+					</div>
+						</form>
+				</div>
+		
+
+	</div>
 </div>
 <script>
 document.querySelectorAll("[name=upFile]").forEach((input) => {
@@ -99,4 +106,29 @@ adminNoticeFrm.addEventListener('submit', (e) => {
 	adminNoticeFrm.submit();
 });
 </script>
+
+<style>
+	textarea {
+		width: 160%;
+		hight: 100 rem;
+		padding: 10px;
+		box-sizing: border-box;
+		border: 2px solid #FF9900;
+		border-radius: 5px;
+		font-size: 16px;
+		resize: both;
+	}
+		
+	input {
+	  	width: 80%;
+		padding: 10px;
+		box-sizing: border-box;
+		border: 2px solid #FF9900;
+		border-radius: 5px;
+		font-size: 16px;
+		resize: both;
+}
+	</style>
+
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
